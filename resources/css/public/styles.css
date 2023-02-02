@@ -1,0 +1,93 @@
+body{
+    background-image:url(../../imagenes/Background.jpg) ;
+    background-size: cover;
+    width:100%;
+}
+.navbar{
+    background-color: transparent;
+}
+.navbar .nav-item a{
+    color: aliceblue;
+}
+.navbar .dropdown-menu a{
+    color: black;
+}
+.navbar a {
+    color: aliceblue;
+}
+.navbar .container-fluid img{
+    width: 250px;
+    height: 100px;
+}
+.navbar .container-fluid button{
+    background-color: #822727;
+}
+.navbar .nav-item a:hover{
+    border-bottom: 5px solid #822727;
+    transition: all 0.2s ease;
+}
+.navbar .nav-item a:focus{
+    border-bottom: 5px solid #822727;
+    transition: all ease;
+}
+.navbar .container-fluid .collapse{
+    margin-left: 22rem;
+}
+.navbar .buttonlogin {
+    margin-right: 2rem;
+}
+.navbar .buttonlogin a{
+    border-radius: 8px;
+    text-decoration: none;
+    padding: 10px 35px;
+    background-color: #fff;
+    font-weight: 700;
+    color: #1f1f1f;
+}
+.navbar .buttonlogin img{
+    height: 24px;
+    width: 24px;
+}
+.contenido .explorar .texto{
+    display: flex;
+    flex-direction: column;
+    margin-top: 14rem;
+    margin-left: 5rem;
+}
+.contenido .explorar .texto h6{
+    color: #707070;
+    margin-bottom: 0;
+}
+.contenido .explorar .texto p{
+    font-size: 38pt;
+    font-weight: 600;
+    color: #fff;
+}
+.contenido .explorar{
+        width: 35%;
+}
+.contenido .explorar .btnexplorar{
+    margin-left: 17rem;
+}
+.contenido .explorar .btnexplorar button{
+    height: 45px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: #822727;
+    color: #fff;
+    font-weight: 600;
+}
+.contenido{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.contenido .imagencarro{
+    width: 55%;
+    margin-top: 8rem;
+    margin-left: 10rem;
+}
+.contenido .imagencarro img{
+    height: 400px;
+    width: 650px;
+}

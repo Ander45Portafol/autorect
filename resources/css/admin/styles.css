@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@100;400;500;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin:0;  
+    padding:0;
+    font-family: 'Roboto',sans-serif;
+}
+body .imagen img{
+    width: 100%;
+    height: auto;
+}
+body .imagen{
+    position: absolute;
+}
+body{
+    background-image: url(../../imagenes/Car.jpg);
+    background-size: cover;
+    overflow-y:hidden ;
+}
+.contenedor .formulario{
+    width: 50%;
+    height: 119vh;
+    display: block;
+    position: relative;
+}
+.contenedor .formulario .logo img{
+    margin-top: 3rem;
+    margin-left: 1rem;
+    width: 30px;
+    height: 30px;
+}
+.contenedor .formulario .text{
+    margin-top: 3rem;
+    margin-left: 3rem;
+}
+.contenedor .formulario .text span{
+    color: #822727;
+    text-decoration: none;
+}
+.contenedor .formulario .text p{
+    font-size: 46pt;
+    font-weight: 700;
+    color: #FFFF;
+}
+.contenedor .formulario .text h5{
+    color: #A3A3A3;
+}
+.textlogin{
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    margin-left: 140px;
+}
+.input-data .underline{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 2px;
+}
+.input-data .underline:before{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+.input-data input:focus ~.underline:before, .input-data input:valid~.underline:before{
+transform: scaleX(1);
+}
+.input-data{
+    height: 45px;
+    width: 350px;
+    position: relative;
+}
+#pass{
+    margin-top: 2rem;
+}
+.input-data input{
+    height: 100%;
+    padding-left: 10px;
+    padding-top: 15px;
+    width: 100%;
+    border-radius: 7px;
+    border: none;
+    color: #FFF;
+    background-color: #525252;
+    font-size: 14px;
+}
+.input-data input:focus~label,
+.input-data input:valid~label{
+    font-size: 12px;
+    bottom: 17px;
+    margin-bottom: 10px;
+    color: #A3A3A3;
+}
+.input-data label{
+    position: absolute;
+    bottom: 10px;
+    margin-left: 10px;
+    left: 0;
+    color: #FFF;
+    transition:all 0.3s ease;
+}
+.contenedor .buttons #btnlogin{
+    background-color: #822727;
+    color: #FFF;
+    border-radius: 20px;
+    height: 60px;
+    font-size: 12pt;
+    font-weight: 500;
+    width: 150px;
+}.contenedor  .endlogin .buttons{
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    margin-top: 1rem;
+}
+.contenedor .endlogin{
+    display: flex;
+    flex-direction: column;
+}
+.contenedor .endlogin .forget a{
+    text-decoration: none;
+    color: #A3A3A3;
+}
+.contenedor .endlogin .forget{
+    display: flex;
+    width: 65%;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
