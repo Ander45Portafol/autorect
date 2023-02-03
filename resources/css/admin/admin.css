@@ -64,7 +64,7 @@ aside .sidebar .middlenav a{
     color: #FFF;
     font-weight: 300;
     text-decoration: none;
-    align-items: center;
+    align-items: center; 
 }
 nav .sidebar .logout{
     margin-top: 4.2rem;
@@ -86,4 +86,7 @@ nav .sidebar .logout a:hover{
 nav .sidebar .middlenav a:hover{
     background-color: #FFF;
     color: #1f1f1f;
+}
+.icono{
+    background-color: #FFF;
 }
