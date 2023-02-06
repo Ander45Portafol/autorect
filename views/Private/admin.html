@@ -13,37 +13,55 @@
 <body>
     <div class="container">
         <aside>
-            <nav class="navbar">
-                <div class="topnav">
-                    <div class="img">
-                        <img src="../../resources/imagenes/LogoLogin.png" alt="">
-                    </div>                   
-                    <div class="btn">
-                        <button onclick="compactnav()"><i class='bx bx-chevron-right'></i></button>
+            <div class="navbar">
+                <nav>
+                    <div class="topnav">
+                        <div class="img">
+                            <img src="../../resources/imagenes/LogoLogin.png" alt="">
+                        </div>                   
+                        <div class="btn">
+                            <button onclick=""><i class='bx bx-chevron-right'></i></button>
+                        </div>
+                        <div class="btnback">
+                            <button onclick=""><i class='bx bx-chevron-left'></i></button>
+                        </div>
                     </div>
-                    <div class="btnback">
-                        <button onclick="backnav()"><i class='bx bx-chevron-left'></i></button>
+                    <div class="sidebar">
+                        <div class="middlenav">
+                            <a><i class='bx bxs-grid-alt' ></i></a>
+                            <a href=""><i class='bx bxs-user-circle'></i></a>
+                            <a href=""><i class='bx bxs-group'></i></a>
+                            <a href=""><i class='bx bxs-user-pin' ></i></a>
+                            <a href=""><i class='bx bxs-cart-alt'></i></a>
+                            <a href=""><i class='bx bx-spreadsheet'></i></a>
+                            <a href=""><i class='bx bxs-box'></i></a>
+                            <a href=""><i class='bx bxs-category-alt'></i></a>
+                            <a href=""><i class='bx bxs-car'></i></a>
+                            <a href=""><i class='bx bxs-car-garage'></i></a>
+                        </div>
+                        <div class="logout">
+                            <a href="" class="logout"> <i class='bx bxs-log-out'></i></a>
+                        </div>
+                        
                     </div>
-                </div>
-                <div class="sidebar">
-                    <div class="middlenav">
-                        <a href=""><i class='bx bx-grid-alt'></i></a>
-                        <a href=""><i class='bx bxs-user-circle'>Usuarios</i></a>
-                        <a href=""><i class='bx bxs-group'></i></a>
-                        <a href=""><i class='bx bxs-wallet' ></i></a>
-                    </div>
-                    <div class="logout">
-                        <a href="" class="logout"> <i class='bx bxs-log-out'></i></a>
-                    </div>
-                    
-                </div>
-            </nav>
+                </nav>
+            </div>
         </aside>
-        <main>
+        <div class="datasection">
             <section>
-
+                <div class="topmain">
+                    <div class="text">
+                        <p>DASHBOARD</p>
+                    </div>
+                    <div class="btnmain">
+                        <button class="btndashboard">Daily</button>
+                        <button class="btndashboard">Weekly</button>
+                        <button class="btndashboard">Monthly</button>
+                        <button class="user"><i class='bx bxs-user-circle' ></i></button>
+                    </div>
+                </div>
             </section>
-        </main>
+        </div>
     </div>
     <script src="../../controller/account.js"></script>
 </body>
