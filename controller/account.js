@@ -12,3 +12,9 @@ const backnav=()=>{
     btnback.style.display="none"
     btnabrir.style.display="block"
 }
+const btnedit=()=>{
+  prompt("Hola mundo")
+}
+const btndelete=()=>{
+  prompt("eliminando")
+}
