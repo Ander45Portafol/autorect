@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../../resources/css/admin/menu.css">
     <link rel="stylesheet" href="../../resources/css/admin/user.css" />
     <link rel="icon" href="../../resources/imagenes/Icon.jpeg" />
     <link
@@ -16,246 +17,212 @@
     <title>Usuarios</title>
   </head>
   <body>
-    <aside>
-      <nav>
-        <div class="topnav">
-          <div class="img">
-            <img src="../../resources/imagenes/LogoLogin.png" alt="" />
-          </div>
-          <div class="btn">
-            <button onclick=""><i class="bx bx-chevron-right"></i></button>
-          </div>
-          <div class="btnback">
-            <button onclick=""><i class="bx bx-chevron-left"></i></button>
-          </div>
-        </div>
-        <div class="sidebar">
-          <div class="middlenav">
-            <a href="admin.html" class="inactive"
-              ><i class="bx bxs-grid-alt"></i
-            ></a>
-            <a href="" class="active"><i class="bx bxs-user-circle"></i></a>
-            <a href="" class="inactive"><i class="bx bxs-group"></i></a>
-            <a href="" class="inactive"><i class="bx bxs-user-pin"></i></a>
-            <a href="" class="inactive"><i class="bx bxs-cart-alt"></i></a>
-            <a href="" class="inactive"><i class="bx bx-spreadsheet"></i></a>
-            <a href="" class="inactive"><i class="bx bxs-box"></i></a>
-            <a href="" class="inactive"><i class="bx bxs-category-alt"></i></a>
-            <a href="" class="inactive"><i class="bx bxs-car"></i></a>
-            <a href="" class="inactive"><i class="bx bxs-car-garage"></i></a>
-          </div>
-          <div class="logout">
-            <a href="" class="logout"> <i class="bx bxs-log-out"></i></a>
-          </div>
-        </div>
-      </nav>
-    </aside>
-    <div class="container">
-      <main class="datausers">
-        <section class="datauser">
-          <div class="topmain">
-            <div class="texttop">
-              <p>USERS</p>
-            </div>
-            <div class="buttonstop">
-              <button>Export <i class="bx bx-export"></i></button>
-              <button>Print <i class="bx bxs-printer"></i></button>
-              <button class="red">
-                <i class="bx bxs-plus-circle"></i> New user
-              </button>
-            </div>
-          </div>
-          <div class="searchsection">
-            <div class="search">
-              <i class="bx bx-search"></i>
-              <input type="text" placeholder="Search anything..." />
-              <i class="bx bx-slider"></i>
-            </div>
-            <div class="buttonsearch">
-              <input type="date" class="btnfilter" />
-              <div class="dropdown btnfilter">
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="bx bxs-purchase-tag"></i>
-                  Status
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
+    <div class="allinfo">
+      <aside></aside>
+        <main class="datausers">
+          <section class="container">
+            <div class="topmain">
+              <div class="texttop">
+                <p>USERS</p>
               </div>
-              <div class="dropdown btnfilter">
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-current-location"></i>
-                  Address
+              <div class="buttonstop">
+                <button>Export <i class="bx bx-export"></i></button>
+                <button>Print <i class="bx bxs-printer"></i></button>
+                <button id="red">
+                  <i class="bx bxs-plus-circle"></i> New user
                 </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="dropdown btnfilter">
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="bx bxs-bookmark"></i>
-                  Save filters
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="dropdown btnfilter">
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-slider rotate"></i>
-                  More
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
               </div>
             </div>
-          </div>
-          <div class="filtertable">
-            <button class="active">All users <span>11</span></button>
-            <button>Admin users <span>03</span></button>
-          </div>
-          <div class="datatable">
-            <div class="infodatatable">
-              <p>Showing 21-30 of 88 results</p>
+            <div class="searchsection">
+              <div class="search">
+                <i class="bx bx-search"></i>
+                <input type="text" placeholder="Search anything..." />
+                <i class="bx bx-slider"></i>
+              </div>
+              <div class="buttonsearch">
+                <input type="date" class="btnfilter" />
+                <div class="dropdown btnfilter">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bxs-purchase-tag"></i>
+                    Status
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown btnfilter">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bx-current-location"></i>
+                    Address
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown btnfilter">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bxs-bookmark"></i>
+                    Save filters
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown btnfilter">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bx-slider rotate"></i>
+                    More
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div class="numbersdata">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+            <div class="filtertable">
+              <button class="active">All users <span>11</span></button>
+              <button>Admin users <span>03</span></button>
             </div>
-            <div class="itemstable">
-              <p>Items per page <span>10</span></p>
+            <div class="datatable">
+              <div class="infodatatable">
+                <p>Showing 21-30 of 88 results</p>
+              </div>
+              <div class="numbersdata">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <div class="itemstable">
+                <p>Items per page <span>10</span></p>
+              </div>
             </div>
-          </div>
-          <div class="sectiontable">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col"><input type="checkbox" /></th>
-                  <th scope="col">ID No.</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">User</th>
-                  <th scope="col">Password</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">User type</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row"><input type="checkbox" /></th>
-                  <td><p>1</p></td>
-                  <td><p>Anderson A.</p></td>
-                  <td><p>anderson</p></td>
-                  <td><p>32dhf2bnd7908sa8</p></td>
-                  <td><p class="status">Active</p></td>
-                  <td><p class="user_type">Admin</p></td>
-                  <td>
-                    <div class="actions">
-                      <button class="edit" onclick="btnedit()"><i class="bx bxs-edit"></i></button>
-                      <button class="delete" onclick="btndelete()">
-                        <i class="bx bxs-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row"><input type="checkbox" /></th>
-                  <td><p>2</p></td>
-                  <td><p>Roberto M.</p></td>
-                  <td><p>Rober</p></td>
-                  <td><p>32dhff3nd7908sa8</p></td>
-                  <td><p class="status">Active</p></td>
-                  <td><p class="user_type">Admin</p></td>
-                  <td>
-                    <div class="actions">
-                      <button class="edit" onclick="btnedit()"><i class="bx bxs-edit"></i></button>
-                      <button class="delete" onclick="btndelete()">
-                        <i class="bx bxs-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row"><input type="checkbox" /></th>
-                  <td><p>3</p></td>
-                  <td><p>Daniel Lopez</p></td>
-                  <td><p>Dani3l_l</p></td>
-                  <td><p>323cf2bnd7908sa8</p></td>
-                  <td><p class="status">Active</p></td>
-                  <td><p class="user_type">Root</p></td>
-                  <td>
-                    <div class="actions">
-                      <button class="edit" onclick="btnedit()"><i class="bx bxs-edit"></i></button>
-                      <button class="delete" onclick="btndelete()">
-                        <i class="bx bxs-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </main>
+            <div class="sectiontable">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col"><input type="checkbox" /></th>
+                    <th scope="col">ID No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">User type</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><input type="checkbox" /></th>
+                    <td><p>1</p></td>
+                    <td><p>Anderson A.</p></td>
+                    <td><p>anderson</p></td>
+                    <td><p>32dhf2bnd7908sa8</p></td>
+                    <td><p class="status">Active</p></td>
+                    <td><p class="user_type">Admin</p></td>
+                    <td>
+                      <div class="actions">
+                        <button class="edit" onclick="btnedit()"><i class="bx bxs-edit"></i></button>
+                        <button class="delete" onclick="btndelete()">
+                          <i class="bx bxs-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input type="checkbox" /></th>
+                    <td><p>2</p></td>
+                    <td><p>Roberto M.</p></td>
+                    <td><p>Rober</p></td>
+                    <td><p>32dhff3nd7908sa8</p></td>
+                    <td><p class="status">Active</p></td>
+                    <td><p class="user_type">Admin</p></td>
+                    <td>
+                      <div class="actions">
+                        <button class="edit" onclick="btnedit()"><i class="bx bxs-edit"></i></button>
+                        <button class="delete" onclick="btndelete()">
+                          <i class="bx bxs-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input type="checkbox" /></th>
+                    <td><p>3</p></td>
+                    <td><p>Daniel Lopez</p></td>
+                    <td><p>Dani3l_l</p></td>
+                    <td><p>323cf2bnd7908sa8</p></td>
+                    <td><p class="status">Active</p></td>
+                    <td><p class="user_type">Root</p></td>
+                    <td>
+                      <div class="actions">
+                        <button class="edit" onclick="btnedit()"><i class="bx bxs-edit"></i></button>
+                        <button class="delete" onclick="btndelete()">
+                          <i class="bx bxs-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
     </div>
-    <script src="../../controller/account.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <script src="../../controller/account.js"></script>
+    <script src="../../controller/Admin/account.js"></script>
   </body>
 </html>

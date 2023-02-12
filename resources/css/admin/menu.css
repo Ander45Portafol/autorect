@@ -1,0 +1,85 @@
+nav .img img{
+    height: 38px;
+    width: 40px;
+    margin-top: 0.8rem;
+    margin-left: 0.8rem;
+}
+nav .topnav{
+    display: flex;
+    flex-direction: row;
+
+}
+.topnav .btnback{
+    display: none;
+    align-items: flex-end;
+    margin-left: 9.2rem;
+    margin-top: 1.2rem;
+}
+nav .topnav .btn{
+    display: block;
+    margin-left: 0.7rem;
+    margin-top: 0.5rem;
+}
+aside nav .topnav button{
+    height: 40px;
+    width: 40px;  
+    color: #FFF;
+    border: none;
+    font-weight: 500;
+    border-radius: 30px;
+    font-size: 1.6rem;
+    background-color: #822727;
+}
+nav .sidebar{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    font-size: 12pt;
+    flex-direction: column;
+}
+nav .sidebar .middlenav{
+    display: flex;
+    margin-left: 1.5rem;
+    width: 80%;
+    flex-direction: column;
+    position: relative;
+}
+aside .sidebar .middlenav a{
+    margin-top: 1rem;
+    padding: 4px 0;
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-size: 1.7rem;
+    position: relative;
+    font-weight: 300;
+    text-decoration: none;
+}
+nav .sidebar .logout{
+    margin-top: 1.3rem;
+}
+nav .sidebar .logout a{
+    display: flex;
+    color: #fff;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 1.7rem;
+    height: 60px;
+    margin-right: 1rem;
+    align-items: flex-end;
+    justify-content: center;
+    /*gap: 0.5rem;*/
+}
+nav .sidebar .logout a:hover{
+    background-color: #822727;
+}
+nav .sidebar .middlenav a:hover{
+    background-color: #FFF;
+    display: flex;
+    height: 30px;
+    border-radius: 10px;
+    color: #1f1f1f;
+}

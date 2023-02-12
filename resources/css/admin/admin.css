@@ -73,15 +73,13 @@ aside .sidebar .middlenav a{
     margin-top: 1rem;
     padding: 4px 0;
     display: flex;
+    color: #FFF;
     font-size: 1.7rem;
     position: relative;
     font-weight: 300;
     text-decoration: none;
     align-items: center; 
     justify-content: center;
-}
-aside .sidebar .middlenav .inactive{
-    color: #FFF;
 }
 nav .sidebar .logout{
     margin-top: 1.3rem;
@@ -101,13 +99,6 @@ nav .sidebar .logout a:hover{
     background-color: #822727;
 }
 nav .sidebar .middlenav a:hover{
-    background-color: #FFF;
-    width: 50%;
-    height: 30px;
-    border-radius: 10px;
-    color: #1f1f1f;
-}
-nav .sidebar .active{
     background-color: #FFF;
     width: 50%;
     height: 30px;

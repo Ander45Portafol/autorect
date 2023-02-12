@@ -1,351 +1,252 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@100;400;500;700&display=swap');
 *{
-    padding: 0;
     margin: 0;
+    padding:0;
     font-family: 'Roboto',sans-serif;
 }
 body{
-    width: 100%;
-    height: 100vh;
-    background-color: #822727;
-    display: flex;
-    flex-direction: row;
+    max-height: 100%;
+    max-width: 98%;
 }
-.container{
+.allinfo{
     display: flex;
     flex-direction: row;
+    width: 98%;
     height: 100%;
-    width: 50%;
-    background-color: transparent;
-}
-nav .img img{
-    height: 38px;
-    width: 40px;
-    margin-top: 1rem;
-    margin-left: 0.8rem;
 }
 aside{
     background-color: #1f1f1f;
-    width: 6%;
-    position:sticky;
+    width: 6.5%;
+    height: 100vh;
 }
-aside nav{
+.datausers {
+    width: 100%;
+    margin-top: 1rem;
     height: 100%;
-    top: 0;
-    left: 0;
-    width: 100%;
+    margin-left: 2rem;
 }
-
-nav .topnav{
-    display: flex;
-    flex-direction: row;
-
+.datausers .topmain {
+  display: flex;
+  flex-direction: row;
 }
-.topnav .btnback{
-    display: none;
-    align-items: flex-end;
-    margin-left: 9.2rem;
-    margin-top: 1rem;
+.datausers .topmain .texttop {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: flex-start;
+  align-items: center;
+  color: #1f1f1f;
+  font-size: 22pt;
+  font-weight: 600;
 }
-nav .topnav .btn{
-    display: block;
-    margin-left: 0.5rem;
-    margin-top: 0.5rem;
+.datausers .topmain .buttonstop {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }
-aside nav .topnav button{
-    height: 40px;
-    width: 40px;  
-    color: #FFF;
-    border: none;
-    font-weight: 500;
-    border-radius: 30px;
-    font-size: 1.6rem;
-    background-color: #822727;
+.datausers .topmain .buttonstop button {
+  background-color: transparent;
+  margin-left: 10px;
+  border: 3px solid #d2d2d2;
+  color: #636363;
+  width: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 10pt;
+  height: 35px;
+  font-weight: 500;
+  border-radius: 20px;
 }
-nav .sidebar{
-    margin-top: 1rem;
-    display: flex;
-    font-size: 12pt;
-    flex-direction: column;
+.datausers .topmain .buttonstop button i {
+  font-size: 16pt;
 }
-nav .sidebar .middlenav{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    align-items: center;
+.topmain .buttonstop #red{
+  background-color: #822727;
+  border: none;
+  color: #fff;
+  width: 110px;
+  padding-right: 10px;
 }
-aside .sidebar .middlenav a{
-    margin-top: 1rem;
-    padding: 4px 0;
-    display: flex;
-    font-size: 1.7rem;
-    position: relative;
-    font-weight: 300;
-    text-decoration: none;
-    align-items: center; 
-    justify-content: center;
+.searchsection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 10px;
+  height: 65px;
+  background-color: #f2f2f2;
 }
-aside .sidebar .middlenav .inactive{
-    color: #FFF;
+.search {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: flex-start;
 }
-nav .sidebar .logout{
-    margin-top: 1.3rem;
+.search input {
+  border-radius: 10px;
+  border: none;
+  position: relative;
+  width: 400px;
+  padding-left: 30px;
+  z-index: 1;
 }
-nav .sidebar .logout a{
-    display: flex;
-    color: #fff;
-    border-radius: 3px;
-    text-decoration: none;
-    font-size: 1.7rem;
-    height: 60px;
-    align-items: flex-end;
-    justify-content: center;
-    /*gap: 0.5rem;*/
+.search .bx-search {
+  position: absolute;
+  z-index: 10;
+  font-size: 16pt;
+  margin-top: 12px;
+  margin-left: 5px;
 }
-nav .sidebar .logout a:hover{
-    background-color: #822727;
+.search .bx-slider {
+  position: absolute;
+  z-index: 10;
+  font-size: 16pt;
+  margin-top: 12px;
+  margin-left: 22.5rem;
 }
-nav .sidebar .middlenav a:hover{
-    background-color: #FFF;
-    width: 50%;
-    height: 30px;
-    border-radius: 10px;
-    color: #1f1f1f;
+.buttonsearch {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: flex-end;
 }
-nav .sidebar .active{
-    background-color: #FFF;
-    width: 50%;
-    height: 30px;
-    border-radius: 10px;
-    color: #1f1f1f;
+.buttonsearch input {
+  padding: 0 10px;
 }
-.datausers{
-    padding: 0.8rem;
-    width: 100%;
+.btnfilter {
+  margin-left: 1rem;
+  border: 3px solid #d2d2d2;
+  border-radius: 30px;
 }
-.datauser .topmain{
-    display: flex;
-    flex-direction: row;
+.btnfilter button {
+  color: #636363;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.datauser .topmain .texttop{
-    display: flex;
-    flex-direction: row; 
-    width: 50%;
-    justify-content: flex-start;
-    align-items: center;
-    color: #1f1f1f;
-    font-size: 22pt;
-    font-weight: 600;
+.dropdown .rotate {
+  transform: rotate(90deg);
 }
-.datauser .topmain .buttonstop{
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
+.filtertable {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-top: 2.5rem;
+  border-bottom: 3px solid #636363;
 }
-.datauser .topmain .buttonstop button{
-    background-color: transparent;
-    margin-left: 10px;
-    border: 3px solid #D2D2D2;
-    color: #636363;
-    width: 100px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 10pt;
-    height: 35px;
-    font-weight: 500;
-    border-radius: 20px;
+.filtertable button {
+  border: none;
+  margin-right: 2rem;
+  width: 120px;
+  background-color: transparent;
 }
-.datauser .topmain .buttonstop button i{
-    font-size: 16pt;
+.filtertable .active {
+  border-bottom: 5px solid #822727;
+  padding-bottom: 7px;
 }
-.datauser .topmain .buttonstop .red{
-    background-color: #822727;
-    border: none;
-    color: #FFF;
-    width: 110px;
-    padding-right: 10px;
+.filtertable span {
+  border-radius: 100px;
+  background-color: #1f1f1f;
+  color: #fff;
+  font-size: 8pt;
+  font-weight: 500;
+  padding: 5px;
 }
-.searchsection{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 20px;
-    width: 100%;
-    border-radius: 20px;
-    padding: 10px;
-    height: 65px;
-    background-color: #F2F2F2;
+.datatable {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 1rem;
 }
-.search{
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    justify-content: flex-start;
+.datatable .infodatatable {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 10pt;
+  width: 25%;
+  color: #636363;
 }
-.search input{
-    border-radius: 10px;
-    border: none;
-    position: relative;
-    width: 400px;
-    padding-left: 30px;
-    z-index: 1;
+.datatable .numbersdata {
+  display: flex;
+  justify-content: center;
+  width: 50%;
 }
-.search .bx-search{
-    position: absolute;
-    z-index: 10;
-    font-size: 16pt;
-    margin-top: 12px;
-    margin-left: 5px;
+.datatable .itemstable {
+  display: flex;
+  justify-content: flex-end;
+  width: 25%;
+  font-size: 10pt;
+  color: #636363;
 }
-.search .bx-slider{
-    position: absolute;
-    z-index: 10;
-    font-size: 16pt;
-    margin-top: 12px;
-    margin-left: 22.5rem;
+.datatable .itemstable span {
+  margin: 20px;
+  border: 3px solid #636363;
+  padding: 5px 30px;
+  border-radius: 5px;
 }
-.buttonsearch{
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    justify-content: flex-end;
+.numbersdata .Page {
+  border: none;
 }
-.buttonsearch input{
-    padding: 0 10px;
+.datatable .numbersdata .page-link {
+  color: #1f1f1f;
+  border: none;
 }
-.btnfilter{
-    margin-left: 1rem;
-    border: 3px solid #D2D2D2;
-    border-radius: 30px;
+.datatable .numbersdata .page-link:focus {
+  color: #822727;
+  border: transparent !important;
 }
-.btnfilter button{
-    color: #636363;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.datatable .numbersdata .page-item {
+  border: none;
 }
-.dropdown .rotate{
-    transform:rotate(90deg); 
+.sectiontable .table {
+  margin-top: 1rem;
+  color: #636363;
 }
-.filtertable{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding-top: 2.5rem;
-    border-bottom: 3px solid #636363;
+.sectiontable .table .status {
+  background-color: #d0fbee;
+  border-radius: 5px;
+  padding: 5px 0;
+  margin-right: 10px;
+  width: 120px;
+  text-align: center;
 }
-.filtertable button{
-    border: none ;
-    margin-right:2rem;
-    width: 120px;
-    background-color: transparent;
+.sectiontable .table .user_type {
+  background-color: #822727;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  width: 120px;
 }
-.filtertable .active{
-    border-bottom: 5px solid #822727;
-    padding-bottom: 7px;
+.sectiontable .table thead {
+  background-color: #f2f2f2;
+  color: #636363;
 }
-.filtertable span{
-    border-radius: 100px;
-    background-color: #1f1f1f;
-    color: #FFF;
-    font-size: 8pt;
-    font-weight: 500;
-    padding: 5px;
+.sectiontable .table td .edit {
+  background-color: transparent;
+  color: #ffca2c;
+  border-radius: 5px;
+  font-size: 16pt;
+  height: 30px;
+  width: 45px;
+  border: 2px solid #ffca2c;
 }
-.datatable{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    margin-top: 1rem;
+.sectiontable .table td .delete {
+  background-color: transparent;
+  color: #822727;
+  border: 2px solid #822727;
+  border-radius: 5px;
+  margin-left: 20px;
+  font-size: 16pt;
+  height: 30px;
+  width: 45px;
 }
-.datatable .infodatatable{
-    display: flex;
-    justify-content: flex-start;
-    font-size: 10pt;
-    width: 25%;
-    color: #636363;
+.actions {
+  display: flex;
+  flex-direction: row;
 }
-.datatable .numbersdata{
-    display: flex;
-    justify-content: center;
-    width: 50%;
-}
-.datatable .itemstable{
-    display: flex;
-    justify-content: flex-end;
-    width: 25%;
-    font-size: 10pt;
-    color: #636363;
-}
-.datatable .itemstable span{
-    margin: 20px;
-    border: 3px solid #636363;
-    padding: 5px 30px;
-    border-radius: 5px;
-}
-.numbersdata .Page{
-    border: none;
-}
-.datatable .numbersdata .page-link{
-    color: #1f1f1f;
-    border: none;
-}
-.datatable .numbersdata .page-link:focus{
-    color: #822727;
-    border: transparent !important;
-}
-.datatable .numbersdata .page-item{
-    border: none;
-}
-.sectiontable .table{
-    margin-top: 1rem;
-    color: #636363;
-}
-.sectiontable .table .status{
-    background-color: #D0FBEE;
-    border-radius: 5px;
-    padding: 5px 0;
-    margin-right: 10px;
-    width: 120px;
-    text-align: center;
-}
-.sectiontable .table .user_type{
-    background-color: #822727;
-    color:#FFF;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px 0;
-    width: 120px;
-}
-.sectiontable .table thead{
-    background-color: #F2F2F2;
-    color: #636363;
-}
-.sectiontable .table td .edit{
-    background-color: transparent;
-    color: #FFCA2C;
-    border-radius: 5px;
-    font-size: 16pt;
-    height: 30px;
-    width: 45px;
-    border: 2px solid #FFCA2C;
-}
-.sectiontable .table td .delete{
-    background-color: transparent;
-    color: #822727;
-    border: 2px solid #822727;
-    border-radius: 5px;
-    margin-left: 20px;
-    font-size: 16pt;
-    height: 30px;
-    width: 45px;
-}
-.actions{
-    display: flex;
-    flex-direction: row;
-}
-
