@@ -15,7 +15,9 @@ const ASIDE = document.querySelector(`aside`);
       </div>
       <div class="sidebar">
         <div class="middlenav">
-          <a href="admin.html"><i class="bx bxs-grid-alt"></i></a>
+        <ul>
+          <li><a href="admin.html"><i class="bx bxs-grid-alt"></i></a></li>
+        </ul>
           <a href="user.html"><i class="bx bxs-user-circle"></i></a>
           <a href="empleado.html"><i class="bx bxs-group"></i></a>
           <a href=""><i class="bx bxs-user-pin"></i></a>
@@ -32,7 +34,3 @@ const ASIDE = document.querySelector(`aside`);
       </div>
     </nav>
   </div>`;
-
-const pru=()=>{
-  prompt("Hola")
-}
