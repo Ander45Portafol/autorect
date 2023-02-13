@@ -60,25 +60,26 @@ aside .sidebar .middlenav a{
 }
 nav .sidebar .logout{
     margin-top: 1.3rem;
+    display: flex;
+    justify-content: center;
 }
 nav .sidebar .logout a{
     display: flex;
     color: #fff;
+    background-color: #822727;
     border-radius: 3px;
     text-decoration: none;
     font-size: 1.7rem;
-    height: 60px;
+    align-items: center;
+    width: 50%;
+    display: flex;
+    border-radius: 10px;
+    height: 40px;
     margin-right: 1rem;
-    align-items: flex-end;
-    justify-content: center;
     /*gap: 0.5rem;*/
-}
-nav .sidebar .logout a:hover{
-    background-color: #822727;
 }
 nav .sidebar .middlenav a:hover{
     background-color: #FFF;
-    display: flex;
     height: 30px;
     border-radius: 10px;
     color: #1f1f1f;
