@@ -15,21 +15,19 @@ const ASIDE = document.querySelector(`aside`);
       </div>
       <div class="sidebar">
         <div class="middlenav">
-        <ul>
-          <li><a href="admin.html"><i class="bx bxs-grid-alt"></i></a></li>
-        </ul>
-          <a href="user.html"><i class="bx bxs-user-circle"></i></a>
-          <a href="empleado.html"><i class="bx bxs-group"></i></a>
-          <a href=""><i class="bx bxs-user-pin"></i></a>
-          <a href=""><i class="bx bxs-cart-alt"></i></a>
-          <a href=""><i class="bx bx-spreadsheet"></i></a>
-          <a href=""><i class="bx bxs-box"></i></a>
-          <a href=""><i class="bx bxs-category-alt"></i></a>
-          <a href=""><i class="bx bxs-car"></i></a>
-          <a href=""><i class="bx bxs-car-garage"></i></a>
+          <a href="admin.html"><i class="bx bxs-grid-alt"></i></a>
+          <a href="user.html"><i class="bx bxs-user-circle" data-feather="dashboard"></i></a>
+          <a href="employee.html"><i class="bx bxs-group"></i></a>
+          <a href="clients.html"><i class="bx bxs-user-pin"></i></a>
+          <a href="products.html"><i class="bx bxs-cart-alt"></i></a>
+          <a href="orderdetails.html"><i class="bx bx-spreadsheet"></i></a>
+          <a href="orders.html"><i class="bx bxs-box"></i></a>
+          <a href="categories.html"><i class="bx bxs-category-alt"></i></a>
+          <a href="brands.html"><i class="bx bxs-car"></i></a>
+          <a href="models.html"><i class="bx bxs-car-garage"></i></a>
         </div>
         <div class="logout">
-          <a href="" class="logout"> <i class="bx bxs-log-out"></i></a>
+          <a href="index.html" class="logout"> <i class="bx bxs-log-out"></i></a>
         </div>
       </div>
     </nav>

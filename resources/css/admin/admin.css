@@ -83,20 +83,21 @@ aside .sidebar .middlenav a{
 }
 nav .sidebar .logout{
     margin-top: 1.3rem;
+    display: flex;
+    justify-content: center;
 }
 nav .sidebar .logout a{
     display: flex;
     color: #fff;
-    border-radius: 3px;
+    background-color: #822727;
+    border-radius: 10px;
     text-decoration: none;
     font-size: 1.7rem;
-    height: 60px;
-    align-items: flex-end;
+    width: 50%;
+    height: 40px;
+    align-items: center;
     justify-content: center;
     /*gap: 0.5rem;*/
-}
-nav .sidebar .logout a:hover{
-    background-color: #822727;
 }
 nav .sidebar .middlenav a:hover{
     background-color: #FFF;
