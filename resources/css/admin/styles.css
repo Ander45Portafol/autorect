@@ -106,17 +106,20 @@ transform: scaleX(1);
 }
 .contenedor .buttons #btnlogin{
     background-color: #822727;
-    color: #FFF;
     border-radius: 20px;
     height: 60px;
-    font-size: 12pt;
-    font-weight: 500;
     width: 150px;
 }.contenedor  .endlogin .buttons{
     display: flex;
     justify-content: flex-end;
     width: 50%;
     margin-top: 1rem;
+}
+.contenedor .endlogin .buttons a{
+    text-decoration: none;
+    font-size: 12pt;
+    font-weight: 500;
+    color: #FFF;
 }
 .contenedor .endlogin{
     display: flex;

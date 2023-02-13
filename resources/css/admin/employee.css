@@ -1,57 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@100;400;500;700&display=swap');
-*{
-    margin: 0;
-    padding:0;
-    font-family: 'Roboto',sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@100;400;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
 }
-body{
-    max-height: 100%;
-    max-width: 98%;
+body {
+  max-height: 100%;
+  max-width: 98%;
 }
-.allinfo{
-    display: flex;
-    flex-direction: row;
-    width: 98%;
-    height: 100%;
+.allinfo {
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  height: 100%;
 }
-aside{
-    background-color: #1f1f1f;
-    width: 6.5%;
-    height: 100vh;
+aside {
+  background-color: #1f1f1f;
+  width: 6.5%;
+  height: 100vh;
 }
-#user{
-  background-color: #fff;
+#employee{
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+}
+.dataemployee {
+  width: 100%;
+  margin-top: 1rem;
+  height: 100%;
+  margin-left: 2rem;
+}
+.dataemployee .topemployee {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.dataemployee .topemployee .text {
   color: #000;
-  border-radius: 10px;
-}
-.datausers {
-    width: 100%;
-    margin-top: 1rem;
-    height: 100%;
-    margin-left: 2rem;
-}
-.datausers .topmain {
   display: flex;
-  flex-direction: row;
-}
-.datausers .topmain .texttop {
-  display: flex;
-  flex-direction: row;
-  width: 50%;
   justify-content: flex-start;
-  align-items: center;
-  color: #1f1f1f;
   font-size: 22pt;
   font-weight: 600;
+  width: 50%;
 }
-.datausers .topmain .buttonstop {
+.dataemployee .topemployee .Btntop {
   width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
 }
-.datausers .topmain .buttonstop button {
+.dataemployee .topemployee .Btntop button {
   background-color: transparent;
   margin-left: 10px;
   border: 3px solid #d2d2d2;
@@ -65,14 +64,14 @@ aside{
   font-weight: 500;
   border-radius: 20px;
 }
-.datausers .topmain .buttonstop button i {
+.dataemployee .topemployee .Btntop button i {
   font-size: 16pt;
 }
-.topmain .buttonstop #red{
+.topemployee .Btntop #red {
   background-color: #822727;
   border: none;
   color: #fff;
-  width: 110px;
+  width: 130px;
   padding-right: 10px;
 }
 .searchsection {
@@ -148,7 +147,7 @@ aside{
 .filtertable button {
   border: none;
   margin-right: 2rem;
-  width: 120px;
+  width: 135px;
   background-color: transparent;
 }
 .filtertable .active {
@@ -163,30 +162,29 @@ aside{
   font-weight: 500;
   padding: 5px;
 }
-.datatable {
+.datatable{
   display: flex;
-  flex-direction: row;
   width: 100%;
-  margin-top: 1rem;
-}
-.datatable .infodatatable {
-  display: flex;
-  justify-content: flex-start;
   font-size: 10pt;
-  width: 25%;
-  color: #636363;
+  margin-top: 1rem;
+  flex-direction: row;
 }
-.datatable .numbersdata {
+.datatable .infodatatable{
+  width: 25%;
+  display: flex;
+  color: #636363;
+  justify-content: flex-start;
+}
+.datatable .numbersdata{
+  width: 50%;
   display: flex;
   justify-content: center;
-  width: 50%;
 }
-.datatable .itemstable {
+.datatable .itemstable{
+  width: 25%;
+  color: #636363;
   display: flex;
   justify-content: flex-end;
-  width: 25%;
-  font-size: 10pt;
-  color: #636363;
 }
 .datatable .itemstable span {
   margin: 20px;
@@ -208,22 +206,6 @@ aside{
 .sectiontable .table {
   margin-top: 1rem;
   color: #636363;
-}
-.sectiontable .table .status {
-  background-color: #d0fbee;
-  border-radius: 5px;
-  padding: 5px 0;
-  margin-right: 10px;
-  width: 120px;
-  text-align: center;
-}
-.sectiontable .table .user_type {
-  background-color: #822727;
-  color: #fff;
-  text-align: center;
-  border-radius: 5px;
-  padding: 5px 0;
-  width: 120px;
 }
 .sectiontable .table thead {
   background-color: #f2f2f2;
@@ -251,4 +233,20 @@ aside{
 .actions {
   display: flex;
   flex-direction: row;
+}
+.sectiontable .table .status {
+  background-color: #d0fbee;
+  border-radius: 5px;
+  padding: 5px 0;
+  margin-right: 10px;
+  width: 120px;
+  text-align: center;
+}
+.sectiontable .table .employee_type {
+  background-color: #822727;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  width: 120px;
 }

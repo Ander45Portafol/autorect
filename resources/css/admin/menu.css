@@ -49,7 +49,7 @@ aside .sidebar .middlenav a{
     margin-top: 1rem;
     padding: 4px 0;
     display: flex;
-    width: 50%;
+    width: 45%;
     align-items: center;
     justify-content: center;
     color: #FFF;
@@ -71,7 +71,7 @@ nav .sidebar .logout a{
     text-decoration: none;
     font-size: 1.7rem;
     align-items: center;
-    width: 50%;
+    width: 45%;
     display: flex;
     border-radius: 10px;
     height: 40px;
