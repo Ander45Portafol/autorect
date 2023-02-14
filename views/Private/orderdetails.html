@@ -34,6 +34,204 @@
                 </button>
               </div>
             </div>
+            <div class="searchsection">
+              <div class="search">
+                <i class="bx bx-search"></i>
+                <input type="text" placeholder="Search anything..." />
+                <i class="bx bx-slider"></i>
+              </div>
+              <div class="buttonsearch">
+                <input type="date" class="btnfilter" />
+                <div class="dropdown btnfilter">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bxs-purchase-tag"></i>
+                    Status
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown btnfilter">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bx-current-location"></i>
+                    Address
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown btnfilter">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bxs-bookmark"></i>
+                    Save filters
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown btnfilter">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bx-slider rotate"></i>
+                    More
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="filtertable">
+              <button class="active">All clients <span>11</span></button>
+              <button>Member <span>05</span></button>
+            </div>
+            <div class="datatable">
+              <div class="infodatatable">
+                <p>Showing 21-30 of 88 results</p>
+              </div>
+              <div class="numbersdata">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <div class="itemstable">
+                <p>Items per page <span>10</span></p>
+              </div>
+            </div>
+            <div class="sectiontable">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col"><input type="checkbox" /></th>
+                    <th scope="col">ID No.</th>
+                    <th scope="col">Product quantity</th>
+                    <th scope="col">Product price</th>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Product name</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><input type="checkbox" /></th>
+                    <td><p>8001</p></td>
+                    <td><p>5</p></td>
+                    <td><p>$150.00</p></td>
+                    <td><p>8753</p></td>
+                    <td><p>L-Brake</p></td>
+                    <td>
+                      <div class="actions">
+                        <button class="edit" onclick="btnedit()">
+                          <i class="bx bxs-edit"></i>
+                        </button>
+                        <button class="delete" onclick="btndelete()">
+                          <i class="bx bxs-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input type="checkbox" /></th>
+                    <td><p>7002</p></td>
+                    <td><p>2</p></td>
+                    <td><p>$125.00</p></td>
+                    <td><p>8754</p></td>
+                    <td><p>R-Brake</p></td>
+                    <td>
+                      <div class="actions">
+                        <button class="edit" onclick="btnedit()">
+                          <i class="bx bxs-edit"></i>
+                        </button>
+                        <button class="delete" onclick="btndelete()">
+                          <i class="bx bxs-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input type="checkbox" /></th>
+                    <td><p>8003</p></td>
+                    <td><p>8</p></td>
+                    <td><p>$475.25</p></td>
+                    <td><p>8755</p></td>
+                    <td><p>L-Door</p></td>
+                    <td>
+                      <div class="actions">
+                        <button class="edit" onclick="btnedit()">
+                          <i class="bx bxs-edit"></i>
+                        </button>
+                        <button class="delete" onclick="btndelete()">
+                          <i class="bx bxs-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </section>
         </main>
       </div>

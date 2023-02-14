@@ -34,6 +34,212 @@
                 </button>
               </div>
             </div>
+            <div class="searchsection">
+              <div class="search">
+                <i class="bx bx-search"></i>
+                <input type="text" placeholder="Search anything..." />
+                <i class="bx bx-slider"></i>
+              </div>
+              <div class="buttonsearch">
+                <input type="date" class="btnfilter" />
+                <div class="dropdown btnfilter">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bxs-purchase-tag"></i>
+                    Status
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown btnfilter">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bx-current-location"></i>
+                    Address
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown btnfilter">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bxs-bookmark"></i>
+                    Save filters
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown btnfilter">
+                  <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bx-slider rotate"></i>
+                    More
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="filtertable">
+              <button class="active">All clients <span>11</span></button>
+              <button>Member <span>05</span></button>
+            </div>
+            <div class="datatable">
+              <div class="infodatatable">
+                <p>Showing 21-30 of 88 results</p>
+              </div>
+              <div class="numbersdata">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <div class="itemstable">
+                <p>Items per page <span>10</span></p>
+              </div>
+            </div>
+            <div class="sectiontable">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col"><input type="checkbox" /></th>
+                    <th scope="col">ID No.</th>
+                    <th scope="col">Product name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><input type="checkbox" /></th>
+                    <td><p>7001</p></td>
+                    <td><p>L-Brake</p></td>
+                    <td><p>$150.00</p></td>
+                    <td><p class="Category-brakes">Brakes</p></td>
+                    <td><p>Model 3</p></td>
+                    <td><p>Tesla</p></td>
+                    <td><p class="status-active">Active</p></td>
+                    <td>
+                      <div class="actions">
+                        <button class="edit" onclick="btnedit()">
+                          <i class="bx bxs-edit"></i>
+                        </button>
+                        <button class="delete" onclick="btndelete()">
+                          <i class="bx bxs-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input type="checkbox" /></th>
+                    <td><p>7002</p></td>
+                    <td><p>R-Brake</p></td>
+                    <td><p>$125.00</p></td>
+                    <td><p class="Category-brakes">Brakes</p></td>
+                    <td><p>Lancer</p></td>
+                    <td><p>Mitsubichi</p></td>
+                    <td><p class="status-active">Active</p></td>
+                    <td>
+                      <div class="actions">
+                        <button class="edit" onclick="btnedit()">
+                          <i class="bx bxs-edit"></i>
+                        </button>
+                        <button class="delete" onclick="btndelete()">
+                          <i class="bx bxs-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input type="checkbox" /></th>
+                    <td><p>7003</p></td>
+                    <td><p>L-Door</p></td>
+                    <td><p>$475.25</p></td>
+                    <td><p class="category-doors">Doors</p></td>
+                    <td><p>CX5</p></td>
+                    <td><p>Mazda</p></td>
+                    <td><p class="status-inactive">Inactive</p></td>
+                    <td>
+                      <div class="actions">
+                        <button class="edit" onclick="btnedit()">
+                          <i class="bx bxs-edit"></i>
+                        </button>
+                        <button class="delete" onclick="btndelete()">
+                          <i class="bx bxs-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </section>
         </main>
       </div>
