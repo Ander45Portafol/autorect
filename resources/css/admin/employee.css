@@ -19,23 +19,23 @@ aside {
   width: 6.5%;
   height: 100vh;
 }
-#order_details {
-  background-color: #fff;
-  color: #000;
-  border-radius: 10px;
+#employee{
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
 }
-.dataorderdetail {
+.dataemployee {
   width: 100%;
   margin-top: 1rem;
   height: 100%;
   margin-left: 2rem;
 }
-.dataorderdetail .toporderdetail {
+.dataemployee .topemployee {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
-.dataorderdetail .toporderdetail .text {
+.dataemployee .topemployee .text {
   color: #000;
   display: flex;
   justify-content: flex-start;
@@ -43,14 +43,14 @@ aside {
   font-weight: 600;
   width: 50%;
 }
-.dataorderdetail .toporderdetail .btntop {
+.dataemployee .topemployee .Btntop {
   width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
 }
-.dataorderdetail .toporderdetail .btntop button {
+.dataemployee .topemployee .Btntop button {
   background-color: transparent;
   margin-left: 10px;
   border: 3px solid #d2d2d2;
@@ -64,14 +64,14 @@ aside {
   font-weight: 500;
   border-radius: 20px;
 }
-.dataorderdetail .toporderdetail .btntop button i {
+.dataemployee .topemployee .Btntop button i {
   font-size: 16pt;
 }
-.toporderdetail .btntop #red {
+.topemployee .Btntop #red {
   background-color: #822727;
   border: none;
   color: #fff;
-  width: 150px;
+  width: 130px;
   padding-right: 10px;
 }
 .searchsection {
@@ -162,25 +162,25 @@ aside {
   font-weight: 500;
   padding: 5px;
 }
-.datatable {
+.datatable{
   display: flex;
   width: 100%;
   font-size: 10pt;
   margin-top: 1rem;
   flex-direction: row;
 }
-.datatable .infodatatable {
+.datatable .infodatatable{
   width: 25%;
   display: flex;
   color: #636363;
   justify-content: flex-start;
 }
-.datatable .numbersdata {
+.datatable .numbersdata{
   width: 50%;
   display: flex;
   justify-content: center;
 }
-.datatable .itemstable {
+.datatable .itemstable{
   width: 25%;
   color: #636363;
   display: flex;
@@ -233,4 +233,20 @@ aside {
 .actions {
   display: flex;
   flex-direction: row;
+}
+.sectiontable .table .status {
+  background-color: #d0fbee;
+  border-radius: 5px;
+  padding: 5px 0;
+  margin-right: 10px;
+  width: 120px;
+  text-align: center;
+}
+.sectiontable .table .employee_type {
+  background-color: #822727;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  width: 120px;
 }

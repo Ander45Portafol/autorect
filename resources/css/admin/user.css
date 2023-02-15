@@ -19,6 +19,11 @@ aside{
     width: 6.5%;
     height: 100vh;
 }
+#user{
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+}
 .datausers {
     width: 100%;
     margin-top: 1rem;
@@ -199,9 +204,6 @@ aside{
 .datatable .numbersdata .page-link:focus {
   color: #822727;
   border: transparent !important;
-}
-.datatable .numbersdata .page-item {
-  border: none;
 }
 .sectiontable .table {
   margin-top: 1rem;
