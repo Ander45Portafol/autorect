@@ -76,10 +76,16 @@ body{
     padding-left: 8px;
     border: 3px solid #822727;
 }
+.topmain .btnmain .user .bx-slider{
+    margin-left: 10px;
+    font-size: 16pt;
+    transform: rotate(90deg);
+}
 .datasection .datainfo{
     display: flex;
     height: 150px;
     flex-direction: row;
+    justify-content: center;
 }
 .datainfo .row{
     width: 100%;
@@ -136,7 +142,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 490px;
+    padding-bottom: 10px;
+    height: 475px;
 }
 .datasection .bottommain .topbrands p{
     font-size: 14pt;
@@ -149,17 +156,17 @@ body{
     align-items: center;
     justify-content: center;
     background-color: #822727;
-    height: 130px;
+    height: 120px;
     width: 220px;
     margin: 10px 30px;
 }
 .datasection .bottommain .marca img{
-    height: 175px;
-    width: 175px;
+    height: 135px;
+    width: 165px;
 }
 .datasection .bottommain .grafics{
     margin-top: 1rem;
-    height: 415px;
+    height: 465px;
     margin-right: 10px;
 }
 .datasection .bottommain .grafics .salesreport{
