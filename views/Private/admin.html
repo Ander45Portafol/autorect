@@ -4,17 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="../../resources/css/admin/admin.css" />
+    <link rel="stylesheet" href="../../resources/css/admin/prueba.css" />
+    <link rel="stylesheet" href="../../resources/htaccess.txt" />
     <link rel="icon" href="../../resources/imagenes/Icon.jpeg" />
     <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
   </head>
   <body>
-    <div class="container">
+    <div class="allinfo">
       <aside></aside>
       <main class="datasection">
         <section>
@@ -30,29 +38,33 @@
             </div>
           </div>
           <div class="datainfo">
-            <div class="datas">
-              <p>STORE RATING</p>
-              <p class="number">4.5<span>/5</span></p>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star-half"></i>
-            </div>
-            <div class="datas">
-              <p>TOTAL INCOME</p>
-              <p class="number">4,540.98 <span>USD</span></p>
-              <p class="green">+5% <i class="bx bxs-up-arrow"></i></p>
-            </div>
-            <div class="datas">
-              <p>TOTAL ORDERS</p>
-              <p class="number">4,120</p>
-              <p class="green">+3% <i class="bx bxs-up-arrow"></i></p>
-            </div>
-            <div class="datas">
-              <p>NEW CLIENTS</p>
-              <p class="number">516</p>
-              <p class="red">-2% <i class="bx bxs-down-arrow"></i></p>
+            <div class="row">
+              <div class="col">
+                <p>STORE RATING</p>
+                <p class="number">4.5<span>/5</span></p>
+                <div class="stars">
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star-half"></i>
+                </div>
+              </div>
+              <div class="col">
+                <p>TOTAL INCOME</p>
+                <p class="number">4,540.98 <span>USD</span></p>
+                <p class="green">+5% <i class="bx bxs-up-arrow"></i></p>
+              </div>
+              <div class="col">
+                <p>TOTAL ORDERS</p>
+                <p class="number">4,120</p>
+                <p class="green">+3% <i class="bx bxs-up-arrow"></i></p>
+              </div>
+              <div class="col">
+                <p>NEW CLIENTS</p>
+                <p class="number">516</p>
+                <p class="red">-2% <i class="bx bxs-down-arrow"></i></p>
+              </div>
             </div>
           </div>
           <div class="bottommain">
@@ -80,6 +92,6 @@
         </section>
       </main>
     </div>
-    <script src="../../controller/Admin/account.js"></script>
+    <script src="../../controller/Admin/acount2.js"></script>
   </body>
 </html>
