@@ -24,17 +24,17 @@ aside{
   color: #000;
   border-radius: 10px;
 }
-.dataorder {
+.data {
     width: 100%;
     margin-top: 1rem;
     height: 100%;
     margin-left: 2rem;
 }
-.dataorder .toporder {
+.data .top {
   display: flex;
   flex-direction: row;
 }
-.dataorder .toporder .texttop {
+.data .top .texttop {
   display: flex;
   flex-direction: row;
   width: 50%;
@@ -44,14 +44,14 @@ aside{
   font-size: 22pt;
   font-weight: 600;
 }
-.dataorder .toporder .btntop {
+.data .top .btntop {
   width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
 }
-.dataorder .toporder .btntop button {
+.data .top .btntop button {
   background-color: transparent;
   margin-left: 10px;
   border: 3px solid #d2d2d2;
@@ -65,10 +65,10 @@ aside{
   font-weight: 500;
   border-radius: 20px;
 }
-.dataorder .toporder .btntop button i {
+.data .top .btntop button i {
   font-size: 16pt;
 }
-.toporder .btntop #red{
+.top .btntop #red{
   background-color: #822727;
   border: none;
   color: #fff;

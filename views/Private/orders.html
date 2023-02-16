@@ -17,29 +17,41 @@
     <title>Orders</title>
   </head>
   <body>
+    <!--General container-->
     <div class="allinfo">
+      <!--Menu container-->
       <aside></aside>
+      <!--Specific Components container-->
       <div class="container">
-        <main class="dataorder">
+        <!--Components container (centered)-->
+        <main class="data">
+          <!--Structured elements section-->
           <section>
-            <div class="toporder">
+            <!--Top information container (buttons and label)-->
+            <div class="top">
+              <!--Top text-->
               <div class="texttop">
                 <p>ORDERS</p>
               </div>
+              <!--Top buttons-->
               <div class="btntop">
                 <button>Export <i class="bx bx-export"></i></button>
                 <button>Print <i class="bx bxs-printer"></i></button>
                 <button id="red">
+                  <!--icon of the button-->
                   <i class="bx bxs-plus-circle"></i> New Order
                 </button>
               </div>
             </div>
+            <!--Search section container-->
             <div class="searchsection">
+              <!--Search input and options-->
               <div class="search">
                 <i class="bx bx-search"></i>
                 <input type="text" placeholder="Search anything..." />
                 <i class="bx bx-slider"></i>
               </div>
+              <!--Option buttons-->
               <div class="buttonsearch">
                 <input type="date" class="btnfilter" />
                 <div class="dropdown btnfilter">
@@ -124,10 +136,12 @@
                 </div>
               </div>
             </div>
+            <!--Filters on orders table-->
             <div class="filtertable">
               <button class="active">All orders <span>11</span></button>
               <button>Today <span>05</span></button>
             </div>
+            <!--Data on table-->
             <div class="datatable">
               <div class="infodatatable">
                 <p>Showing 21-30 of 88 results</p>
@@ -243,6 +257,6 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <script src="../../controller/Admin/account.js"></script>
+    <script src="../../controller/admin/account.js"></script>
   </body>
 </html>
