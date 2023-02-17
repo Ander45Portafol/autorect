@@ -1,4 +1,4 @@
-const ASIDE=document.querySelector('aside')
+const ASIDE=document.querySelector('aside') 
 
 ASIDE.innerHTML=`      <ul class="nav flex-column">
 <div class="topnav">
@@ -17,7 +17,7 @@ ASIDE.innerHTML=`      <ul class="nav flex-column">
     <a class="nav-link" id="dashboard" href="admin.html"><i class="bx bxs-grid-alt"></i></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="user.html" id="user"><i class="bx bxs-user-circle" data-feather="dashboard"></i></a>
+    <a class="nav-link active" href="user.html" id="user"><i class="bx bxs-user-circle" data-feather="dashboard"></i></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="employee.html" id="employee"><i class="bx bxs-group"></i></a>
@@ -50,3 +50,8 @@ ASIDE.innerHTML=`      <ul class="nav flex-column">
       </li>
 </div>
 </ul>`
+
+const Btn=document.querySelector('.nav-item li').on('click',function(){
+    document.querySelector('nav-item li a.active').removeClass('active')
+    $(this).addClass('active')
+})
