@@ -54,6 +54,13 @@ aside{
     color: #fff;
     font-size: 20pt;
 }
+.nav .sidebar a span{
+    font-size: 12pt;
+}
+.nav a{
+    display: flex;
+    flex-direction: row;
+}
 .nav .bottomnav{
     margin-top: 1.5rem;
     display: flex;
