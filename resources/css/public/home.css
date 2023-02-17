@@ -1,12 +1,12 @@
 /*Root vars*/
 :root{
     --color-focus: #822727;;
+    --color-light-red: #8B3A3A;
 }
 
 /*Navbar - Logo size*/
 .logo-navbar{
-    width: 180px;
-    height: 90px;
+    height: 40px;
 }
 
 /*Navbar- Login button size*/
@@ -52,7 +52,7 @@
 /*Main - Car image size*/
 .img-car-home{
     width: 90%;
-    margin-top: 150px;
+    margin-top: 70px;
 }
 
 /*Main - Explore button*/
@@ -79,25 +79,51 @@
     margin-left: 1150px;
 } 
 
-.prove{
+.p-top{
     margin-top: 50px;
 }
 
 .home-title{
     color: var(--color-focus);
-    margin-top: 50px;
+    margin-top: 5%;
 }
 
-.btn-seeproducts{
-    margin-top: 15px;
-    padding:6px 20px;
-    background-color:   var(--color-focus);
-    color:white;
-    border: none;
-    border-radius: 10px;
+.btn-red{
+    background-color:   var(--color-focus) !important;
+    color:white !important;
+    border: none !important;
+    margin-left: 40% !important;
+}
+
+.btn-red:hover{
+    background-color: var(--color-light-red) !important;
 }
 
 .img-seeproducts{
-    margin-left: 25px;
     width: 50%;
+}
+
+.navbar2{
+    background-color: black !important;
+}
+
+.btn-seeproducts{
+    background-color:   var(--color-focus) !important;
+    color:white !important;
+    border: none !important;
+}
+
+.btn-seeproducts:hover{
+    background-color: var(--color-light-red) !important;
+}
+
+.img-brands{
+    margin: 30px;
+    height: 4.5%;
+    opacity: 20%;
+}
+
+.img-brands:hover{
+    transition-duration: 0.5s;
+    opacity: 100%;
 }
