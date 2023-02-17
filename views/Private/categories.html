@@ -19,24 +19,211 @@
   <body>
     <div class="allinfo">
       <aside></aside>
-      <div class="container">
-        <main class="dataclient">
-          <section>
-            <div class="topclient">
-              <div class="text">
-                <p>CATEGORIES</p>
-              </div>
-              <div class="btntop">
-                <button>Export <i class="bx bx-export"></i></button>
-                <button>Print <i class="bx bxs-printer"></i></button>
-                <button id="red">
-                  <i class="bx bxs-plus-circle"></i> New Categorie
+      <main class="data">
+        <section>
+          <div class="topmain">
+            <div class="texttop">
+              <p>CATEGORIES</p>
+            </div>
+            <div class="buttonstop">
+              <button>Export <i class="bx bx-export"></i></button>
+              <button>Print <i class="bx bxs-printer"></i></button>
+              <button id="red">
+                <i class="bx bxs-plus-circle"></i> New Category
+              </button>
+            </div>
+          </div>
+          <div class="searchsection">
+            <div class="search">
+              <i class="bx bx-search"></i>
+              <input type="text" placeholder="Search anything..." />
+              <i class="bx bx-slider"></i>
+            </div>
+            <div class="buttonsearch">
+              <input type="date" class="btnfilter" />
+              <div class="dropdown btnfilter">
+                <button
+                  class="btn dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bx bxs-purchase-tag"></i>
+                  Status
                 </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown btnfilter">
+                <button
+                  class="btn dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bx bx-current-location"></i>
+                  Address
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown btnfilter">
+                <button
+                  class="btn dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bx bxs-bookmark"></i>
+                  Save filters
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown btnfilter">
+                <button
+                  class="btn dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bx bx-slider rotate"></i>
+                  More
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
               </div>
             </div>
-          </section>
-        </main>
-      </div>
+          </div>
+          <div class="filtertable">
+            <button class="active">All categories <span>11</span></button>
+          </div>
+          <div class="datatable">
+            <div class="infodatatable">
+              <p>Showing 21-30 of 88 results</p>
+            </div>
+            <div class="numbersdata">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="itemstable">
+              <p>Items per page <span>10</span></p>
+            </div>
+          </div>
+          <div class="sectiontable">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col"><input type="checkbox" /></th>
+                  <th scope="col">ID No.</th>
+                  <th scope="col">Name categories</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td><p>8001</p></td>
+                  <td><p>Brakes</p></td>
+                  <td><p>In the brakes categories, are pieces all relationated with the brakes of the car, like master cylinder.</p></td>
+                  <td>
+                    <div class="actions">
+                      <button class="edit" onclick="btnedit()">
+                        <i class="bx bxs-edit"></i>
+                      </button>
+                      <button class="delete" onclick="btndelete()">
+                        <i class="bx bxs-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td><p>8002</p></td>
+                  <td><p>Lights</p></td>
+                  <td><p>Lights categories  are have all types of light to cars.</p></td>
+                  <td>
+                    <div class="actions">
+                      <button class="edit" onclick="btnedit()">
+                        <i class="bx bxs-edit"></i>
+                      </button>
+                      <button class="delete" onclick="btndelete()">
+                        <i class="bx bxs-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td><p>8003</p></td>
+                  <td><p>Doors</p></td>
+                  <td><p>In this category are find doors of the differents types of doors and the all brands.</p></td>
+                  <td>
+                    <div class="actions">
+                      <button class="edit" onclick="btnedit()">
+                        <i class="bx bxs-edit"></i>
+                      </button>
+                      <button class="delete" onclick="btndelete()">
+                        <i class="bx bxs-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
