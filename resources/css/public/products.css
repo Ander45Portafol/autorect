@@ -1,0 +1,168 @@
+/*Local font usage*/
+@import url(../../fonts/Roboto/Roboto-Regular.ttf);
+
+:root{
+    --primary-color: #FFFFFF;
+    --secondary-color: #1F1F1F;
+    --focus-color: #822727;
+    --cards-white: #F4F6F8;
+    --reference-grey: #969595;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar{
+    width: 8px;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: var(--focus-color);
+    border-radius: 4px;
+}
+
+.navbar{
+    background-color: var(--primary-color) !important;
+    width: 100%;
+    height: 90px;
+}
+
+.navbar .nav-item .title{
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--focus-color);
+    margin-right: 700px;
+}
+
+.navbar .nav-item a{
+    color: var(--focus-color);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn{
+    font-size: 20px;
+    color: var(--focus-color);
+    font-weight: 30px;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+input[type="search"]{
+    border-color: var(--focus-color);
+    border-width: 2px;
+    width: 300px;
+}
+
+.line{
+    content: '';
+    position: relative;
+    width: 100%;
+    height: 3px;
+    background-color: var(--reference-grey) !important;
+    display: flex;
+    margin-left: 12px;
+    justify-content: center;
+}
+
+.v.line{
+    border-left: thick solid 3px;
+    height: 100%;
+    top: 115px;
+    width: 3px;
+    left: 300px;
+    position: absolute;
+    background-color: var(--reference-grey);
+}
+
+section{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+aside{
+    width: 15%;
+    height: 20%;
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+aside .offcanvas-title{
+    color: var(--focus-color);
+    font-size: 20px;
+}
+
+aside .offcanvas-body ul li .badge{
+    background-color: var(--reference-grey) !important;
+}
+
+aside .offcanvas-body ul li label{
+    color: var(--focus-color) !important;
+}
+
+aside .offcanvas-body .lab{
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--focus-color);
+}
+
+aside .offcanvas-body .lab2{
+    margin-left: 150px;
+}
+
+.cards_container{
+    margin: 20px;
+    width: 85%;
+    align-items: center;
+}
+
+.cards_container .card button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--focus-color);
+    border: none;
+    margin-left: 265px;
+    position: absolute;
+    margin-top: -95px;
+    color: var(--primary-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.cards_container .card .bxs-star{
+    color: var(--focus-color);
+    font-size: 20px;
+}
+
+.cards_container .card{
+    background-color: var(--cards-white);
+    border: none;
+}
+
+.cards_container .card span{
+    color: var(--secondary-color);
+    font-size: 20px;
+    font-weight: 800;
+    margin-left: 150px;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-left: 320px;
+}
