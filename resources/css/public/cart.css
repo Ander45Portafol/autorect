@@ -1,0 +1,310 @@
+/*Font from intern file*/
+@import url(../../fonts/Roboto/Roboto-Regular.ttf);
+
+/*Root variables - color*/
+:root{
+    --primary-color: #FFFFFF;
+    --secondary-color: #1F1F1F;
+    --focus-color: #822727;
+    --line-color: #969595;
+    --card-subtitle-color: #9C9A9A;
+    --description-gray: #636363;
+    --green: #2C823B;
+}
+
+/*General aplication CSS*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/*Body background-color property aplication*/
+body{
+    background-color: var(--primary-color);
+}
+
+/*Top data container - title*/
+.top{
+    color: var(--focus-color);
+    font-size: 25px;
+    margin: 25px;
+    margin-left: 6rem;
+}
+
+/*Empty div class:"line"*/
+.line{
+    content: '';
+    position: fixed;
+    width: 90%;
+    height: 3px;
+    background-color: var(--line-color);
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+/*General data intern container*/
+.data_container::before{
+    content: '';
+    position: fixed;
+    width: 108rem;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    flex-direction: row;
+    margin: 10px;
+    margin-left: 95px;
+    height: 70%;
+}
+/*Products in the order container*/
+.products_container{
+    content: '';
+    position: absolute;
+    width: 75%;
+    background-color: var(--primary-color);
+    margin: 10px;
+    margin-left: 95px;
+    height: 70%;
+}
+
+/*Card info CSS*/
+.card_info_container{
+    position: absolute;
+    display: flex;
+    background-color: var(--secondary-color);
+    width: 20%;
+    margin: 10px;
+    margin-left: 72%;
+    margin-top: 80px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+}
+
+.titles_container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+}
+
+.items{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    margin-top: 190px;
+    color: var(--focus-color);
+}
+
+.Q_P{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    margin-top: 190px;
+    margin-left: 70vh;
+    color: var(--focus-color);
+}
+
+.Q_P h2{
+    margin: 60px;
+}
+
+.card_title{
+    margin: 20px;
+    color: var(--primary-color);
+}
+
+.card_paymethods h4{   
+    margin-left: 20px;
+    color: var(--card-subtitle-color);
+}
+
+.radiobutton{
+    color: var(--primary-color);
+    border-radius: 10px;
+    width: 100px;
+    margin: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    accent-color: var(--primary-color);
+}
+
+input[type="radio"]{
+    margin-top: 10px;
+}
+
+.name h4{
+    margin-left: 20px;
+    color: var(--card-subtitle-color);
+}
+
+.name h5{
+    color: var(--primary-color);
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+.card_number h4{
+    margin-left: 20px;
+    margin-top: 20px;
+    color: var(--card-subtitle-color);
+}
+
+.card_number h5{
+    margin-left: 20px;
+    color: var(--primary-color);
+    font-weight: bold;
+    border-radius: 50px;
+    font-size: 30px;
+}
+
+.card_year{
+    display: flex;
+    flex-direction: row;
+}
+
+.datechoose h4{
+    margin-left: 20px;
+    color: var(--card-subtitle-color);
+    margin-top: 15px;
+}
+
+input[type="date"]{
+    background-color: var(--primary-color);
+    border-color: var(--focus-color);
+    color: var(--secondary-color);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+
+input[type="text"]{
+    border-color: var(--primary-color);
+    border-radius: 2px;
+    border: solid 1px;
+    margin-top: 20px;
+}
+
+.datechoose .calendar{
+    border: none;
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+}
+
+.cvv{
+    margin-top: 13px;
+    margin-left: 50px;
+}
+
+.cvv h4{
+    color: var(--card-subtitle-color);
+}
+
+.cvv h3{
+    color: var(--primary-color);
+    margin-top: 20px;
+}
+
+.billing{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.billing h4{
+    color: var(--card-subtitle-color);
+}
+
+.billing input{
+    height: 30px;
+    width: 250px;
+    background-color: var(--secondary-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.radiobtn_green{
+    margin-left: 20px;
+    margin-top: 20px;
+    color: var(--primary-color);
+    accent-color: var(--green);
+}
+
+.confirm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 250px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    margin-top: 90px;
+    margin-left: 60px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.confirm:hover{
+    background-color: var(--focus-color);
+    transition: 0.3s;
+    border: none;
+    color: var(--primary-color);
+}
+
+/*Products details CSS*/
+
+.product{
+    display: flex;
+}
+
+.product .imagen{
+    margin-top: 120px;
+    width: 200px;
+    height: 200px;
+}
+
+.product .product_desc{
+    color: var(--description-gray);
+    padding-top: 28px;
+    padding-left: 25px;
+    margin-top: 120px;
+}
+
+.product .product_desc h2{
+    margin-bottom: 20px;
+}
+
+.product .product_desc span{
+    font-size: 20px;
+    font-weight: 00;
+}
+
+.counter{
+    margin-top: 175px;
+    margin-left: 170px;
+    color: var(--secondary-color);
+}
+
+.price{
+    margin-top: 175px;
+    margin-left: 148px;
+}
+
+.total{
+    display: flex;
+    margin-top: 250px;
+    margin-left: 52%;
+}
+
+.total .titles{
+    color: var(--description-gray);
+}
+
+.total .prices{
+    margin-left: 120px;
+}
