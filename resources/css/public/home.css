@@ -1,6 +1,4 @@
-*{
-    font-family: 'Roboto', sans-serif;
-}
+@import url(../../fonts/Roboto/Roboto-Regular.ttf);
 
 /*Root vars*/
 :root {
@@ -8,6 +6,10 @@
     --color-light-red: #8B3A3A;
     --color-dark-grey: #1F1F1F;
     --color-grey: #707070;
+}
+
+*{
+    font-family: 'Roboto', sans-serif;
 }
 
 /*Home page*/
