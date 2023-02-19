@@ -121,6 +121,10 @@ ul li{
     font-weight: 700;
 }
 
+.container .list-group .list-group-item button{
+    color: var(--focus-color);
+}
+
 .container .list-group .list-group-item .option-lang button{
     margin-left: -112px;
     margin-top: 40px;
@@ -131,6 +135,18 @@ ul li{
 
 .container .list-group .list-group-item .option-lang button:hover{
     border: solid 1px var(--focus-color);
+}
+
+.container .list-group .list-group-item .option-theme button:hover{
+    border: solid 1px var(--focus-color);
+}
+
+.container .list-group .list-group-item .option-theme button{
+    margin-left: -100px;
+    margin-top: 40px;
+    padding: 10px;
+    border: none;
+    background-color: var(--grey-background);
 }
 
 .container .list-group .list-group-item .option-lang .esp{
