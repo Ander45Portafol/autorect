@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="../../resources/css/admin/menu.css" />
-    <link rel="icon" href="../../resources/imagenes/Icon.jpeg" />
-    <link rel="stylesheet" href="../../resources/css/admin/orderdetails.css" />
+    <link rel="icon" href="../../resources/images/LogoLogin.png" />
+    <link rel="stylesheet" href="../../resources/css/admin/main.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -19,14 +19,13 @@
   <body>
     <div class="allinfo">
       <aside></aside>
-      <div class="container">
-        <main class="dataorderdetail">
+        <main class="data">
           <section>
-            <div class="toporderdetail">
-              <div class="text">
+            <div class="topmain">
+              <div class="texttop">
                 <p>ORDER DETAILS</p>
               </div>
-              <div class="btntop">
+              <div class="buttonstop">
                 <button>Export <i class="bx bx-export"></i></button>
                 <button>Print <i class="bx bxs-printer"></i></button>
                 <button id="red">
@@ -125,8 +124,8 @@
               </div>
             </div>
             <div class="filtertable">
-              <button class="active">All clients <span>11</span></button>
-              <button>Member <span>05</span></button>
+              <button class="active">All details <span>11</span></button>
+              <button>Today <span>05</span></button>
             </div>
             <div class="datatable">
               <div class="infodatatable">
@@ -234,7 +233,6 @@
             </div>
           </section>
         </main>
-      </div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -242,5 +240,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="../../controller/admin/menu.js"></script>
+    <script src="../../controller/components.js"></script>
   </body>
 </html>
