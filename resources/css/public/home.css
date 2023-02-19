@@ -1,3 +1,7 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
 /*Root vars*/
 :root {
     --color-focus: #822727;
@@ -64,7 +68,7 @@ nav .navbar-toggler-icon {
 
 /*Main - Text color*/
 .subtitle {
-    color: var(--color-gray);
+    color: var(--color-grey);
 }
 
 /*Main - Car image size*/
