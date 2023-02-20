@@ -84,6 +84,7 @@ body{
     height: 70%;
 }
 
+/*Contains all the tiles of the top*/
 .titles_container{
     display: flex;
     align-items: center;
@@ -91,6 +92,7 @@ body{
     position: relative;
 }
 
+/*label of the top*/
 .items{
     display: flex;
     align-items: center;
@@ -98,6 +100,8 @@ body{
     margin-top: 190px;
     color: var(--focus-color);
 }
+
+/*subtitles*/
 
 .Q_P{
     display: flex;
@@ -108,20 +112,24 @@ body{
     color: var(--focus-color);
 }
 
+/*spacing of the elements*/
 .Q_P h2{
     margin: 60px;
 }
 
+/*title of the card*/
 .card_title{
     margin: 20px;
     color: var(--primary-color);
 }
 
+/*options of payment*/
 .card_paymethods h4{   
     margin-left: 20px;
     color: var(--card-subtitle-color);
 }
 
+/*radios of the card*/
 .radiobutton{
     color: var(--primary-color);
     border-radius: 10px;
@@ -133,27 +141,32 @@ body{
     accent-color: var(--primary-color);
 }
 
+/*control of radio*/
 input[type="radio"]{
     margin-top: 10px;
 }
 
+/*client info title - name*/
 .name h4{
     margin-left: 20px;
     color: var(--card-subtitle-color);
 }
 
+/*client info name*/
 .name h5{
     color: var(--primary-color);
     font-size: 15px;
     margin-left: 20px;
 }
 
+/*client info card number*/
 .card_number h4{
     margin-left: 20px;
     margin-top: 20px;
     color: var(--card-subtitle-color);
 }
 
+/*client info card number*/
 .card_number h5{
     margin-left: 20px;
     color: var(--primary-color);
@@ -162,17 +175,20 @@ input[type="radio"]{
     font-size: 30px;
 }
 
+/*year*/
 .card_year{
     display: flex;
     flex-direction: row;
 }
 
+/*date picker*/
 .datechoose h4{
     margin-left: 20px;
     color: var(--card-subtitle-color);
     margin-top: 15px;
 }
 
+/*input date config*/
 input[type="date"]{
     background-color: var(--primary-color);
     border-color: var(--focus-color);
@@ -183,6 +199,7 @@ input[type="date"]{
     margin-top: 20px;
 }
 
+/*input text config*/
 input[type="text"]{
     border-color: var(--primary-color);
     border-radius: 2px;
@@ -190,6 +207,7 @@ input[type="text"]{
     margin-top: 20px;
 }
 
+/*date chooser*/
 .datechoose .calendar{
     border: none;
     width: 100px;
@@ -197,29 +215,35 @@ input[type="text"]{
     margin-left: 20px;
 }
 
+/*cvv title*/
 .cvv{
     margin-top: 13px;
     margin-left: 50px;
 }
 
+/*cvv span*/
 .cvv h4{
     color: var(--card-subtitle-color);
 }
 
+/*cvv leyend*/
 .cvv h3{
     color: var(--primary-color);
     margin-top: 20px;
 }
 
+/*address*/
 .billing{
     margin-left: 20px;
     margin-top: 20px;
 }
 
+/*address leyend*/
 .billing h4{
     color: var(--card-subtitle-color);
 }
 
+/*address input*/
 .billing input{
     height: 30px;
     width: 250px;
@@ -228,6 +252,7 @@ input[type="text"]{
     color: var(--primary-color);
 }
 
+/*termns and conditions radio*/
 .radiobtn_green{
     margin-left: 20px;
     margin-top: 20px;
@@ -235,6 +260,7 @@ input[type="text"]{
     accent-color: var(--green);
 }
 
+/*confirm button*/
 .confirm{
     display: flex;
     justify-content: center;
@@ -249,6 +275,7 @@ input[type="text"]{
     font-weight: bold;
 }
 
+/*hover of the button*/
 .confirm:hover{
     background-color: var(--focus-color);
     transition: 0.3s;
@@ -258,16 +285,19 @@ input[type="text"]{
 
 /*Products details CSS*/
 
+/*conteiner display*/
 .product{
     display: flex;
 }
 
+/*product img*/
 .product .imagen{
     margin-top: 120px;
     width: 200px;
     height: 200px;
 }
 
+/*leyend of descount*/
 .product .product_desc{
     color: var(--description-gray);
     padding-top: 28px;
@@ -275,36 +305,43 @@ input[type="text"]{
     margin-top: 120px;
 }
 
+/*leyend h2*/
 .product .product_desc h2{
     margin-bottom: 20px;
 }
 
+/*span*/
 .product .product_desc span{
     font-size: 20px;
     font-weight: 00;
 }
 
+/*counter of units*/
 .counter{
     margin-top: 175px;
     margin-left: 170px;
     color: var(--secondary-color);
 }
 
+/*price of the product*/
 .price{
     margin-top: 175px;
     margin-left: 148px;
 }
 
+/*total*/
 .total{
     display: flex;
     margin-top: 250px;
     margin-left: 52%;
 }
 
+/*total titles*/
 .total .titles{
     color: var(--description-gray);
 }
 
+/*prices*/
 .total .prices{
     margin-left: 120px;
 }
