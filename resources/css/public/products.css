@@ -1,6 +1,8 @@
 /*Local font usage*/
 @import url(../../fonts/Roboto/Roboto-Regular.ttf);
 
+
+/*root variables*/
 :root{
     --primary-color: #FFFFFF;
     --secondary-color: #1F1F1F;
@@ -9,6 +11,7 @@
     --reference-grey: #969595;
 }
 
+/*reset of the HTML*/
 *{
     margin: 0;
     padding: 0;
@@ -16,27 +19,32 @@
     font-family: 'Roboto', sans-serif;
 }
 
+/*body config*/
 body{
     width: 100%;
     height: 100%;
     overflow-x: hidden;
 }
 
+/*scrollbar of the page*/
 body::-webkit-scrollbar{
     width: 8px;
 }
 
+/*thumb of the scroll*/
 body::-webkit-scrollbar-thumb{
     background-color: var(--focus-color);
     border-radius: 4px;
 }
 
+/*navbar general*/
 .navbar{
     background-color: var(--primary-color) !important;
     width: 100%;
     height: 90px;
 }
 
+/*nav titles*/
 .navbar .nav-item .title{
     font-size: 30px;
     font-weight: 700;
@@ -44,6 +52,7 @@ body::-webkit-scrollbar-thumb{
     margin-right: 700px;
 }
 
+/*nav links*/
 .navbar .nav-item a{
     color: var(--focus-color);
     font-size: 20px;
@@ -52,6 +61,7 @@ body::-webkit-scrollbar-thumb{
     justify-content: center;
 }
 
+/*nav search*/
 .btn{
     font-size: 20px;
     color: var(--focus-color);
@@ -61,12 +71,14 @@ body::-webkit-scrollbar-thumb{
     align-items: center;
 }
 
+/*input search config*/
 input[type="search"]{
     border-color: var(--focus-color);
     border-width: 2px;
     width: 300px;
 }
 
+/*drawing a line*/
 .line{
     content: '';
     position: relative;
@@ -78,6 +90,7 @@ input[type="search"]{
     justify-content: center;
 }
 
+/*drawing a vertical line*/
 .v.line{
     border-left: thick solid 3px;
     height: 100%;
@@ -88,12 +101,14 @@ input[type="search"]{
     background-color: var(--reference-grey);
 }
 
+/*section config*/
 section{
     display: flex;
     width: 100%;
     height: 100%;
 }
 
+/*aside config*/
 aside{
     width: 15%;
     height: 20%;
@@ -101,35 +116,42 @@ aside{
     box-sizing: border-box;
 }
 
+/*filters aside*/
 aside .offcanvas-title{
     color: var(--focus-color);
     font-size: 20px;
 }
 
+/*badges with number*/
 aside .offcanvas-body ul li .badge{
     background-color: var(--reference-grey) !important;
 }
 
+/*leyends of the aside*/
 aside .offcanvas-body ul li label{
     color: var(--focus-color) !important;
 }
 
+/*label of the aside*/
 aside .offcanvas-body .lab{
     font-size: 16px;
     font-weight: 800;
     color: var(--focus-color);
 }
 
+/*another label*/
 aside .offcanvas-body .lab2{
     margin-left: 150px;
 }
 
+/*product cards*/
 .cards_container{
     margin: 20px;
     width: 85%;
     align-items: center;
 }
 
+/*rounded button*/
 .cards_container .card button{
     display: flex;
     align-items: center;
@@ -145,22 +167,27 @@ aside .offcanvas-body .lab2{
     border-radius: 25px;
 }
 
+/*reviews stars*/
 .cards_container .card .bxs-star{
     color: var(--focus-color);
     font-size: 20px;
 }
 
+/*general cards*/
 .cards_container .card{
     background-color: var(--cards-white);
     border: none;
 }
 
+/*span in cards*/
 .cards_container .card span{
     color: var(--secondary-color);
     font-size: 20px;
     font-weight: 800;
     margin-left: 150px;
 }
+
+/*pagination*/
 .pagination{
     display: flex;
     justify-content: center;
