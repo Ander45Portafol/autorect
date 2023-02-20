@@ -9,7 +9,7 @@
 }
 
 /*Aply font roboto to all + Styles*/
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -41,9 +41,15 @@
     background-image: url("../../images/blurry_inicio.svg");
 }
 
-/*Main - Text color*/
+/*Main - Text color and bolds*/
 .subtitle {
+    font-weight: bold;
+    font-size: 24px;
     color: var(--color-grey);
+}
+
+.title-white {
+    font-weight: bold;
 }
 
 /*Main - Car image size*/
@@ -54,25 +60,36 @@
 
 /*Align paragraph*/
 .p-top {
+    font-size: 18px;
     margin-top: 50px;
 }
 
 /*Change the color of the titles*/
 .home-title {
+    font-weight: bold;
     color: var(--color-focus);
     margin-top: 5%;
 }
 
-/*Change the color of the buttons*/
+/*Align button + change the color of the buttons*/
+.banner-comps {
+    text-align: center;
+}
+
 .btn-red {
+    font-size: 18px;
     background-color: var(--color-focus);
     color: white !important;
     border: none !important;
-    margin-left: 40% !important;
 }
 
 .btn-red:hover {
     background-color: var(--color-light-red);
+}
+
+.btn-red:active {
+    color: white !important;
+    background-color: var(--color-light-red) !important;
 }
 
 /*Size of the cars images*/
@@ -80,8 +97,15 @@
     width: 50%;
 }
 
-/*Change the button color*/
+/*align button + change the button color*/
+@media(max-width: 991px) {
+    .section-products {
+        text-align: center;
+    }
+}
+
 .btn-seeproducts {
+    font-size: 16px;
     background-color: var(--color-focus);
     color: white !important;
     border: none !important;
@@ -149,12 +173,6 @@
     margin-bottom: 70px;
 }
 
-.card {
-    margin: 0 .5em;
-    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-    border: none;
-}
-
 .carousel-control-prev,
 .carousel-control-next {
     background-color: var(--color-focus);
@@ -167,8 +185,19 @@
 
 /*Cards design*/
 
-.carousel-inner .card-title {
+.card {
+    margin: 0 .5em;
+    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+    border: none;
+}
+
+.card-title{
     color: var(--color-focus);
+    font-weight: bold;
+}
+
+.card-body{
+    font-size: 16px;
 }
 
 .carousel-inner .btn {
@@ -188,6 +217,7 @@
 
 /*Title for the memberships*/
 .home-title-dark {
+    font-weight: bold;
     margin-top: 70px;
     color: var(--color-grey);
 }
@@ -208,9 +238,10 @@
 
 /*Style for the button in memberships section*/
 .btn-membership {
+    font-size: 20px;
     background-color: var(--color-focus);
     border: none;
-    width: 250px;
+    width: 300px;
     padding: 20px;
     font-weight: bold;
     justify-content: center;
@@ -219,6 +250,11 @@
 
 .btn-membership:hover {
     background-color: var(--color-light-red);
+}
+
+.btn-membership:active {
+    color:white !important;
+    background-color: var(--color-light-red) !important;
 }
 
 /*Style for the sponsors logo*/
