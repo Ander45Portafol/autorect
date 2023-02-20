@@ -72,12 +72,12 @@ footer img {
 }
 
 .modal-top-bold {
-    color: var(--color-focus);
+    color:#822727;
     font-weight: bold;
 }
 
 .modal-bold {
     margin-top: 40px;
-    color: var(--color-focus);
+    color: #822727;
     font-weight: bold;
 }

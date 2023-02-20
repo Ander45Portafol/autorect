@@ -1,3 +1,4 @@
+/*Function to add the navbar*/ 
 const header = document.querySelector('header')
 
 header.innerHTML = `<nav class="navbar fixed-top navbar-expand-lg navbar2">

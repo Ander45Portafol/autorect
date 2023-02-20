@@ -1,3 +1,4 @@
+/*Function to add the footer*/
 const footer = document.querySelector('footer')
 
 footer.innerHTML = ` 
