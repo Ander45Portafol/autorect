@@ -1,195 +1,313 @@
 /*Local font usage*/
 @import url(../../fonts/Roboto/Roboto-Regular.ttf);
 
-
 /*root variables*/
-:root{
-    --primary-color: #FFFFFF;
-    --secondary-color: #1F1F1F;
-    --focus-color: #822727;
-    --cards-white: #F4F6F8;
-    --reference-grey: #969595;
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #1f1f1f;
+  --focus-color: #822727;
+  --cards-white: #f4f6f8;
+  --reference-grey: #969595;
 }
 
 /*reset of the HTML*/
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 /*body config*/
-body{
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 /*scrollbar of the page*/
-body::-webkit-scrollbar{
-    width: 8px;
+body::-webkit-scrollbar {
+  width: 8px;
 }
 
 /*thumb of the scroll*/
-body::-webkit-scrollbar-thumb{
-    background-color: var(--focus-color);
-    border-radius: 4px;
+body::-webkit-scrollbar-thumb {
+  background-color: var(--focus-color);
+  border-radius: 4px;
 }
 
 /*navbar general*/
-.navbar{
-    background-color: var(--primary-color) !important;
-    width: 100%;
-    height: 90px;
+.navbar {
+  background-color: var(--primary-color) !important;
+  width: 100%;
+  height: 90px;
 }
 
 /*nav titles*/
-.navbar .nav-item .title{
-    font-size: 30px;
-    font-weight: 700;
-    color: var(--focus-color);
-    margin-right: 700px;
+.navbar .nav-item .title {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--focus-color);
+  margin-right: 700px;
 }
 
 /*nav links*/
-.navbar .nav-item a{
-    color: var(--focus-color);
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.navbar .nav-item a {
+  color: var(--focus-color);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /*nav search*/
-.btn{
-    font-size: 20px;
-    color: var(--focus-color);
-    font-weight: 30px;
-    border: none;
-    display: flex;
-    align-items: center;
+.btn {
+  font-size: 20px;
+  color: var(--focus-color);
+  font-weight: 30px;
+  border: none;
+  display: flex;
+  align-items: center;
 }
 
 /*input search config*/
-input[type="search"]{
-    border-color: var(--focus-color);
-    border-width: 2px;
-    width: 300px;
+input[type="search"] {
+  border-color: var(--focus-color);
+  border-width: 2px;
+  width: 300px;
 }
 
 /*drawing a line*/
-.line{
-    content: '';
-    position: relative;
-    width: 100%;
-    height: 3px;
-    background-color: var(--reference-grey) !important;
-    display: flex;
-    margin-left: 12px;
-    justify-content: center;
+.line {
+  content: "";
+  position: relative;
+  width: 100%;
+  height: 3px;
+  background-color: var(--reference-grey) !important;
+  display: flex;
+  margin-left: 12px;
+  justify-content: center;
 }
 
 /*drawing a vertical line*/
-.v.line{
-    border-left: thick solid 3px;
-    height: 100%;
-    top: 115px;
-    width: 3px;
-    left: 300px;
-    position: absolute;
-    background-color: var(--reference-grey);
+.v.line {
+  border-left: thick solid 3px;
+  height: 100%;
+  top: 115px;
+  width: 3px;
+  left: 300px;
+  position: absolute;
+  background-color: var(--reference-grey);
 }
 
 /*section config*/
-section{
-    display: flex;
-    width: 100%;
-    height: 100%;
+section {
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
 /*aside config*/
-aside{
-    width: 15%;
-    height: 20%;
-    margin: 20px;
-    box-sizing: border-box;
+aside {
+  width: 15%;
+  height: 20%;
+  margin: 20px;
+  box-sizing: border-box;
 }
 
 /*filters aside*/
-aside .offcanvas-title{
-    color: var(--focus-color);
-    font-size: 20px;
+aside .offcanvas-title {
+  color: var(--focus-color);
+  font-size: 20px;
 }
 
 /*badges with number*/
-aside .offcanvas-body ul li .badge{
-    background-color: var(--reference-grey) !important;
+aside .offcanvas-body ul li .badge {
+  background-color: var(--reference-grey) !important;
 }
 
 /*leyends of the aside*/
-aside .offcanvas-body ul li label{
-    color: var(--focus-color) !important;
+aside .offcanvas-body ul li label {
+  color: var(--focus-color) !important;
 }
 
 /*label of the aside*/
-aside .offcanvas-body .lab{
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--focus-color);
+aside .offcanvas-body .lab {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--focus-color);
 }
 
 /*another label*/
-aside .offcanvas-body .lab2{
-    margin-left: 150px;
+aside .offcanvas-body .lab2 {
+  margin-left: 150px;
 }
 
 /*product cards*/
-.cards_container{
-    margin: 20px;
-    width: 85%;
-    align-items: center;
+.cards_container {
+  margin: 20px;
+  width: 85%;
+  align-items: center;
 }
 
 /*rounded button*/
-.cards_container .card button{
+.cards_container .card button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--focus-color);
+  border: none;
+  margin-left: 265px;
+  position: absolute;
+  margin-top: -95px;
+  color: var(--primary-color);
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+/*reviews stars*/
+.cards_container .card .bxs-star {
+  color: var(--focus-color);
+  font-size: 20px;
+}
+
+/*general cards*/
+.cards_container .card {
+  background-color: var(--cards-white);
+  border: none;
+}
+
+/*span in cards*/
+.cards_container .card span {
+  color: var(--secondary-color);
+  font-size: 20px;
+  font-weight: 800;
+  margin-left: 230px;
+}
+
+/*pagination*/
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-left: 320px;
+}
+
+/*Responsive*/
+
+@media screen and (min-width: 768px) {
+  /*navbar general*/
+  .navbar {
+    background-color: var(--primary-color) !important;
+    width: 100%;
+    height: 90px;
+  }
+
+  /*nav titles*/
+  .navbar .nav-item .title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-left: 20px;
+    color: var(--focus-color);
+    margin-right: 390px;
+  }
+
+  /*nav links*/
+  .navbar .nav-item a {
+    color: var(--focus-color);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /*drawing a vertical line*/
+  .v.line {
+    border-left: thick solid 3px;
+    height: 150vh;
+    width: 3px;
+    left: 360px;
+    position: absolute;
+    background-color: var(--reference-grey);
+  }
+  /*section config*/
+  section {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  /*aside config*/
+  aside {
+    width: 25%;
+    height: 10%;
+    margin: 30px;
+  }
+
+  /*filters aside*/
+  aside .offcanvas-title {
+    color: var(--focus-color);
+    font-size: 20px;
+  }
+
+  /*badges with number*/
+  aside .offcanvas-body ul li .badge {
+    background-color: var(--reference-grey) !important;
+  }
+
+  /*leyends of the aside*/
+  aside .offcanvas-body ul li label {
+    color: var(--focus-color) !important;
+  }
+
+  /*label of the aside*/
+  aside .offcanvas-body .lab {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--focus-color);
+  }
+
+  /*another label*/
+  aside .offcanvas-body .lab2 {
+    margin-left: 200px;
+  }
+  .cards_container {
+    margin: 20px;
+    width: 75%;
+    align-items: center;
+  }
+
+  /*rounded button*/
+  .cards_container .card button {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--focus-color);
     border: none;
-    margin-left: 265px;
+    margin-left: 205px;
     position: absolute;
-    margin-top: -95px;
+    margin-top: -100px;
     color: var(--primary-color);
     width: 50px;
     height: 50px;
     border-radius: 25px;
-}
+  }
 
-/*reviews stars*/
-.cards_container .card .bxs-star{
+  /*reviews stars*/
+  .cards_container .card .bxs-star {
     color: var(--focus-color);
     font-size: 20px;
-}
+  }
 
-/*general cards*/
-.cards_container .card{
+  /*general cards*/
+  .cards_container .card {
     background-color: var(--cards-white);
     border: none;
-}
-
-/*span in cards*/
-.cards_container .card span{
+  }
+  /*span in cards*/
+  .cards_container .card span {
     color: var(--secondary-color);
     font-size: 20px;
     font-weight: 800;
-    margin-left: 150px;
-}
-
-/*pagination*/
-.pagination{
-    display: flex;
-    justify-content: center;
-    margin-left: 320px;
+    margin-left: 60px;
+  }
 }
