@@ -507,6 +507,7 @@ transform: scaleX(1);
   display: flex;
   align-items: flex-end;
 }
+/*Orders*/
 .modal-O{
   display: flex;
   flex-direction: column;
@@ -522,4 +523,65 @@ transform: scaleX(1);
 .Osection2 .btns{
   display: flex;
   align-items: flex-end;
+}
+/*Categories*/
+#redcategory{
+  background-color: #822727;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  height: 35px;
+  width: 130px;
+  padding-right: 10px;
+}
+.modal-Ct{
+  display: flex;
+  flex-direction: row;
+}
+.Ctsection1{
+  width: 70%;
+}
+.Ctsection2 .image{
+  background-color: #fff;
+  height: 200px;
+  border: 3px solid #1f1f1f;
+  width: 180px;
+}
+#cdescription .input-data{
+  width: 80%;
+  padding-right: 40.5pc;
+}
+/*Brands*/
+.modal-B{
+  display: flex;
+  flex-direction: row;
+}
+.Bsection1{
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}
+.Bsection1 .input-data{
+  width: 40rem;
+}
+.Bsection2 .image{
+  background-color: #fff;
+  height: 200px;
+  border: 3px solid #1f1f1f;
+  width: 180px;
+}
+/*Models*/
+.modal-M{
+  display: flex;
+  flex-direction: column;
+}
+.Msection1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Msection2 .btns{
+  display: flex;
+  align-items: flex-end;
+  width: 85%;
 }

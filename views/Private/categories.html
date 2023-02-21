@@ -28,9 +28,75 @@
             <div class="buttonstop">
               <button>Export <i class="bx bx-export"></i></button>
               <button>Print <i class="bx bxs-printer"></i></button>
-              <button id="red">
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                id="redcategory"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+              >
                 <i class="bx bxs-plus-circle"></i> New Category
               </button>
+
+              <!-- Modal -->
+              <div
+                class="modal fade modal-xl"
+                id="staticBackdrop"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <p class="modal-title">CATEGORIES</p>
+                      <button
+                        type="button"
+                        id="btnclose"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <i class="bx bx-x"></i>
+                      </button>
+                    </div>
+                    <div class="modal-body modal-Ct">
+                      <div class="Ctsection1">
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Category name</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col" id="cdescription">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Category description</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="Ctsection2">
+                        <div class="image"></div>
+                        <div class="btns">
+                          <button id="clean">
+                            <i class="bx bxs-eraser"></i>CLEAN
+                          </button>
+                          <button id="adduser">
+                            <i class="bx bxs-plus-circle"></i>ADD USER
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="searchsection">
@@ -175,7 +241,12 @@
                   <th scope="row"><input type="checkbox" /></th>
                   <td><p>8001</p></td>
                   <td><p>Brakes</p></td>
-                  <td><p>In the brakes categories, are pieces all relationated with the brakes of the car, like master cylinder.</p></td>
+                  <td>
+                    <p>
+                      In the brakes categories, are pieces all relationated with
+                      the brakes of the car, like master cylinder.
+                    </p>
+                  </td>
                   <td>
                     <div class="actions">
                       <button class="edit" onclick="btnedit()">
@@ -191,7 +262,11 @@
                   <th scope="row"><input type="checkbox" /></th>
                   <td><p>8002</p></td>
                   <td><p>Lights</p></td>
-                  <td><p>Lights categories  are have all types of light to cars.</p></td>
+                  <td>
+                    <p>
+                      Lights categories are have all types of light to cars.
+                    </p>
+                  </td>
                   <td>
                     <div class="actions">
                       <button class="edit" onclick="btnedit()">
@@ -207,7 +282,12 @@
                   <th scope="row"><input type="checkbox" /></th>
                   <td><p>8003</p></td>
                   <td><p>Doors</p></td>
-                  <td><p>In this category are find doors of the differents types of doors and the all brands.</p></td>
+                  <td>
+                    <p>
+                      In this category are find doors of the differents types of
+                      doors and the all brands.
+                    </p>
+                  </td>
                   <td>
                     <div class="actions">
                       <button class="edit" onclick="btnedit()">
