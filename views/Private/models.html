@@ -28,9 +28,84 @@
             <div class="buttonstop">
               <button>Export <i class="bx bx-export"></i></button>
               <button>Print <i class="bx bxs-printer"></i></button>
-              <button id="red">
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                id="red"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+              >
                 <i class="bx bxs-plus-circle"></i> New Model
               </button>
+
+              <!-- Modal -->
+              <div
+                class="modal fade modal-xl"
+                id="staticBackdrop"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <p class="modal-title">MODELS</p>
+                      <button
+                        type="button"
+                        id="btnclose"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <i class="bx bx-x"></i>
+                      </button>
+                    </div>
+                    <div class="modal-body modal-M">
+                      <div class="Msection1">
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Model name</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Model year</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="select-data">
+                              <label>Brand</label>
+                              <div class="select">
+                                <select name="brand" id="brand"></select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="Msection2">
+                        <div class="btns">
+                          <button id="clean">
+                            <i class="bx bxs-eraser"></i>CLEAN
+                          </button>
+                          <button id="adduser">
+                            <i class="bx bxs-plus-circle"></i>ADD USER
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="searchsection">

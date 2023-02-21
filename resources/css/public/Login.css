@@ -14,7 +14,7 @@ body .imagen{
     position: absolute;
 }
 body{
-    background-image: url(../../imagenes/Car.jpg);
+    background-image: url(../../images/Car.jpg);
     background-size: cover;
     overflow-y:hidden ;
 }
