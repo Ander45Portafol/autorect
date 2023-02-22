@@ -19,222 +19,313 @@
   <body>
     <div class="allinfo">
       <aside></aside>
-        <main class="data">
-          <section>
-            <div class="topmain">
-              <div class="texttop">
-                <p>ORDERS</p>
+      <main class="data">
+        <section>
+          <div class="topmain">
+            <div class="texttop">
+              <p>ORDERS</p>
+            </div>
+            <div class="buttonstop">
+              <button>Export <i class="bx bx-export"></i></button>
+              <button>Print <i class="bx bxs-printer"></i></button>
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                id="red"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+              >
+                <i class="bx bxs-plus-circle"></i> New Order
+              </button>
+
+              <!-- Modal -->
+              <div
+                class="modal fade modal-xl"
+                id="staticBackdrop"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <p class="modal-title">ORDERS</p>
+                      <button
+                        type="button"
+                        id="btnclose"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <i class="bx bx-x"></i>
+                      </button>
+                    </div>
+                    <div class="modal-body modal-O">
+                      <div class="Osection1">
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Date</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Address</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="select-data">
+                              <label>Client</label>
+                              <div class="select">
+                                <select name="Status" id="Status"></select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="select-data">
+                              <label>Order Status</label>
+                              <div class="select">
+                                <select name="Status" id="Status"></select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="select-data">
+                              <label>Employee</label>
+                              <div class="select">
+                                <select name="Status" id="Status"></select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="Osection2">
+                        <div class="btns">
+                          <button id="clean">
+                            <i class="bx bxs-eraser"></i>CLEAN
+                          </button>
+                          <button id="adduser">
+                            <i class="bx bxs-plus-circle"></i>ADD USER
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="buttonstop">
-                <button>Export <i class="bx bx-export"></i></button>
-                <button>Print <i class="bx bxs-printer"></i></button>
-                <button id="red">
-                  <i class="bx bxs-plus-circle"></i> New Order
+            </div>
+          </div>
+          <div class="searchsection">
+            <div class="search">
+              <i class="bx bx-search"></i>
+              <input type="text" placeholder="Search anything..." />
+              <i class="bx bx-slider"></i>
+            </div>
+            <div class="buttonsearch">
+              <input type="date" class="btnfilter" />
+              <div class="dropdown btnfilter">
+                <button
+                  class="btn dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bx bxs-purchase-tag"></i>
+                  Status
                 </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown btnfilter">
+                <button
+                  class="btn dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bx bx-current-location"></i>
+                  Address
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown btnfilter">
+                <button
+                  class="btn dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bx bxs-bookmark"></i>
+                  Save filters
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown btnfilter">
+                <button
+                  class="btn dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bx bx-slider rotate"></i>
+                  More
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div class="searchsection">
-              <div class="search">
-                <i class="bx bx-search"></i>
-                <input type="text" placeholder="Search anything..." />
-                <i class="bx bx-slider"></i>
-              </div>
-              <div class="buttonsearch">
-                <input type="date" class="btnfilter" />
-                <div class="dropdown btnfilter">
-                  <button
-                    class="btn dropdown-toggle"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="bx bxs-purchase-tag"></i>
-                    Status
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="dropdown btnfilter">
-                  <button
-                    class="btn dropdown-toggle"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="bx bx-current-location"></i>
-                    Address
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="dropdown btnfilter">
-                  <button
-                    class="btn dropdown-toggle"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="bx bxs-bookmark"></i>
-                    Save filters
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="dropdown btnfilter">
-                  <button
-                    class="btn dropdown-toggle"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="bx bx-slider rotate"></i>
-                    More
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+          </div>
+          <div class="filtertable">
+            <button class="active">All orders <span>11</span></button>
+            <button>Today <span>05</span></button>
+          </div>
+          <div class="datatable">
+            <div class="infodatatable">
+              <p>Showing 21-30 of 88 results</p>
             </div>
-            <div class="filtertable">
-              <button class="active">All orders <span>11</span></button>
-              <button>Today <span>05</span></button>
+            <div class="numbersdata">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             </div>
-            <div class="datatable">
-              <div class="infodatatable">
-                <p>Showing 21-30 of 88 results</p>
-              </div>
-              <div class="numbersdata">
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination">
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                      </a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-              <div class="itemstable">
-                <p>Items per page <span>10</span></p>
-              </div>
+            <div class="itemstable">
+              <p>Items per page <span>10</span></p>
             </div>
-            <div class="sectiontable">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col"><input type="checkbox" /></th>
-                    <th scope="col">Client</th>
-                    <th scope="col">Employee</th>
-                    <th scope="col">Street</th>
-                    <th scope="col">Date-Order</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td><p>Daniel Lopez</p></td>
-                    <td><p>Pedro Martinez</p></td>
-                    <td><p>San Salvador, soyapango</p></td>
-                    <td><p>10-11-2022</p></td>
-                    <td><p class="status">Active</p></td>
-                    <td>
-                      <div class="actions">
-                        <button class="edit" onclick="btnedit()">
-                          <i class="bx bxs-edit"></i>
-                        </button>
-                        <button class="delete" onclick="btndelete()">
-                          <i class="bx bxs-trash"></i>
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    
-                    <td><p>Anderson Isaac</p></td>
-                    <td><p>Aguilar Ramos</p></td>
-                    <td><p>San Salvador, Mejicanos</p></td>
-                    <td><p>30-12-2022</p></td>
-                    <td><p class="status">Inactive</p></td>
-                    <td>
-                      <div class="actions">
-                        <button class="edit" onclick="btnedit()">
-                          <i class="bx bxs-edit"></i>
-                        </button>
-                        <button class="delete" onclick="btndelete()">
-                          <i class="bx bxs-trash"></i>
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    
-                    <td><p>Roberto Moran</p></td>
-                    <td><p>Moran Gomez</p></td>
-                    <td><p>La Libertad, Santa Tecla</p></td>
-                    <td><p>12-01-2023</p></td>
-                    <td><p class="status">Active</p></td>
-                    <td>
-                      <div class="actions">
-                        <button class="edit" onclick="btnedit()">
-                          <i class="bx bxs-edit"></i>
-                        </button>
-                        <button class="delete" onclick="btndelete()">
-                          <i class="bx bxs-trash"></i>
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-        </main>
+          </div>
+          <div class="sectiontable">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col"><input type="checkbox" /></th>
+                  <th scope="col">Client</th>
+                  <th scope="col">Employee</th>
+                  <th scope="col">Street</th>
+                  <th scope="col">Date-Order</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td><p>Daniel Lopez</p></td>
+                  <td><p>Pedro Martinez</p></td>
+                  <td><p>San Salvador, soyapango</p></td>
+                  <td><p>10-11-2022</p></td>
+                  <td><p class="status">Active</p></td>
+                  <td>
+                    <div class="actions">
+                      <button class="edit" onclick="btnedit()">
+                        <i class="bx bxs-edit"></i>
+                      </button>
+                      <button class="delete" onclick="btndelete()">
+                        <i class="bx bxs-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+
+                  <td><p>Anderson Isaac</p></td>
+                  <td><p>Aguilar Ramos</p></td>
+                  <td><p>San Salvador, Mejicanos</p></td>
+                  <td><p>30-12-2022</p></td>
+                  <td><p class="status">Inactive</p></td>
+                  <td>
+                    <div class="actions">
+                      <button class="edit" onclick="btnedit()">
+                        <i class="bx bxs-edit"></i>
+                      </button>
+                      <button class="delete" onclick="btndelete()">
+                        <i class="bx bxs-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+
+                  <td><p>Roberto Moran</p></td>
+                  <td><p>Moran Gomez</p></td>
+                  <td><p>La Libertad, Santa Tecla</p></td>
+                  <td><p>12-01-2023</p></td>
+                  <td><p class="status">Active</p></td>
+                  <td>
+                    <div class="actions">
+                      <button class="edit" onclick="btnedit()">
+                        <i class="bx bxs-edit"></i>
+                      </button>
+                      <button class="delete" onclick="btndelete()">
+                        <i class="bx bxs-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
