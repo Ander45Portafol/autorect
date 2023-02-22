@@ -1,3 +1,10 @@
+/*Local font usage*/
+@import url(../../fonts/Roboto/Roboto-Regular.ttf);
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
 /*Navbar menu button*/
 nav .navbar-toggler-icon {
     background-image: url('../../images/navbar_menu.svg') !important;
@@ -22,6 +29,7 @@ nav .navbar-toggler-icon {
 }
 
 .btn-cart:hover{
+    transition-duration: 0.5s;
     border-radius: 30%;
     background-color: #822727;
 }
