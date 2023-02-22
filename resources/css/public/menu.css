@@ -8,6 +8,39 @@ nav .navbar-toggler-icon {
     height: 40px;
 }
 
+/*Cart button*/
+
+.btn-cart{
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.btn-cart img{
+    height: 37px;
+}
+
+.btn-cart:hover{
+    border-radius: 30%;
+    background-color: #822727;
+}
+
+@media (max-width: 991px) {
+    .navbar-toggler{
+        position: absolute; 
+        top: 15px;
+        right: 15px;
+    }
+    
+    .btn-cart{
+        position: absolute; 
+        top: 15px;
+        right: 85px;
+    }
+}
+
+/*Style navbar button*/
 .navbar-toggler {
     border: 2px solid white !important;
 }

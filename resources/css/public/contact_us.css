@@ -1,100 +1,118 @@
 /*Local font usage*/
 @import url(../../fonts/Roboto/Roboto-Regular.ttf);
 
+/*Roboto + style for all*/
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
 /*Root variables (colors)*/
 :root{
     --primary-color: #FFFFFF;
     --secondary-color: #1F1F1F;
     --focus-color: #822727;
+    --light-red-color: #8B3A3A;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+/*Navbar link active*/
+.link-contact {
+    position: relative;
 }
 
-body{
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
-h1{
-    color: var(--focus-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 100px;
-}
-
-.title h4{
-    font-size: 30px;
-    margin-left: 350px;
-    margin-top: 200px;
+.link-contact::before {
+    content: '';
     position: absolute;
-    color: var(--primary-color);
-    font-weight: 800;
+    width: 100%;
+    height: 2px;
+    border-radius: 4px;
+    background-color: #822727;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(1);
 }
 
+/*Margin between rows*/
+.row{
+    margin-top: 70px;
+}
 
-.container{
-    display: flex;
-    margin-top: 130px;
-    width: 100%;
-    height: 600px;
-    padding: 80px;
-    margin-left: 50px;
+/*Main container*/
+.main-cont{
+    margin-top: 66px;
+}
+
+/*Titles style*/
+.title{
+    margin-top: 50px;
+    font-weight: bold;
+    color: var(--focus-color);
+}
+
+/*Style for the container of the form*/
+.cont-form{
+    padding: 50px;
+    height: 65vh;
     background-color: var(--secondary-color);
 }
 
-.form{
-    position: relative;
-    display: flex;
-    flex-direction: column;
+/*Subtitles style*/
+h4{
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+/*Align subtitles*/
+@media (max-width: 991px) {
+    h4{
+        text-align: center;
+    }
+}
+
+/*Size of the message imput*/
+.message-form{
+    height: 15vh;
+}
+
+/*Align map*/
+.map-col{
+    padding: 0;
+}
+
+/*Map size*/
+iframe{
+    height: 65vh;
     width: 100%;
-    margin-top: 90px;
-    margin-left: 40px;
 }
 
-.map{
-    display: flex;
-    align-items: center;
-    width: 550px;
-    height: 600px;
-    margin-left: 244px;
-}
-
-.mapouter {
-    position: relative;
-    text-align: right;
-    width: 100%;
-    height: 100%;
-}
-.gmap_canvas {
-    margin-left: 108px;
-    margin-top: -80px;
-    overflow: hidden;
-    background: none !important;
-    height: 100%;
-    width: 540px;
-}
-
-.container button{
-    cursor: pointer;
-    position: absolute;
-    border: none;
-    width: 60px;
-    font-size: 30px;
+/*Button for submit style*/
+.btn-submit{
+    margin-top: 50px;
+    float: right;
     background-color: var(--focus-color);
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    border-radius: 50px;
-    margin-top: 400px;
-    margin-left: 730px;
+    border: none;
+}
+
+.btn-submit:hover{
+    background-color: var(--light-red-color);
+}
+
+.btn-submit:active{
+    background-color: var(--light-red-color) !important;
+}
+
+/*Size of the button image*/
+
+.img-submit{
+    height: 30px;
+}
+
+/*Responsive map*/
+@media (max-width: 991px) {
+    .map-col{
+        margin-top: 50px;
+    }
 }

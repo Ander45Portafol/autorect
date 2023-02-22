@@ -11,8 +11,11 @@ header.innerHTML = `<nav class="navbar fixed-top navbar-expand-lg navbar2">
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <a type="button" href="cart.html" class="btn-cart order-lg-2">
+            <img src="../../resources/images/cart.svg" alt="cart">
+        </a>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
+            <ul class="navbar-nav mx-auto order-lg-1">
                 <li class="nav-item">
                     <a class="link-home nav-link text-white" href="index.html">Home</a>
                 </li>
@@ -26,7 +29,7 @@ header.innerHTML = `<nav class="navbar fixed-top navbar-expand-lg navbar2">
                     <a class="link-contact nav-link text-white" href="contact_us.html">Contact Us</a>
                 </li>
             </ul>
-            <a type="button" class="btn-login btn btn-light btn-xs" href="Login.html">
+            <a type="button" class="btn-login btn btn-light btn-xs order-lg-3" href="login.html">
                 LOGIN <img class="img-btn-login" src="../../resources/images/loginicono.svg" alt="loginimg">
             </a>
         </div>
