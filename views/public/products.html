@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../resources/css/boxicons.min.css">
+    <link rel="stylesheet" href="../../resources/css/public/products.css">
+    <link rel="stylesheet" href="../../resources/css/public/home.css">
+    <link rel="shortcut icon" href="../../resources/images/LogoLogin.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <header>
+    </header>
+
+    <main>
+        <!--Secondary Navbar-->
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-3 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="title nav-link active" aria-current="page" href="#">Products</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Brands
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Jeep</a></li>
+                                <li><a class="dropdown-item" href="#">Fiat</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Explore more brands</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Models
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Cherokee</a></li>
+                                <li><a class="dropdown-item" href="#">500X</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Explore more models</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <button class="btn" type="submit"><i class='bx bx-search'></i></button>
+                        <input class="form-control me-2" type="search" aria-label="Search">
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="line"></div>
+        <!--general section-->
+        <section>
+            <!--Aside (product filters)-->
+            <aside>
+                <h5 class="offcanvas-title" id="offcanvasLabel">Categories</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvasDark"
+                    aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Silvins
+                            <span class=" counter badge bg-primary rounded-pill">82</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Wheels
+                            <span class="badge bg-primary rounded-pill">29</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Doors
+                            <span class="badge bg-primary rounded-pill">11</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Breaks
+                            <span class="badge bg-primary rounded-pill">50</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Car hoods
+                            <span class="badge bg-primary rounded-pill">36</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Bumpers
+                            <span class="badge bg-primary rounded-pill">17</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Seats
+                            <span class="badge bg-primary rounded-pill">130</span>
+                        </li>
+                    </ul>
+                    <br>
+                    <h5 class="offcanvas-title" id="offcanvasLabel">Price</h5>
+                    <br>
+                    <label for="customRange1" class="form-label lab">$5.00</label>
+                    <label for="customRange1" class="form-label lab lab2">$250.00</label>
+                    <input type="range" class="form-range" id="customRange1">
+                    <br>
+                    <br>
+                    <h5 class="offcanvas-title" id="offcanvasLabel">Year</h5>
+                    <br>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
+                                aria-label="">
+                            2011
+                            <span class="badge bg-primary rounded-pill">27</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
+                                aria-label="">
+                            2012
+                            <span class="badge bg-primary rounded-pill">09</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
+                                aria-label="">
+                            2013
+                            <span class="badge bg-primary rounded-pill">12</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
+                                aria-label="">
+                            2014
+                            <span class="badge bg-primary rounded-pill">15</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
+                                aria-label="">
+                            2015
+                            <span class="badge bg-primary rounded-pill">93</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
+                                aria-label="">
+                            2016
+                            <span class="badge bg-primary rounded-pill">102</span>
+                        </li>
+                    </ul>
+                    <br>
+                    <h5 class="offcanvas-title" id="offcanvasLabel">Sales</h5>
+                    <br>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Products on sale
+                        <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
+                            aria-label="">
+                    </li>
+            </aside>
+            <!--Divisor line-->
+            <div class="v line">
+
+            </div>
+            <!--Products cards container-->
+            <div class="cards_container">
+                <div class="row row-cols-4 row-cols-md-2 g-4 s-1">
+                    <div class="col">
+                        <!--Card used (just copied + pasted)-->
+                        <div class="card">
+                            <img src="../../resources/images/lambo_ejem.svg" class="card-img-top" alt="product">
+                            <div class="card-body">
+                                <h5 class="card-title">Lamborghini L. Break</h5>
+                                <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
+                                        class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                    <span>$150.00</span>
+                                    <button><i class='bx bxs-cart'></i></button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="../../resources/images/lambo_ejem.svg" class="card-img-top" alt="product">
+                            <div class="card-body">
+                                <h5 class="card-title">Lamborghini L. Break</h5>
+                                <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
+                                        class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                    <span>$150.00</span>
+                                    <button><i class='bx bxs-cart'></i></button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="../../resources/images/lambo_ejem.svg" class="card-img-top" alt="product">
+                            <div class="card-body">
+                                <h5 class="card-title">Lamborghini L. Break</h5>
+                                <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
+                                        class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                    <span>$150.00</span>
+                                    <button><i class='bx bxs-cart'></i></button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="../../resources/images/lambo_ejem.svg" class="card-img-top" alt="product">
+                            <div class="card-body">
+                                <h5 class="card-title">Lamborghini L. Break</h5>
+                                <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
+                                        class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                    <span>$150.00</span>
+                                    <button><i class='bx bxs-cart'></i></button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="../../resources/images/lambo_ejem.svg" class="card-img-top" alt="product">
+                            <div class="card-body">
+                                <h5 class="card-title">Lamborghini L. Break</h5>
+                                <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
+                                        class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                    <span>$150.00</span>
+                                    <button><i class='bx bxs-cart'></i></button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="../../resources/images/lambo_ejem.svg" class="card-img-top" alt="product">
+                            <div class="card-body">
+                                <h5 class="card-title">Lamborghini L. Break</h5>
+                                <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
+                                        class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                    <span>$150.00</span>
+                                    <button><i class='bx bxs-cart'></i></button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="../../resources/images/lambo_ejem.svg" class="card-img-top" alt="product">
+                            <div class="card-body">
+                                <h5 class="card-title">Lamborghini L. Break</h5>
+                                <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
+                                        class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                    <span>$150.00</span>
+                                    <button><i class='bx bxs-cart'></i></button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="../../resources/images/lambo_ejem.svg" class="card-img-top" alt="product">
+                            <div class="card-body">
+                                <h5 class="card-title">Lamborghini L. Break</h5>
+                                <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
+                                        class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                    <span>$150.00</span>
+                                    <button><i class='bx bxs-cart'></i></button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!--Pagination-->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination d-flex justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="">
+                    <span aria-hidden="true"><i class='bx bx-chevron-left'></i></span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true"><i class='bx bx-chevron-right'></i></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <footer>
+        <!--Footer spot-->
+        <!-- Bootstrap container -->
+        <div class="container">
+            <!-- Footer -->
+            <div class="row">
+                <!-- Social media links -->
+                <div class="social-footer col-lg-3 col-sm-6">
+                    <a href="https://www.facebook.com/">
+                        <img src="../../resources/images/facebook_logo.svg" alt="facebook"> @Autorect_SV
+                    </a>
+                    <a href="https://twitter.com/">
+                        <img src="../../resources/images/twitter_logo.svg" alt="twitter"> @Autorect_SV
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <img src="../../resources/images/instagram_logo.svg" alt="instagram"> @Autorect_SV
+                    </a>
+                </div>
+                <!-- Logo Autorect -->
+                <div class="logo-footer col-lg-6 col-sm-6">
+                    <img src="../../resources/images/logosvg.svg" alt="logo_footer">
+                </div>
+                <!-- Information links -->
+                <div class="information-footer col-lg-3 col-sm-12">
+                    <a data-bs-toggle="modal" data-bs-target="#ModalTerms">
+                        Terms & Conditions
+                    </a>
+                    <a data-bs-toggle="modal" data-bs-target="#ModalSupport">
+                        Support
+                    </a>
+                    <a data-bs-toggle="modal" data-bs-target="#ModalBuy">
+                        How to buy
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="../../resources/js/public.js"></script>
+</body>
+
+</html>
