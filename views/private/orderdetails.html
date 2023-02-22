@@ -14,7 +14,7 @@
     />
     <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Categories</title>
+    <title>Order Details</title>
   </head>
   <body>
     <div class="allinfo">
@@ -23,14 +23,93 @@
         <section>
           <div class="topmain">
             <div class="texttop">
-              <p>CATEGORIES</p>
+              <p>ORDER DETAILS</p>
             </div>
             <div class="buttonstop">
               <button>Export <i class="bx bx-export"></i></button>
               <button>Print <i class="bx bxs-printer"></i></button>
-              <button id="red">
-                <i class="bx bxs-plus-circle"></i> New Category
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                id="redOrderDetail"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+              >
+                <i class="bx bxs-plus-circle"></i> New order detail
               </button>
+
+              <!-- Modal -->
+              <div
+                class="modal fade modal-xl"
+                id="staticBackdrop"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <p class="modal-title">ORDER DETAILS</p>
+                      <button
+                        type="button"
+                        id="btnclose"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ><i class="bx bx-x"></i></button>
+                    </div>
+                    <div class="modal-body modal-OD">
+                      <div class="ODsection1">
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Product quantity</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Price</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="select-data">
+                              <label>Order assigned</label>
+                              <div class="select">
+                                <select name="Status" id="Status"></select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="select-data">
+                              <label>Product</label>
+                              <div class="select">
+                                <select name="Status" id="Status"></select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ODsection2">
+                        <div class="btns">
+                          <button id="clean">
+                            <i class="bx bxs-eraser"></i>CLEAN
+                          </button>
+                          <button id="adduser">
+                            <i class="bx bxs-plus-circle"></i>ADD USER
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="searchsection">
@@ -124,7 +203,8 @@
             </div>
           </div>
           <div class="filtertable">
-            <button class="active">All categories <span>11</span></button>
+            <button class="active">All details <span>11</span></button>
+            <button>Today <span>05</span></button>
           </div>
           <div class="datatable">
             <div class="infodatatable">
@@ -165,8 +245,10 @@
                 <tr>
                   <th scope="col"><input type="checkbox" /></th>
                   <th scope="col">ID No.</th>
-                  <th scope="col">Name categories</th>
-                  <th scope="col">Description</th>
+                  <th scope="col">Product quantity</th>
+                  <th scope="col">Product price</th>
+                  <th scope="col">Order ID</th>
+                  <th scope="col">Product name</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
@@ -174,8 +256,10 @@
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
                   <td><p>8001</p></td>
-                  <td><p>Brakes</p></td>
-                  <td><p>In the brakes categories, are pieces all relationated with the brakes of the car, like master cylinder.</p></td>
+                  <td><p>5</p></td>
+                  <td><p>$150.00</p></td>
+                  <td><p>8753</p></td>
+                  <td><p>L-Brake</p></td>
                   <td>
                     <div class="actions">
                       <button class="edit" onclick="btnedit()">
@@ -189,9 +273,11 @@
                 </tr>
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
-                  <td><p>8002</p></td>
-                  <td><p>Lights</p></td>
-                  <td><p>Lights categories  are have all types of light to cars.</p></td>
+                  <td><p>7002</p></td>
+                  <td><p>2</p></td>
+                  <td><p>$125.00</p></td>
+                  <td><p>8754</p></td>
+                  <td><p>R-Brake</p></td>
                   <td>
                     <div class="actions">
                       <button class="edit" onclick="btnedit()">
@@ -206,8 +292,10 @@
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
                   <td><p>8003</p></td>
-                  <td><p>Doors</p></td>
-                  <td><p>In this category are find doors of the differents types of doors and the all brands.</p></td>
+                  <td><p>8</p></td>
+                  <td><p>$475.25</p></td>
+                  <td><p>8755</p></td>
+                  <td><p>L-Door</p></td>
                   <td>
                     <div class="actions">
                       <button class="edit" onclick="btnedit()">

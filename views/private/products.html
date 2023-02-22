@@ -14,7 +14,7 @@
     />
     <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brands</title>
+    <title>Products</title>
   </head>
   <body>
     <div class="allinfo">
@@ -23,14 +23,112 @@
         <section>
           <div class="topmain">
             <div class="texttop">
-              <p>BRANDS</p>
+              <p>PRODUCTS</p>
             </div>
             <div class="buttonstop">
               <button>Export <i class="bx bx-export"></i></button>
               <button>Print <i class="bx bxs-printer"></i></button>
-              <button id="red">
-                <i class="bx bxs-plus-circle"></i> New Brand
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                id="red"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+              >
+                <i class="bx bxs-plus-circle"></i> New product
               </button>
+
+              <!-- Modal -->
+              <div
+                class="modal fade modal-xl"
+                id="staticBackdrop"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <p class="modal-title">PRODUCTS</p>
+                      <button
+                        type="button"
+                        id="btnclose"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ><i class="bx bx-x"></i></button>
+                    </div>
+                    <div class="modal-body modal-P">
+                      <div class="Psection1">
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Product Name</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Price</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="select-data">
+                              <label>Category</label>
+                              <div class="select">
+                                <select name="Status" id="Status"></select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="select-data">
+                              <label>Model</label>
+                              <div class="select">
+                                <select name="Status" id="Status"></select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="input-data">
+                                <input type="text" required />
+                                <div class="underline"></div>
+                                <label>Product description</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="select-data">
+                                <label>Status</label>
+                                <div class="select">
+                                  <select name="Status" id="Status"></select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="Psection2">
+                        <div class="btns">
+                          <button id="clean">
+                            <i class="bx bxs-eraser"></i>CLEAN
+                          </button>
+                          <button id="adduser">
+                            <i class="bx bxs-plus-circle"></i>ADD USER
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="searchsection">
@@ -124,8 +222,8 @@
             </div>
           </div>
           <div class="filtertable">
-            <button class="active">All brands <span>11</span></button>
-            <button>Most popular <span>05</span></button>
+            <button class="active">All products <span>11</span></button>
+            <button>Sales <span>05</span></button>
           </div>
           <div class="datatable">
             <div class="infodatatable">
@@ -165,47 +263,66 @@
               <thead>
                 <tr>
                   <th scope="col"><input type="checkbox" /></th>
-                  <th scope="col">Brand name</th>
-                  <th scope="col">Logo</th>
+                  <th scope="col">ID No.</th>
+                  <th scope="col">Product name</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Model</th>
+                  <th scope="col">Brand</th>
+                  <th scope="col">Status</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
-                  <td><p>Jeep</p></td>
-                  <td><p>sajdjswi/dsdsd/sdsdsd.png</p></td>
-                  <td>
-                    <div class="actions">
-                      <button class="edit" onclick="btnedit()">
-                        <i class="bx bxs-edit"></i>
-                      </button>
-                      <button class="delete" onclick="btndelete()">
-                        <i class="bx bxs-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row"><input type="checkbox" /></th>
-                  <td><p>Kia</p></td>
-                  <td><p>sajdjswi/dsdsd/sdsdsd.png</p></td>
-                  <td>
-                    <div class="actions">
-                      <button class="edit" onclick="btnedit()">
-                        <i class="bx bxs-edit"></i>
-                      </button>
-                      <button class="delete" onclick="btndelete()">
-                        <i class="bx bxs-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row"><input type="checkbox" /></th>
-
+                  <td><p>7001</p></td>
+                  <td><p>L-Brake</p></td>
+                  <td><p>$150.00</p></td>
+                  <td><p class="Category-brakes">Brakes</p></td>
+                  <td><p>Model 3</p></td>
                   <td><p>Tesla</p></td>
-                  <td><p>sajdjswi/dsdsd/sdsdsd.png</p></td>
+                  <td><p class="status-active">Active</p></td>
+                  <td>
+                    <div class="actions">
+                      <button class="edit" onclick="btnedit()">
+                        <i class="bx bxs-edit"></i>
+                      </button>
+                      <button class="delete" onclick="btndelete()">
+                        <i class="bx bxs-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td><p>7002</p></td>
+                  <td><p>R-Brake</p></td>
+                  <td><p>$125.00</p></td>
+                  <td><p class="Category-brakes">Brakes</p></td>
+                  <td><p>Lancer</p></td>
+                  <td><p>Mitsubichi</p></td>
+                  <td><p class="status-active">Active</p></td>
+                  <td>
+                    <div class="actions">
+                      <button class="edit" onclick="btnedit()">
+                        <i class="bx bxs-edit"></i>
+                      </button>
+                      <button class="delete" onclick="btndelete()">
+                        <i class="bx bxs-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td><p>7003</p></td>
+                  <td><p>L-Door</p></td>
+                  <td><p>$475.25</p></td>
+                  <td><p class="category-doors">Doors</p></td>
+                  <td><p>CX5</p></td>
+                  <td><p>Mazda</p></td>
+                  <td><p class="status-inactive">Inactive</p></td>
                   <td>
                     <div class="actions">
                       <button class="edit" onclick="btnedit()">

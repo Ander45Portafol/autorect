@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="../../resources/css/admin/menu.css" />
-    <link rel="stylesheet" href="../../resources/css/admin/main.css" />
     <link rel="icon" href="../../resources/images/LogoLogin.png" />
+    <link rel="stylesheet" href="../../resources/css/admin/main.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,54 +14,104 @@
     />
     <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Users</title>
+    <title>Clients</title>
   </head>
   <body>
     <div class="allinfo">
-      <!---->
       <aside></aside>
       <main class="data">
         <section>
           <div class="topmain">
             <div class="texttop">
-              <p>USERS</p>
+              <p>CLIENTS</p>
             </div>
             <div class="buttonstop">
-              <button class="stop">Export <i class="bx bx-export"></i></button>
-              <button class="stop">Print <i class="bx bxs-printer"></i></button>
+              <button>Export <i class="bx bx-export"></i></button>
+              <button>Print <i class="bx bxs-printer"></i></button>
               <!-- Button trigger modal -->
               <button
                 type="button"
-                id="red"
+                class="btn"
                 data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
+                id="red"
+                data-bs-target="#staticBackdrop"
               >
-                <i class="bx bxs-plus-circle"></i>New User
+                <i class="bx bxs-plus-circle"></i> New Client
               </button>
 
               <!-- Modal -->
               <div
                 class="modal fade modal-xl"
-                id="exampleModal"
+                id="staticBackdrop"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
                 tabindex="-1"
-                aria-labelledby="exampleModalLabel"
+                aria-labelledby="staticBackdropLabel"
                 aria-hidden="true"
               >
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <p class="modal-title" id="exampleModalLabel">USERS</p>
+                      <p class="modal-title">
+                        CLIENTS
+                      </p>
                       <button
                         type="button"
                         id="btnclose"
                         data-bs-dismiss="modal"
                         aria-label="Close"
-                      >
-                        <i class="bx bx-x"></i>
-                      </button>
+                      ><i class="bx bx-x"></i></button>
                     </div>
-                    <div class="modal-body">
-                      <div class="section1">
+                    <div class="modal-body modal-C">
+                      <div class="Csection1">
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Name</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Last Name</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>DUI</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Email</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Phone</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Birth day</label>
+                            </div>
+                          </div>
+                        </div>
                         <div class="row">
                           <div class="col">
                             <div class="input-data">
@@ -80,8 +130,24 @@
                         </div>
                         <div class="row">
                           <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Address</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Membership number</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
                             <div class="select-data">
-                              <label>Status</label>
+                              <label>Stype</label>
                               <div class="select">
                                 <select name="Status" id="Status"></select>
                               </div>
@@ -89,27 +155,16 @@
                           </div>
                           <div class="col">
                             <div class="select-data">
-                              <label>User type</label>
+                              <label>Membership type</label>
                               <div class="select">
-                                <select
-                                  name="user_type"
-                                  id="user_type"
-                                ></select>
+                                <select name="Status" id="Status"></select>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div class="row" id="selectemployee">
-                          <div class="select-data">
-                            <label>Employee</label>
-                            <div class="select">
-                              <select name="Status" id="Status"></select>
-                            </div>
-                          </div>
-                        </div>
                       </div>
-                      <div class="section2">
-                        <div class="imagen"></div>
+                      <div class="Csection2">
+                        <div class="image"></div>
                         <div class="btns">
                           <button id="clean">
                             <i class="bx bxs-eraser"></i>CLEAN
@@ -216,8 +271,8 @@
             </div>
           </div>
           <div class="filtertable">
-            <button class="active">All users <span>11</span></button>
-            <button>Admin users <span>03</span></button>
+            <button class="active">All clients <span>11</span></button>
+            <button>Member <span>05</span></button>
           </div>
           <div class="datatable">
             <div class="infodatatable">
@@ -257,24 +312,26 @@
               <thead>
                 <tr>
                   <th scope="col"><input type="checkbox" /></th>
-                  <th scope="col">ID No.</th>
                   <th scope="col">Name</th>
+                  <th scope="col">Lastname</th>
                   <th scope="col">User</th>
-                  <th scope="col">Password</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">DUI</th>
+                  <th scope="col">Phone number</th>
                   <th scope="col">Status</th>
-                  <th scope="col">User type</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
-                  <td><p>1</p></td>
-                  <td><p>Anderson A.</p></td>
-                  <td><p>anderson</p></td>
-                  <td><p>32dhf2bnd7908sa8</p></td>
-                  <td><p class="status">Active</p></td>
-                  <td><p class="user_type">Admin</p></td>
+                  <td><p>Anderson Isaac</p></td>
+                  <td><p>Aguilar Ramos</p></td>
+                  <td><p>and3raplar</p></td>
+                  <td><p>anderdeco25@gmail.com</p></td>
+                  <td><p>37256162-0</p></td>
+                  <td><p>7502-5241</p></td>
+                  <td><p class="status-active">Active</p></td>
                   <td>
                     <div class="actions">
                       <button class="edit" onclick="btnedit()">
@@ -288,12 +345,13 @@
                 </tr>
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
-                  <td><p>2</p></td>
-                  <td><p>Roberto M.</p></td>
-                  <td><p>Rober</p></td>
-                  <td><p>32dhff3nd7908sa8</p></td>
-                  <td><p class="status">Active</p></td>
-                  <td><p class="user_type">Admin</p></td>
+                  <td><p>Daniel Eli</p></td>
+                  <td><p>Lopez Molina</p></td>
+                  <td><p>dani3lp</p></td>
+                  <td><p>danlop2004@gmail.com</p></td>
+                  <td><p>07778267-2</p></td>
+                  <td><p>7621-3245</p></td>
+                  <td><p class="status-inactive">Active</p></td>
                   <td>
                     <div class="actions">
                       <button class="edit" onclick="btnedit()">
@@ -307,12 +365,13 @@
                 </tr>
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
-                  <td><p>3</p></td>
-                  <td><p>Daniel Lopez</p></td>
-                  <td><p>Dani3l_l</p></td>
-                  <td><p>323cf2bnd7908sa8</p></td>
-                  <td><p class="status">Active</p></td>
-                  <td><p class="user_type">Root</p></td>
+                  <td><p>Roberto Carlos</p></td>
+                  <td><p>Morán Gómez</p></td>
+                  <td><p>gomez41</p></td>
+                  <td><p>robermoran52@gmail.com</p></td>
+                  <td><p>83677278-1</p></td>
+                  <td><p>6182-9866</p></td>
+                  <td><p class="status-active">Active</p></td>
                   <td>
                     <div class="actions">
                       <button class="edit" onclick="btnedit()">
@@ -335,7 +394,7 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <script src="../../controller/Admin/menu.js"></script>
+    <script src="../../controller/admin/menu.js"></script>
     <script src="../../controller/components.js"></script>
   </body>
 </html>

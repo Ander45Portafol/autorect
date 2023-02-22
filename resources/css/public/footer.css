@@ -1,0 +1,83 @@
+/*Style for the footer*/
+footer {
+    background-color: #1F1F1F;
+}
+
+footer .social-footer {
+    text-align: center;
+    margin-top: 40px;   
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+footer a {
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+footer a:hover {
+    color: white;
+}
+
+footer a img {
+    height: 30px;
+}
+
+footer .logo-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer img {
+    margin-right: 5px;
+    height: 35%;
+}
+
+.information-footer a {
+    margin: 5px;
+}
+
+/*Responsive footer*/
+
+@media (min-width: 1000px) {
+    footer .information-footer {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: self-start;
+    }
+}
+
+@media (max-width: 999px) {
+    footer .information-footer {
+        padding-bottom: 50px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/*Style for the modals*/
+.modal-open {
+    overflow: unset;
+    width: 100%;
+    padding-right: 0 !important;
+}
+
+.modal-top-bold {
+    color:#822727;
+    font-weight: bold;
+}
+
+.modal-bold {
+    margin-top: 40px;
+    color: #822727;
+    font-weight: bold;
+}

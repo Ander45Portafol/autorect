@@ -8,69 +8,48 @@
     --color-grey: #707070;
 }
 
-*{
+/*Aply font roboto to all + Styles*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
     font-family: 'Roboto', sans-serif;
 }
 
 /*Home page*/
-/*Navbar menu button*/
-nav .navbar-toggler-icon {
-    background-image: url('../../images/navbar_menu.svg') !important;
-}
 
-/*Navbar - Logo size*/
-.logo-navbar {
-    height: 40px;
-}
-
-.navbar-toggler {
-    border: 2px solid white;
-}
-
-/*Navbar- Login button size*/
-.img-btn-login {
-    width: 30px;
-    height: 25px;
-}
-
-@media (max-width: 991px) {
-    .nav-item {
-        margin-bottom: 5px;
-    }
-}
-
-/*Navbar - Underline links*/
-.nav-link {
+/*Navbar link active*/
+.link-home {
     position: relative;
 }
 
-.nav-link::before {
+.link-home::before {
     content: '';
     position: absolute;
     width: 100%;
     height: 2px;
     border-radius: 4px;
-    background-color: var(--color-focus);
+    background-color: #822727;
     bottom: 0;
     left: 0;
     transform-origin: right;
-    transform: scaleX(0);
-    transition: transform .3s ease-in-out;
-}
-
-.nav-link:hover::before {
-    transform-origin: left;
     transform: scaleX(1);
 }
 
 /*Main - Background image URL*/
 .banner-image-index {
-    background-image: url("../../images/blurry_inicio.svg");
+    background-image: url("../../images/public/blurry_inicio.svg");
 }
 
-/*Main - Text color*/
+/*Main - Text color and bolds*/
 .subtitle {
+    font-weight: bold;
+    font-size: 24px;
     color: var(--color-grey);
+}
+
+.title-white {
+    font-weight: bold;
 }
 
 /*Main - Car image size*/
@@ -81,25 +60,36 @@ nav .navbar-toggler-icon {
 
 /*Align paragraph*/
 .p-top {
+    font-size: 18px;
     margin-top: 50px;
 }
 
 /*Change the color of the titles*/
 .home-title {
+    font-weight: bold;
     color: var(--color-focus);
     margin-top: 5%;
 }
 
-/*Change the color of the buttons*/
+/*Align button + change the color of the buttons*/
+.banner-comps {
+    text-align: center;
+}
+
 .btn-red {
+    font-size: 18px;
     background-color: var(--color-focus);
     color: white !important;
     border: none !important;
-    margin-left: 40% !important;
 }
 
 .btn-red:hover {
     background-color: var(--color-light-red);
+}
+
+.btn-red:active {
+    color: white !important;
+    background-color: var(--color-light-red) !important;
 }
 
 /*Size of the cars images*/
@@ -107,13 +97,15 @@ nav .navbar-toggler-icon {
     width: 50%;
 }
 
-/*Change the navbar color*/
-.navbar2 {
-    background-color: black !important;
+/*align button + change the button color*/
+@media(max-width: 991px) {
+    .section-products {
+        text-align: center;
+    }
 }
 
-/*Change the button color*/
 .btn-seeproducts {
+    font-size: 16px;
     background-color: var(--color-focus);
     color: white !important;
     border: none !important;
@@ -178,12 +170,7 @@ nav .navbar-toggler-icon {
 .carousel-inner {
     margin-top: 70px;
     padding: 1em;
-}
-
-.card {
-    margin: 0 .5em;
-    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-    border: none;
+    margin-bottom: 70px;
 }
 
 .carousel-control-prev,
@@ -198,8 +185,19 @@ nav .navbar-toggler-icon {
 
 /*Cards design*/
 
-.carousel-inner .card-title {
+.card {
+    margin: 0 .5em;
+    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+    border: none;
+}
+
+.card-title{
     color: var(--color-focus);
+    font-weight: bold;
+}
+
+.card-body{
+    font-size: 16px;
 }
 
 .carousel-inner .btn {
@@ -219,6 +217,7 @@ nav .navbar-toggler-icon {
 
 /*Title for the memberships*/
 .home-title-dark {
+    font-weight: bold;
     margin-top: 70px;
     color: var(--color-grey);
 }
@@ -239,9 +238,10 @@ nav .navbar-toggler-icon {
 
 /*Style for the button in memberships section*/
 .btn-membership {
+    font-size: 20px;
     background-color: var(--color-focus);
     border: none;
-    width: 250px;
+    width: 300px;
     padding: 20px;
     font-weight: bold;
     justify-content: center;
@@ -250,6 +250,11 @@ nav .navbar-toggler-icon {
 
 .btn-membership:hover {
     background-color: var(--color-light-red);
+}
+
+.btn-membership:active {
+    color:white !important;
+    background-color: var(--color-light-red) !important;
 }
 
 /*Style for the sponsors logo*/
@@ -292,88 +297,4 @@ nav .navbar-toggler-icon {
 .btn-support img {
     height: 35px;
     width: 35px;
-}
-
-/*Style for the footer*/
-footer {
-    background-color: var(--color-dark-grey);
-}
-
-footer .social-footer {
-    text-align: center;
-    margin-top: 40px;
-    padding-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-}
-
-footer a {
-    align-items: center;
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-footer a:hover {
-    color: white;
-}
-
-footer a img {
-    height: 30px;
-}
-
-footer .logo-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-footer img {
-    margin-right: 5px;
-    height: 35%;
-}
-
-.information-footer a {
-    margin: 5px;
-}
-
-/*Responsive footer*/
-
-@media (min-width: 1000px) {
-    footer .information-footer {
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: self-start;
-    }
-}
-
-@media (max-width: 999px) {
-    footer .information-footer {
-        padding-bottom: 50px;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-/*Style for the modals*/
-.modal-open {
-    overflow: unset;
-    width: 100%;
-    padding-right: 0 !important;
-}
-
-.modal-top-bold {
-    color: var(--color-focus);
-    font-weight: bold;
-}
-
-.modal-bold {
-    margin-top: 40px;
-    color: var(--color-focus);
-    font-weight: bold;
 }

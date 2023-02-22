@@ -1,0 +1,97 @@
+/*Local font usage*/
+@import url(../../fonts/Roboto/Roboto-Regular.ttf);
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+/*Navbar menu button*/
+nav .navbar-toggler-icon {
+    background-image: url('../../images/navbar_menu.svg') !important;
+}
+
+/*Navbar - Logo size*/
+.logo-navbar {
+    height: 40px;
+}
+
+/*Cart button*/
+
+.btn-cart{
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.btn-cart img{
+    height: 37px;
+}
+
+.btn-cart:hover{
+    transition-duration: 0.5s;
+    border-radius: 30%;
+    background-color: #822727;
+}
+
+@media (max-width: 991px) {
+    .navbar-toggler{
+        position: absolute; 
+        top: 15px;
+        right: 15px;
+    }
+    
+    .btn-cart{
+        position: absolute; 
+        top: 15px;
+        right: 85px;
+    }
+}
+
+/*Style navbar button*/
+.navbar-toggler {
+    border: 2px solid white !important;
+}
+
+/*Navbar- Login button size*/
+.img-btn-login {
+    width: 30px;
+    height: 25px;
+}
+
+@media (max-width: 991px) {
+    .nav-item {
+        margin-bottom: 5px;
+    }
+}
+
+/*Navbar - Underline links*/
+.nav-link {
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 4px;
+    background-color: #822727;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+}
+
+.nav-link:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+/*Change the navbar color*/
+.navbar2 {
+    background-color: black !important;
+}
