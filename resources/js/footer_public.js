@@ -2,6 +2,7 @@
 const footer = document.querySelector('footer')
 
 footer.innerHTML = ` 
+<!-- Modal for support -->
 <div class="modal fade" id="ModalSupport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -22,6 +23,7 @@ footer.innerHTML = `
     </div>
 </div>
 
+<!-- Modal for Terms & Conditions -->
 <div class="modal fade" id="ModalTerms" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
@@ -56,6 +58,7 @@ footer.innerHTML = `
     </div>
 </div>
 
+<!-- Modal for How to buy-->
 <div class="modal fade" id="ModalBuy" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -72,22 +75,27 @@ footer.innerHTML = `
         </div>
     </div>
 </div>
+<!-- Bootstrap container -->
 <div class="container">
+    <!-- Footer -->
     <div class="row">
+        <!-- Social media links -->
         <div class="social-footer col-lg-3 col-sm-6">
             <a href="https://www.facebook.com/">
-                <img src="../../resources/images/facebook_logo.svg" alt="facebook"> @Autorect_SV
+                <img src="../../resources/images/public/facebook_logo.svg" alt="facebook"> @Autorect_SV
             </a>
             <a href="https://twitter.com/">
-                <img src="../../resources/images/twitter_logo.svg" alt="twitter"> @Autorect_SV
+                <img src="../../resources/images/public/twitter_logo.svg" alt="twitter"> @Autorect_SV
             </a>
             <a href="https://www.instagram.com/">
-                <img src="../../resources/images/instagram_logo.svg" alt="instagram"> @Autorect_SV
+                <img src="../../resources/images/public/instagram_logo.svg" alt="instagram"> @Autorect_SV
             </a>
         </div>
+        <!-- Logo Autorect -->
         <div class="logo-footer col-lg-6 col-sm-6">
-            <img src="../../resources/images/logosvg.svg" alt="logo_footer">
+            <img src="../../resources/images/logos/logo_svg.svg" alt="logo_footer">
         </div>
+        <!-- Information links -->
         <div class="information-footer col-lg-3 col-sm-12">
             <a data-bs-toggle="modal" data-bs-target="#ModalTerms">
                 Terms & Conditions
