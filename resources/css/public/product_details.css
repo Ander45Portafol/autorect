@@ -1,0 +1,378 @@
+/*Local font usage*/
+@import url(../../fonts/Roboto/Roboto-Regular.ttf);
+
+:root{
+    --primary-color: #FFFFFF;
+    --secondary-color: #1F1F1F;
+    --focus-color: #822727;
+    --cards-white: #F4F6F8;
+    --reference-grey: #969595;
+    --arrow-grey: #383838;
+    --black: #000000;
+    --costumers-grey: #6B6B6B;
+    --line-white: #D9D9D9;
+    --text-grey: #747474;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar{
+    width: 8px;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: var(--focus-color);
+    border-radius: 4px;
+}
+
+.navbar{
+    background-color: var(--primary-color) !important;
+    width: 100%;
+    height: 80px;
+}
+
+.navbar .nav-item .title{
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--focus-color) !important;
+    margin-right: 420px;
+    margin-left: 10px;
+}
+
+.navbar .nav-item a{
+    color: var(--focus-color);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn{
+    font-size: 20px;
+    color: var(--focus-color);
+    font-weight: 30px;
+    border: none;
+    display: flex;
+    align-items: center;
+    margin-left: -300px;
+}
+
+.btn i{
+    margin-top: 20px;
+}
+
+input[type="search"]{
+    border-color: var(--focus-color);
+    border-width: 2px;
+    width: 230px;
+    margin-top: 20px;
+}
+
+.line{
+    content: '';
+    position: relative;
+    width: 95%;
+    height: 3px;
+    background-color: var(--reference-grey) !important;
+    display: flex;
+    margin-left: 36px;
+    justify-content: center;
+}
+
+.sections{
+    margin-left: 40px;
+    margin-top: 10px;
+    display: flex;
+}
+
+.product-images{
+    display: flex;
+    width: 50%;
+}
+
+.block{
+    width: 96%;
+    border: none;
+}
+
+.product-images .card-body img{
+    width: 120px;
+}
+
+.images{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.images img{
+    margin: 10px;
+    opacity: 60%;
+}
+
+.images img:hover{
+    margin: 10px;
+    opacity: 100%;
+    transition: 0.3s;
+}
+
+.images button {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--arrow-grey);
+}
+
+.product-info{
+    width: 48%;
+
+}
+
+.product-info h1{
+    color: var(--black);
+    font-weight: 600;
+    font-size: 56px;
+}
+
+.product-info i{
+    color: var(--focus-color);
+    font-size: 22px;
+    margin: 2px;
+}
+
+.product-info .valorations{
+    display: flex;
+    align-items: center;
+}
+
+.product-info .valorations span{
+    font-size: 16px;
+    margin-left: 6px;
+    margin-top: 2px;
+}
+
+.product-info .price{
+    margin-top: 8px;
+    color: var(--focus-color);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.product-info .info-line1{
+    content: '';
+    position: relative;
+    height: 1px;
+    width: 98%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: var(--line-white) !important;
+}
+
+.product-info h5{
+    margin-top: 14px;
+    color: var(--text-grey);
+    font-size: 20px;
+}
+
+.product-info .info-line2{
+    content: '';
+    position: relative;
+    height: 1px;
+    width: 98%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: var(--line-white) !important;
+}
+
+input[type="text"]{
+    margin-top: 6px;
+    width: 70px;
+    text-align: center;
+    border-radius: 4px;
+    border-color: var(--focus-color);
+    border-width: 2px;
+    font-weight: 700;
+    color: var(--text-grey);
+}
+
+.quantity button{
+    margin-left: 8px;
+    background-color: var(--focus-color) !important;
+    border-radius: 4px;
+    border-color: var(--focus-color);
+    padding: 4px;
+    font-weight: 400;
+    width: 24%;
+    color: var(--primary-color);
+}
+
+.line3{
+    content: '';
+    position: relative;
+    height: 1px;
+    width: 98%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: var(--line-white) !important;
+}
+
+.categories{
+    display: flex;
+    align-items: center;
+}
+.categories h4{
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.categories h5{
+    font-size: 12px;
+    margin-left: 16px;
+    margin-top: -0.3%;
+}
+
+.tags{
+    display: flex;
+    align-items: center;
+}
+
+.tags h4{
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.tags h5{
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: 0.3%;
+}
+
+.more-reviews{
+    width: 97%;
+    height: 30%;
+    margin-top: 540px;
+    position: absolute;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.buttons button{
+    margin-left: 40px;
+    padding: 10px;
+    width: 12%;
+    border: none;
+    background-color: var(--primary-color);
+}
+
+.buttons button h5{
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.buttons .active{
+    color: var(--focus-color);
+}
+
+.line-1{
+    content: '';
+    position: relative;
+    height: 1px;
+    width: 98%;
+    margin-bottom: 10px;
+    background-color: var(--line-white) !important;
+}
+
+.description{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-grey);
+}
+
+.line-2{
+    content: '';
+    position: relative;
+    height: 1px;
+    width: 98%;
+    margin-bottom: 10px;
+    background-color: var(--line-white) !important;
+}
+
+.related{
+    width: 98%;
+    height: 60%;
+    position: absolute;
+    margin-top: 880px;
+}
+
+.related h1{
+    margin-bottom: 50px;
+    font-size: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line-related{
+    content: '';
+    position: relative;
+    height: 3px;
+    width: 28%;
+    margin-top: -50px;
+    margin-bottom: 50px;
+    margin-left: 476px;
+    background-color: var(--focus-color) !important;
+}
+
+
+.products .card button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--focus-color);
+    border: none;
+    margin-left: 230px;
+    position: absolute;
+    margin-top: -125px;
+    color: var(--primary-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.products .card .bxs-star{
+    color: var(--focus-color);
+    font-size: 20px;
+}
+
+.products .card{
+    background-color: var(--cards-white);
+    border: none;
+}
+
+.products .card span{
+    color: var(--secondary-color);
+    font-size: 20px;
+    font-weight: 800;
+    margin-left: 200px;
+}

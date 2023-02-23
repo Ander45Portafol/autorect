@@ -2,81 +2,309 @@
 @import url(../../fonts/Roboto/Roboto-Regular.ttf);
 
 /*Root variables*/
-:root{
-    --primary-color: #FFFFFF;
-    --dark-color: #131313;
-    --focus-color: #822727;
-    --data-white: #F5F5F5;
-    --subtitle-grey: #898989;
-    --refresh-blue: #5AC0D7;
-    --edit-yellow: #FFCA2C;
-    --delete-red: #8B3A3A;
+:root {
+  --primary-color: #ffffff;
+  --dark-color: #131313;
+  --focus-color: #822727;
+  --data-white: #f5f5f5;
+  --subtitle-grey: #898989;
+  --refresh-blue: #5ac0d7;
+  --edit-yellow: #ffca2c;
+  --delete-red: #8b3a3a;
 }
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 
-main{
+main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+aside {
+  width: 20%;
+  height: 100%;
+  background-color: var(--dark-color);
+}
+
+section {
+  width: 80%;
+  height: 100%;
+}
+
+.offcanvas-body {
+  background-color: var(--dark-color) !important;
+  width: 100%;
+  height: 100%;
+}
+
+.offcanvas-body .user-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 22px;
+  margin-left: 90px;
+}
+
+.offcanvas-body .user-info img {
+  margin-left: 40px;
+  margin-top: 20px;
+  width: 150px;
+  height: 150px;
+}
+
+.offcanvas-body .user-info h3 {
+  font-size: 24px;
+  margin-left: 30px;
+  padding-top: 28px;
+  color: var(--primary-color);
+}
+
+.offcanvas-body .user-info h4 {
+  font-size: 22px;
+  margin-left: 90px;
+  color: var(--subtitle-grey);
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+  background-color: var(--dark-color);
+  margin-right: 0;
+  height: 450px;
+  width: 378 px;
+}
+
+.options-container button {
+  background-color: var(--dark-color);
+  color: var(--data-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+}
+
+.options-container button:hover {
+  background-color: var(--delete-red);
+  transition: 0.2s;
+  color: var(--primary-color);
+}
+
+.options-container button i {
+  margin: 10px;
+  font-size: 40px;
+}
+
+.top-titles {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  margin-left: 50px;
+}
+
+.top-titles h2 {
+  color: var(--focus-color);
+  font-size: 28px;
+}
+
+.top-titles h4 {
+  color: var(--subtitle-grey);
+  font-size: 20px;
+}
+
+.buttons {
+  display: flex;
+  position: fixed;
+  margin-left: 50%;
+  margin-top: -90px;
+  padding: 20px;
+}
+
+.buttons button {
+  display: flex;
+  width: 100px;
+  height: 30px;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+.buttons .status {
+  border-radius: 20px;
+  border: none;
+  background-color: var(--primary-color);
+}
+
+.dot::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 20px;
+  background-color: var(--focus-color);
+  margin-top: -8px;
+  margin-left: -2px;
+}
+
+.buttons .btn-refresh {
+  border: none;
+  margin-top: -2px;
+  font-size: 20px;
+  color: var(--primary-color);
+  border-radius: 25px;
+  height: 50px;
+  width: 50px;
+  background-color: var(--refresh-blue);
+}
+
+.buttons .btn-edit {
+  border: none;
+  margin-top: -2px;
+  font-size: 20px;
+  color: var(--primary-color);
+  border-radius: 25px;
+  height: 50px;
+  width: 50px;
+  background-color: var(--edit-yellow);
+}
+
+.buttons .btn-delete {
+  border: none;
+  margin-top: -2px;
+  font-size: 20px;
+  color: var(--primary-color);
+  border-radius: 25px;
+  height: 50px;
+  width: 50px;
+  background-color: var(--delete-red);
+}
+
+.container .list-group {
+  width: 100%;
+  height: 100%;
+  margin-top: 65px;
+  margin-left: -80px;
+}
+
+.container .list-group .list-group-item {
+  background-color: var(--data-white) !important;
+  color: var(--focus-color);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 25px;
+}
+
+/*Responsive*/
+
+@media screen and (min-width: 768px) {
+  .offcanvas-body .user-info {
+    margin-top: 22px;
+    margin-left: 30px;
+  }
+
+  .offcanvas-body .user-info h3 {
+    font-size: 20px;
+    margin-left: 40px;
+    padding-top: 28px;
+    color: var(--primary-color);
+  }
+
+  .offcanvas-body .user-info h4 {
+    font-size: 18px;
+    margin-left: 84px;
+    color: var(--subtitle-grey);
+  }
+
+  .offcanvas-body .user-info img {
+    margin-left: 60px;
+    margin-top: 22px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .options-container {
     display: flex;
-    width: 100%;
-    height: 100%;
-}
-
-body{
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-
-aside{
-    width: 20%;
-    height: 100%;
+    flex-direction: column;
+    margin-top: 2px;
     background-color: var(--dark-color);
+    margin-right: 0;
+    height: 422px;
+    width: 378 px;
+  }
+
+  .options-container button {
+    background-color: var(--dark-color);
+    color: var(--data-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+  }
+
+  .options-container button i {
+    margin: 10px;
+    font-size: 30px;
+  }
+
+  .container .list-group {
+    margin-top: 10px;
+    margin-left: 40px;
+    width: 90%;
+    height: 10%;
+  }
+
+  .container .list-group .list-group-item {
+    padding: 18px;
+  }
 }
 
-section{
-    width: 80%;
-    height: 100%;
-}
+@media screen and (min-width: 1080px) {
 
-.offcanvas-body{
-    background-color: var(--dark-color) !important;
-    width: 100%;
-    height: 100%;
-}
-
-.offcanvas-body .user-info{
+  .offcanvas-body .user-info {
     display: flex;
     flex-direction: column;
     margin-top: 22px;
-    margin-left: 90px;
-}
+    margin-left: 300px;
+  }
 
-.offcanvas-body .user-info img{
-    margin-left: 40px;
+  .offcanvas-body .user-info img {
+    margin-left: 80px;
     margin-top: 20px;
     width: 150px;
     height: 150px;
-}
+  }
 
-.offcanvas-body .user-info h3{
+  .offcanvas-body .user-info h3 {
     font-size: 24px;
     margin-left: 30px;
     padding-top: 28px;
     color: var(--primary-color);
-}
+  }
 
-.offcanvas-body .user-info h4{
+  .offcanvas-body .user-info h4 {
     font-size: 22px;
     margin-left: 90px;
     color: var(--subtitle-grey);
-}
+  }
 
-.options-container{
+  .options-container {
     display: flex;
     flex-direction: column;
     margin-top: 70px;
@@ -84,9 +312,9 @@ section{
     margin-right: 0;
     height: 450px;
     width: 378 px;
-}
+  }
 
-.options-container button{
+  .options-container button {
     background-color: var(--dark-color);
     color: var(--data-white);
     display: flex;
@@ -96,61 +324,61 @@ section{
     font-size: 22px;
     font-weight: bold;
     border: none;
-}
+  }
 
-.options-container button:hover{
+  .options-container button:hover {
     background-color: var(--delete-red);
     transition: 0.2s;
     color: var(--primary-color);
-}
+  }
 
-.options-container button i{
+  .options-container button i {
     margin: 10px;
     font-size: 40px;
-}
+  }
 
-.top-titles{
+  .top-titles {
     display: flex;
     flex-direction: column;
     margin-top: 60px;
     margin-left: 50px;
-}
+  }
 
-.top-titles h2{
+  .top-titles h2 {
     color: var(--focus-color);
     font-size: 28px;
-}
+  }
 
-.top-titles h4{
+  .top-titles h4 {
     color: var(--subtitle-grey);
     font-size: 20px;
-}
+  }
 
-.buttons{
+  .buttons {
     display: flex;
     position: fixed;
     margin-left: 50%;
     margin-top: -90px;
     padding: 20px;
-}
+  }
 
-.buttons button{
+  .buttons button {
     display: flex;
     width: 100px;
     height: 30px;
     align-items: center;
     justify-content: space-around;
     margin: 10px;
-}
+  }
 
-.buttons .status{
+  .buttons .status {
     border-radius: 20px;
     border: none;
     background-color: var(--primary-color);
-}
+  }
 
-.dot::before{
-    content: '';
+  .dot::before {
+    content: "";
     position: absolute;
     width: 16px;
     height: 16px;
@@ -158,9 +386,9 @@ section{
     background-color: var(--focus-color);
     margin-top: -8px;
     margin-left: -2px;
-}
+  }
 
-.buttons .btn-refresh{
+  .buttons .btn-refresh {
     border: none;
     margin-top: -2px;
     font-size: 20px;
@@ -169,9 +397,9 @@ section{
     height: 50px;
     width: 50px;
     background-color: var(--refresh-blue);
-}
+  }
 
-.buttons .btn-edit{
+  .buttons .btn-edit {
     border: none;
     margin-top: -2px;
     font-size: 20px;
@@ -180,9 +408,9 @@ section{
     height: 50px;
     width: 50px;
     background-color: var(--edit-yellow);
-}
+  }
 
-.buttons .btn-delete{
+  .buttons .btn-delete {
     border: none;
     margin-top: -2px;
     font-size: 20px;
@@ -191,19 +419,201 @@ section{
     height: 50px;
     width: 50px;
     background-color: var(--delete-red);
-}
+  }
 
-.container .list-group{
+  .container .list-group {
     width: 100%;
     height: 100%;
     margin-top: 65px;
     margin-left: -80px;
-}
+  }
 
-.container .list-group .list-group-item{
+  .container .list-group .list-group-item {
     background-color: var(--data-white) !important;
     color: var(--focus-color);
     font-size: 16px;
     font-weight: 600;
     padding: 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .offcanvas-body .user-info {
+    margin-top: 22px;
+    margin-left: 20px;
+  }
+
+  .offcanvas-body .user-info h3 {
+    font-size: 20px;
+    margin-left: 40px;
+    padding-top: 28px;
+    color: var(--primary-color);
+  }
+
+  .offcanvas-body .user-info h4 {
+    font-size: 18px;
+    margin-left: 84px;
+    color: var(--subtitle-grey);
+  }
+
+  .offcanvas-body .user-info img {
+    margin-left: 60px;
+    margin-top: 22px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .options-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2px;
+    background-color: var(--dark-color);
+    margin-right: 0;
+    height: 422px;
+    width: 378 px;
+  }
+
+  .options-container button {
+    background-color: var(--dark-color);
+    color: var(--data-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+  }
+
+  .options-container button i {
+    margin: 10px;
+    font-size: 30px;
+  }
+
+  .container .list-group {
+    margin-top: 10px;
+    margin-left: 40px;
+    width: 90%;
+    height: 10%;
+  }
+
+  .container .list-group .list-group-item {
+    padding: 18px;
+  }
+  footer {
+    width: 100%;
+    height: 100%;
+  }
+
+  aside {
+    width: 20%;
+    height: 100%;
+    background-color: var(--dark-color);
+  }
+
+  section {
+    width: 80%;
+    height: 100%;
+  }
+
+  footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 260px;
+  }
+
+  .offcanvas-body {
+    background-color: var(--dark-color) !important;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .offcanvas-body .user-info {
+    margin-top: 22px;
+    margin-left: 20px;
+  }
+
+  .offcanvas-body .user-info h3 {
+    font-size: 20px;
+    margin-left: 40px;
+    padding-top: 28px;
+    color: var(--primary-color);
+  }
+
+  .offcanvas-body .user-info h4 {
+    font-size: 18px;
+    margin-left: 84px;
+    color: var(--subtitle-grey);
+  }
+
+  .offcanvas-body .user-info img {
+    margin-left: 60px;
+    margin-top: 22px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .options-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2px;
+    background-color: var(--dark-color);
+    margin-right: 0;
+    height: 422px;
+    width: 378 px;
+  }
+
+  .options-container button {
+    background-color: var(--dark-color);
+    color: var(--data-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+  }
+
+  .options-container button i {
+    margin: 10px;
+    font-size: 30px;
+  }
+
+  .container .list-group {
+    margin-top: 10px;
+    margin-left: 40px;
+    width: 92%;
+    height: 10px;
+  }
+
+  .container .list-group .list-group-item {
+    padding: 12px;
+    height: 100px;
+  }
+  footer {
+    width: 100%;
+    height: 100%;
+  }
+
+  aside {
+    width: 20%;
+    height: 100%;
+    background-color: var(--dark-color);
+  }
+
+  section {
+    width: 80%;
+    height: 100%;
+  }
+
+  footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 260px;
+  }
 }
