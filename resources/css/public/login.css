@@ -14,7 +14,7 @@ body .imagen{
     position: absolute;
 }
 body{
-    background-image: url(../../images/Car.jpg);
+    background-image: url(../../images/logos/car.jpg);
     background-size: cover;
     overflow-y:hidden ;
 }
@@ -125,6 +125,11 @@ transform: scaleX(1);
     margin-top: 2rem;
 }
 .contenedor .buttons #btnlogin{
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #822727;
     color: #FFF;
     border-radius: 20px;
