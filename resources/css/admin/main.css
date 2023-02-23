@@ -275,6 +275,16 @@
     height: 30px;
     width: 45px;
   }
+  /*This code is to add style at the order_details button in the table*/
+  .sectiontable .table td .order_detail{
+    border: 2px solid #2E98BA;
+    color: #2E98BA;
+    font-size: 16pt;
+    border-radius: 5px;
+    width: 45px;
+    height: 30px;
+    margin-left: 20px;
+  }
   /*This code is to secton the button at the table*/
   .actions {
     display: flex;
@@ -475,6 +485,15 @@
     border: 3px solid #1f1f1f;
     width: 180px;
   }
+  .status-C{
+    margin-top: 30px;
+  }
+  .form-check input{
+    background-color: #2E98BA;
+  }
+  .form-check input:checked{
+    background-color: #822727;
+  }
   /*Products*/
   .Psection1{
     width: 60%;
@@ -483,50 +502,19 @@
     width: 25%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-  }
-  /*Order details*/
-  #redOrderDetail{
-    background-color: #822727;
-    border: none;
-    border-radius: 20px;
-    color: #fff;
-    height: 35px;
-    width: 140px;
-    padding-right: 10px;
-  }
-  .modal-OD{
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
   }
-  .ODsection1{
-    width: 70%;
-  }
-  .ODsection2{
-    margin-top: 20px;
-    width: 80%;
-  }
-  .ODsection2 .btns{
+  .Psection2 .btns{
     display: flex;
-    align-items: flex-end;
+    align-items: center;
   }
-  /*Orders*/
-  .modal-O{
+  .Psection2 .image{
     display: flex;
-    flex-direction: column;
-  }
-  .Osection1{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .Osection2{
-    width: 80%;
-  }
-  .Osection2 .btns{
-    display: flex;
-    align-items: flex-end;
+    background-color: #fff;
+    height: 200px;
+    border: 3px solid #1f1f1f;
+    width: 180px;
   }
   /*Categories*/
   #redcategory{
