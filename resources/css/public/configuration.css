@@ -45,31 +45,37 @@ section{
     height: 100%;
 }
 
+/*user information and actions buttons container*/
+.offcanvas-body{
+    width: 100%;
+    height: 800px;
+}
+/*user information*/
 .offcanvas-body .user-info{
     margin-top: 22px;
-    margin-left: 30px;
+    margin-left: 90px;
 }
-
+/*user information titles*/
 .offcanvas-body .user-info h3{
     font-size: 20px;
     margin-left: 40px;
     padding-top: 28px;
     color: var(--primary-color);
 }
-
+/*user information subtitles*/
 .offcanvas-body .user-info h4{
     font-size: 18px;
     margin-left: 84px;
     color: var(--subtitle-grey);
 }
-
+/*user information img*/
 .offcanvas-body .user-info img{
     margin-left: 60px;
     margin-top: 22px;
     width: 100px;
     height: 100px;
 }
-
+/*buttons container*/
 .options-container{
 display: flex;
 flex-direction: column;
@@ -79,52 +85,54 @@ margin-right: 0;
 height: 422px;
 width: 378 px;
 }
-
+/*buttons*/
 .options-container button{
 background-color: var(--dark-color);
 color: var(--data-white);
 display: flex;
 align-items: center;
 justify-content: center;
+padding: 20px;
 height: 150px;
 font-size: 18px;
 font-weight: bold;
 border: none;
 }
-
+/*buttons-icons*/
 .options-container button i{
 margin: 10px;
 font-size: 30px;
 }
-
+/*user information container*/
 .container .list-group{
     margin-top: 10px;
     margin-left: 40px;
     width: 90%;
     height: 10%;
 }
-
+/*lists*/
 ul li{
     width: 100%;
     height: 230px;
     margin-bottom: 20px;
 }
-
+/*imgs*/
 .container .list-group .list-group-item img{
     width: 200px;
     height: 100px;
 }
-
+/*titles*/
 .container .list-group .list-group-item h1{
     color: var(--focus-color);
     font-size: 26px;
     font-weight: 700;
 }
 
+/*buttons*/
 .container .list-group .list-group-item button{
     color: var(--focus-color);
 }
-
+/*list container*/
 .container .list-group .list-group-item .option-lang button{
     margin-left: -112px;
     margin-top: 40px;
@@ -132,7 +140,7 @@ ul li{
     border: none;
     background-color: var(--grey-background);
 }
-
+/*hover events*/
 .container .list-group .list-group-item .option-lang button:hover{
     border: solid 1px var(--focus-color);
 }
@@ -141,6 +149,7 @@ ul li{
     border: solid 1px var(--focus-color);
 }
 
+/*list groups with options*/
 .container .list-group .list-group-item .option-theme button{
     margin-left: -100px;
     margin-top: 40px;
@@ -153,30 +162,32 @@ ul li{
     margin-right: 150px;
 }
 
+/*spacing and color*/
 .container .list-group .list-group-item{
     padding: 18px;
     display: flex;
     background-color: var(--grey-background);
 }
 
+/*hover event*/
 .options-container button:hover{
     background-color: var(--delete-red);
     transition: 0.2s;
     color: var(--primary-color);
 }
-
+/*buttons icon*/
 .options-container button i{
     margin: 10px;
     font-size: 40px;
 }
-
+/*titles*/
 .top-titles{
     display: flex;
     flex-direction: column;
     margin-top: 60px;
     margin-left: 50px;
 }
-
+/*user information and actions buttons container*/
 .top-titles h2{
     color: var(--focus-color);
     font-size: 28px;
@@ -186,7 +197,7 @@ ul li{
     color: var(--subtitle-grey);
     font-size: 20px;
 }
-
+/*buttons*/
 .buttons{
     display: flex;
     position: fixed;
@@ -209,7 +220,7 @@ ul li{
     border: none;
     background-color: var(--primary-color);
 }
-
+/*active dot*/
 .dot::before{
     content: '';
     position: absolute;
@@ -220,7 +231,7 @@ ul li{
     margin-top: -8px;
     margin-left: -2px;
 }
-
+/*buttons of action*/
 .buttons .btn-refresh{
     border: none;
     margin-top: -2px;
