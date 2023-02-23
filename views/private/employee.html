@@ -3,24 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" href="../../resources/images/LogoLogin.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--This css file is to charger the navbar style-->
     <link rel="stylesheet" href="../../resources/css/admin/menu.css" />
-    <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
+    <!--In this css file are all styles to formularies-->
+    <link rel="stylesheet" href="../../resources/css/admin/main.css" />
+    <!--It is a icon, to show with the title of the page-->
+    <link rel="icon" href="../../resources/images/LogoLogin.png" />
+    <!--This is the bootstrap link to use the bootstrap  styles-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../../resources/css/admin/main.css" />
+    <!--This is the bootstrap link to use the bootstrap style-->
+    <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
     <title>Employee</title>
   </head>
   <body>
+    <!--In this class are contained all page-->
     <div class="allinfo">
+      <!--Charger the navbar-->
       <aside></aside>
+      <!--In this class whit the main tag are contained everthing data to employees-->
       <main class="data">
         <section>
+          <!--This button funtionated to responsive menu-->
+          <button class="showmenu"><i class="bx bx-menu"></i></button>
+          <!--This class is to structured the top section at the page-->
           <div class="topmain">
             <div class="texttop">
               <p>EMPLOYEES</p>
@@ -28,7 +38,7 @@
             <div class="buttonstop">
               <button>Export <i class="bx bx-export"></i></button>
               <button>Print <i class="bx bxs-printer"></i></button>
-              <!-- Button trigger modal -->
+              <!--This button is to open modal, to do a insert at the table-->
               <button
                 type="button"
                 class="btn"
@@ -51,10 +61,12 @@
               >
                 <div class="modal-dialog">
                   <div class="modal-content">
+                    <!--This class is to modify the header section at the modal-->
                     <div class="modal-header">
                       <p class="modal-title" id="exampleModalLabel">
                         EMPLOYEES
                       </p>
+                      <!--This button is to close the modal-->
                       <button
                         type="button"
                         id="btnclose"
@@ -64,7 +76,9 @@
                         <i class="bx bx-x"></i>
                       </button>
                     </div>
+                    <!--In this class are add elements like inputs, buttons, etc-->
                     <div class="modal-body">
+                      <!--This class is to add inputs or selects-->
                       <div class="Esection1">
                         <div class="row">
                           <div class="col">
@@ -139,7 +153,8 @@
                               <label>Address</label>
                             </div>
                           </div>
-                          <div class="col col-btn" >
+                          <!--This classi is to show buttons-->
+                          <div class="col col-btn">
                             <div class="btns">
                               <button id="clean">
                                 <i class="bx bxs-eraser"></i>CLEAN
