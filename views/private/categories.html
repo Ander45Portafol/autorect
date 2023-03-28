@@ -37,12 +37,15 @@
               <p>CATEGORIES</p>
             </div>
             <div class="buttonstop">
-              <button>Export <i class="bx bx-export"></i></button>
+              <button name="btnexport">
+                Export <i class="bx bx-export"></i>
+              </button>
               <button>Print <i class="bx bxs-printer"></i></button>
               <!--This button is to open modal, to do a insert at the table-->
               <button
                 type="button"
                 id="redcategory"
+                onclick="openmodal()"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop"
               >
@@ -63,7 +66,7 @@
                   <div class="modal-content">
                     <!--This class is to modify the header section at the modal-->
                     <div class="modal-header">
-                      <p class="modal-title">CATEGORIES</p>
+                      <p id="modal-title">CATEGORIES</p>
                       <!--This button is to close the modal-->
                       <button
                         type="button"
@@ -76,39 +79,46 @@
                     </div>
                     <!--In this class are add elements like inputs, buttons, etc-->
                     <div class="modal-body modal-Ct">
+                      <form id="save-form" method="post" enctype="multipart/form-data">
+                        <div class="Ctsection1">
+                          <div class="row">
+                            <div class="col">
+                              <input type="text" class="hide" id="id" name="id">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="input-data">
+                                <input type="text" name="category_name" required/>
+                                <div class="underline"></div>
+                                <label>Category name</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col" id="cdescription">
+                              <div class="input-data">
+                                <input type="text" name="description" />
+                                <div class="underline"></div>
+                                <label>Category description</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--This class is to add the image to categories and buttons-->
+                        <div class="Ctsection2">
+                          <div class="image"></div>
+                          <div class="btns">
+                            <button id="clean" type="reset">
+                              <i class="bx bxs-eraser"></i>CLEAN
+                            </button>
+                            <button id="adduser" type="submit">
+                              <i class="bx bxs-plus-circle"></i>ADD CATEGORIES
+                            </button>
+                          </div>
+                        </div>
+                      </form>
                       <!--This class is to add inputs or selects-->
-                      <div class="Ctsection1">
-                        <div class="row">
-                          <div class="col">
-                            <div class="input-data">
-                              <input type="text" required />
-                              <div class="underline"></div>
-                              <label>Category name</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col" id="cdescription">
-                            <div class="input-data">
-                              <input type="text" required />
-                              <div class="underline"></div>
-                              <label>Category description</label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!--This class is to add the image to categories and buttons-->
-                      <div class="Ctsection2">
-                        <div class="image"></div>
-                        <div class="btns">
-                          <button id="clean">
-                            <i class="bx bxs-eraser"></i>CLEAN
-                          </button>
-                          <button id="adduser">
-                            <i class="bx bxs-plus-circle"></i>ADD USER
-                          </button>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -270,10 +280,10 @@
                   </td>
                   <td>
                     <div class="actions">
-                      <button class="edit" onclick="btnedit()">
+                      <button class="edit" onclick="updateModal()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         <i class="bx bxs-edit"></i>
                       </button>
-                      <button class="delete" onclick="btndelete()">
+                      <button class="delete" onclick="deleteModal()">
                         <i class="bx bxs-trash"></i>
                       </button>
                     </div>
@@ -290,10 +300,10 @@
                   </td>
                   <td>
                     <div class="actions">
-                      <button class="edit" onclick="btnedit()">
+                      <button class="edit" onclick="updateModal()" >
                         <i class="bx bxs-edit"></i>
                       </button>
-                      <button class="delete" onclick="btndelete()">
+                      <button class="delete" onclick="deleteModal()">
                         <i class="bx bxs-trash"></i>
                       </button>
                     </div>
@@ -332,9 +342,11 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
+    <script src="../../resources/js/sweetalert.min.js"></script>
+    <script src="../../controller/components.js"></script>
     <!--This js script is to add navbar at aside tag-->
     <script src="../../controller/Admin/menu.js"></script>
     <!--This js script is to do funcionality some components of bootstrap-->
-    <script src="../../controller/components.js"></script>
+    <script src="../../controller/admin/category.js"></script>
   </body>
 </html>

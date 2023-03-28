@@ -1,120 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!--This css file is to make the styles-->
-    <link rel="stylesheet" href="../../resources/css/admin/admin.css" />
-    <!--This css file is to navbar styles-->
-    <link rel="stylesheet" href="../../resources/css/admin/menu.css" />
-    <!--This file is to protected this page-->
-    <link rel="stylesheet" href="../../resources/htaccess.txt" />
-    <!--This is the icon with the title-->
-    <link rel="icon" href="../../resources/images/logos/logo_login.png" />
-    <!--This is the css local to use icons of boxicons-->
-    <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
-      rel="stylesheet"
-    />
-    <!--This link is to use bootstrap and styles-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-  </head>
-  <body>
-    <!--This class contained all page-->
-    <div class="allinfo">
-      <!--This tag is to charger navbar-->
-      <aside></aside>
-      <!--This class with this tag are to section data to dashboard-->
-      <main class="datasection">
-        <section>
-          <!--This section is to section top in the page-->
-          <div class="topmain">
-            <div class="text">
-              <p>DASHBOARD</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!--This css file is to make the styles-->
+  <link rel="stylesheet" href="../../resources/css/admin/admin.css" />
+  <!--This css file is to navbar styles-->
+  <link rel="stylesheet" href="../../resources/css/admin/menu.css" />
+  <!--This is the icon with the title-->
+  <link rel="icon" href="../../resources/images/logos/logo_login.png" />
+  <!--This is the css local to use icons of boxicons-->
+  <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
+  <!--This link is to use bootstrap and styles-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+</head>
+
+<body>
+  <!--This class contained all page-->
+  <div class="allinfo">
+    <!--This tag is to charger navbar-->
+    <aside></aside>
+    <!--This class with this tag are to section data to dashboard-->
+    <main class="datasection">
+      <section>
+        <!--This section is to section top in the page-->
+        <div class="topmain">
+          <div class="text">
+            <p>DASHBOARD</p>
+          </div>
+          <div class="btnmain">
+            <button class="btndashboard">Daily</button>
+            <button class="btndashboard">Weekly</button>
+            <button class="btndashboard">Monthly</button>
+            <button class="user"><i class="bx bxs-user-circle"></i> <i class='bx bx-slider'></i></button>
+          </div>
+        </div>
+        <!--This class is to contained the principal information-->
+        <div class="datainfo">
+          <div class="row">
+            <div class="col">
+              <p>STORE RATING</p>
+              <p class="number">4.5<span>/5</span></p>
+              <div class="stars">
+                <i class="bx bxs-star"></i>
+                <i class="bx bxs-star"></i>
+                <i class="bx bxs-star"></i>
+                <i class="bx bxs-star"></i>
+                <i class="bx bxs-star-half"></i>
+              </div>
             </div>
-            <div class="btnmain">
-              <button class="btndashboard">Daily</button>
-              <button class="btndashboard">Weekly</button>
-              <button class="btndashboard">Monthly</button>
-              <button class="user"><i class="bx bxs-user-circle"></i> <i class='bx bx-slider'></i></button>
+            <div class="col">
+              <p>TOTAL INCOME</p>
+              <p class="number">4,540.98 <span>USD</span></p>
+              <p class="green">+5% <i class="bx bxs-up-arrow"></i></p>
+            </div>
+            <div class="col">
+              <p>TOTAL ORDERS</p>
+              <p class="number">4,120</p>
+              <p class="green">+3% <i class="bx bxs-up-arrow"></i></p>
+            </div>
+            <div class="col">
+              <p>NEW CLIENTS</p>
+              <p class="number">516</p>
+              <p class="red">-2% <i class="bx bxs-down-arrow"></i></p>
             </div>
           </div>
-          <!--This class is to contained the principal information-->
-          <div class="datainfo">
-            <div class="row">
-              <div class="col">
-                <p>STORE RATING</p>
-                <p class="number">4.5<span>/5</span></p>
-                <div class="stars">
-                  <i class="bx bxs-star"></i>
-                  <i class="bx bxs-star"></i>
-                  <i class="bx bxs-star"></i>
-                  <i class="bx bxs-star"></i>
-                  <i class="bx bxs-star-half"></i>
-                </div>
-              </div>
-              <div class="col">
-                <p>TOTAL INCOME</p>
-                <p class="number">4,540.98 <span>USD</span></p>
-                <p class="green">+5% <i class="bx bxs-up-arrow"></i></p>
-              </div>
-              <div class="col">
-                <p>TOTAL ORDERS</p>
-                <p class="number">4,120</p>
-                <p class="green">+3% <i class="bx bxs-up-arrow"></i></p>
-              </div>
-              <div class="col">
-                <p>NEW CLIENTS</p>
-                <p class="number">516</p>
-                <p class="red">-2% <i class="bx bxs-down-arrow"></i></p>
-              </div>
+        </div>
+        <!--This class is to bottom section of the page-->
+        <div class="bottommain">
+          <!--This is the grafics section-->
+          <div class="grafics">
+            <div class="salesreport">
+              <h3>SALES REPORT</h3>
+            </div>
+            <div class="recentorder">
+              <h3>RECENT ORDERS</h3>
             </div>
           </div>
-          <!--This class is to bottom section of the page-->
-          <div class="bottommain">
-            <!--This is the grafics section-->
-            <div class="grafics">
-              <div class="salesreport">
-                <h3>SALES REPORT</h3>
-              </div>
-              <div class="recentorder">
-                <h3>RECENT ORDERS</h3>
-              </div>
+          <!--This is the brands section-->
+          <div class="topbrands">
+            <p>TOP BRANDS</p>
+            <div class="marca">
+              <img src="../../resources/images/private/mazda.svg" alt="" />
             </div>
-            <!--This is the brands section-->
-            <div class="topbrands">
-              <p>TOP BRANDS</p>
-              <div class="marca">
-                <img src="../../resources/images/private/mazda.svg" alt="" />
-              </div>
-              <div class="marca">
-                <img src="../../resources/images/private/jeep2.svg" alt="" />
-              </div>
-              <div class="marca">
-                <img src="../../resources/images/private/toyotad.svg" alt="" />
-              </div>
+            <div class="marca">
+              <img src="../../resources/images/private/jeep2.svg" alt="" />
+            </div>
+            <div class="marca">
+              <img src="../../resources/images/private/toyotad.svg" alt="" />
             </div>
           </div>
-        </section>
-      </main>
-    </div>
-    <!--This js script is to use bootstrap with js-->
-    <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        </div>
+      </section>
+    </main>
+  </div>
+  <!--This js script is to use bootstrap with js-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"
-  ></script>
+    crossorigin="anonymous"></script>
+    <script src="../../resources/js/sweetalert.min.js"></script>
+  <!--This js script is to do function some components-->
+  <script src="../../controller/components.js"></script>
+  <script src="../../controller/admin/account.js"></script>
   <!--This js script is to charger the navbar-->
-    <script src="../../controller/admin/menu.js"></script>
-    <!--This js script is to do function some components-->
-    <script src="../../controller/components.js"></script>
-  </body>
+  <script src="../../controller/admin/menu.js"></script>
+</body>
+
 </html>
