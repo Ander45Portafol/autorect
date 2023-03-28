@@ -33,7 +33,6 @@ ASIDE.innerHTML=`     <ul class="nav flex-column">
   <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Products"><a class="nav-link" href="products.html" id="product"><i class="bx bxs-cart-alt"></i></a></button>
     
   </li>
-  </li>
   <li class="nav-item">
   <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Orders"><a class="nav-link" href="orders.html" id="Orders"><i class="bx bxs-box"></i></a></button>
 
@@ -51,7 +50,7 @@ ASIDE.innerHTML=`     <ul class="nav flex-column">
 </div>
 <div class="bottomnav">
     <li class="nav-item">
-    <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Log-Out"><a class="btn" href="index.html" id="logout"><i class="bx bxs-log-out"></i></a></button>
+    <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Log-Out"><a class="btn" onclick="logOut()" id="logout"><i class="bx bxs-log-out"></i></a></button>
         
       </li>
 </div>

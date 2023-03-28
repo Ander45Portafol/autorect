@@ -577,6 +577,10 @@
     align-items: flex-end;
     width: 85%;
   }
+  #save-form{
+    display: flex;
+    flex-direction: row;
+  }
   /*Responsive para pantalla mediana*/
   @media screen and (min-width:1882px) {
     aside{
