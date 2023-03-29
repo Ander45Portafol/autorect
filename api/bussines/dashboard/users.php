@@ -85,7 +85,6 @@ if (isset($_GET['action'])) {
                 break;
             case 'login':
                 $_POST = Validator::validateForm($_POST);
-                //print_r($_POST);
                 if (!$user_model->checkUser($_POST['username'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif ($user_model->checkPassword($_POST['clave'])) {

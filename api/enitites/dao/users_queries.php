@@ -6,9 +6,7 @@ class UserQueries{
         $sql='SELECT id_usuario from usuarios WHERE nombre_usuario = ?';
         $params=array($alias);
         $data=Database::getRow($sql,$params);
-        print_r($data);
         if ($data) {
-            //print_r($data);
             $this->id=$data['id_usuario'];
             $this->nombre_usuario=$alias;
             return true;
