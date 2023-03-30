@@ -19,6 +19,7 @@ body .imagen {
 body {
     background-image: url(../../images/logos/car.jpg);
     background-size: cover;
+    overflow: hidden;
 }
 
 .contenedor .formlogin {
@@ -133,30 +134,29 @@ body {
 .contenedor .endlogin .buttons {
     display: flex;
     justify-content: flex-end;
-    width: 50%;
-    margin-top: 1rem;
+    width:70%;
+    margin-top: 1.5rem;
 }
-
-.contenedor .endlogin .buttons a {
-    text-decoration: none;
+.buttons button{
     font-size: 12pt;
     font-weight: 500;
     color: #FFF;
 }
-
 .contenedor .endlogin {
     display: flex;
+    width: 140%;
     flex-direction: column;
 }
-
-.contenedor .endlogin .forget a {
+    
+.contenedor .endlogin .forget a {   
     text-decoration: none;
     color: #A3A3A3;
 }
 
 .contenedor .endlogin .forget {
     display: flex;
-    width: 65%;
+    width: 100%;
+    margin-top: 1rem;
     justify-content: flex-end;
 }
 
