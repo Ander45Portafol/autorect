@@ -34,8 +34,8 @@ class UserQueries{
         return Database::getRows($sql,$params);
     }
     public function createRow(){
-        $sql='INSERT INTO usuarios(nombre_usuario,clave_usuario, estado_usuario,id_empleado,id_tipo_usuario) values(?,?,?,?,?)';
-        $params=array($this->nombre_usuario,$this->clave_usuario,$this->estado_usuario ,$this->empleado,$this->tipo_usuario);
+        $sql='INSERT INTO usuarios(nombre_usuario,clave_usuario, estado_usuario,id_empleado,id_tipo_usuario,id_tema,id_idioma) values(?,?,?,?,?,?,?)';
+        $params=array($this->nombre_usuario,$this->clave_usuario,$this->estado_usuario ,$this->empleado,$this->tipo_usuario,$this->tema=1,$this->idioma=2);
         return Database::executeRow($sql,$params);
     }
     public function readOne(){
