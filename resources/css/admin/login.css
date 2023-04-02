@@ -6,7 +6,6 @@
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
-
 body .imagen img {
     width: 100%;
     height: auto;
@@ -19,7 +18,7 @@ body .imagen {
 body {
     background-image: url(../../images/logos/car.jpg);
     background-size: cover;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .contenedor .formlogin {

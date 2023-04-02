@@ -7,7 +7,6 @@ class Category extends CategoryQueries{
     protected $nombre=null;
     protected $imagen=null;
     protected $descripcion=null;
-    protected $ruta=null;
 
     public function setId($value){
         if ($value) {

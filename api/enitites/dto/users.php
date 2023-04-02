@@ -33,7 +33,7 @@ class User extends UserQueries{
     }
     public function setPassword($value){
         if(Validator::validatePassword($value)){
-            $this->clave_usuario=password_hash($value, PASSWORD_DEFAULT);
+            $this->clave_usuario=$value;
             return true;
         }
         else{
@@ -41,7 +41,7 @@ class User extends UserQueries{
         }
     }
     public function setEstadoUser($value){
-        if(Validator::validateNaturalNumber($value)){
+        if(Validator::validateBoolean($value)){
             $this->estado_usuario=$value;
             return true;
         }
@@ -49,9 +49,18 @@ class User extends UserQueries{
             return false;
         }
     }
-    public function seEmpleado($value){
+    public function setEmpleado($value){
         if(Validator::validateNaturalNumber($value)){
             $this->empleado=$value;
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public function setTipo_User($value){
+        if(Validator::validateNaturalNumber($value)){
+            $this->tipo_usuario=$value;
             return true;
         }
         else{
