@@ -540,6 +540,16 @@
     border: 3px solid #1f1f1f;
     width: 180px;
   }
+  /*Order Details*/
+  #redOder_Detail{
+    background-color: #822727;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    height: 35px;
+    width: 160px;
+    padding-right: 10px;
+  }
   /*Categories*/
   #redcategory{
     background-color: #822727;
