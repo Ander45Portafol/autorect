@@ -49,8 +49,8 @@ class Validator{
         if (strlen($value)<6) {
             self::$passwordError='Clave menor a 6 caracteres';
             return false;
-        }elseif (strlen($value)<=72) {
-            return false;
+        }elseif (strlen($value)<=72) {    
+            return true;
         }else{
             self::$passwordError='Clave mayor a 72 caracteres';
             return false;
@@ -60,6 +60,13 @@ class Validator{
         if(preg_match('/^[a-zA-z0-9ñÑáÁéÉíÍóÓúÚ\s]{' . $minimum . ',' . $maximum.'}$/', $value)){
             return true;
         }else{
+            return false;
+        }
+    }
+    public static function validateBoolean($value){
+        if ($value==1||$value==0||$value==true||$value=false) {
+            return true;
+        }else {
             return false;
         }
     }

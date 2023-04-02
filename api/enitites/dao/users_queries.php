@@ -25,7 +25,40 @@ class UserQueries{
         }
     }
     public function readAll(){
-        $sql='SELECT id_usuario, nombre_usuario,estado_usuario FROM usuarios ORDER BY nombre_usuario';
-        return Database::getRow($sql);
+        $sql='SELECT id_usuario, nombre_usuario, clave_usuario, estado_usuario, id_empleado, id_tipo_usuario, id_tema, id_idioma FROM usuarios ORDER BY id_usuario';
+        return Database::getRows($sql);
+    }
+    public function searchRows($value){
+        $sql='SELECT id_usuario, nombre_usuario, clave_usuario, estado_usuario, id_empleado, id_tipo_usuario FROM usuarios WHERE nombre_usuario ILIKE ? ORDER BY id_usuario';
+        $params=array("%$value%");
+        return Database::getRows($sql,$params);
+    }
+    public function createRow(){
+        $sql='INSERT INTO usuarios(nombre_usuario,clave_usuario, estado_usuario,id_empleado,id_tipo_usuario) values(?,?,?,?,?)';
+        $params=array($this->nombre_usuario,$this->clave_usuario,$this->estado_usuario ,$this->empleado,$this->tipo_usuario);
+        return Database::executeRow($sql,$params);
+    }
+    public function readOne(){
+        $sql='SELECT id_usuario, nombre_usuario, clave_usuario, estado_usuario, id_empleado, id_tipo_usuario FROM usuarios WHERE id_usuario=?';
+        $params=array($this->id);
+        return Database::getRow($sql,$params);
+    }
+    public function updateRow(){
+        $sql='UPDATE usuarios SET nombre_usuario=?, clave_usuario=?, estado_usuario=?, id_empleado=?, id_tipo_usuario=? WHERE id_usuario=?';
+        $params=array($this->nombre_usuario,$this->clave_usuario, $this->estado_usuario, $this->empleado,$this->tipo_usuario,$this->id);
+        return Database::executeRow($sql,$params);
+    }
+    public function deleteRow(){
+        $sql='DELETE FROM usuarios WHERE id_usuario=?';
+        $params=array($this->id);
+        return Database::executeRow($sql,$params);
+    }
+    public function readEmployees(){
+        $sql='SELECT id_empleado, nombre_empleado FROM empleados';
+        return Database::getRows($sql);
+    }
+    public function readType_Users(){
+        $sql='SELECT id_tipo_usuario,tipo_usuario FROM tipos_usuarios';
+        return Database::getRows($sql);
     }
 }
