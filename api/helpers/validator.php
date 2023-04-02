@@ -1,16 +1,29 @@
 <?php
-class Validator{
+class Validator
+{
 
-    private static $passwordError=null;
+    private static $passwordError = null;
+    private static $fileError = null;
+    private static $fileName = null;
 
-    public static function getAPasswordError(){
+    public static function getAPasswordError()
+    {
         return self::$passwordError;
     }
 
-    public static function validateForm($fields){
-        foreach($fields as $index => $value){
-            $value=trim($value);
-            $fields[$index]=$value;
+    public static function getFileName(){
+        return self::$fileName;
+    }
+
+    public static function getFileError(){
+        return self::$fileError;
+    }
+
+    public static function validateForm($fields)
+    {
+        foreach ($fields as $index => $value) {
+            $value = trim($value);
+            $fields[$index] = $value;
         }
         return $fields;
     }
@@ -45,21 +58,48 @@ class Validator{
             return false;
         }
     }
-    public static function validatePassword($value){
-        if (strlen($value)<6) {
-            self::$passwordError='Clave menor a 6 caracteres';
-            return false;
-        }elseif (strlen($value)<=72) {
-            return false;
+
+    public static function validateEmail($value){
+        if(filter_var($value, FILTER_VALIDATE_EMAIL)){
+            return true;
         }else{
-            self::$passwordError='Clave mayor a 72 caracteres';
             return false;
         }
     }
-    public static function validateAlphanumeric($value,$minimum,$maximum){
-        if(preg_match('/^[a-zA-z0-9ñÑáÁéÉíÍóÓúÚ\s]{' . $minimum . ',' . $maximum.'}$/', $value)){
+
+    public static function validateBoolean($value){
+        if($value == 1 || $value == 0 || $value == true || $value == false){
             return true;
         }else{
+            return false;
+        }
+    }
+    public static function validatePassword($value)
+    {
+        if (strlen($value) < 6) {
+            self::$passwordError = 'Clave menor a 6 caracteres';
+            return false;
+        } elseif (strlen($value) <= 72) {
+            return false;
+        } else {
+            self::$passwordError = 'Clave mayor a 72 caracteres';
+            return false;
+        }
+    }
+    public static function validateAlphanumeric($value, $minimum, $maximum)
+    {
+        if (preg_match('/^[a-zA-z0-9ñÑáÁéÉíÍóÓúÚ\s]{' . $minimum . ',' . $maximum . '}$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function validateString($value, $minimum, $maximum)
+    {
+        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\,\;\.]{' . $minimum . ',' . $maximum . '}$/', $value)) {
+            return true;
+        } else {
             return false;
         }
     }
