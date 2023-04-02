@@ -2,29 +2,24 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!--This css file is to charger the navbar style-->
   <link rel="stylesheet" href="../../resources/css/admin/menu.css" />
-  <!--It is a icon, to show with the title of the page-->
-  <link rel="icon" href="../../resources/images/logos/logo_login.png" />
   <!--In this css file are all styles to formularies-->
   <link rel="stylesheet" href="../../resources/css/admin/main.css" />
   <!--This is the bootstrap link to use the bootstrap  styles-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-  <!--This link is to use the icons at the boxicons-->
+  <!--This is the bootstrap link to use the bootstrap style-->
   <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clients</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details</title>
 </head>
 
 <body>
-  <!--Charger the navbar-->
   <aside></aside>
-  <!--In this class are contained all page-->
   <div class="allinfo">
-    <!--In this class whit the main tag are contained everthing data to clients-->
     <main class="data">
       <section>
         <!--This button funtionated to responsive menu-->
@@ -32,93 +27,44 @@
         <!--This class is to structured the top section at the page-->
         <div class="topmain">
           <div class="texttop">
-            <p>CLIENTS</p>
+            <p>ORDER DETAILS</p>
           </div>
           <div class="buttonstop">
-            <button>Export <i class="bx bx-export"></i></button>
-            <button>Print <i class="bx bxs-printer"></i></button>
+            <button class="stop" data-tooltip="btnprueba">Export <i class="bx bx-export"></i></button>
+            <button class="stop">Print <i class="bx bxs-printer"></i></button>
             <!--This button is to open modal, to do a insert at the table-->
-            <button type="button" class="btn" data-bs-toggle="modal" id="red" data-bs-target="#staticBackdrop">
-              <i class="bx bxs-plus-circle"></i> New Client
+            <button type="button" id="redOder_Detail" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="">
+              <i class="bx bxs-plus-circle"></i>New Order Detail
             </button>
-
             <!-- Modal -->
-            <div class="modal fade modal-xl" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <!--This class is to modify the header section at the modal-->
                   <div class="modal-header">
-                    <p class="modal-title">
-                      CLIENTS
-                    </p>
+                    <!--In this class charge the title modal-->
+                    <p class="modal-title" id="exampleModalLabel"></p>
                     <!--This button is to close the modal-->
-                    <button type="button" id="btnclose" data-bs-dismiss="modal" aria-label="Close"><i
-                        class="bx bx-x"></i></button>
+                    <button type="button" id="btnclose" data-bs-dismiss="modal" aria-label="Close">
+                      <i class="bx bx-x"></i>
+                    </button>
                   </div>
                   <!--In this class are add elements like inputs, buttons, etc-->
-                  <div class="modal-body modal-C">
-                    <!--This class is to add inputs or selects-->
-                    <div class="Csection1">
+                  <form class="modal-body modal-U" id="user-form" method="post">
+                    <div class="section1">
+                      <input type="number" name="id" id="id">
                       <div class="row">
                         <div class="col">
                           <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Name</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Last Name</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>DUI</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Email</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Phone</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Birth day</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
+                            <input type="text" id="username" name="username" required />
                             <div class="underline"></div>
                             <label>Username</label>
                           </div>
                         </div>
                         <div class="col">
                           <div class="input-data">
-                            <input type="password" required />
+                            <input type="password" id="password" name="password" required />
                             <div class="underline"></div>
                             <label>Password</label>
                           </div>
@@ -126,68 +72,63 @@
                       </div>
                       <div class="row">
                         <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Address</label>
+                          <div class="select-data">
+                            <label>Employee</label>
+                            <div class="select">
+                              <select name="employee" id="Employee"></select>
+                            </div>
                           </div>
                         </div>
                         <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Membership number</label>
+                          <div class="select-data">
+                            <label>User type</label>
+                            <div class="select">
+                              <select name="user_type" id="user_type"></select>
+                            </div>
                           </div>
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col">
-                          <div class="select-data">
-                            <label>Membership type</label>
-                            <div class="select">
-                              <select name="Status" id="Status"></select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="status-C">
-                            <label>Status</label>
-                            <div class="form-check form-switch">
-                              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
-                                checked>
-                            </div>
+                        <div class="col-6" id="switch-state-user">
+                          <label class="form-check-label" for="flexSwitchCheckDefault">State
+                            User</label>
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" name="state_user"
+                              id="flexSwitchCheckDefault" checked>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <!--This class is to add buttons to do actions-->
-                    <div class="Csection2">
-                      <div class="image"></div>
+                    <div class="section2">
+                      <div class="imagen"></div>
                       <div class="btns">
                         <button id="clean">
                           <i class="bx bxs-eraser"></i>CLEAN
                         </button>
-                        <button id="adduser">
+                        <button id="adduser" type="submit">
                           <i class="bx bxs-plus-circle"></i>ADD USER
+                        </button>
+                        <button id="update" type="submit">
+                          <i class='bx bxs-bookmark-plus'></i>CONFIRM
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!--This section are all relationated with filters to looking for datas at the clients-->
+        <!--This section are all relationated with filters to looking for datas at the users-->
         <div class="searchsection">
-          <div class="search">
-            <i class="bx bx-search"></i>
-            <input type="text" placeholder="Search anything..." />
+          <form class="search" id="form-search" method="post">
+            <button type="submit" class="button-search"><i class="bx bx-search"></i></button>
+            <input type="text" name="search" placeholder="Search anything..." />
             <i class="bx bx-slider"></i>
-          </div>
+          </form>
           <div class="buttonsearch">
-            <input type="date" class="btnfilter" />
-            <div class="dropdown btnfilter">
+            <input type="date" class="btnfilter sm-disable" />
+            <div class="dropdown btnfilter sm-disable">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bx bxs-purchase-tag"></i>
                 Status
@@ -202,7 +143,7 @@
                 </li>
               </ul>
             </div>
-            <div class="dropdown btnfilter">
+            <div class="dropdown btnfilter sm-disable" id="btn-address">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bx bx-current-location"></i>
                 Address
@@ -217,7 +158,7 @@
                 </li>
               </ul>
             </div>
-            <div class="dropdown btnfilter">
+            <div class="dropdown btnfilter sm-disable" id="btnSaveF">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bx bxs-bookmark"></i>
                 Save filters
@@ -232,7 +173,7 @@
                 </li>
               </ul>
             </div>
-            <div class="dropdown btnfilter">
+            <div class="dropdown btnfilter sm-active">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bx bx-slider rotate"></i>
                 More
@@ -251,10 +192,10 @@
         </div>
         <!--This section is to filter datas in the table, but datas with especifics parameters-->
         <div class="filtertable">
-          <button class="active">All clients <span>11</span></button>
-          <button>Member <span>05</span></button>
+          <button class="active">All details <span>11</span></button>
+          <button>Today <span>03</span></button>
         </div>
-        <!--This class is show all datas to clients, but in diferents sections-->
+        <!--This class is show all datas to users, but in diferents sections-->
         <div class="datatable">
           <div class="infodatatable">
             <p>Showing 21-30 of 88 results</p>
@@ -289,23 +230,23 @@
             <p>Items per page <span>10</span></p>
           </div>
         </div>
-        <!--In this section are contained the table to show clients data-->
+        <!--In this section are contained the table to show users data-->
         <div class="sectiontable">
-          <table class="table table-hover">
-            <!--Here are contained the columns to table-->
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Lastname</th>
-                <th scope="col">User</th>
-                <th scope="col">DUI</th>
-                <th scope="col">Phone number</th>
-                <th scope="col">Status</th>
-              </tr>
-            </thead>
-            <tbody id="tbody-rows"></tbody>
-          </table>
+          <div class=" table-responsive">
+            <table class="table table-hover">
+              <!--Here are contained the columns to table-->
+              <thead>
+                <tr>
+                  <th scope="col">ID No.</th>
+                  <th scope="col">Product quantity</th>
+                  <th scope="col">Product price</th>
+                  <th scope="col">Order ID</th>
+                  <th scope="col">Product name</th>
+                </tr>
+              </thead>
+              <tbody id="tbody_rows"></tbody>
+            </table>
+          </div>
         </div>
       </section>
     </main>
@@ -314,11 +255,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-  <!--This js script is to add navbar at aside tag-->
-  <script src="../../controller/admin/menu.js"></script>
+  <script src="../../resources/js/sweetalert.min.js"></script>
   <!--This js script is to do funcionality some components of bootstrap-->
   <script src="../../controller/components.js"></script>
-  <script src="../../controller/admin/clients.js"></script>
+  <script src="../../controller/admin/account.js"></script>
+  <!--This js script is to add navbar at aside tag-->
+  <script src="../../controller/Admin/menu.js"></script>
+  <script src="../../controller/admin/order_details.js"></script>
 </body>
 
 </html>
