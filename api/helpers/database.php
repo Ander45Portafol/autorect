@@ -32,6 +32,13 @@ class Database{
             return false;
         }
     }
+    public static function getRows($query,$values=null){
+        if (self::executeRow($query,$values)) {
+            return self::$statement->FetchAll(PDO::FETCH_ASSOC);
+        }else {
+            return false;
+        }
+    }
     public static function setException($code,$message){
         self::$error=$message . PHP_EOL;
         switch($code){

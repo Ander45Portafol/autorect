@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!--This css file is to charger the navbar style-->
   <link rel="stylesheet" href="../../resources/css/admin/menu.css" />
   <!--In this css file are all styles to formularies-->
@@ -13,16 +13,13 @@
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
   <!--This is the bootstrap link to use the bootstrap style-->
   <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Users</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details</title>
 </head>
 
 <body>
-  <!--Charger the navbar-->
   <aside></aside>
-  <!--In this class are contained all page-->
   <div class="allinfo">
-    <!--In this class whit the main tag are contained everthing data to users-->
     <main class="data">
       <section>
         <!--This button funtionated to responsive menu-->
@@ -30,16 +27,15 @@
         <!--This class is to structured the top section at the page-->
         <div class="topmain">
           <div class="texttop">
-            <p>USERS</p>
+            <p>ORDER DETAILS</p>
           </div>
           <div class="buttonstop">
             <button class="stop" data-tooltip="btnprueba">Export <i class="bx bx-export"></i></button>
             <button class="stop">Print <i class="bx bxs-printer"></i></button>
             <!--This button is to open modal, to do a insert at the table-->
-            <button type="button" id="red" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="CreateUser()">
-              <i class="bx bxs-plus-circle"></i>New User
+            <button type="button" id="redOder_Detail" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="">
+              <i class="bx bxs-plus-circle"></i>New Order Detail
             </button>
-
             <!-- Modal -->
             <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
@@ -61,7 +57,7 @@
                       <div class="row">
                         <div class="col">
                           <div class="input-data">
-                            <input type="text"  id="username" name="username" required />
+                            <input type="text" id="username" name="username" required />
                             <div class="underline"></div>
                             <label>Username</label>
                           </div>
@@ -94,9 +90,11 @@
                       </div>
                       <div class="row">
                         <div class="col-6" id="switch-state-user">
-                          <label class="form-check-label" for="flexSwitchCheckDefault">State User</label>
+                          <label class="form-check-label" for="flexSwitchCheckDefault">State
+                            User</label>
                           <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" name="state_user" id="flexSwitchCheckDefault" checked>
+                            <input class="form-check-input" type="checkbox" role="switch" name="state_user"
+                              id="flexSwitchCheckDefault" checked>
                           </div>
                         </div>
                       </div>
@@ -194,8 +192,8 @@
         </div>
         <!--This section is to filter datas in the table, but datas with especifics parameters-->
         <div class="filtertable">
-          <button class="active">All users <span>11</span></button>
-          <button>Admin users <span>03</span></button>
+          <button class="active">All details <span>11</span></button>
+          <button>Today <span>03</span></button>
         </div>
         <!--This class is show all datas to users, but in diferents sections-->
         <div class="datatable">
@@ -240,14 +238,13 @@
               <thead>
                 <tr>
                   <th scope="col">ID No.</th>
-                  <th scope="col">User</th>
-                  <th scope="col">Password</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">User type</th>
-                  <th scope="col">Actions</th>
+                  <th scope="col">Product quantity</th>
+                  <th scope="col">Product price</th>
+                  <th scope="col">Order ID</th>
+                  <th scope="col">Product name</th>
                 </tr>
               </thead>
-              <tbody id="tbody-rows-users"></tbody>
+              <tbody id="tbody_rows"></tbody>
             </table>
           </div>
         </div>
@@ -264,7 +261,7 @@
   <script src="../../controller/admin/account.js"></script>
   <!--This js script is to add navbar at aside tag-->
   <script src="../../controller/Admin/menu.js"></script>
-  <script src="../../controller/admin/user.js"></script>
+  <script src="../../controller/admin/order_details.js"></script>
 </body>
 
 </html>

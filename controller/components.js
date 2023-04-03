@@ -108,3 +108,23 @@ function sweetAlert(type, text, timer, url = null) {
     }
   });
 }
+
+async function fillSelect(filename, action, select, selected=null){
+  const JSON=await dataFetch(filename,action)
+  let content='';
+  if (JSON.status) {
+    content+='<option disable selected>Seleccione una opcion</option>'
+    JSON.dataset.forEach(row=>{
+      value=Object.values(row)[0]
+      text=Object.values(row)[1]
+      if (value!=selected) {
+        content+=`<option value="${value}">${text}</option>`
+      }else{
+        content+=`<option value="${value}" selected>${text}</option>`
+      }
+    })
+  }else{
+    content+='<option>No hay opciones disponibles</option>'
+  }
+  document.getElementById(select).innerHTML=content
+}

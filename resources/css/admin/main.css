@@ -7,12 +7,12 @@
       font-family: 'Roboto',sans-serif;
   }
   body{
-      max-height: 100%;
-      overflow: hidden;
+      max-height: 100%;;
       max-width: 98%;
   }
   aside{
     width: 7.2%;
+    position: fixed;
   }
   .showmenu{
     display: none;
@@ -21,8 +21,9 @@
   .allinfo{
       display: flex;
       flex-direction: row;
-      width: 98%;
+      width: 90%;
       height: 100%;
+      margin-left: 8%;
   }
   /*Style to navbar*/
   .nav-item  a.active{
@@ -115,15 +116,20 @@
     border: none;
     position: relative;
     width: 400px;
-    padding-left: 30px;
+    padding-left: 35px;
     z-index: 1;
   }
-  .search .bx-search {
+  .search .button-search{
+    background-color: transparent;
+    width: 40px;
     position: absolute;
     z-index: 10;
+    border: none;
+    
+  }
+  .search .bx-search {
     font-size: 16pt;
     margin-top: 12px;
-    margin-left: 5px;
   }
   .search .bx-slider {
     position: absolute;
@@ -254,6 +260,15 @@
     background-color: #f2f2f2;
     color: #636363;
   }
+  .sectiontable .table{
+    text-align: center;
+  }
+  .sectiontable .table .action-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
   /*This code is to add style at the edit button in the table*/
   .sectiontable .table td .edit {
     background-color: transparent;
@@ -324,6 +339,9 @@
     display: flex;
     flex-direction: row;
   }
+  #id{
+    display: none;
+  }
   /*This code is to use style in the first section of modal body*/
   .modal-body .section1{
     width: 65%;
@@ -368,27 +386,13 @@
   .select-data{
     display: flex;
     width: 300px;
-    flex-direction: row;
+    flex-direction: column;
+    height: 70px;
     margin-top: 2rem;
     border-bottom: 3px solid #1f1f1f;
   }
-  #selectemployee{
-    width: 100%;
-    display: flex;
-    margin-left: 2rem;
-    flex-direction: row;
-  }
-  #selectemployee .select-data{
-    width: 95%;
-    display: flex;
-    margin-top: 40px;
-    margin-left: 0.5rem;
-  }
-  #selectemployee .select-data label{
-    margin-left: 0;
-  }
   .select-data .select{
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
   }
@@ -400,6 +404,14 @@
   }
   .select-data .select select{
     border: none;
+    width: 100%;
+    outline: none;
+  }
+  #switch-state-user{
+    margin-top: 2.3rem;
+    margin-left: 0.4rem;
+    display: flex;
+    flex-direction: column;
   }
   /*This code is to use style in the second section of modal body*/
   .modal-body .section2{
@@ -437,6 +449,18 @@
     color: #fff;
     background-color: #822727;
     margin-bottom: 10px;
+  }
+  .btns #update{
+    border-radius: 5px;
+    width: 150px;
+    padding: 0 25px;
+    color: #fff;
+    background-color: #ffca2c;
+    margin-bottom: 10px;
+  }
+  #update i{
+    font-size: 14pt;
+    margin-right: 10px;
   }
   /*employee*/
   #red-employee{
@@ -516,6 +540,16 @@
     border: 3px solid #1f1f1f;
     width: 180px;
   }
+  /*Order Details*/
+  #redOder_Detail{
+    background-color: #822727;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    height: 35px;
+    width: 160px;
+    padding-right: 10px;
+  }
   /*Categories*/
   #redcategory{
     background-color: #822727;
@@ -533,15 +567,33 @@
   .Ctsection1{
     width: 70%;
   }
+  .Ctsection2{
+    width: 25%;
+    margin-left: 8rem;
+  }
   .Ctsection2 .image{
     background-color: #fff;
     height: 200px;
     border: 3px solid #1f1f1f;
     width: 180px;
   }
+  #cdescription{
+    margin-top: 2rem;
+  }
   #cdescription .input-data{
-    width: 80%;
-    padding-right: 40.5pc;
+    width:600px ;
+  }
+  #cdescription input{
+    width: 100%;
+  }
+  .btns #addcategory{
+    border-radius: 5px;
+    width: 150px;
+    height: 50px;
+    padding: 0 25px;
+    color: #fff;
+    background-color: #822727;
+    margin-bottom: 10px;
   }
   /*Brands*/
   .modal-B{

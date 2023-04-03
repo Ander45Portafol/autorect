@@ -20,10 +20,10 @@
 </head>
 
 <body>
+  <!--Charger the navbar-->
+  <aside></aside>
   <!--In this class are contained all page-->
   <div class="allinfo">
-    <!--Charger the navbar-->
-    <aside></aside>
     <!--In this class whit the main tag are contained everthing data to clients-->
     <main class="data">
       <section>
@@ -153,7 +153,8 @@
                           <div class="status-C">
                             <label>Status</label>
                             <div class="form-check form-switch">
-                              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
+                                checked>
                             </div>
                           </div>
                         </div>
@@ -294,121 +295,16 @@
             <!--Here are contained the columns to table-->
             <thead>
               <tr>
-                <th scope="col"><input type="checkbox" /></th>
+                <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Lastname</th>
                 <th scope="col">User</th>
-                <th scope="col">E-mail</th>
                 <th scope="col">DUI</th>
                 <th scope="col">Phone number</th>
                 <th scope="col">Status</th>
-                <th scope="col">Actions</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row"><input type="checkbox" /></th>
-                <td>
-                  <p>Anderson Isaac</p>
-                </td>
-                <td>
-                  <p>Aguilar Ramos</p>
-                </td>
-                <td>
-                  <p>and3raplar</p>
-                </td>
-                <td>
-                  <p>anderdeco25@gmail.com</p>
-                </td>
-                <td>
-                  <p>37256162-0</p>
-                </td>
-                <td>
-                  <p>7502-5241</p>
-                </td>
-                <td>
-                  <p class="status-active">Active</p>
-                </td>
-                <td>
-                  <div class="actions">
-                    <button class="edit" onclick="btnedit()">
-                      <i class="bx bxs-edit"></i>
-                    </button>
-                    <button class="delete" onclick="btndelete()">
-                      <i class="bx bxs-trash"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"><input type="checkbox" /></th>
-                <td>
-                  <p>Daniel Eli</p>
-                </td>
-                <td>
-                  <p>Lopez Molina</p>
-                </td>
-                <td>
-                  <p>dani3lp</p>
-                </td>
-                <td>
-                  <p>danlop2004@gmail.com</p>
-                </td>
-                <td>
-                  <p>07778267-2</p>
-                </td>
-                <td>
-                  <p>7621-3245</p>
-                </td>
-                <td>
-                  <p class="status-inactive">Active</p>
-                </td>
-                <td>
-                  <div class="actions">
-                    <button class="edit" onclick="btnedit()">
-                      <i class="bx bxs-edit"></i>
-                    </button>
-                    <button class="delete" onclick="btndelete()">
-                      <i class="bx bxs-trash"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"><input type="checkbox" /></th>
-                <td>
-                  <p>Roberto Carlos</p>
-                </td>
-                <td>
-                  <p>Morán Gómez</p>
-                </td>
-                <td>
-                  <p>gomez41</p>
-                </td>
-                <td>
-                  <p>robermoran52@gmail.com</p>
-                </td>
-                <td>
-                  <p>83677278-1</p>
-                </td>
-                <td>
-                  <p>6182-9866</p>
-                </td>
-                <td>
-                  <p class="status-active">Active</p>
-                </td>
-                <td>
-                  <div class="actions">
-                    <button class="edit" onclick="btnedit()">
-                      <i class="bx bxs-edit"></i>
-                    </button>
-                    <button class="delete" onclick="btndelete()">
-                      <i class="bx bxs-trash"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
+            <tbody id="tbody-rows"></tbody>
           </table>
         </div>
       </section>
@@ -422,6 +318,7 @@
   <script src="../../controller/admin/menu.js"></script>
   <!--This js script is to do funcionality some components of bootstrap-->
   <script src="../../controller/components.js"></script>
+  <script src="../../controller/admin/clients.js"></script>
 </body>
 
 </html>
