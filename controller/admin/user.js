@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     fillTable()
 })
 
+SEARCH_FORM.addEventListener('submit',(event)=>{
+    event.preventDefault();
+    const FORM=new FormData(SEARCH_FORM);
+    fillTable(FORM);
+})
+
 SAVE_FORM.addEventListener('submit',async(event)=>{
     event.preventDefault();
     (document.getElementById('id').value)?action='update' : action= 'create';
@@ -74,6 +80,7 @@ function CreateUser(){
     document.getElementById('update').style.display='none';
     document.getElementById('adduser').style.display='block';
     document.getElementById('clean').style.display='block';
+    document.getElementById('file').required=true;
     fillSelect(USERS_API,'readEmployees','Employee')
     fillSelect(USERS_API,'readType_Users','user_type')
 }
@@ -89,6 +96,7 @@ async function UpdateUser(id){
         document.getElementById('id').value=JSON.dataset.id_usuario;
         document.getElementById('username').value=JSON.dataset.nombre_usuario;
         document.getElementById('password').value=JSON.dataset.clave_usuario;
+        document.getElementById('file').required=false;
         fillSelect(USERS_API,'readEmployees','Employee',JSON.dataset.id_empleado);
         fillSelect(USERS_API,'readType_Users','user_type',JSON.dataset.id_tipo_usuario);
         if (JSON.dataset.estado_usuario) {

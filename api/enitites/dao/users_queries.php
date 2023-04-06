@@ -34,18 +34,19 @@ class UserQueries{
         return Database::getRows($sql,$params);
     }
     public function createRow(){
-        $sql='INSERT INTO usuarios(nombre_usuario,clave_usuario, estado_usuario,id_empleado,id_tipo_usuario,id_tema,id_idioma) values(?,?,?,?,?,?,?)';
-        $params=array($this->nombre_usuario,$this->clave_usuario,$this->estado_usuario ,$this->empleado,$this->tipo_usuario,$this->tema=1,$this->idioma=2);
+        $sql='INSERT INTO usuarios(nombre_usuario,clave_usuario,imagen_usuario,estado_usuario,id_empleado,id_tipo_usuario,id_tema,id_idioma) values(?,?,?,?,?,?,?,?)';
+        $params=array($this->nombre_usuario,$this->clave_usuario, $this->imagen, $this->estado_usuario ,$this->empleado,$this->tipo_usuario,$this->tema=1,$this->idioma=2);
         return Database::executeRow($sql,$params);
     }
     public function readOne(){
-        $sql='SELECT id_usuario, nombre_usuario, clave_usuario, estado_usuario, id_empleado, id_tipo_usuario FROM usuarios WHERE id_usuario=?';
+        $sql='SELECT id_usuario, nombre_usuario, imagen_usuario, clave_usuario, estado_usuario, id_empleado, id_tipo_usuario FROM usuarios WHERE id_usuario=?';
         $params=array($this->id);
         return Database::getRow($sql,$params);
     }
-    public function updateRow(){
-        $sql='UPDATE usuarios SET nombre_usuario=?, clave_usuario=?, estado_usuario=?, id_empleado=?, id_tipo_usuario=? WHERE id_usuario=?';
-        $params=array($this->nombre_usuario,$this->clave_usuario, $this->estado_usuario, $this->empleado,$this->tipo_usuario,$this->id);
+    public function updateRow($current_image){
+        ($this->imagen)?Validator::deleteFile($this->getRuta(),$current_image):$this->imagen=$current_image;
+        $sql='UPDATE usuarios SET nombre_usuario=?, clave_usuario=?, imagen_usuario=?, estado_usuario=?, id_empleado=?, id_tipo_usuario=? WHERE id_usuario=?';
+        $params=array($this->nombre_usuario,$this->clave_usuario, $this->imagen, $this->estado_usuario, $this->empleado,$this->tipo_usuario,$this->id);
         return Database::executeRow($sql,$params);
     }
     public function deleteRow(){
