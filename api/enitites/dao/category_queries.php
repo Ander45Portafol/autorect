@@ -8,6 +8,11 @@ class CategoryQueries{
         $params=array($this->nombre, $this->descripcion);
         return Database::executeRow($sql,$params);
     }
+    public function searchRows($value){
+        $sql='SELECT id_categoria, nombre_categoria, descripcion_categoria FROM categorias WHERE nombre_categoria ILIKE ? ORDER BY id_categoria';
+        $params=array("%$value%");
+        return Database::getRows($sql,$params);
+    }
     public function readAll(){
         $sql='SELECT id_categoria, nombre_categoria, descripcion_categoria FROM categorias ORDER BY id_categoria';
         return Database::getRows($sql);

@@ -16,7 +16,19 @@ if (isset($_GET['action'])) {
                     $result['exception']='No hay datos registrados';
                 }
                 break;
-            
+            case 'search':
+                $_POST=Validator::validateForm($_POST);
+                if ($_POST['search']=='') {
+                    $result['exception']='Ingrese un valor para buscar';
+                }elseif ($result['dataset']=$client_model->searchRows($_POST['search'])) {
+                    $result['status']=1;
+                    $result['message']='Si se encontraron resultados';
+                }elseif (Database::getException()) {
+                    $result['exception']=Database::getException();
+                }else{
+                    $result['exception']='No hay coincidencias';
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
                 break;

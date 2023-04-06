@@ -2,9 +2,16 @@ const CATEGORY_API='bussines/dashboard/category.php'
 const MODAL_TITLE=document.getElementById('modal-title');
 const SAVE_FORM=document.getElementById('save-form');
 const TBODY_ROWS=document.getElementById('tbody-rows');
+const SEARCH_FORM=document.getElementById('form-search')
 
 document.addEventListener('DOMContentLoaded', ()=>{
     fillTable();
+})
+
+SEARCH_FORM.addEventListener('submit',(event)=>{
+    event.preventDefault();
+    const FORM=new FormData(SEARCH_FORM);
+    fillTable(FORM);
 })
 
 SAVE_FORM.addEventListener('submit', async(event)=>{

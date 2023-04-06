@@ -1,8 +1,15 @@
 const CLIENTS_API='bussines/dashboard/clients.php';
 const TBODY_ROWS=document.getElementById('tbody-rows');
+const SEARCH_FORM=document.getElementById('form-search')
 
 document.addEventListener('DOMContentLoaded',()=>{
     fillTable();
+})
+
+SEARCH_FORM.addEventListener('submit',(event)=>{
+    event.preventDefault();
+    const FORM=new FormData(SEARCH_FORM);
+    fillTable(FORM);
 })
 
 async function fillTable(form=null){
