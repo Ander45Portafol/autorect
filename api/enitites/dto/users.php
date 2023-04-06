@@ -12,6 +12,7 @@ class User extends UserQueries{
     protected $tipo_usuario=null;
     protected $tema=null;
     protected $idioma=null;
+    protected $ruta='../../images/users/';
 
     public function setId($value){
         if(Validator::validateNaturalNumber($value)){
@@ -37,6 +38,14 @@ class User extends UserQueries{
             return true;
         }
         else{
+            return false;
+        }
+    }
+    public function setImagen($file){
+        if (Validator::validateImageFile($file, 1500, 1500)) {
+            $this->imagen=Validator::getFileName();
+            return true;
+        }else{
             return false;
         }
     }
@@ -94,6 +103,9 @@ class User extends UserQueries{
     public function getPassword(){
         return $this->clave_usuario;
     }
+    public function getImagen(){
+        return $this->imagen;
+    }
     public function getEstadoUser(){
         return $this->estado_usuario;
     }
@@ -105,5 +117,8 @@ class User extends UserQueries{
     }
     public function getIdioma(){
         return $this->idioma;
+    }
+    public function getRuta(){
+        return $this->ruta;
     }
 }
