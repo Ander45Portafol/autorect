@@ -14,6 +14,12 @@ SEARCH_FORM.addEventListener('submit',(event)=>{
     fillTable(FORM);
 })
 
+const LimpiarCampos=()=>{
+    document.getElementById('id').value='';
+    document.getElementById('name').value='';
+    document.getElementById('description').value='';
+}
+
 SAVE_FORM.addEventListener('submit', async(event)=>{
     event.preventDefault();
     (document.getElementById('id').value)?action='update':action='create';
@@ -22,6 +28,8 @@ SAVE_FORM.addEventListener('submit', async(event)=>{
     if (JSON.status) {
         fillTable();
         sweetAlert(1,JSON.message,true);
+        LimpiarCampos();
+        document.getElementById('btnclose').click();
     }else{
         sweetAlert(2,JSON.exception,false);
     }

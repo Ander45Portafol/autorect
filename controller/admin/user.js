@@ -17,6 +17,14 @@ document.addEventListener('DOMContentLoaded',()=>{
     fillTable()
 })
 
+const LimpiarCampos=()=>{
+    document.getElementById('id').value='';
+    document.getElementById('username').value='';
+    document.getElementById('password').value='';
+    fillSelect(USERS_API,'readEmployees','Employee')
+    fillSelect(USERS_API,'readType_Users','user_type')
+}
+
 SEARCH_FORM.addEventListener('submit',(event)=>{
     event.preventDefault();
     const FORM=new FormData(SEARCH_FORM);
@@ -31,6 +39,8 @@ SAVE_FORM.addEventListener('submit',async(event)=>{
     if (JSON.status) {
         fillTable();
         sweetAlert(1,JSON.mesage,true);
+        LimpiarCampos();
+        document.getElementById('btnclose').click();
     }else{
         sweetAlert(2,JSON.exception,false);
     }
