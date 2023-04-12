@@ -75,7 +75,7 @@ if (isset($_GET['action'])) {
                     $result['exception']='Ingrese un valor para buscar';
                 }elseif ($result['dataset']=$user_model->searchRows($_POST['search'])) {
                     $result['status']=1;
-                    $result['message']='Existen'.count($result['dataset']).' coincidencias';
+                    $result['message']='Si se encontraron resultados';
                 }elseif (Database::getException()) {
                     $result['exception']=Database::getException();
                 }else{
@@ -98,9 +98,17 @@ if (isset($_GET['action'])) {
                     $result['exception']='Tipo de usuario incorrecto';
                 }elseif (!$user_model->setPassword($_POST['password'])) {
                     $result['exception']=Validator::getAPasswordError();
+                }elseif (!is_uploaded_file($_FILES['imageUser']['tmp_name'])) {
+                    $result['exception']='Selecione una imagen';
+                }elseif (!$user_model->setImagen($_FILES['imageUser'])) {
+                    $result['exception']=Validator::getFileError();
                 }elseif ($user_model->createRow()) {
                     $result['status']=1;
-                    $result['message']='Usuario creado, correctamente';
+                    if (Validator::saveFile($_FILES['imageUser'], $user_model->getRuta(), $user_model->getImagen())) {
+                        $result['message']='Usuario creado, correctamente';
+                    } else {
+                        $result['message']='Usuario creado, pero sin la imagen';
+                    }
                 }else {
                     $result['exception']=Database::getException();
                 }
@@ -132,10 +140,23 @@ if (isset($_GET['action'])) {
                     $result['exception']='Seleccione un empleado';
                 }elseif (!$user_model->setTipo_User($_POST['user_type'])) {
                     $result['exception']='Seleccione un tipo de usuario';
-                }elseif ($user_model->updateRow()) {
+                }elseif (!is_uploaded_file($_FILES['imageUser']['tmp_name'])) {
+                    if ($user_model->updateRow($data['imagen_usuario'])) {
+                        $result['status']=1;
+                        $Result['message']='Usuario actualizado, correctamente';
+                    }else {
+                        $result['exception']=Database::getException();
+                    }
+                }elseif (!$user_model->setImagen($_FILES['imageUser'])) {
+                    $result['exception']=Validator::getFileError();
+                }elseif ($user_model->updateRow($data['imagen_usuario'])) {
                     $result['status']=1;
-                    $Result['message']='Usuario actualizado, correctamente';
-                }else {
+                    if (Validator::saveFile($_FILES['imageUser'],$user_model->getRuta(), $user_model->getImagen())) {
+                        $Result['message']='Usuario actualizado, correctamente';
+                    }else {
+                        $Result['message']='Usuario actualizado, pero no se guardo la imagen';
+                    }
+                } else {
                     $result['exception']=Database::getException();
                 }
                 break;

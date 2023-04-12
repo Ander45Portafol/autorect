@@ -19,6 +19,17 @@ if(isset($_GET['action'])){
                     }
                 break;
             case 'search':
+                $_POST=Validator::validateForm($_POST);
+                if ($_POST['search']=='') {
+                    $result['exception']='Ingrese un valor para buscar';
+                }elseif ($result['dataset']=$category_model->searchRows($_POST['search'])) {
+                    $result['status']=1;
+                    $result['message']='Si se encontraron resultados';
+                }elseif (Database::getException()) {
+                    $result['exception']=Database::getException();
+                }else{
+                    $result['exception']='No hay coincidencias';
+                }
                 break;
             case 'readOne':
                 if (!$category_model->setId($_POST['id'])) {

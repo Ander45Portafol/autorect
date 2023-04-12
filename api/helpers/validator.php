@@ -2,11 +2,18 @@
 class Validator{
 
     private static $passwordError=null;
+    private static $fileName=null;
+    private static $fileError=null;
 
     public static function getAPasswordError(){
         return self::$passwordError;
     }
-
+    public static function getFileName(){
+        return self::$fileName;
+    }
+    public static function getFileError(){
+        return self::$fileError;
+    }
     public static function validateForm($fields){
         foreach($fields as $index => $value){
             $value=trim($value);
@@ -67,6 +74,30 @@ class Validator{
         if ($value==1||$value==0||$value==true||$value=false) {
             return true;
         }else {
+            return false;
+        }
+    }
+    public static function saveFile($file, $path, $name)
+    {
+        // Se verifica que el archivo sea movido al servidor.
+        if (move_uploaded_file($file['tmp_name'], $path . $name)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*
+    *   Método para validar un archivo al momento de borrarlo del servidor.
+    *   Parámetros: $path (ruta del archivo) y $name (nombre del archivo).
+    *   Retorno: booleano (true si el archivo fue borrado del servidor o false en caso contrario).
+    */
+    public static function deleteFile($path, $name)
+    {
+        // Se comprueba que el archivo sea borrado del servidor.
+        if (@unlink($path . $name)) {
+            return true;
+        } else {
             return false;
         }
     }
