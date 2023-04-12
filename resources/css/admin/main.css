@@ -1,47 +1,58 @@
   /* import Type-Font*/
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@100;400;500;700&display=swap');
+
   /*general code*/
-  *{
-      margin: 0;
-      padding:0;
-      font-family: 'Roboto',sans-serif;
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
   }
-  body{
-      max-height: 100%;
-      overflow: hidden;
-      max-width: 98%;
+
+  body {
+    max-height: 100%;
+    ;
+    max-width: 98%;
   }
-  aside{
+
+  aside {
     width: 7.2%;
+    position: fixed;
   }
-  .showmenu{
+
+  .showmenu {
     display: none;
   }
+
   /*code to div at container all*/
-  .allinfo{
-      display: flex;
-      flex-direction: row;
-      width: 98%;
-      height: 100%;
+  .allinfo {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 100%;
+    margin-left: 8%;
   }
+
   /*Style to navbar*/
-  .nav-item  a.active{
+  .nav-item a.active {
     background-color: #fff;
     color: #000;
     border-radius: 10px;
   }
+
   /*Style to formulary section*/
   .data {
-      width: 100%;
-      margin-top: 1rem;
-      height: 100%;
-      margin-left: 2rem;
+    width: 100%;
+    margin-top: 1rem;
+    height: 100%;
+    margin-left: 2rem;
   }
+
   /*Part top at the formulary section*/
   .data .topmain {
     display: flex;
     flex-direction: row;
   }
+
   .data .topmain .texttop {
     display: flex;
     flex-direction: row;
@@ -52,6 +63,7 @@
     font-size: 22pt;
     font-weight: 600;
   }
+
   .data .topmain .buttonstop {
     width: 50%;
     display: flex;
@@ -59,6 +71,7 @@
     justify-content: flex-end;
     align-items: center;
   }
+
   .data .topmain .buttonstop button {
     background-color: transparent;
     border: 3px solid #d2d2d2;
@@ -73,10 +86,12 @@
     font-weight: 500;
     border-radius: 20px;
   }
+
   .data .topmain .buttonstop button i {
     font-size: 16pt;
   }
-  .topmain .buttonstop #red{
+
+  .topmain .buttonstop #red {
     background-color: #822727;
     border: none;
     border-radius: 20px;
@@ -85,13 +100,15 @@
     width: 110px;
     padding-right: 10px;
   }
-  .topmain .buttonstop .modal-dialog #btnclose{
+
+  .topmain .buttonstop .modal-dialog #btnclose {
     background-color: transparent;
     border: none;
     height: 50px;
     width: 50px;
 
   }
+
   /*Style to search section in the formulary*/
   .searchsection {
     display: flex;
@@ -104,27 +121,37 @@
     height: 65px;
     background-color: #f2f2f2;
   }
+
   .search {
     display: flex;
     flex-direction: row;
     height: 100%;
     justify-content: flex-start;
   }
+
   .search input {
     border-radius: 10px;
     border: none;
     position: relative;
     width: 400px;
-    padding-left: 30px;
+    padding-left: 35px;
     z-index: 1;
   }
-  .search .bx-search {
+
+  .search .button-search {
+    background-color: transparent;
+    width: 40px;
     position: absolute;
     z-index: 10;
+    border: none;
+
+  }
+
+  .search .bx-search {
     font-size: 16pt;
     margin-top: 12px;
-    margin-left: 5px;
   }
+
   .search .bx-slider {
     position: absolute;
     z-index: 10;
@@ -132,6 +159,7 @@
     margin-top: 12px;
     margin-left: 22.5rem;
   }
+
   /*Code to buttons in the search section*/
   .buttonsearch {
     display: flex;
@@ -139,15 +167,18 @@
     width: 80%;
     justify-content: flex-end;
   }
+
   .buttonsearch input {
     padding: 0 10px;
   }
+
   /*Code to Dropdowns in the search section*/
   .btnfilter {
     margin-left: 1rem;
     border: 3px solid #d2d2d2;
     border-radius: 30px;
   }
+
   .btnfilter button {
     color: #636363;
     height: 30px;
@@ -155,10 +186,12 @@
     justify-content: center;
     align-items: center;
   }
+
   /*Code to change icon in the search input*/
   .dropdown .rotate {
     transform: rotate(90deg);
   }
+
   /*Code to options to filter table*/
   .filtertable {
     display: flex;
@@ -167,16 +200,19 @@
     padding-top: 2.5rem;
     border-bottom: 3px solid #636363;
   }
+
   .filtertable button {
     border: none;
     margin-right: 2rem;
     width: 150px;
     background-color: transparent;
   }
+
   .filtertable .active {
     border-bottom: 5px solid #822727;
     padding-bottom: 7px;
   }
+
   .filtertable span {
     border-radius: 100px;
     background-color: #1f1f1f;
@@ -185,6 +221,7 @@
     font-weight: 500;
     padding: 5px;
   }
+
   /*In this code are aplicated styles to pagination*/
   .datatable {
     display: flex;
@@ -192,6 +229,7 @@
     width: 100%;
     margin-top: 1rem;
   }
+
   .datatable .infodatatable {
     display: flex;
     justify-content: flex-start;
@@ -199,11 +237,13 @@
     width: 25%;
     color: #636363;
   }
+
   .datatable .numbersdata {
     display: flex;
     justify-content: center;
     width: 50%;
   }
+
   .datatable .itemstable {
     display: flex;
     justify-content: flex-end;
@@ -211,28 +251,34 @@
     font-size: 10pt;
     color: #636363;
   }
+
   .datatable .itemstable span {
     margin: 20px;
     border: 3px solid #636363;
     padding: 5px 30px;
     border-radius: 5px;
   }
+
   .numbersdata .Page {
     border: none;
   }
+
   .datatable .numbersdata .page-link {
     color: #1f1f1f;
     border: none;
   }
+
   .datatable .numbersdata .page-link:focus {
     color: #822727;
     border: transparent !important;
   }
+
   /*In this code are making the style to table*/
   .sectiontable .table {
     margin-top: 1rem;
     color: #636363;
   }
+
   .sectiontable .table .status {
     background-color: #d0fbee;
     border-radius: 5px;
@@ -241,6 +287,7 @@
     width: 120px;
     text-align: center;
   }
+
   .sectiontable .table .user_type {
     background-color: #822727;
     color: #fff;
@@ -249,11 +296,24 @@
     padding: 5px 0;
     width: 120px;
   }
+
   /*In this part are changing the header at table*/
   .sectiontable .table thead {
     background-color: #f2f2f2;
     color: #636363;
   }
+
+  .sectiontable .table {
+    text-align: center;
+  }
+
+  .sectiontable .table .action-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
   /*This code is to add style at the edit button in the table*/
   .sectiontable .table td .edit {
     background-color: transparent;
@@ -264,6 +324,7 @@
     width: 45px;
     border: 2px solid #ffca2c;
   }
+
   /*This code is to add style at the delete button in the table*/
   .sectiontable .table td .delete {
     background-color: transparent;
@@ -275,6 +336,18 @@
     height: 30px;
     width: 45px;
   }
+
+  /*This code is to add style at the order_details button in the table*/
+  .sectiontable .table td .order_detail {
+    border: 2px solid #2E98BA;
+    color: #2E98BA;
+    font-size: 16pt;
+    border-radius: 5px;
+    width: 45px;
+    height: 30px;
+    margin-left: 20px;
+  }
+
   /*This code is to secton the button at the table*/
   .actions {
     display: flex;
@@ -283,19 +356,21 @@
   /*User*/
   /*Modal section*/
   /*Change the modal-title*/
-  .modal-header p{
-    color: #822727;
+  .modal-header p {
+    color: #e58282;
     font-weight: 600;
     font-size: 20pt;
   }
+
   /*Making the input*/
-  .input-data .underline{
+  .input-data .underline {
     position: absolute;
     width: 100%;
     bottom: 0;
     height: 2px;
   }
-  .input-data .underline:before{
+
+  .input-data .underline:before {
     position: absolute;
     content: "";
     height: 100%;
@@ -304,33 +379,44 @@
     transform-origin: center;
     transition: transform 0.3s ease;
   }
-  .input-data input:focus ~.underline:before, .input-data input:valid~.underline:before{
-  transform: scaleX(1);
+
+  .input-data input:focus~.underline:before,
+  .input-data input:valid~.underline:before {
+    transform: scaleX(1);
   }
+
   /*This code is to section the modal body*/
-  .modal-body{
+  .modal-body {
     width: 100%;
     height: 50vh;
     display: flex;
     flex-direction: row;
   }
+
+  #id {
+    display: none;
+  }
+
   /*This code is to use style in the first section of modal body*/
-  .modal-body .section1{
+  .modal-body .section1 {
     width: 65%;
   }
-  .modal-body .section1 .row{
+
+  .modal-body .section1 .row {
     width: 100%;
     display: flex;
     margin-left: 2rem;
     flex-direction: row;
   }
-  .input-data{
+
+  .input-data {
     width: 300px;
     height: 60px;
     position: relative;
-    border-bottom: 3px solid #1f1f1f ;
+    border-bottom: 3px solid #1f1f1f;
   }
-  .input-data input{
+
+  .input-data input {
     padding-left: 10px;
     width: 100%;
     padding-top: 38px;
@@ -340,79 +426,84 @@
     background-color: transparent;
     font-size: 14px;
   }
+
   .input-data input:focus~label,
-  .input-data input:valid~label{
+  .input-data input:valid~label {
     font-size: 12px;
     bottom: 17px;
     margin-bottom: 10px;
     color: #000;
   }
-  .input-data label{
+
+  .input-data label {
     position: absolute;
     bottom: 10px;
     margin-left: 10px;
     left: 0;
     color: #000;
-    transition:all 0.3s ease;
+    transition: all 0.3s ease;
   }
-  .select-data{
+
+  .select-data {
     display: flex;
     width: 300px;
-    flex-direction: row;
+    flex-direction: column;
+    height: 70px;
     margin-top: 2rem;
     border-bottom: 3px solid #1f1f1f;
   }
-  #selectemployee{
+
+  .select-data .select {
     width: 100%;
-    display: flex;
-    margin-left: 2rem;
-    flex-direction: row;
-  }
-  #selectemployee .select-data{
-    width: 95%;
-    display: flex;
-    margin-top: 40px;
-    margin-left: 0.5rem;
-  }
-  #selectemployee .select-data label{
-    margin-left: 0;
-  }
-  .select-data .select{
-    width: 80%;
     display: flex;
     justify-content: flex-end;
   }
-  .select-data label{
+
+  .select-data label {
     margin-left: 0.5rem;
     width: 100%;
     margin-bottom: 10px;
     font-size: 12pt;
   }
-  .select-data .select select{
+
+  .select-data .select select {
     border: none;
+    width: 100%;
+    outline: none;
   }
+
+  #switch-state-user {
+    margin-top: 2.3rem;
+    margin-left: 0.4rem;
+    display: flex;
+    flex-direction: column;
+  }
+
   /*This code is to use style in the second section of modal body*/
-  .modal-body .section2{
+  .modal-body .section2 {
     width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .section2 .imagen{
+
+  .section2 .imagen {
     background-color: #fff;
     height: 200px;
     border: 3px solid #1f1f1f;
     width: 180px;
   }
-  .btns{
+
+  .btns {
     margin-top: 30px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .btns #clean{
+
+  .btns #clean {
     border-radius: 5px;
     width: 150px;
     padding: 0 35px;
@@ -420,7 +511,8 @@
     background-color: #2E98BA;
     margin-bottom: 10px;
   }
-  .btns #adduser{
+
+  .btns #adduser {
     border-radius: 5px;
     width: 150px;
     padding: 0 25px;
@@ -428,8 +520,23 @@
     background-color: #822727;
     margin-bottom: 10px;
   }
+
+  .btns #update {
+    border-radius: 5px;
+    width: 150px;
+    padding: 0 25px;
+    color: #fff;
+    background-color: #ffca2c;
+    margin-bottom: 10px;
+  }
+
+  #update i {
+    font-size: 14pt;
+    margin-right: 10px;
+  }
+
   /*employee*/
-  #red-employee{
+  #red-employee {
     background-color: #822727;
     border: none;
     border-radius: 20px;
@@ -438,98 +545,104 @@
     width: 140px;
     padding-right: 10px;
   }
-  .Esection1 .row-final{
+
+  .Esection1 .row-final {
     width: 100%;
   }
-  .Esection1 #caddress .input-data{
+
+  .Esection1 #caddress .input-data {
     width: 100%;
     padding-right: 40.5pc;
   }
-  .Esection1 .col-btn{
+
+  .Esection1 .col-btn {
     margin-left: 40px;
   }
-  .Esection1 .col .btns{
+
+  .Esection1 .col .btns {
     display: flex;
     align-items: center;
   }
-  .Esection1 .col .btns button{
+
+  .Esection1 .col .btns button {
     width: 400px;
   }
+
   /*Clients*/
-  .Csection1{
+  .Csection1 {
     width: 75%;
   }
-  .modal-C{
+
+  .modal-C {
     height: 450px;
   }
-  .Csection2{
+
+  .Csection2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 35%;
   }
-  .Csection2 .image{
+
+  .Csection2 .image {
     background-color: #fff;
     height: 200px;
     border: 3px solid #1f1f1f;
     width: 180px;
   }
+
+  .status-C {
+    margin-top: 30px;
+  }
+
+  .form-check input {
+    background-color: #2E98BA;
+  }
+
+  .form-check input:checked {
+    background-color: #822727;
+  }
+
   /*Products*/
-  .Psection1{
+  .Psection1 {
     width: 60%;
   }
-  .Psection2{
+
+  .Psection2 {
     width: 25%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
   }
-  /*Order details*/
-  #redOrderDetail{
+
+  .Psection2 .btns {
+    display: flex;
+    align-items: center;
+  }
+
+  .Psection2 .image {
+    display: flex;
+    background-color: #fff;
+    height: 200px;
+    border: 3px solid #1f1f1f;
+    width: 180px;
+  }
+
+  /*Order Details*/
+  #redOder_Detail {
     background-color: #822727;
     border: none;
     border-radius: 20px;
     color: #fff;
     height: 35px;
-    width: 140px;
+    width: 160px;
     padding-right: 10px;
   }
-  .modal-OD{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .ODsection1{
-    width: 70%;
-  }
-  .ODsection2{
-    margin-top: 20px;
-    width: 80%;
-  }
-  .ODsection2 .btns{
-    display: flex;
-    align-items: flex-end;
-  }
-  /*Orders*/
-  .modal-O{
-    display: flex;
-    flex-direction: column;
-  }
-  .Osection1{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .Osection2{
-    width: 80%;
-  }
-  .Osection2 .btns{
-    display: flex;
-    align-items: flex-end;
-  }
+
   /*Categories*/
-  #redcategory{
+  #redcategory {
     background-color: #822727;
     border: none;
     border-radius: 20px;
@@ -538,89 +651,166 @@
     width: 130px;
     padding-right: 10px;
   }
-  .modal-Ct{
+
+  .modal-Ct {
     display: flex;
     flex-direction: row;
   }
-  .Ctsection1{
+
+  .Ctsection1 {
     width: 70%;
   }
-  .Ctsection2 .image{
+
+  .Ctsection2 {
+    width: 25%;
+    margin-left: 8rem;
+  }
+
+  .Ctsection2 .image {
     background-color: #fff;
     height: 200px;
     border: 3px solid #1f1f1f;
     width: 180px;
   }
-  #cdescription .input-data{
-    width: 80%;
-    padding-right: 40.5pc;
+
+  #cdescription {
+    margin-top: 2rem;
   }
+
+  #cdescription .input-data {
+    width: 600px;
+  }
+
+  #cdescription input {
+    width: 100%;
+  }
+
+  .btns #addcategory {
+    border-radius: 5px;
+    width: 150px;
+    height: 50px;
+    padding: 0 25px;
+    color: #fff;
+    background-color: #822727;
+    margin-bottom: 10px;
+  }
+
   /*Brands*/
-  .modal-B{
+  .modal-B {
     display: flex;
     flex-direction: row;
   }
-  .Bsection1{
+
+  .Bsection1 {
     width: 70%;
     display: flex;
     justify-content: center;
   }
-  .Bsection1 .input-data{
+
+  .Bsection1 .input-data {
     width: 40rem;
   }
-  .Bsection2 .image{
+
+  .Bsection2 .image {
     background-color: #fff;
     height: 200px;
     border: 3px solid #1f1f1f;
     width: 180px;
   }
+
   /*Models*/
-  .modal-M{
+  .modal-M {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 100%;
   }
-  .Msection1{
+  .Msection1 .input-data{
+    margin-top: 20px;
+  }
+  .Msection1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  .Msection2 .btns{
-    display: flex;
-    align-items: flex-end;
     width: 85%;
   }
+  .Msection2{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 45%;
+  }
+  .Msection2 .btns {
+    display: flex;
+    align-items: flex-start;
+    width: 85%;
+  }
+ #save-form-M{
+  width: 100%;
+  display: flex;
+ }
+  #save-form {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #archivo {
+    display: none;
+  }
+
+  .btnimagen {
+    display: block;
+    padding: 10px 21px;
+    border: none;
+    color: #fff;
+    font-size: 14pt;
+    background-color: #822727;
+    border-radius: 3px;
+    cursor: pointer;
+    border-bottom: 3px solid #000;
+    text-align: center;
+  }
+
   /*Responsive para pantalla mediana*/
   @media screen and (min-width:1882px) {
-    aside{
+    aside {
       width: 6%;
       height: 105vh;
     }
-    .modal-body{
+
+    .modal-body {
       height: 400px;
     }
-    .modal-C{
+
+    .modal-C {
       height: 450px;
     }
   }
-  @media screen and (min-width:2560px){
-    aside{
+
+  @media screen and (min-width:2560px) {
+    aside {
       width: 4%;
     }
-    .modal-body{
+
+    .modal-body {
       height: 400px;
     }
-    .modal-C{
+
+    .modal-C {
       height: 450px;
     }
   }
+
   @media screen and (max-width:770px) {
-    .allinfo{
+    .allinfo {
       width: 100%;
     }
-    aside .nav{
+
+    aside .nav {
       display: none;
     }
-    .showmenu{
+
+    .showmenu {
       display: block;
       background-color: transparent;
       margin-bottom: 1rem;
@@ -629,133 +819,167 @@
       border-radius: 10px;
       border: none;
     }
-    .showmenu:hover{
+
+    .showmenu:hover {
       background-color: #822727;
       color: #fff;
     }
-    .data{
+
+    .data {
       margin-top: 2rem;
       margin-left: 1rem;
       padding-right: 2rem;
       width: 100%;
     }
-    .data .topmain{
+
+    .data .topmain {
       width: 95%;
     }
-    .data .buttonstop{
+
+    .data .buttonstop {
       margin-left: 0;
     }
-    .searchsection .search{
+
+    .searchsection .search {
       width: 40px;
       font-size: 10pt;
       margin-right: 210px;
     }
-    .searchsection .search .bx-slider{
+
+    .searchsection .search .bx-slider {
       margin-left: 140px;
     }
-    .filtertable{
+
+    .filtertable {
       width: 95%;
     }
-    .sectiontable{
+
+    .sectiontable {
       margin-right: 10px;
       font-size: 10pt;
     }
-    .sectiontable .table td .status{
+
+    .sectiontable .table td .status {
       width: 60px;
     }
-    .sectiontable .table td .user_type{
+
+    .sectiontable .table td .user_type {
       width: 60px;
     }
-    #btn-address{
+
+    #btn-address {
       display: none;
     }
-    #btnSaveF{
+
+    #btnSaveF {
       display: none;
     }
-    .datatable .itemstable{
+
+    .datatable .itemstable {
       margin-top: 5px;
       display: flex;
       justify-content: flex-start;
       flex-direction: row;
     }
-    .datatable .itemstable span{
+
+    .datatable .itemstable span {
       padding: 8px;
       border: 3px solid #636363;
       border-radius: 5px;
     }
   }
-  @media screen and (max-width:395px){
-    .allinfo{
+
+  @media screen and (max-width:395px) {
+    .allinfo {
       width: 100%;
     }
-    .data{
+
+    .data {
       width: 100%;
     }
-    .topmain{
+
+    .topmain {
       width: 100%;
       display: flex;
       flex-direction: row;
       align-items: center;
     }
-    .topmain .texttop p{
+
+    .topmain .texttop p {
       margin-top: 10px;
       font-size: 16pt;
     }
-    .buttonstop{
+
+    .buttonstop {
       padding-left: 80px;
     }
-    .data .topmain .buttonstop button{
+
+    .data .topmain .buttonstop button {
       padding: 5px 5px;
       gap: 5px;
       font-size: 8pt;
     }
-    .data .topmain .buttonstop .bx{
+
+    .data .topmain .buttonstop .bx {
       font-size: 14px;
     }
-    .data .topmain .buttonstop #red{
-      padding:5px 15px ;
+
+    .data .topmain .buttonstop #red {
+      padding: 5px 15px;
     }
-    .sm-disable{
+
+    .sm-disable {
       display: none;
     }
-    .searchsection input{
+
+    .searchsection input {
       font-size: 8pt;
       width: 165px;
     }
-    .searchsection .search i{
+
+    .searchsection .search i {
       font-size: 12pt;
     }
-    .searchsection .search .bx-search, .searchsection .search .bx-slider{
+
+    .searchsection .search .bx-search,
+    .searchsection .search .bx-slider {
       padding-top: 4px;
     }
-    .buttonsearch{
+
+    .buttonsearch {
       padding-right: 200px;
     }
-    .sm-active{
+
+    .sm-active {
       margin-left: 0;
     }
-    .sectiontable{
+
+    .sectiontable {
       width: 50%;
       font-size: 12pt;
     }
-    .sectiontable .actions i{
+
+    .sectiontable .actions i {
       font-size: 12pt;
     }
-    .sectiontable .table td .edit{
+
+    .sectiontable .table td .edit {
       width: 40px;
       height: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .sectiontable .table td .delete{
+
+    .sectiontable .table td .delete {
       width: 40px;
       height: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .table-responsive{
+
+    .table-responsive {
       width: 100%;
     }
   }

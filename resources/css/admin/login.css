@@ -1,64 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@100;400;500;700&display=swap');
 
-*{
+* {
     box-sizing: border-box;
-    margin:0;  
-    padding:0;
-    font-family: 'Roboto',sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
-body .imagen img{
+body .imagen img {
     width: 100%;
     height: auto;
 }
-body .imagen{
+
+body .imagen {
     position: absolute;
 }
-body{
-    background-image: url(../../images/Car.jpg);
+
+body {
+    background-image: url(../../images/logos/car.jpg);
     background-size: cover;
-    overflow-y:hidden ;
+    overflow: visible;
 }
-.contenedor .formulario{
-    width: 50%;
+
+.contenedor .formlogin {
+    width: 45%;
     height: 119vh;
-    display: block;
     position: relative;
+    display: block;
 }
-.contenedor .formulario .logo img{
+
+.contenedor .formlogin .logo img {
     margin-top: 3rem;
     margin-left: 1rem;
     width: 30px;
     height: 30px;
 }
-.contenedor .formulario .text{
+
+.contenedor .formlogin .text {
     margin-top: 3rem;
     margin-left: 3rem;
 }
-.contenedor .formulario .text span{
+
+.contenedor .formlogin .text span {
     color: #822727;
     text-decoration: none;
 }
-.contenedor .formulario .text p{
+
+.contenedor .formlogin .text p {
     font-size: 46pt;
     font-weight: 700;
     color: #FFFF;
 }
-.contenedor .formulario .text h5{
+
+.contenedor .formlogin .text h5 {
     color: #A3A3A3;
 }
-.textlogin{
+
+.textlogin {
     display: flex;
     flex-direction: column;
     margin-top: 4rem;
     margin-left: 140px;
 }
-.input-data .underline{
+
+.input-data .underline {
     position: absolute;
     width: 100%;
     bottom: 0;
     height: 2px;
 }
-.input-data .underline:before{
+
+.input-data .underline:before {
     position: absolute;
     content: "";
     height: 100%;
@@ -67,18 +78,23 @@ body{
     transform-origin: center;
     transition: transform 0.3s ease;
 }
-.input-data input:focus ~.underline:before, .input-data input:valid~.underline:before{
-transform: scaleX(1);
+
+.input-data input:focus~.underline:before,
+.input-data input:valid~.underline:before {
+    transform: scaleX(1);
 }
-.input-data{
+
+.input-data {
     height: 45px;
     width: 350px;
     position: relative;
 }
-#pass{
+
+#pass {
     margin-top: 2rem;
 }
-.input-data input{
+
+.input-data input {
     height: 100%;
     padding-left: 10px;
     padding-top: 15px;
@@ -89,49 +105,139 @@ transform: scaleX(1);
     background-color: #525252;
     font-size: 14px;
 }
+
 .input-data input:focus~label,
-.input-data input:valid~label{
+.input-data input:valid~label {
     font-size: 12px;
     bottom: 17px;
     margin-bottom: 10px;
     color: #A3A3A3;
 }
-.input-data label{
+
+.input-data label {
     position: absolute;
     bottom: 10px;
     margin-left: 10px;
     left: 0;
     color: #FFF;
-    transition:all 0.3s ease;
+    transition: all 0.3s ease;
 }
-.contenedor .buttons #btnlogin{
+
+.contenedor .buttons #btnlogin {
     background-color: #822727;
     border-radius: 20px;
     height: 60px;
     width: 150px;
-}.contenedor  .endlogin .buttons{
+}
+
+.contenedor .endlogin .buttons {
     display: flex;
     justify-content: flex-end;
-    width: 50%;
-    margin-top: 1rem;
+    width:70%;
+    margin-top: 1.5rem;
 }
-.contenedor .endlogin .buttons a{
-    text-decoration: none;
+.buttons button{
     font-size: 12pt;
     font-weight: 500;
     color: #FFF;
 }
-.contenedor .endlogin{
+.contenedor .endlogin {
     display: flex;
+    width: 140%;
     flex-direction: column;
 }
-.contenedor .endlogin .forget a{
+    
+.contenedor .endlogin .forget a {   
     text-decoration: none;
     color: #A3A3A3;
 }
-.contenedor .endlogin .forget{
+
+.contenedor .endlogin .forget {
     display: flex;
-    width: 65%;
-    justify-content: flex-end;
+    width: 100%;
     margin-top: 1rem;
+    justify-content: flex-end;
+}
+
+.contenedor .signup {
+    width: 45%;
+    display: none;
+    height: 100vh;
+}
+
+.contenedor .signup .first_user {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor .signup .image_user {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor .signup .foto_user {
+    height: 160px;
+    width: 140px;
+    border-radius: 10px;
+    border: 2px solid white;
+    margin-bottom: 10px;
+}
+
+.contenedor .signup #pull_image {
+    background-color: #822727;
+    color: #FFF;
+    height: 50px;
+    width: 110px;
+    border-radius: 20px;
+    font-size: 12pt;
+    margin-bottom: 1rem;
+    margin-left: 15px;
+}
+
+.contenedor .signup .datas_info {
+    height: 175px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contenedor .signup #save_first {
+    background-color: #822727;
+    border-radius: 15px;
+    width: 100px;
+    height: 50px;
+    margin-top: 1rem;
+    color: #FFF;
+}
+
+.contenedor .top_signup .logo img {
+    margin-top: 2rem;
+    margin-left: 1rem;
+    width: 30px;
+    height: 30px;
+}
+
+.contenedor .signup .top_signup .text {
+    margin-top: 3rem;
+    margin-left: 3rem;
+}
+
+.contenedor .signup .top_signup .text span {
+    color: #822727;
+    text-decoration: none;
+}
+
+.contenedor .signup .top_signup .text p {
+    font-size: 46pt;
+    font-weight: 700;
+    color: #FFFF;
+}
+
+.contenedor .signup .top_signup .text h5 {
+    color: #A3A3A3;
 }
