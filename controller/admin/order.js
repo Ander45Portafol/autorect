@@ -1,10 +1,19 @@
 // Constante para completar la ruta de la API
 const ORDER_API= '/bussines/dashboard/order.php'
-//Cosntantes para establecer el contenido de la tabla
+//Constantes para establecer el contenido de la tabla
 const TBODY_ROWS=document.getElementById('tbody-rows-orders')
+//
+// Constante para establecer el formulario de buscar
+const SEARCH_FORM=document.getElementById('form-search')
 
 document.addEventListener('DOMContentLoaded',()=>{
     fillTable()
+})
+
+SEARCH_FORM.addEventListener('submit',(event)=>{
+    event.preventDefault();
+    const FORM=new FormData(SEARCH_FORM);
+    fillTable(FORM);
 })
 
 async function fillTable(form=null){

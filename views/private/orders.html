@@ -142,20 +142,15 @@
           </div>
           <!--This section are all relationated with filters to looking for datas at the orders-->
           <div class="searchsection">
-            <div class="search">
-              <i class="bx bx-search"></i>
-              <input type="text" placeholder="Search anything..." />
+            <form class="search" id="form-search" method="post">
+              <button type="submit" class="button-search"><i class="bx bx-search"></i></button>
+              <input type="text" name="search" placeholder="Search anything..." />
               <i class="bx bx-slider"></i>
-            </div>
+            </form>
             <div class="buttonsearch">
-              <input type="date" class="btnfilter" />
-              <div class="dropdown btnfilter">
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+              <input type="date" class="btnfilter sm-disable" />
+              <div class="dropdown btnfilter sm-disable">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="bx bxs-purchase-tag"></i>
                   Status
                 </button>
@@ -169,13 +164,8 @@
                   </li>
                 </ul>
               </div>
-              <div class="dropdown btnfilter">
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+              <div class="dropdown btnfilter sm-disable" id="btn-address">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="bx bx-current-location"></i>
                   Address
                 </button>
@@ -189,13 +179,8 @@
                   </li>
                 </ul>
               </div>
-              <div class="dropdown btnfilter">
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+              <div class="dropdown btnfilter sm-disable" id="btnSaveF">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="bx bxs-bookmark"></i>
                   Save filters
                 </button>
@@ -209,13 +194,8 @@
                   </li>
                 </ul>
               </div>
-              <div class="dropdown btnfilter">
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+              <div class="dropdown btnfilter sm-active">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="bx bx-slider rotate"></i>
                   More
                 </button>
@@ -301,7 +281,7 @@
     <script src="../../controller/Admin/menu.js"></script>
     <!--This js script is to do funcionality some components of bootstrap-->
     <script src="../../controller/components.js"></script>
-
+    <script src="../../resources/js/sweetalert.min.js"></script>
     <script src="../../controller/admin/order.js"></script>
   </body>
 </html>
