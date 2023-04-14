@@ -10,8 +10,8 @@ class OrderQueries{
 
     //Method to search on the table
     public function searchRows($value){
-        $sql='SELECT * FROM vista_pedidos WHERE id_pedido LIKE ?';
+        $sql='SELECT * FROM vista_pedidos WHERE nombre_completo_cliente ILIKE ?';
         $params=array("%$value%");
         return Database::getRows($sql,$params);
     }
-}
+}   
