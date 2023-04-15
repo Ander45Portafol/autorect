@@ -18,7 +18,29 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No info to show';
                 }
                 break;
-
+            case 'readOne':
+                if (!$brand_model->setID($_POST['id_marca'])) {
+                    $result['exception'] = 'The brand was incorrect';
+                } elseif ($result['dataset'] = $brand_model->readOne()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'The brand does not exist';
+                }
+                break;
+            case 'delete':
+                if (!$brand_model->setID($_POST['id_marca'])) {
+                    $result['exception'] = 'The brand was incorrect';
+                } else if (!$data = $brand_model->readOne()) {
+                    $result['exception'] = 'The selected brand does not exist';
+                } else if ($brand_model->deleteRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'The brand was deleted';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             default:
                 $result['exception'] = 'The action was not avaliable';
                 break;
