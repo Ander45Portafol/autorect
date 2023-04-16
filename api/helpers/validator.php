@@ -77,6 +77,18 @@ class Validator{
             return false;
         }
     }
+
+    public static function validateDate($value)
+    {
+        // Se dividen las partes de la fecha y se guardan en un arreglo en el siguiene orden: año, mes y día.
+        $date = explode('-', $value);
+        if (checkdate($date[1], $date[2], $date[0])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static function saveFile($file, $path, $name)
     {
         // Se verifica que el archivo sea movido al servidor.

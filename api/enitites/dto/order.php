@@ -29,7 +29,7 @@ class Order extends OrderQueries{
         }
     }
     public function setFecha($value){
-        if ($value) {
+        if (Validator::validateDate($value)) {
             $this->fecha=$value; 
             return true;
         }else {
