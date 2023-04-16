@@ -8,8 +8,6 @@
   <link rel="stylesheet" href="../../resources/css/admin/menu.css" />
   <!--In this css file are all styles to formularies-->
   <link rel="stylesheet" href="../../resources/css/admin/main.css" />
-  <!--It is a icon, to show with the title of the page-->
-  <link rel="icon" href="../../resources/images/LogoLogin.png" />
   <!--This is the bootstrap link to use the bootstrap  styles-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
@@ -38,7 +36,8 @@
             <button>Export <i class="bx bx-export"></i></button>
             <button>Print <i class="bx bxs-printer"></i></button>
             <!--This button is to open modal, to do a insert at the table-->
-            <button type="button" id="red" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <button type="button" id="red" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+              onclick="createBrand()">
               <i class="bx bxs-plus-circle"></i> New Brand
             </button>
 
@@ -49,39 +48,45 @@
                 <div class="modal-content">
                   <!--This class is to modify the header section at the modal-->
                   <div class="modal-header">
-                    <p class="modal-title">BRANDS</p>
+                    <p class="modal-title" id="modal-title"></p>
                     <!--This button is to close the modal-->
                     <button type="button" id="btnclose" data-bs-dismiss="modal" aria-label="Close">
                       <i class="bx bx-x"></i>
                     </button>
                   </div>
                   <!--In this class are add elements like inputs, buttons, etc-->
-                  <div class="modal-body modal-B">
-                    <!--This class is to add inputs or selects-->
-                    <div class="Bsection1">
-                      <div class="row">
-                        <div class="col" id="Bbame">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Brand name</label>
+                  <form method="post" id="save-form-B">
+                    <div class="modal-body modal-B">
+                      <!--This class is to add inputs or selects-->
+                      <div class="Bsection1">
+                        <input type="number" name="id" id="id">
+                        <div class="row">
+                          <div class="col" id="Bbame">
+                            <div class="input-data">
+                              <input type="text" name="BrandName" id="brandname" required />
+                              <div class="underline"></div>
+                              <label>Brand name</label>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <!--This class is to add the image to users and buttons-->
-                    <div class="Bsection2">
-                      <div class="image"></div>
-                      <div class="btns">
-                        <button id="clean">
-                          <i class="bx bxs-eraser"></i>CLEAN
-                        </button>
-                        <button id="adduser">
-                          <i class="bx bxs-plus-circle"></i>ADD USER
-                        </button>
+                      <!--This class is to add the image to users and buttons-->
+                      <div class="Bsection2">
+                        <div class="image"></div>
+                        <div class="btns">
+                          <button id="clean">
+                            <i class="bx bxs-eraser"></i>CLEAN
+                          </button>
+                          <button id="adduser" type="submit">
+                            <i class="bx bxs-plus-circle"></i>ADD BRAND
+                          </button>
+                          <button id="update" type="submit">
+                            <i class="bx bxs-bookmark-plus"></i>CONFIRM
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>

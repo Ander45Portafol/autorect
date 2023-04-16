@@ -19,7 +19,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$brand_model->setID($_POST['id_marca'])) {
+                if (!$brand_model->setID($_POST['id'])) {
                     $result['exception'] = 'The brand was incorrect';
                 } elseif ($result['dataset'] = $brand_model->readOne()) {
                     $result['status'] = 1;
@@ -27,6 +27,32 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'The brand does not exist';
+                }
+                break;
+            case 'create':
+                $_POST = Validator::validateForm($_POST);
+                if (!$brand_model->setBrandName($_POST['BrandName'])) {
+                    $result['exception'] = 'There was an error with the brand name';
+                } else if ($brand_model->createRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'The brand has been created';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            case 'update':
+                $_POST = Validator::validateForm($_POST);
+                if (!$brand_model->setID($_POST['id'])) {
+                    $result['exception'] = 'The brand does not exist';
+                } else if (!$data = $brand_model->readOne()) {
+                    $result['exception'] = 'The data does not exist';
+                } else if (!$brand_model->setBrandName($_POST['BrandName'])) {
+                    $result['exception'] = 'There was an error with the brand name';
+                } else if ($brand_model->updateRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'The brand has been created';
+                } else {
+                    $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':

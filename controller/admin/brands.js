@@ -1,8 +1,23 @@
-const TBODY_ROWS = document.getElementById('tbody-rows');
 const BRANDS_API = 'bussines/dashboard/brands.php';
+const TBODY_ROWS = document.getElementById('tbody-rows');
+const FORMU = document.getElementById('save-form-B')
+const MODAL_TITLE = document.getElementById('modal-title')
 
 document.addEventListener('DOMContentLoaded', () => {
     fillTable()
+})
+
+FORMU.document.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    (document.getElementById('id').value) ? action = 'update' : action = 'create';
+    const FORM = new FormData(FORMU);
+    const JSON = await dataFetch(BRANDS_API, action, FORM);
+    if (JSON.status) {
+        fillTable();
+        sweetAlert(1, JSON.message, true);
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
 })
 
 async function fillTable(form = null) {
@@ -18,7 +33,7 @@ async function fillTable(form = null) {
                     <td>${row.logo_marca}</td>
                     <td>
                         <div class="actions">
-                            <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateCategory(${row.id_marca})">
+                            <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateBrand(${row.id_marca})">
                                 <i class="bx bxs-edit"></i>
                             </button>
                             <button class="delete" id="deletebtn" onclick="deleteBrand(${row.id_marca})">
@@ -31,6 +46,27 @@ async function fillTable(form = null) {
         })
     } else {
         sweetAlert(4, JSON.exception, true);
+    }
+}
+
+function createBrand() {
+    MODAL_TITLE.textContent = 'CREATE BRAND';
+    document.getElementById('update').style.display = 'none';
+    document.getElementById('addduser').style.display = 'block';
+    document.getElementById('clean').style.display = 'block';
+}
+
+async function updateBrand(id) {
+    const FORM = new FormData();
+    FORM.append('id', id);
+    const JSON = await dataFetch(BRANDS_API, 'readOne', FORM);
+    if (JSON.status) {
+        MODAL_TITLE.textContent = 'UPDATE BRAND';
+        document.getElementById('update').style.display = 'block';
+        document.getElementById('adduser').style.display = 'none';
+        document.getElementById('clean').style.display = 'none';
+        document.getElementById('id').value = JSON.dataset.id_marca;
+        document.getElementById('brandname').value = JSON.dataset.nombre_marca;
     }
 }
 
