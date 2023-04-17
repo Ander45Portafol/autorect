@@ -29,6 +29,19 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'The brand does not exist';
                 }
                 break;
+            case 'search':
+                $_POST = Validator::validateForm($_POST);
+                if ($_POST['search'] == '') {
+                    $result['exception'] = 'Search Something';
+                } elseif ($result['dataset'] = $brand_model->searchRow($_POST['search'])) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Data was found';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No data';
+                }
+                break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$brand_model->setBrandName($_POST['BrandName'])) {

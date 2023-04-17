@@ -1,11 +1,21 @@
 const BRANDS_API = 'bussines/dashboard/brands.php';
 const TBODY_ROWS = document.getElementById('tbody-rows');
-const FORMU = document.getElementById('save-form-B')
-const MODAL_TITLE = document.getElementById('modal-title')
+const FORMU = document.getElementById('save-form-B');
+const MODAL_TITLE = document.getElementById('modal-title');
+const SEARCH_F = document.getElementById('form-search');
+
+const OPTIONS = {
+    dismissible: false
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     fillTable()
 })
+
+const Clean = () => {
+    document.getElementById('id').value = '';
+    document.getElementById('brandname').value = '';
+}
 
 FORMU.document.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -18,6 +28,12 @@ FORMU.document.addEventListener('submit', async (event) => {
     } else {
         sweetAlert(2, JSON.exception, false);
     }
+})
+
+SEARCH_FORM.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const FORM = new FormData(SEARCH_F);
+    fillTable(FORM);
 })
 
 async function fillTable(form = null) {
