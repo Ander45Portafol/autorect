@@ -24,21 +24,21 @@ async function dataFetch(filename, action, form = null) {
   }
 }
 
-function confirmAction(message){
+function confirmAction(message) {
   return swal({
-    title:'Advertencia',
-    text:message,
-    icon:'warning',
-    closeOnCLickOutSide:false,
-    CloseOnEsc:false,
-    buttons:{
-      cancel:{
-        text:'No',
-        value:false,
+    title: 'Advertencia',
+    text: message,
+    icon: 'warning',
+    closeOnCLickOutSide: false,
+    CloseOnEsc: false,
+    buttons: {
+      cancel: {
+        text: 'No',
+        value: false,
         visible: true,
         className: 'red accent-1'
       },
-      confirm:{
+      confirm: {
         text: 'Sí',
         value: true,
         visible: true,
@@ -48,17 +48,17 @@ function confirmAction(message){
   })
 }
 
-async function logOut(){
+async function logOut() {
   // Se muestra un mensaje de confirmacion y se captura la respuesta en una constante
-  const RESPONSE =await confirmAction('¿Estas seguro de cerrar la sesion?')
+  const RESPONSE = await confirmAction('¿Estas seguro de cerrar la sesion?')
   // Se verifica la respuesta del mensaje
   if (RESPONSE) {
     // Peticion para eliminar la sesion.
-    const JSON=await dataFetch(USER_API, 'logOut')
+    const JSON = await dataFetch(USER_API, 'logOut')
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepcion.
     if (JSON.status) {
-      sweetAlert(1,JSON.message, true,'index.html')
-    }else{
+      sweetAlert(1, JSON.message, true, 'index.html')
+    } else {
       sweetAlert(2, JSON.exception, false)
     }
   }
@@ -109,22 +109,22 @@ function sweetAlert(type, text, timer, url = null) {
   });
 }
 
-async function fillSelect(filename, action, select, selected=null){
-  const JSON=await dataFetch(filename,action)
-  let content='';
+async function fillSelect(filename, action, select, selected = null) {
+  const JSON = await dataFetch(filename, action)
+  let content = '';
   if (JSON.status) {
-    content+='<option disable selected>Seleccione una opcion</option>'
-    JSON.dataset.forEach(row=>{
-      value=Object.values(row)[0]
-      text=Object.values(row)[1]
-      if (value!=selected) {
-        content+=`<option value="${value}">${text}</option>`
-      }else{
-        content+=`<option value="${value}" selected>${text}</option>`
+    content += '<option disable selected>Seleccione una opcion</option>'
+    JSON.dataset.forEach(row => {
+      value = Object.values(row)[0]
+      text = Object.values(row)[1]
+      if (value != selected) {
+        content += `<option value="${value}">${text}</option>`
+      } else {
+        content += `<option value="${value}" selected>${text}</option>`
       }
     })
-  }else{
-    content+='<option>No hay opciones disponibles</option>'
+  } else {
+    content += '<option>No hay opciones disponibles</option>'
   }
-  document.getElementById(select).innerHTML=content
+  document.getElementById(select).innerHTML = content
 }
