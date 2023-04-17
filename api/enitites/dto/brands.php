@@ -31,7 +31,7 @@ class Brand extends BrandQueries
     public function setBrandLogo($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->bran_name = $value;
+            $this->brand_name = $value;
             return true;
         } else {
             return false;
