@@ -45,6 +45,9 @@ async function fillTable(form=null){
                             <button class="delete" id="deletebtn" onclick="DeleteOrder(${row.id_pedido})">
                                 <i class="bx bxs-trash"></i>
                             </button>
+                            <button class="order_detail">
+                                <i class="bx bx-spreadsheet"></i>
+                            </button>
                         </div>
                     </td>
                 </tr>

@@ -29,6 +29,18 @@ if (isset($_GET['action'])) {
                     $result['exception']='No hay coincidencias';
                 }
                 break;
+                case 'delete':
+                    if (!$client_model->setIdCliente($_POST['id_cliente'])) {
+                        $result['exception']='Cliente incorrecto';
+                    }elseif (!$data=$client_model->readOne()) {
+                        $result['exception']='Cliente inexistente';
+                    }elseif ($client_model->deleteRow()) {
+                        $result['status']=1;
+                        $result['message']='Cliente Eliminado, correctamente';
+                    }else{
+                        $result['exception']=Database::getException();
+                    }
+                    break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
                 break;

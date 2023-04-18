@@ -10,7 +10,6 @@
 
   body {
     max-height: 100%;
-    ;
     max-width: 98%;
   }
 
@@ -549,7 +548,6 @@
   .Esection1 .row-final {
     width: 100%;
   }
-
   .Esection1 #caddress .input-data {
     width: 100%;
     padding-right: 40.5pc;

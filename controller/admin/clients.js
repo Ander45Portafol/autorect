@@ -26,11 +26,32 @@ async function fillTable(form=null){
                     <td>${row.usuario_cliente}</td>
                     <td>${row.dui_cliente}</td>
                     <td>${row.telefono_cliente}</td>
-                    <td>${row.estado_cliente}</td>
+                    <td class="action-btn">
+                        <div class="actions">
+                            <button class="delete" id="deletebtn" onclick="DeleteClient(${row.id_cliente})">
+                            <i class="bx bxs-trash"></i>
+                            </button>
+                        </div>
+                    </td>
                 </tr>
             `;
         })
     }else{
         sweetAlert(4,JSON.exception,true);
+    }
+}
+
+async function DeleteClient(id){
+    const RESPONSE=await confirmAction('¿Desea eliminar este cliente de forma permanente?')
+    if (RESPONSE) {
+        const FORM=new FormData()
+        FORM.append('id_cliente',id)
+        const JSON=await dataFetch(CLIENTS_API,'delete',FORM)
+        if (JSON.status) {
+            fillTable()
+            sweetAlert(1,JSON.message,true)
+        }else{
+            sweetAlert(2,JSON.exception,false)
+        }
     }
 }
