@@ -49,7 +49,7 @@ async function fillTable(form = null) {
                     <td>${row.logo_marca}</td>
                     <td>
                         <div class="actions">
-                            <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateBrand(${row.id_marca})">
+                            <button type="button" class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateBrand(${row.id_marca})">
                                 <i class="bx bxs-edit"></i>
                             </button>
                             <button class="delete" id="deletebtn" onclick="deleteBrand(${row.id_marca})">
