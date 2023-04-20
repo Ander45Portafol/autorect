@@ -113,6 +113,8 @@ if(isset($_GET['action'])){
                     $result['exception']='Selecciona un empleado';
                 }elseif (!$order_model->setId_Empleado($_POST['employees'])) {
                     $result['exception']='Error al escoger un empleado';
+                }elseif  (!$order_model->setId($_POST['id'])){
+                    $result['exception']='Pedido inexistente';
                 }elseif ($order_model->updateRow()) {
                     $result['status']=1;
                     $result['message']='Pedido actualizado correctamente';

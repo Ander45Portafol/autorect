@@ -83,7 +83,6 @@ async function updateCategory(id){
         document.getElementById('name').value=JSON.dataset.nombre_categoria;
         document.getElementById('description').value=JSON.dataset.descripcion_categoria;
     }
-
 }
 async function DeleteCategory(id){
     const RESPONSE=await confirmAction('¿Desea eliminar el usuario de forma permanente?')
