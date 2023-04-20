@@ -1,19 +1,26 @@
 <?php
 require_once('../../helpers/validator.php');
 require_once('../../enitites/dao/clients_queries.php');
-class Client extends Client_Queries{
-    protected $idCliente=null;
+//Class with dependeces at he Querie's file
+class Client extends Client_Queries
+{
+    //Atributes to do manipule data
+    protected $idCliente = null;
 
-
-    public function setIdCliente($value){
+    //Method's set for each atribute
+    public function setIdCliente($value)
+    {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idCliente=$value;
+            $this->idCliente = $value;
             return true;
-        }else {
+        } else {
             return false;
         }
     }
-    public function getID(){
+
+    //Method's get for each atribute
+    public function getID()
+    {
         return $this->idCliente;
     }
 }

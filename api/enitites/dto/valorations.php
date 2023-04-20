@@ -1,19 +1,26 @@
 <?php
 require_once('../../helpers/validator.php');
 require_once('../../enitites/dao/valorations_queries.php');
-class valorations extends Valorations_queries{
-    protected $id_valoracion=null;
+//Class with dependeces at he Querie's file
+class valorations extends Valorations_queries
+{
+    //Atributes to do manipule data
+    protected $id_valoracion = null;
 
-
-    public function setId($value){
+    //Method's set for each atribute
+    public function setId($value)
+    {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id_valoracion=$value;
+            $this->id_valoracion = $value;
             return true;
-        }else {
+        } else {
             return false;
         }
     }
-    public function getID(){
+    
+    //Method's get for each atribute
+    public function getID()
+    {
         return $this->id_valoracion;
     }
 }

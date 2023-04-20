@@ -1,13 +1,18 @@
 <?php
-
+//This url is to use data, of the atributes and queries through dependecies
 require_once('../../enitites/dto/products.php');
-
+//This if is to validate the action is to do
 if (isset($_GET['action'])) {
     session_start();
+    //Object to mecioned functions of the queries, through this object
     $product_model = new products;
+    //This variable is to show the answer at the actions
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
+    //Is to verficate if the session is started
     if (isset($_SESSION['id_usuario'])) {
+        //Is to verificated that action is to do
         switch ($_GET['action']) {
+                //This action is to charger datas in the table
             case 'readAll':
                 if ($result['dataset'] = $product_model->readAll()) {
                     $result['status'] = 1;
@@ -18,6 +23,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                //This action is to show the status of the product data in te select
             case 'readStatus':
                 if ($result['dataset'] = $product_model->readStatusProduct()) {
                     $result['status'] = 1;
@@ -28,6 +34,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                //This action is to search the especific data
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -41,6 +48,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
+                //This action is verificate the exists of the product
             case 'readOne':
                 if (!$product_model->setId($_POST['id'])) {
                     $result['exception'] = 'Producto Incorrecto';
@@ -52,6 +60,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Categoria Inexiste';
                 }
                 break;
+                //This action is to create a new product and verificate data to send at the queries file
             case 'create':
                 if (!$product_model->setNombre_Producto($_POST['Product_name'])) {
                     $result['exception'] = 'Nombre Incorrecto';
@@ -80,6 +89,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //This action is to update a product and verificate data to send at the queries file
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$product_model->setId($_POST['id'])) {
@@ -100,26 +110,27 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un esatdo, para el producto';
                 } elseif (!$product_model->setDescripcion($_POST['product_description'])) {
                     $result['exception'] = 'Descripcion incorrecta';
-                }elseif (!is_uploaded_file($_FILES['imageProduct']['tmp_name'])) {
+                } elseif (!is_uploaded_file($_FILES['imageProduct']['tmp_name'])) {
                     if ($user_model->updateRow($data['imagen_principal'])) {
-                        $result['status']=1;
-                        $Result['message']='Producto actualizado, correctamente';
-                    }else {
-                        $result['exception']=Database::getException();
+                        $result['status'] = 1;
+                        $Result['message'] = 'Producto actualizado, correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
                     }
-                }elseif (!$product_model->setImagen($_FILES['imageProduct'])) {
-                    $result['exception']=Validator::getFileError();
-                }elseif ($product_model->updateRow($data['imagen_principal'])) {
-                    $result['status']=1;
-                    if (Validator::saveFile($_FILES['imageProduct'],$product_model->getRuta(), $product_model->getImagen())) {
-                        $Result['message']='Producto actualizado, correctamente';
-                    }else {
-                        $Result['message']='Producto actualizado, pero no se guardo la imagen';
+                } elseif (!$product_model->setImagen($_FILES['imageProduct'])) {
+                    $result['exception'] = Validator::getFileError();
+                } elseif ($product_model->updateRow($data['imagen_principal'])) {
+                    $result['status'] = 1;
+                    if (Validator::saveFile($_FILES['imageProduct'], $product_model->getRuta(), $product_model->getImagen())) {
+                        $Result['message'] = 'Producto actualizado, correctamente';
+                    } else {
+                        $Result['message'] = 'Producto actualizado, pero no se guardo la imagen';
                     }
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //This action is to delete data of the product
             case 'delete':
                 if (!$product_model->setId($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecta';
@@ -132,16 +143,18 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //Case default if anything is executed
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
-        // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
+        //indicate the tyoe of the content to show and yours respective strings
         header('content-type: application/json; charset=utf-8');
-        // Se imprime el resultado en formato JSON y se retorna al controlador.
+        //Show the result in format JSON and return at the controller
         print(json_encode($result));
     } else {
         print(json_encode('Acceso denegado'));
     }
 } else {
+    //If nothing are compilating, the api show this message in format JSON
     print(json_encode('Recurso no disponible'));
 }
