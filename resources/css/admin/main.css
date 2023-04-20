@@ -351,6 +351,7 @@
   .actions {
     display: flex;
     flex-direction: row;
+    justify-content: center;
   }
   /*User*/
   /*Modal section*/
@@ -383,11 +384,14 @@
   .input-data input:valid~.underline:before {
     transform: scaleX(1);
   }
-
+.image_product{
+  height: 50px;
+  width: 50px;
+}
   /*This code is to section the modal body*/
   .modal-body {
     width: 100%;
-    height: 50vh;
+    height: 55vh;
     display: flex;
     flex-direction: row;
   }
@@ -520,6 +524,14 @@
     margin-bottom: 10px;
   }
 
+.col-description .input-data{
+  margin-top: 1rem;
+  width: 100%;
+}
+.col-stock{
+  display: flex;
+  align-items: flex-end;
+}
   .btns #update {
     border-radius: 5px;
     width: 150px;
@@ -613,6 +625,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 3rem;
   }
 
   .Psection2 .btns {
