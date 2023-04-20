@@ -340,6 +340,19 @@
   .sectiontable .table td .order_detail {
     border: 2px solid #2E98BA;
     color: #2E98BA;
+    background-color: transparent;
+    font-size: 16pt;
+    border-radius: 5px;
+    width: 45px;
+    height: 30px;
+    margin-left: 20px;
+  }
+
+  /*This code is to add style the images button in the table*/
+  .sectiontable .table td .product_images {
+    border: 2px solid #5DBB63;
+    color: #5DBB63;
+    background-color: transparent;
     font-size: 16pt;
     border-radius: 5px;
     width: 45px;
