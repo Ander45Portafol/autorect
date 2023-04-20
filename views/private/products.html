@@ -143,7 +143,7 @@
                 </div>
               </div>
             </div>
-            <div class="modal fade modal-xl" id="modalimages" data-bs-backdrop="static" data-bs-keyboard="false"
+            <div class="modal-images modal fade modal-xl" id="modalimages" class="modalimages" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="modalimagesLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -155,19 +155,35 @@
                         class="bx bx-x"></i></button>
                   </div>
                   <!--In this class are add elements like inputs, buttons, etc-->
-                  <form class="modal-body modal-P" id="images-form">
-                    <div class="row">
-                      <div class="col-lg-3 col-sm-6">
-                        <input type="file">
+                  <form class="modal-body" id="images-form" class="images-form">
+                    <div class="row text-center">
+                      <div class="col-image-product col-lg-3 col-sm-6">
+                        <input type="file" id="image-1" class="images-products">
+                        <img src="" id="image-1-preview" class="images-preview">
+                        <label for="image-1" class="images-label">
+                          <i class='bx bx-image-add'></i>Choose a photo
+                        </label>
                       </div>
-                      <div class="col-lg-3 col-sm-6">
-                        <input type="file">
+                      <div class="col-image-product col-lg-3 col-sm-6">
+                        <input type="file" id="image-2" class="images-products">
+                        <img src="" id="image-2-preview" class="images-preview">
+                        <label for="image-2" class="images-label">
+                          <i class='bx bx-image-add'></i>Choose a photo
+                        </label>
                       </div>
-                      <div class="col-lg-3 col-sm-6">
-                        <input type="file">
+                      <div class="col-image-product col-lg-3 col-sm-6">
+                        <input type="file" id="image-3" class="images-products">
+                        <img src="" id="image-3-preview" class="images-preview">
+                        <label for="image-3" class="images-label">
+                          <i class='bx bx-image-add'></i>Choose a photo
+                        </label>
                       </div>
-                      <div class="col-lg-3 col-sm-6">
-                        <input type="file">
+                      <div class="col-image-product col-lg-3 col-sm-6">
+                        <input type="file" id="image-4" class="images-products">
+                        <img src="" id="image-4-preview" class="images-preview">
+                        <label for="image-4" class="images-label">
+                          <i class='bx bx-image-add'></i>Choose a photo
+                        </label>
                       </div>
                     </div>
                   </form>
