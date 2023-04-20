@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     fillTable();
 })
 
-SEARCH_FORM.addEventListener('submit',(event)=>{
+SEARCH_FORM.addEventListener('submit', (event) => {
     event.preventDefault();
-    const FORM=new FormData(SEARCH_FORM);
+    const FORM = new FormData(SEARCH_FORM);
     fillTable(FORM);
 })
 
@@ -47,10 +47,10 @@ async function fillTable(form = null) {
                     <td>${row.id_tipo_empleado}</td>
                     <td>
                         <div class="actions">
-                            <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateCategory(${row.id_empleado})">
+                            <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateEmployee(${row.id_empleado})">
                                 <i class="bx bxs-edit"></i>
                             </button>
-                            <button class="delete" id="deletebtn" onclick="DeleteEmployee(${row.id_empleado})">
+                            <button class="delete" id="deletebtn" onclick="deleteEmployee(${row.id_empleado})">
                                 <i class="bx bxs-trash"></i>
                             </button>
                         </div>
@@ -71,26 +71,27 @@ const Clean = () => {
 
 function createEmployee() {
     MODAL_TITLE.textContent = 'CREATE EMPLOYEE';
+    fillSelect(EMPLOYEE_API,'readTypes','types');
     document.getElementById('update').style.display = 'none';
     document.getElementById('addcategory').style.display = 'block';
     document.getElementById('clean').style.display = 'block';
 }
-async function updateCategory(id) {
+async function updateEmployee(id) {
     const FORM = new FormData();
     FORM.append('id', id);
-    const JSON = await dataFetch(CATEGORY_API, 'readOne', FORM);
+    const JSON = await dataFetch(EMPLOYEE_API, 'readOne', FORM);
     if (JSON.status) {
-        MODAL_TITLE.textContent = 'UPDATE CATEGORY';
+        MODAL_TITLE.textContent = 'UPDATE EMPLOYEE';
         document.getElementById('update').style.display = 'block';
         document.getElementById('addcategory').style.display = 'none';
         document.getElementById('clean').style.display = 'none';
-        document.getElementById('id').value = JSON.dataset.id_categoria;
+        document.getElementById('id').value = JSON.dataset.id_empleado;
         document.getElementById('name').value = JSON.dataset.nombre_categoria;
         document.getElementById('description').value = JSON.dataset.descripcion_categoria;
     }
 
 }
-async function DeleteEmployee(id) {
+async function deleteEmployee(id) {
     const RESPONSE = await confirmAction('¿Desea eliminar el empleado de forma permanente?')
     if (RESPONSE) {
         const FORM = new FormData()
