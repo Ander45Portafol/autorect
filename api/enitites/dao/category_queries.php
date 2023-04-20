@@ -1,35 +1,49 @@
 <?php
+//Here are used the functions in the database file
 require_once('../../helpers/database.php');
 
-class CategoryQueries{
-    //Metodo para realizar una insercion
-    public function createRow(){
-        $sql='INSERT INTO categorias(nombre_categoria, descripcion_categoria) VALUES(?,?)';
-        $params=array($this->nombre, $this->descripcion);
-        return Database::executeRow($sql,$params);
+//Class create to controller all queries at the database
+class CategoryQueries
+{
+    //This function is to create a new category  with de respective data
+    public function createRow()
+    {
+        $sql = 'INSERT INTO categorias(nombre_categoria, descripcion_categoria) VALUES(?,?)';
+        $params = array($this->nombre, $this->descripcion);
+        return Database::executeRow($sql, $params);
     }
-    public function searchRows($value){
-        $sql='SELECT id_categoria, nombre_categoria, descripcion_categoria FROM categorias WHERE nombre_categoria ILIKE ? ORDER BY id_categoria';
-        $params=array("%$value%");
-        return Database::getRows($sql,$params);
+    //This function is to search the categories data, with parameters
+    public function searchRows($value)
+    {
+        $sql = 'SELECT id_categoria, nombre_categoria, descripcion_categoria FROM categorias WHERE nombre_categoria ILIKE ? ORDER BY id_categoria';
+        $params = array("%$value%");
+        return Database::getRows($sql, $params);
     }
-    public function readAll(){
-        $sql='SELECT id_categoria, nombre_categoria, descripcion_categoria FROM categorias ORDER BY id_categoria';
+    //This function is show all datas of the categories is used to show data in the table
+    public function readAll()
+    {
+        $sql = 'SELECT id_categoria, nombre_categoria, descripcion_categoria FROM categorias ORDER BY id_categoria';
         return Database::getRows($sql);
     }
-    public function readOne(){
-        $sql='SELECT id_categoria, nombre_categoria, descripcion_categoria FROM categorias WHERE id_categoria=?';
-        $params=array($this->id);
-        return Database::getRow($sql,$params);
+    //This function is to catch one data, whit the identicator
+    public function readOne()
+    {
+        $sql = 'SELECT id_categoria, nombre_categoria, descripcion_categoria FROM categorias WHERE id_categoria=?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
     }
-    public function updateRow(){
-        $sql='UPDATE categorias SET nombre_categoria=?, descripcion_categoria=? WHERE id_categoria=?';
-        $params=array($this->nombre, $this->descripcion, $this->id);
-        return Database::executeRow($sql,$params);
+    //This function is to update the categories data
+    public function updateRow()
+    {
+        $sql = 'UPDATE categorias SET nombre_categoria=?, descripcion_categoria=? WHERE id_categoria=?';
+        $params = array($this->nombre, $this->descripcion, $this->id);
+        return Database::executeRow($sql, $params);
     }
-    public function deleteRow(){
-        $sql='DELETE FROM categorias WHERE id_categoria=?';
-        $params=array($this->id);
-        return Database::executeRow($sql,$params);
+    //This function is to delete the category data
+    public function deleteRow()
+    {
+        $sql = 'DELETE FROM categorias WHERE id_categoria=?';
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
     }
 }

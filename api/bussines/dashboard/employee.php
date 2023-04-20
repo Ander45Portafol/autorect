@@ -18,17 +18,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data to show';
                 }
                 break;
-            case 'readOne':
-                    if (!$employee_model->setId($_POST['id'])) {
-                        $result['exception'] = 'empleado incorrecto';
-                    } elseif ($result['dataset'] = $employee_model->readOne()) {
-                        $result['status'] = 1;
-                    } elseif (Database::getException()) {
-                        $result['exception'] = Database::getException();
-                    } else {
-                        $result['exception'] = 'empleado inexistente';
-                    }
-                break;
             case 'readTypes':
                 if ($result['dataset'] = $employee_model->readTypes()) {
                     $result['status'] = 1;

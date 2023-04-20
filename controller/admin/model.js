@@ -1,13 +1,21 @@
+//In this variable is used to manipulated the data charger in the table
 const CUERPO_TEXTO=document.getElementById('tbody-rows');
+//In this variable are charging the titule in the modal
 const titulo_modal=document.getElementById('modal-title');
+//In this variable is create to manipulated the form data
 const FORMULARIO=document.getElementById('save-form-M');
+//This variable is create to make funcionated the search method
+const SEARCH_FORM=document.getElementById('form-search')
+//In this variable are using the Api
 const MODELS_API='/bussines/dashboard/models.php';
 
+//This event is to charger table in the formulary
 document.addEventListener('DOMContentLoaded', ()=>{
     cargarTabla();
 })
 
-FORMULARIO.document.addEventListener('submit' ,async (event)=>{
+//This is the event to form to do the update or create process
+FORMULARIO.addEventListener('submit' ,async (event)=>{
     event.preventDefault();
     (document.getElementById('id').value)?action='update':action='create';
     const FORM =new FormData(FORMULARIO);
@@ -20,6 +28,14 @@ FORMULARIO.document.addEventListener('submit' ,async (event)=>{
     }
 })
 
+//This event is to make the event subimt at the search form
+SEARCH_FORM.addEventListener('submit',(event)=>{
+    event.preventDefault();
+    const FORM=new FormData(SEARCH_FORM);
+    cargarTabla(FORM);
+})
+
+//This function is to charger the models data in the table
 async function cargarTabla(form=null){
     CUERPO_TEXTO.innerHTML='';
     (form)?action='search':action='readAll';
@@ -49,7 +65,7 @@ async function cargarTabla(form=null){
         sweetAlert(4,JSON.exception, true)
     }
 }
-
+//This function is to change somethings when the process are create
 function createModel(){
     titulo_modal.textContent='CREATE MODEL';
     fillSelect(MODELS_API,'readBrand','brand');
@@ -57,7 +73,7 @@ function createModel(){
     document.getElementById('adduser').style.display='block';
     document.getElementById('clean').style.display='block';
 }
-
+//This function is to charger somethings when the process are update
 async function updateModel(id){
     const FORM=new FormData();
     FORM.append('id',id);
@@ -73,7 +89,7 @@ async function updateModel(id){
         fillSelect(MODELS_API, 'readBrand', 'brand',JSON.dataset.id_marca);
     }
 }
-
+//This function is to do the delete process in the models
 async function deleteModel(id){
     const RESPONSE=await confirmAction('¿Desea eliminar el modelo de forma permanente?');
     if (RESPONSE) {
