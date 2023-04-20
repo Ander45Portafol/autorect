@@ -1,11 +1,17 @@
 const EMPLOYEE_API = 'bussines/dashboard/employee.php';
-const MODAL_TITLE = document.getElementById('modal-title');
+const MODAL_TITLE = document.getElementById('exampleModalLabel');
 const SAVE_FORM = document.getElementById('save-form');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const SEARCH_FORM = document.getElementById('form-search');
 
 document.addEventListener('DOMContentLoaded', () => {
     fillTable();
+})
+
+SEARCH_FORM.addEventListener('submit',(event)=>{
+    event.preventDefault();
+    const FORM=new FormData(SEARCH_FORM);
+    fillTable(FORM);
 })
 
 SAVE_FORM.addEventListener('submit', async (event) => {
@@ -16,7 +22,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     if (JSON.status) {
         fillTable();
         sweetAlert(1, JSON.message, true);
-        LimpiarCampos();
+        Clean();
         document.getElementById('btnclose').click();
     } else {
         sweetAlert(2, JSON.exception, false);
@@ -63,8 +69,8 @@ const Clean = () => {
     document.getElementById('description').value = '';
 }
 
-function createCategory() {
-    MODAL_TITLE.textContent = 'CREATE CATEGORY';
+function createEmployee() {
+    MODAL_TITLE.textContent = 'CREATE EMPLOYEE';
     document.getElementById('update').style.display = 'none';
     document.getElementById('addcategory').style.display = 'block';
     document.getElementById('clean').style.display = 'block';
