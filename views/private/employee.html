@@ -37,7 +37,8 @@
             <button>Export <i class="bx bx-export"></i></button>
             <button>Print <i class="bx bxs-printer"></i></button>
             <!--This button is to open modal, to do a insert at the table-->
-            <button type="button" class="btn" id="red-employee" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="createEmployee()">
+            <button type="button" class="btn" id="red-employee" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+              onclick="createEmployee()">
               <i class="bx bxs-plus-circle"></i> New Employee
             </button>
 
@@ -117,14 +118,6 @@
                               <label>Type</label>
                               <div class="select">
                                 <select name="Types" id="types"></select>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="select-data">
-                              <label>Status</label>
-                              <div class="select">
-                                <select name="Status" id="Status"></select>
                               </div>
                             </div>
                           </div>
@@ -297,10 +290,11 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
   <script src="../../resources/js/sweetalert.min.js"></script>
-  <!--This js script is to add navbar at aside tag-->
-  <script src="../../controller/Admin/menu.js"></script>
   <!--This js script is to do funcionality some components of bootstrap-->
   <script src="../../controller/components.js"></script>
+  <script src="../../controller/admin/account.js"></script>
+  <!--This js script is to add navbar at aside tag-->
+  <script src="../../controller/Admin/menu.js"></script>
   <script src="../../controller/admin/employees.js"></script>
 </body>
 
