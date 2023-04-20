@@ -113,4 +113,13 @@ class Validator{
             return false;
         }
     }
+    public static function validateMoney($value)
+    {
+        // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
+        if (preg_match('/^[0-9]+(?:\.[0-9]{1,2})?$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

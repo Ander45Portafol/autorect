@@ -37,152 +37,13 @@
           <div class="buttonstop">
             <button>Export <i class="bx bx-export"></i></button>
             <button>Print <i class="bx bxs-printer"></i></button>
-            <!--This button is to open modal, to do a insert at the table-->
-            <button type="button" class="btn" data-bs-toggle="modal" id="red" data-bs-target="#staticBackdrop">
-              <i class="bx bxs-plus-circle"></i> New Client
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade modal-xl" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <!--This class is to modify the header section at the modal-->
-                  <div class="modal-header">
-                    <p class="modal-title">
-                      CLIENTS
-                    </p>
-                    <!--This button is to close the modal-->
-                    <button type="button" id="btnclose" data-bs-dismiss="modal" aria-label="Close"><i
-                        class="bx bx-x"></i></button>
-                  </div>
-                  <!--In this class are add elements like inputs, buttons, etc-->
-                  <div class="modal-body modal-C">
-                    <!--This class is to add inputs or selects-->
-                    <div class="Csection1">
-                      <div class="row">
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Name</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Last Name</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>DUI</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Email</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Phone</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Birth day</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Username</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="password" required />
-                            <div class="underline"></div>
-                            <label>Password</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Address</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Membership number</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="select-data">
-                            <label>Membership type</label>
-                            <div class="select">
-                              <select name="Status" id="Status"></select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="status-C">
-                            <label>Status</label>
-                            <div class="form-check form-switch">
-                              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
-                                checked>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--This class is to add buttons to do actions-->
-                    <div class="Csection2">
-                      <div class="image"></div>
-                      <div class="btns">
-                        <button id="clean">
-                          <i class="bx bxs-eraser"></i>CLEAN
-                        </button>
-                        <button id="adduser">
-                          <i class="bx bxs-plus-circle"></i>ADD USER
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         <!--This section are all relationated with filters to looking for datas at the clients-->
         <div class="searchsection">
           <form class="search" id="form-search" method="post">
             <button type="submit" class="button-search"><i class="bx bx-search"></i></button>
-            <input type="text" name="search" placeholder="Search anything..." />
+            <input type="text" name="search" placeholder="Writing yor document..." />
             <i class="bx bx-slider"></i>
           </form>
           <div class="buttonsearch">
@@ -301,7 +162,7 @@
                 <th scope="col">User</th>
                 <th scope="col">DUI</th>
                 <th scope="col">Phone number</th>
-                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody id="tbody-rows"></tbody>
@@ -316,6 +177,7 @@
     crossorigin="anonymous"></script>
   <!--This js script is to add navbar at aside tag-->
   <script src="../../controller/admin/menu.js"></script>
+  <script src="../../resources/js/sweetalert.min.js"></script>
   <!--This js script is to do funcionality some components of bootstrap-->
   <script src="../../controller/components.js"></script>
   <script src="../../controller/admin/clients.js"></script>
