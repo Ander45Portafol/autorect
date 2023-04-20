@@ -12,7 +12,7 @@ class Client_Queries{
         return Database::getRow($sql,$params);
     }
     public function searchRows($value){
-        $sql='SELECT id_cliente,nombre_cliente, apellido_cliente, usuario_cliente, dui_cliente,telefono_cliente, estado_cliente FROM clientes WHERE dui_cliente ILIKE ? ORDER BY id_cliente';
+        $sql='SELECT id_cliente,nombre_cliente, apellido_cliente, usuario_cliente, dui_cliente,telefono_cliente, estado_cliente FROM clientes WHERE dui_cliente ILIKE ? AND estado_cliente=true ORDER BY id_cliente';
         $params=array("%$value%");
         return Database::getRows($sql,$params);
     }

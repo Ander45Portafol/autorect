@@ -36,7 +36,7 @@ ASIDE.innerHTML=`     <ul class="nav flex-column">
 
   </li>
   <li class="nav-item">
-  <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Order Details"><a class="nav-link" href="order_details.html" id="order_details"><i class="bx bx-spreadsheet"></i></a></button>
+  <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Valorations"><a class="nav-link" href="valoration.html" id="valoration"><i class='bx bxs-star-half'></i></a></button>
     
   </li>
 
