@@ -12,7 +12,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     event.preventDefault();
     (document.getElementById('id').value) ? action = 'update' : action = 'create';
     const FORM = new FormData(SAVE_FORM);
-    const JSON = await dataFetch(CATEGORY_API, action, FORM);
+    const JSON = await dataFetch(EMPLOYEE_API, action, FORM);
     if (JSON.status) {
         fillTable();
         sweetAlert(1, JSON.message, true);
@@ -44,7 +44,7 @@ async function fillTable(form = null) {
                             <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateCategory(${row.id_empleado})">
                                 <i class="bx bxs-edit"></i>
                             </button>
-                            <button class="delete" id="deletebtn" onclick="DeleteCategory(${row.id_empleado})">
+                            <button class="delete" id="deletebtn" onclick="DeleteEmployee(${row.id_empleado})">
                                 <i class="bx bxs-trash"></i>
                             </button>
                         </div>
@@ -84,12 +84,12 @@ async function updateCategory(id) {
     }
 
 }
-async function DeleteCategory(id) {
-    const RESPONSE = await confirmAction('¿Desea eliminar el usuario de forma permanente?')
+async function DeleteEmployee(id) {
+    const RESPONSE = await confirmAction('¿Desea eliminar el empleado de forma permanente?')
     if (RESPONSE) {
         const FORM = new FormData()
-        FORM.append('id_categoria', id)
-        const JSON = await dataFetch(CATEGORY_API, 'delete', FORM)
+        FORM.append('id_empleado', id)
+        const JSON = await dataFetch(EMPLOYEE_API, 'delete', FORM)
         if (JSON.status) {
             fillTable()
             sweetAlert(1, JSON.message, true)

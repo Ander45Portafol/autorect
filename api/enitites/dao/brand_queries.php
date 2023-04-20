@@ -33,7 +33,7 @@ class BrandQueries
 
     public function createRow(){
         $query = 'INSERT INTO marcas
-                  nombre_marca, logo_marca
+                  (nombre_marca, logo_marca)
                   VALUES(?,?)';
         $params = array($this->brand_name, $this->brand_logo);
         return Database::executeRow($query, $params);

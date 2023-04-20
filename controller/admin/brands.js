@@ -17,20 +17,21 @@ const Clean = () => {
     document.getElementById('brandname').value = '';
 }
 
-FORMU.document.addEventListener('submit', async (event) => {
+FORMU.addEventListener('submit', async (event) => {
     event.preventDefault();
     (document.getElementById('id').value) ? action = 'update' : action = 'create';
     const FORM = new FormData(FORMU);
     const JSON = await dataFetch(BRANDS_API, action, FORM);
     if (JSON.status) {
         fillTable();
+        Clean();
         sweetAlert(1, JSON.message, true);
     } else {
         sweetAlert(2, JSON.exception, false);
     }
 })
 
-SEARCH_FORM.addEventListener('submit', (event) => {
+SEARCH_F.addEventListener('submit', (event) => {
     event.preventDefault();
     const FORM = new FormData(SEARCH_F);
     fillTable(FORM);
@@ -47,7 +48,7 @@ async function fillTable(form = null) {
                     <td>${row.id_marca}</td>
                     <td>${row.nombre_marca}</td>
                     <td>${row.logo_marca}</td>
-                    <td>
+                    <td class="action-btn">
                         <div class="actions">
                             <button type="button" class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateBrand(${row.id_marca})">
                                 <i class="bx bxs-edit"></i>
@@ -68,7 +69,7 @@ async function fillTable(form = null) {
 function createBrand() {
     MODAL_TITLE.textContent = 'CREATE BRAND';
     document.getElementById('update').style.display = 'none';
-    document.getElementById('addduser').style.display = 'block';
+    document.getElementById('adduser').style.display = 'block';
     document.getElementById('clean').style.display = 'block';
 }
 

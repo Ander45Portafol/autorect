@@ -58,94 +58,101 @@
                   </div>
                   <!--In this class are add elements like inputs, buttons, etc-->
                   <div class="modal-body">
-                    <!--This class is to add inputs or selects-->
-                    <div class="Esection1">
-                      <div class="row">
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required name="employee_name" />
-                            <div class="underline"></div>
-                            <label>Name</label>
+                    <form id="save-form" method="post" enctype="multipart/form-data">
+                      <!--This class is to add inputs or selects-->
+                      <div class="Esection1">
+                        <div class="row">
+                          <div class="col">
+                            <input type="text" class="hide" id="id" name="id">
                           </div>
                         </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required name="employee_lastname"/>
-                            <div class="underline"></div>
-                            <label>Lastname</label>
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required name="employee_name" />
+                              <div class="underline"></div>
+                              <label>Name</label>
+                            </div>
                           </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required name="employee_dui"/>
-                            <div class="underline"></div>
-                            <label>DUI</label>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required name="employee_lastname" />
+                              <div class="underline"></div>
+                              <label>Lastname</label>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required name="employee_phone"/>
-                            <div class="underline"></div>
-                            <label>Phone</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Email</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Birth day</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="select-data">
-                            <label>Stype</label>
-                            <div class="select">
-                              <select name="Status" id="Status"></select>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required name="employee_dui" />
+                              <div class="underline"></div>
+                              <label>DUI</label>
                             </div>
                           </div>
                         </div>
-                        <div class="col">
-                          <div class="select-data">
-                            <label>Status</label>
-                            <div class="select">
-                              <select name="Status" id="Status"></select>
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required name="employee_phone" />
+                              <div class="underline"></div>
+                              <label>Phone</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Email</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="date" required />
+                              <div class="underline"></div>
+                              <label>Birth day</label>
                             </div>
                           </div>
                         </div>
-                        <div class="col"></div>
-                      </div>
-                      <div class="row row-final">
-                        <div class="col" id="caddress">
-                          <div class="input-data">
-                            <input type="text" required />
-                            <div class="underline"></div>
-                            <label>Address</label>
+                        <div class="row">
+                          <div class="col">
+                            <div class="select-data">
+                              <label>Stype</label>
+                              <div class="select">
+                                <select name="Status" id="Status"></select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="select-data">
+                              <label>Status</label>
+                              <div class="select">
+                                <select name="Status" id="Status"></select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col"></div>
+                        </div>
+                        <div class="row row-final">
+                          <div class="col" id="caddress">
+                            <div class="input-data">
+                              <input type="text" required />
+                              <div class="underline"></div>
+                              <label>Address</label>
+                            </div>
+                          </div>
+                          <!--This classi is to show buttons-->
+                          <div class="col col-btn">
+                            <div class="btns">
+                              <button id="clean">
+                                <i class="bx bxs-eraser"></i>CLEAN
+                              </button>
+                              <button id="adduser">
+                                <i class="bx bxs-plus-circle"></i>ADD USER
+                              </button>
+                            </div>
                           </div>
                         </div>
-                        <!--This classi is to show buttons-->
-                        <div class="col col-btn">
-                          <div class="btns">
-                            <button id="clean">
-                              <i class="bx bxs-eraser"></i>CLEAN
-                            </button>
-                            <button id="adduser">
-                              <i class="bx bxs-plus-circle"></i>ADD USER
-                            </button>
-                          </div>
-                        </div>
                       </div>
-                    </div>
+                    </form>
                   </div>
                 </div>
               </div>

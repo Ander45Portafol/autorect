@@ -70,6 +70,18 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                case 'delete':
+                    if (!$employee_model->setId($_POST['id_empleado'])) {
+                        $result['exception']='El empleado es incorrecto';
+                    }elseif (!$data=$employee_model->readOne()) {
+                        $result['exception']='El empleado seleccionado, no existe';
+                    }elseif ($employee_model->deleteRow()) {
+                        $result['status']=1;
+                        $result['message']='Eliminado, correctamente';
+                    }else {
+                        $result['exception']=Database::getException();
+                    }
+                    break;
             default:
                 $result['exception'] = 'The action can not be performed';
                 break;
