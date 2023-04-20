@@ -21,7 +21,7 @@ if (isset($_GET['action'])) {
             case 'readTypes':
                 if ($result['dataset'] = $employee_model->readTypes()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Se logran cargar los datos';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 }
