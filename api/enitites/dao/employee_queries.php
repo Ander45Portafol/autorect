@@ -32,9 +32,9 @@ class EmployeeQueries
     {
         $sql = 'SELECT * 
                 FROM empleados 
-                WHERE nombre_empleado LIKE ? OR apellido_empleado LIKE ? OR correo_empleado LIKE ?, OR dui_empleado LIKE ?  
+                WHERE nombre_empleado LIKE ? OR apellido_empleado LIKE ? OR correo_empleado LIKE ? OR dui_empleado LIKE ?  
                 ORDER BY id_empleado';
-        $params = array("%$value%");
+        $params = array("%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 

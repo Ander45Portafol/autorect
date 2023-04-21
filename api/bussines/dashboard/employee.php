@@ -18,6 +18,17 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data to show';
                 }
                 break;
+            case 'readOne':
+                if (!$employee_model->setId($_POST['id'])) {
+                    $result['exception'] = 'empleado incorrecto';
+                } elseif ($result['dataset'] = $employee_model->readOne()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'empleado inexistente';
+                }
+                break;
             case 'readTypes':
                 if ($result['dataset'] = $employee_model->readTypes()) {
                     $result['status'] = 1;
@@ -49,9 +60,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'dui incorrecto';
                 } elseif (!$employee_model->setEmployeePhone($_POST['employee_phone'])) {
                     $result['exception'] = 'phone incorrecto';
-                } elseif (!isset($_POST['user_type'])) {
+                } elseif (!isset($_POST['type'])) {
                     $result['exception'] = 'Selecciona un tipo de usuario';
-                } elseif (!$user_model->setTipo_User($_POST['user_type'])) {
+                } else if (!$employee_model->setEmployeeMail($_POST['employee_email'])) {
+                    $result['exception'] = 'Email incorrecto';
+                } elseif (!$employee_model->setEmployeeType($_POST['type'])) {
                     $result['exception'] = 'Tipo de usuario incorrecto';
                 } elseif (!$user_model->setPassword($_POST['password'])) {
                     $result['exception'] = Validator::getAPasswordError();
@@ -70,18 +83,18 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                case 'delete':
-                    if (!$employee_model->setId($_POST['id_empleado'])) {
-                        $result['exception']='El empleado es incorrecto';
-                    }elseif (!$data=$employee_model->readOne()) {
-                        $result['exception']='El empleado seleccionado, no existe';
-                    }elseif ($employee_model->deleteRow()) {
-                        $result['status']=1;
-                        $result['message']='Eliminado, correctamente';
-                    }else {
-                        $result['exception']=Database::getException();
-                    }
-                    break;
+            case 'delete':
+                if (!$employee_model->setId($_POST['id_empleado'])) {
+                    $result['exception'] = 'El empleado es incorrecto';
+                } elseif (!$data = $employee_model->readOne()) {
+                    $result['exception'] = 'El empleado seleccionado, no existe';
+                } elseif ($employee_model->deleteRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Eliminado, correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             default:
                 $result['exception'] = 'The action can not be performed';
                 break;
