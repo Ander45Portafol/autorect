@@ -169,9 +169,10 @@
                                                         <h3>Add image</h3>
                                                         <p>File formats: <span> .jpg/.png </span></p>
                                                     </div>
-                                                    <img src="" alt="" id="imgp-1">
+                                                    <img src="" id="imgp-1">
                                                 </div>
-                                                <input type="file" id="input-img-1" oninput="showPreview(event, 1)">
+                                                <input type="file" id="input-img-1" onchange="showPreview(event, 1)">
+                                                <button type="submit" id="btnsubmit"></button>
                                             </div>
                                         </div>
                                     </form>

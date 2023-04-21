@@ -15,6 +15,7 @@ class products extends Products_queries{
     protected $categoria;
     protected $modelo;
     protected $estado_producto;
+    protected $imagen_s;
     protected $ruta='../../images/products/';
 
     //Metodos Set de los atributos
@@ -98,6 +99,15 @@ class products extends Products_queries{
             return false;
         }
     }
+    public function setImagenS($file){
+        if (Validator::validateImageFile($file, 1500, 1500)) {
+            $this->imagen_s=Validator::getFileName();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     // Metodos get de los atributos
     public function getId(){
         return $this->id_producto;
@@ -128,5 +138,8 @@ class products extends Products_queries{
     }
     public function getRuta(){
         return $this->ruta;
+    }
+    public function getImagenS(){
+        return $this->imagen_s;
     }
 }

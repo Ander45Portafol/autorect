@@ -51,7 +51,7 @@
                                 <button class="delete" id="deletebtn" onclick="DeleteProduct(${row.id_producto})">
                                     <i class="bx bxs-trash"></i>
                                 </button>
-                                <button class="product_images" data-bs-toggle="modal" data-bs-target="#modalimages">
+                                <button class="product_images" data-bs-toggle="modal" data-bs-target="#modalimages" onclick="readImgs(${row.id_producto})">
                                     <i class="bx bx-images"></i>
                                 </button>
                             </div>
@@ -126,11 +126,13 @@
         var img = document.getElementById("imgp-"+num);
         var input = document.getElementById("input-img-"+num);
         var text = document.getElementById("imgt-"+num);
+    
         if(area.classList.contains("active")){
             img.src = "";
             area.classList.remove("active");
             text.style.display = "block";
-        }else{
+        } else {
+            input.value = ""; 
             input.click();
         }
     }
@@ -139,11 +141,17 @@
         var preview = document.getElementById("imgp-"+num);
         var area = document.getElementById("imga-"+num);
         var text = document.getElementById("imgt-"+num);
-        console.log(event.target.files.length);
+
+        event.target.files.length = 0;
         if(event.target.files.length > 0){
             var src = URL.createObjectURL(event.target.files[0]);
-            preview.src= src
+            console.log(src);
+            preview.src= src;
             area.classList.add("active");
             text.style.display = "none";
         }
+    }
+
+    async function readImgs(id){
+
     }
