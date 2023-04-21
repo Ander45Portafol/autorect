@@ -74,7 +74,7 @@
                       <div class="Bsection2">
                         <div class="image"></div>
                         <div class="btns">
-                          <button id="clean">
+                          <button id="clean" onclick="Clean()">
                             <i class="bx bxs-eraser"></i>CLEAN
                           </button>
                           <button id="adduser" type="submit">
@@ -96,7 +96,7 @@
         <div class="searchsection">
           <form class="search" id="form-search" method="post">
             <button type="submit" class="button-search"><i class="bx bx-search"></i></button>
-            <input type="text" name="search" placeholder="Search anything..." />
+            <input type="text" name="search" placeholder="Search brand name" />
             <i class="bx bx-slider"></i>
           </form>
           <div class="buttonsearch">
@@ -221,17 +221,17 @@
       </section>
     </main>
   </div>
-  <!--This script is to bootstrap funcionality-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
-  <script src="../../resources/js/sweetalert.min.js"></script>
-  <!--This js script is to add navbar at aside tag-->
-  <script src="../../controller/Admin/menu.js"></script>
-  <!--This js script is to do funcionality some components of bootstrap-->
-  <script src="../../controller/components.js"></script>
-
-  <script src="../../controller/admin/brands.js"></script>
+   <!--This script is to bootstrap funcionality-->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+   crossorigin="anonymous"></script>
+ <script src="../../resources/js/sweetalert.min.js"></script>
+ <!--This js script is to do funcionality some components of bootstrap-->
+ <script src="../../controller/components.js"></script>
+ <script src="../../controller/admin/account.js"></script>
+ <!--This js script is to add navbar at aside tag-->
+ <script src="../../controller/Admin/menu.js"></script>
+ <script src="../../controller/admin/brands.js"></script>
 </body>
 
 </html>

@@ -1,103 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!--This css file is to charger the navbar style-->
-    <link rel="stylesheet" href="../../resources/css/admin/menu.css" />
-    <!--In this css file are all styles to formularies-->
-    <link rel="stylesheet" href="../../resources/css/admin/main.css" />
-    <!--It is a icon, to show with the title of the page-->
-    <link rel="icon" href="../../resources/images/LogoLogin.png" />
-    <!--This is the bootstrap link to use the bootstrap  styles-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
-    <!--This is the bootstrap link to use the bootstrap style-->
-    <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
-    <title>Employee</title>
-  </head>
-  <body>
-    <!--In this class are contained all page-->
-    <div class="allinfo">
-      <!--Charger the navbar-->
-      <aside></aside>
-      <!--In this class whit the main tag are contained everthing data to employees-->
-      <main class="data">
-        <section>
-          <!--This button funtionated to responsive menu-->
-          <button class="showmenu"><i class="bx bx-menu"></i></button>
-          <!--This class is to structured the top section at the page-->
-          <div class="topmain">
-            <div class="texttop">
-              <p>EMPLOYEES</p>
-            </div>
-            <div class="buttonstop">
-              <button>Export <i class="bx bx-export"></i></button>
-              <button>Print <i class="bx bxs-printer"></i></button>
-              <!--This button is to open modal, to do a insert at the table-->
-              <button
-                type="button"
-                class="btn"
-                id="red-employee"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-              >
-                <i class="bx bxs-plus-circle"></i> New Employee
-              </button>
 
-              <!-- Modal -->
-              <div
-                class="modal fade modal-xl"
-                id="staticBackdrop"
-                data-bs-backdrop="static"
-                data-bs-keyboard="false"
-                tabindex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <!--This class is to modify the header section at the modal-->
-                    <div class="modal-header">
-                      <p class="modal-title" id="exampleModalLabel">
-                        EMPLOYEES
-                      </p>
-                      <!--This button is to close the modal-->
-                      <button
-                        type="button"
-                        id="btnclose"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      >
-                        <i class="bx bx-x"></i>
-                      </button>
-                    </div>
-                    <!--In this class are add elements like inputs, buttons, etc-->
-                    <div class="modal-body">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!--This css file is to charger the navbar style-->
+  <link rel="stylesheet" href="../../resources/css/admin/menu.css" />
+  <!--In this css file are all styles to formularies-->
+  <link rel="stylesheet" href="../../resources/css/admin/main.css" />
+  <!--It is a icon, to show with the title of the page-->
+  <link rel="icon" href="../../resources/images/LogoLogin.png" />
+  <!--This is the bootstrap link to use the bootstrap  styles-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <!--This is the bootstrap link to use the bootstrap style-->
+  <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
+  <title>Employee</title>
+</head>
+
+<body>
+  <!--Charger the navbar-->
+  <aside></aside>
+  <!--In this class are contained all page-->
+  <div class="allinfo">
+    <!--In this class whit the main tag are contained everthing data to employees-->
+    <main class="data">
+      <section>
+        <!--This button funtionated to responsive menu-->
+        <button class="showmenu"><i class="bx bx-menu"></i></button>
+        <!--This class is to structured the top section at the page-->
+        <div class="topmain">
+          <div class="texttop">
+            <p>EMPLOYEES</p>
+          </div>
+          <div class="buttonstop">
+            <button>Export <i class="bx bx-export"></i></button>
+            <button>Print <i class="bx bxs-printer"></i></button>
+            <!--This button is to open modal, to do a insert at the table-->
+            <button type="button" class="btn" id="red-employee" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+              onclick="createEmployee()">
+              <i class="bx bxs-plus-circle"></i> New Employee
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade modal-xl" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!--This class is to modify the header section at the modal-->
+                  <div class="modal-header">
+                    <p class="modal-title" id="exampleModalLabel"></p>
+                    <!--This button is to close the modal-->
+                    <button type="button" id="btnclose" data-bs-dismiss="modal" aria-label="Close">
+                      <i class="bx bx-x"></i>
+                    </button>
+                  </div>
+                  <!--In this class are add elements like inputs, buttons, etc-->
+                  <div class="modal-body">
+                    <form id="save-form" method="post" enctype="multipart/form-data">
                       <!--This class is to add inputs or selects-->
                       <div class="Esection1">
                         <div class="row">
                           <div class="col">
+                            <input type="text" class="hide" id="id" name="id">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
                             <div class="input-data">
-                              <input type="text" required />
+                              <input type="text" required id="Employee_name" name="employee_name" />
                               <div class="underline"></div>
                               <label>Name</label>
                             </div>
                           </div>
                           <div class="col">
                             <div class="input-data">
-                              <input type="text" required />
+                              <input type="text" required id="Employee_lastname" name="employee_lastname" />
                               <div class="underline"></div>
                               <label>Lastname</label>
                             </div>
                           </div>
                           <div class="col">
                             <div class="input-data">
-                              <input type="text" required />
+                              <input type="text" required id="Employee_dui" name="employee_dui" />
                               <div class="underline"></div>
                               <label>DUI</label>
                             </div>
@@ -106,21 +91,22 @@
                         <div class="row">
                           <div class="col">
                             <div class="input-data">
-                              <input type="text" required />
+                              <input type="text" required id="Employee_phone" name="employee_phone" />
                               <div class="underline"></div>
                               <label>Phone</label>
                             </div>
                           </div>
                           <div class="col">
                             <div class="input-data">
-                              <input type="text" required />
-                              <div class="underline"></div>
+                              <input type="text" required id="Employee_email" name="employee_email" />
+                              <div class=" underline">
+                              </div>
                               <label>Email</label>
                             </div>
                           </div>
                           <div class="col">
                             <div class="input-data">
-                              <input type="text" required />
+                              <input type="date" required id="Employee_date" name="employee_date" />
                               <div class="underline"></div>
                               <label>Birth day</label>
                             </div>
@@ -129,17 +115,9 @@
                         <div class="row">
                           <div class="col">
                             <div class="select-data">
-                              <label>Stype</label>
+                              <label>Type</label>
                               <div class="select">
-                                <select name="Status" id="Status"></select>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="select-data">
-                              <label>Status</label>
-                              <div class="select">
-                                <select name="Status" id="Status"></select>
+                                <select name="Types" id="types"></select>
                               </div>
                             </div>
                           </div>
@@ -148,7 +126,7 @@
                         <div class="row row-final">
                           <div class="col" id="caddress">
                             <div class="input-data">
-                              <input type="text" required />
+                              <input type="text" required id="Employee_address" name="employee_address" />
                               <div class="underline"></div>
                               <label>Address</label>
                             </div>
@@ -157,245 +135,170 @@
                           <div class="col col-btn">
                             <div class="btns">
                               <button id="clean">
-                                <i class="bx bxs-eraser"></i>CLEAN
+                                <i class="bx bxs-eraser" onclick="Clean()"></i>CLEAN
                               </button>
                               <button id="adduser">
                                 <i class="bx bxs-plus-circle"></i>ADD USER
+                              </button>
+                              <button id="update">
+                                <i class="bx bxs-plus-circle"></i>CONFIRM
                               </button>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!--This section are all relationated with filters to looking for datas at the employees-->
-          <div class="searchsection">
-            <div class="search">
-              <i class="bx bx-search"></i>
-              <input type="text" placeholder="Search anything..." />
-              <i class="bx bx-slider"></i>
+        </div>
+        <!--This section are all relationated with filters to looking for datas at the employees-->
+        <div class="searchsection">
+          <form class="search" id="form-search" method="post">
+            <button type="submit" class="button-search"><i class="bx bx-search"></i></button>
+            <input type="text" name="search" placeholder="Search name/email" />
+            <i class="bx bx-slider"></i>
+          </form>
+          <div class="buttonsearch">
+            <input type="date" class="btnfilter" />
+            <div class="dropdown btnfilter">
+              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bx bxs-purchase-tag"></i>
+                Status
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Another action</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
             </div>
-            <div class="buttonsearch">
-              <input type="date" class="btnfilter" />
-              <div class="dropdown btnfilter">
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="bx bxs-purchase-tag"></i>
-                  Status
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Another action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="dropdown btnfilter">
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-current-location"></i>
-                  Address
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Another action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="dropdown btnfilter">
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="bx bxs-bookmark"></i>
-                  Save filters
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Another action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="dropdown btnfilter">
-                <button
-                  class="btn dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-slider rotate"></i>
-                  More
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Another action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </div>
+            <div class="dropdown btnfilter">
+              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bx bx-current-location"></i>
+                Address
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Another action</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown btnfilter">
+              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bx bxs-bookmark"></i>
+                Save filters
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Another action</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown btnfilter">
+              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bx bx-slider rotate"></i>
+                More
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Another action</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
             </div>
           </div>
-          <!--This section is to filter datas in the table, but datas with especifics parameters-->
-          <div class="filtertable">
-            <button class="active">All employees <span>11</span></button>
-            <button>Supervisors <span>03</span></button>
+        </div>
+        <!--This section is to filter datas in the table, but datas with especifics parameters-->
+        <div class="filtertable">
+          <button class="active">All employees <span>11</span></button>
+          <button>Supervisors <span>03</span></button>
+        </div>
+        <!--This class is show all datas to users, but in diferents sections-->
+        <div class="datatable">
+          <div class="infodatatable">
+            <p>Showing 21-30 of 88 results</p>
           </div>
-          <!--This class is show all datas to users, but in diferents sections-->
-          <div class="datatable">
-            <div class="infodatatable">
-              <p>Showing 21-30 of 88 results</p>
-            </div>
-            <div class="numbersdata">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <!--This section is to show how many items show in the tabla-->
-            <div class="itemstable">
-              <p>Items per page <span>10</span></p>
-            </div>
+          <div class="numbersdata">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
-          <!--In this section are contained the table to show users data-->
-          <div class="sectiontable">
-            <table class="table table-hover">
-              <!--Here are contained the columns to table-->
-              <thead>
-                <tr>
-                  <th scope="col"><input type="checkbox" /></th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Lastname</th>
-                  <th scope="col">DUI</th>
-                  <th scope="col">E-mail</th>
-                  <th scope="col">Phone number</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Employee type</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row"><input type="checkbox" /></th>
-                  <td><p>Anderson Isaac</p></td>
-                  <td><p>Aguilar Ramos</p></td>
-                  <td><p>9487363-3</p></td>
-                  <td><p>anderdeco25@gmail.com</p></td>
-                  <td><p>7970-6186</p></td>
-                  <td><p class="status">Active</p></td>
-                  <td><p class="employee_type">Manager</p></td>
-                  <td>
-                    <div class="actions">
-                      <button class="edit" onclick="btnedit()">
-                        <i class="bx bxs-edit"></i>
-                      </button>
-                      <button class="delete" onclick="btndelete()">
-                        <i class="bx bxs-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row"><input type="checkbox" /></th>
-                  <td><p>Daniel Eli</p></td>
-                  <td><p>Lopez Molina</p></td>
-                  <td><p>0777132-9</p></td>
-                  <td><p>danlop2004@gmail.com</p></td>
-                  <td><p>7970-6186</p></td>
-                  <td><p class="status">Active</p></td>
-                  <td><p class="employee_type">Designer</p></td>
-                  <td>
-                    <div class="actions">
-                      <button class="edit" onclick="btnedit()">
-                        <i class="bx bxs-edit"></i>
-                      </button>
-                      <button class="delete" onclick="btndelete()">
-                        <i class="bx bxs-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row"><input type="checkbox" /></th>
-                  <td><p>Roberto Carlos</p></td>
-                  <td><p>Morán Gómez</p></td>
-                  <td><p>2625272-2</p></td>
-                  <td><p>robermoran32@gmail.com</p></td>
-                  <td><p>7970-6186</p></td>
-                  <td><p class="status">Active</p></td>
-                  <td><p class="employee_type">Supervisor</p></td>
-                  <td>
-                    <div class="actions">
-                      <button class="edit" onclick="btnedit()">
-                        <i class="bx bxs-edit"></i>
-                      </button>
-                      <button class="delete" onclick="btndelete()">
-                        <i class="bx bxs-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <!--This section is to show how many items show in the tabla-->
+          <div class="itemstable">
+            <p>Items per page <span>10</span></p>
           </div>
-        </section>
-      </main>
-    </div>
-    <!--This script is to bootstrap funcionality-->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    ></script>
-    <!--This js script is to add navbar at aside tag-->
-    <script src="../../controller/Admin/menu.js"></script>
-    <!--This js script is to do funcionality some components of bootstrap-->
-    <script src="../../controller/components.js"></script>
-  </body>
+        </div>
+        <!--In this section are contained the table to show users data-->
+        <div class="sectiontable">
+          <table class="table table-hover">
+            <!--Here are contained the columns to table-->
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">DUI</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Status</th>
+                <th scope="col">Employee type</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-rows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <!--This script is to bootstrap funcionality-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="../../resources/js/sweetalert.min.js"></script>
+  <!--This js script is to do funcionality some components of bootstrap-->
+  <script src="../../controller/components.js"></script>
+  <script src="../../controller/admin/account.js"></script>
+  <!--This js script is to add navbar at aside tag-->
+  <script src="../../controller/Admin/menu.js"></script>
+  <script src="../../controller/admin/employees.js"></script>
+</body>
+
 </html>
