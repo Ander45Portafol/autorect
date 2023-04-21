@@ -3,6 +3,7 @@ const MODAL_TITLE = document.getElementById('exampleModalLabel');
 const SAVE_FORM = document.getElementById('save-form');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const SEARCH_FORM = document.getElementById('form-search');
+const SWITCH_STATE_USER=document.getElementById('flexSwitchCheckChecked')
 
 document.addEventListener('DOMContentLoaded', () => {
     fillTable();
@@ -99,6 +100,11 @@ async function updateEmployee(id) {
         document.getElementById('Employee_date').value = JSON.dataset.nacimiento_empleado;
         fillSelect(EMPLOYEE_API, 'readTypes', 'types', JSON.dataset.id_tipo_empleado);
         document.getElementById('Employee_address').value = JSON.dataset.direccion_empleado;
+        if (JSON.dataset.estado_usuario) {
+            document.getElementById('state-employee').checked=true;
+        }else{
+            document.getElementById('state-employee').checked=false;
+        }
     }
 
 }

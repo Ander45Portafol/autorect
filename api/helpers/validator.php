@@ -30,6 +30,61 @@ class Validator{
             return false;
         }
     }
+
+    /*
+    *   Método para validar el formato del DUI (Documento Único de Identidad).
+    *   Parámetros: $value (dato a validar).
+    *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
+    */
+    public static function validateDUI($value)
+    {
+        // Se verifica que el número tenga el formato 00000000-0.
+        if (preg_match('/^[0-9]{8}[-][0-9]{1}$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+        /*
+    *   Método para validar un número telefónico.
+    *   Parámetros: $value (dato a validar).
+    *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
+    */
+    public static function validatePhone($value)
+    {
+        // Se verifica que el número tenga el formato 0000-0000 y que inicie con 2, 6 o 7.
+        if (preg_match('/^[2,6,7]{1}[0-9]{3}[-][0-9]{4}$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*
+    *   Método para validar un correo electrónico.
+    *   Parámetros: $value (dato a validar).
+    *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
+    */
+    public static function validateEmail($value)
+    {
+        if (filter_var($value, FILTER_VALIDATE_EMAIL)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function validateString($value, $minimum, $maximum)
+    {
+        // Se verifica el contenido y la longitud de acuerdo con la base de datos.
+        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\,\;\.]{' . $minimum . ',' . $maximum . '}$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static function validateImageFile($file, $maxWidth, $maxHeigth)
     {
         // Se obtienen las dimensiones y el tipo de la imagen.
