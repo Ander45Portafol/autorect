@@ -22,6 +22,13 @@ class OrderQueries{
         return Database::getRow($sql,$params);
     }
 
+        //Method to see the data of a single row
+        public function readOneDetail(){
+            $sql='SELECT * FROM detalles_pedidos WHERE id_detalle_pedido=?';
+            $params=array($this->id_Detalle);
+            return Database::getRow($sql,$params);
+        }
+
     //Method to fill the combobox
     public function readEstados(){
         $sql = "SELECT id_estado_pedido, estado_pedido FROM estados_pedidos";
@@ -59,5 +66,16 @@ class OrderQueries{
         $sql='DELETE FROM pedidos WHERE id_pedido=?';
         $params=array($this->id);
         return Database::executeRow($sql,$params);
+    }
+       //Method to delete an order detail
+       public function deleteDetailRow(){
+        $sql='DELETE FROM detalles_pedidos WHERE id_detalle_pedido=?';
+        $params=array($this->id_Detalle);
+        return Database::executeRow($sql,$params);
+    }
+    public function readAllDetail(){
+        $sql='SELECT a.id_detalle_pedido,c.imagen_principal,c.nombre_producto,b.direccion_pedido,b.fecha_pedido,c.precio_producto, a.precio_producto AS precio_total FROM detalles_pedidos a, pedidos b, productos c WHERE  a.id_pedido=b.id_pedido AND a.id_producto=c.id_producto AND a.id_pedido=?';
+        $params=array($this->id);
+        return Database::getRows($sql,$params);
     }
 }

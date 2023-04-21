@@ -100,7 +100,7 @@
     padding-right: 10px;
   }
 
-  .topmain .buttonstop .modal-dialog #btnclose {
+  #btnclose {
     background-color: transparent;
     border: none;
     height: 50px;
@@ -297,16 +297,16 @@
   }
 
   /*In this part are changing the header at table*/
-  .sectiontable .table thead {
+  .table thead {
     background-color: #f2f2f2;
     color: #636363;
   }
 
-  .sectiontable .table {
+  .table {
     text-align: center;
   }
 
-  .sectiontable .table .action-btn {
+  .table .action-btn {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -314,7 +314,7 @@
   }
 
   /*This code is to add style at the edit button in the table*/
-  .sectiontable .table td .edit {
+  .table td .edit {
     background-color: transparent;
     color: #ffca2c;
     border-radius: 5px;
@@ -325,7 +325,7 @@
   }
 
   /*This code is to add style at the delete button in the table*/
-  .sectiontable .table td .delete {
+  .table td .delete {
     background-color: transparent;
     color: #822727;
     border: 2px solid #822727;
@@ -871,14 +871,6 @@
       font-size: 10pt;
     }
 
-    .sectiontable .table td .status {
-      width: 60px;
-    }
-
-    .sectiontable .table td .user_type {
-      width: 60px;
-    }
-
     #btn-address {
       display: none;
     }
@@ -983,7 +975,7 @@
       justify-content: center;
     }
 
-    .sectiontable .table td .delete {
+    .table td .delete {
       width: 40px;
       height: 30px;
       display: flex;
