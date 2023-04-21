@@ -18,6 +18,18 @@ if(isset($_GET['action'])){
                     $result['exception']='No hay datos registrados';
                 }
             break;
+            case 'readAllDetail':
+                if (!$order_model->setID($_POST['id'])) {
+                    $result['exception']='El pedido es incorrecto';
+                }elseif ($result['dataset']=$order_model->readAllDetail()) {
+                    $result['status']=1;
+                    $result['message']='Existen '.count($result['dataset']).' registros';
+                }elseif (Database::getException()) {
+                    $result['exception']=Database::getException();
+                }else {
+                    $result['exception']='No hay datos registrados';
+                }
+                break;
             case 'search':
                 $_POST=Validator::validateForm($_POST);
                 if ($_POST['search']=='') {
@@ -128,6 +140,18 @@ if(isset($_GET['action'])){
                 }elseif (!$data=$order_model->readOne()) {
                     $result['exception']='El pedido seleccionado, no existe';
                 }elseif ($order_model->deleteRow()) {
+                    $result['status']=1;
+                    $result['message']='Eliminado, correctamente';
+                }else {
+                    $result['exception']=Database::getException();
+                }
+            break;
+            case 'deleteDetail':
+                if (!$order_model->setIdDetalle($_POST['id_detalle_pedido'])) {
+                    $result['exception']='El Detalle es incorrecto';
+                }elseif (!$data=$order_model->readOneDetail()) {
+                    $result['exception']='El Detalle seleccionado, no existe';
+                }elseif ($order_model->deleteDetailRow()) {
                     $result['status']=1;
                     $result['message']='Eliminado, correctamente';
                 }else {
