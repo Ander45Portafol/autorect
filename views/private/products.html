@@ -157,54 +157,21 @@
                                         <p class="modal-title" id="modal-title">EDIT IMAGES</p>
                                         <!--This button is to close the modal-->
                                         <button type="button" id="btnclose" data-bs-dismiss="modal"
-                                            aria-label="Close"><i class="bx bx-x" onclick="cleanImages()"></i></button>
+                                            aria-label="Close" onclick="cleanImages()"><i class="bx bx-x"></i></button>
                                     </div>
                                     <!--In this class are add elements like inputs, buttons, etc-->
-                                    <form class="modal-body" id="images-form" class="images-form">
+                                    <form class="images-form modal-body" id="images-form">
                                         <div class="row text-center">
-                                            <div class="col-image-product col-lg-3 col-md-6">
-                                                <input type="file" id="image-1" class="images-products"
-                                                    onchange="showPreview(event, 1);">
-                                                <div class="img-control">
-                                                    <i class='bx bx-x' id="delete-img-1"></i>
-                                                    <img src="" alt="" id="image-1-preview" class="images-preview">
+                                            <div class="col-img col-lg-3 col-md-6 col-sm-6">
+                                                <div class="img-area" id="imga-1" data-img="x" onclick="openFileSelector(1)">
+                                                    <div id="imgt-1">
+                                                        <i class='bx bxs-cloud-upload'></i>
+                                                        <h3>Add image</h3>
+                                                        <p>File formats: <span> .jpg/.png </span></p>
+                                                    </div>
+                                                    <img src="" alt="" id="imgp-1">
                                                 </div>
-                                                <label for="image-1" class="images-label">
-                                                    <i class='bx bx-image-add'></i>Choose a photo
-                                                </label>
-                                            </div>
-                                            <div class="col-image-product col-lg-3 col-md-6">
-                                                <input type="file" id="image-2" class="images-products"
-                                                    onchange="showPreview(event, 2);">
-                                                <div class="img-control">
-                                                    <i class='bx bx-x' id="delete-img-2"></i>
-                                                    <img src="" alt="" id="image-2-preview" class="images-preview">
-                                                </div>
-                                                <label for="image-2" class="images-label">
-                                                    <i class='bx bx-image-add'></i>Choose a photo
-                                                </label>
-                                            </div>
-                                            <div class="col-image-product col-lg-3 col-md-6">
-                                                <input type="file" id="image-3" class="images-products"
-                                                    onchange="showPreview(event, 3);">
-                                                <div class="img-control">
-                                                    <i class='bx bx-x' id="delete-img-3"></i>
-                                                    <img src="" alt="" id="image-3-preview" class="images-preview">
-                                                </div>
-                                                <label for="image-3" class="images-label">
-                                                    <i class='bx bx-image-add'></i>Choose a photo
-                                                </label>
-                                            </div>
-                                            <div class="col-image-product col-lg-3 col-md-6">
-                                                <input type="file" id="image-4" class="images-products"
-                                                    onchange="showPreview(event, 4);">
-                                                <div class="img-control">
-                                                    <i class='bx bx-x' id="delete-img-4"></i>
-                                                    <img src="" alt="" id="image-4-preview" class="images-preview">
-                                                </div>
-                                                <label for="image-4" class="images-label">
-                                                    <i class='bx bx-image-add'></i>Choose a photo
-                                                </label>
+                                                <input type="file" id="input-img-1" oninput="showPreview(event, 1)">
                                             </div>
                                         </div>
                                     </form>

@@ -795,155 +795,141 @@
     text-align: center;
   }
 
-  .modal-images .modal-body{
-    all:unset;
-    height: 350px;
+  /**/
+  .images-form{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
   }
 
-  .images-products{
+  .images-form input{
     display: none;
   }
 
-  .col-image-product{
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .img-control{
+  .img-area{
     position: relative;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .img-control i.bx-x{
-    position: absolute;
-    font-size: 35px;
-    font-weight: bold;
-    color: #822727;
-    cursor: pointer;
-  }
-
-  .images-label{
-    cursor: pointer;
-    color: white;
-    height: 40px;
-    width: 20vh;
-    background-color: #822727;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
+    background-color: #f2f2f2;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin:auto;
-    margin-bottom: 20px;
+    flex-direction: column;
+    cursor: pointer;
   }
 
-  .images-label i{
-    font-size: 25px;
+  .img-area i{
+    font-size: 100px;
   }
 
-  .images-preview[src=""] {
+  .img-area h3{
+    margin-bottom: 6px;
+  }
+
+  .img-area p{
+    color: #999;
+  }
+
+  .img-area p span{
+    color: black;
+    font-size:16px;
+    font-weight: bold;
+  }
+
+  .img-area img[src=""] {
     visibility: hidden;
   }
 
-  .images-preview{
-    border: 2px solid #1f1f1f;
-    border-radius: 15px;
-    margin-bottom: 20px;
+  .img-area img{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
+    z-index: 100;
   }
 
-  @media (min-width: 992px) {
-    .col-image-product{
-      height: 340px !important;
-      line-height: 260px !important;
-    }
-
-    .images-preview{
-      margin-top: 20px;
-      width: 200px !important;
-      height: 200px !important;
-    }
-
-    .images-label{
-      width: 200px;
-    }
-
-    .img-control i.bx-x{
-      top: 35px;
-      right: 35px;
-    }
+  .img-area::before{
+    content: attr(data-img);
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    color: #fff;
+    font-size: 60px;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: all .3s ease;
+    z-index: 200;
   }
 
-  @media (max-width: 1199px) and (min-width: 991px){
-    .images-preview{
-      width: 160px !important; 
-      height: 160px !important;
-    }
-
-    .images-label{
-      width: 160px;
-    }
-
-    .img-control i.bx-x{
-      top: 50px;
-      right: 10px;
-    }
+  .img-area.active:hover::before{
+    opacity: 1;
   }
 
-  @media (max-width: 991px){
-    .modal-images .modal-header{
-      margin-bottom: 20px !important;
-    }
-    
-    .modal-images .modal-body{
-      height: 550px;
-    } 
-
-    .images-preview{
+  @media (min-width: 1200px) {
+    .img-area{
       width: 200px;
       height: 200px;
     }
 
-    .images-label{
+    .img-area h3{
+      font-size: 20px;
+      font-weight: 500px;
+    }
+  }
+
+  @media (max-width: 1199px) and (min-width: 991px){
+    .img-area{
+      width: 160px;
+      height: 160px;
+    }
+
+    .img-area h3{
+      font-size: 16px;
+      font-weight: 500px;
+    }
+    
+    .img-area i{
+      font-size: 80px;
+    }
+
+    .img-area p, .img-area p span{
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 991px) and (min-width: 576px){
+    .modal-images .modal-body{
+      height: 450px;
+    } 
+  }
+
+  @media (max-width: 575px){
+    .modal-images .modal-body{
+      height: 950px;
+    } 
+
+    .img-area{
       width: 200px;
+      height: 200px;
     }
 
-    .img-control i.bx-x{
-      top: 3px;
-      right: 20px;
-    }
-  }
-
-  @media (max-width: 750px) {
-    #image-1-preview{
-      margin-top: 20px;
-    }
-
-    .modal-images .modal-body{
-      height: 1200px;
-    } 
-
-    .img-control i.bx-x{
-      top: 20px;
-      right: 150px;
-    }
-  }
-
-  @media (max-width: 535px) {
-    #image-1-preview{
-      margin-top: 20px;
-    }
-
-    .modal-images .modal-body{
-      height: 1200px;
-    } 
-
-    .img-control i.bx-x{
-      top: 10%;
-      right: 28%;
+    .col-img{
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
