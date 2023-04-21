@@ -1,25 +1,34 @@
+//Constant to charger the Category API 
 const CATEGORY_API='bussines/dashboard/category.php'
+//Constant to manipulated the title in the modal
 const MODAL_TITLE=document.getElementById('modal-title');
+//Constant to use the form
 const SAVE_FORM=document.getElementById('save-form');
+//Constant to charger datas in the table
 const TBODY_ROWS=document.getElementById('tbody-rows');
+//Constant to use and to do the search process
 const SEARCH_FORM=document.getElementById('form-search')
 
+//Event to show the datas in the table
 document.addEventListener('DOMContentLoaded', ()=>{
     fillTable();
 })
 
+//This event is to programming that send parameters at the action in the API
 SEARCH_FORM.addEventListener('submit',(event)=>{
     event.preventDefault();
     const FORM=new FormData(SEARCH_FORM);
     fillTable(FORM);
 })
 
+//Function to Ccean inputs
 const LimpiarCampos=()=>{
     document.getElementById('id').value='';
     document.getElementById('name').value='';
     document.getElementById('description').value='';
 }
 
+//This event is to programming that send all respective datas at the Api
 SAVE_FORM.addEventListener('submit', async(event)=>{
     event.preventDefault();
     (document.getElementById('id').value)?action='update':action='create';
@@ -35,6 +44,7 @@ SAVE_FORM.addEventListener('submit', async(event)=>{
     }
 })
 
+//This event is to charger datas in the table
 async function fillTable(form=null){
     TBODY_ROWS.innerHTML='';
     (form) ? action = 'search': action = 'readAll'
@@ -64,12 +74,14 @@ async function fillTable(form=null){
     }
 }
 
+//This function is to manipulated some controls when the process is create
 function createCategory(){
     MODAL_TITLE.textContent='CREATE CATEGORY';
     document.getElementById('update').style.display='none';
     document.getElementById('addcategory').style.display='block';
     document.getElementById('clean').style.display='block';
 }
+//This function is to manipulated some controls and charger the repective data when the process is update
 async function updateCategory(id){
     const FORM=new FormData();
     FORM.append('id',id);
@@ -84,6 +96,7 @@ async function updateCategory(id){
         document.getElementById('description').value=JSON.dataset.descripcion_categoria;
     }
 }
+//This function is to communicate at the Api to do the delete action
 async function DeleteCategory(id){
     const RESPONSE=await confirmAction('¿Desea eliminar el usuario de forma permanente?')
     if (RESPONSE) {
