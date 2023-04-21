@@ -795,7 +795,7 @@
     text-align: center;
   }
 
-  .modal-body{
+  .modal-images .modal-body{
     all:unset;
     height: 350px;
   }
@@ -809,11 +809,25 @@
     vertical-align: middle;
   }
 
+  .img-control{
+    position: relative;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .img-control i.bx-x{
+    position: absolute;
+    font-size: 35px;
+    font-weight: bold;
+    color: #822727;
+    cursor: pointer;
+  }
+
   .images-label{
     cursor: pointer;
     color: white;
     height: 40px;
-    width: 180px;
+    width: 20vh;
     background-color: #822727;
     border: none;
     border-radius: 10px;
@@ -830,31 +844,107 @@
     font-size: 25px;
   }
 
+  .images-preview[src=""] {
+    visibility: hidden;
+  }
+
   .images-preview{
     border: 2px solid #1f1f1f;
     border-radius: 15px;
-    height: 25vh;
-    width: 25vh;
     margin-bottom: 20px;
+    object-fit: cover;
   }
 
   @media (min-width: 992px) {
     .col-image-product{
       height: 340px !important;
-      line-height: 260px;
+      line-height: 260px !important;
+    }
+
+    .images-preview{
+      margin-top: 20px;
+      width: 200px !important;
+      height: 200px !important;
+    }
+
+    .images-label{
+      width: 200px;
+    }
+
+    .img-control i.bx-x{
+      top: 35px;
+      right: 35px;
     }
   }
 
-  @media (max-width: 991px) {
+  @media (max-width: 1199px) and (min-width: 991px){
+    .images-preview{
+      width: 160px !important; 
+      height: 160px !important;
+    }
+
+    .images-label{
+      width: 160px;
+    }
+
+    .img-control i.bx-x{
+      top: 50px;
+      right: 10px;
+    }
+  }
+
+  @media (max-width: 991px){
+    .modal-images .modal-header{
+      margin-bottom: 20px !important;
+    }
+    
     .modal-images .modal-body{
       height: 550px;
     } 
+
+    .images-preview{
+      width: 200px;
+      height: 200px;
+    }
+
+    .images-label{
+      width: 200px;
+    }
+
+    .img-control i.bx-x{
+      top: 3px;
+      right: 20px;
+    }
   }
 
-  @media (max-width: 575px) {
+  @media (max-width: 750px) {
+    #image-1-preview{
+      margin-top: 20px;
+    }
+
     .modal-images .modal-body{
-      height: 1050px;
+      height: 1200px;
     } 
+
+    .img-control i.bx-x{
+      top: 20px;
+      right: 150px;
+    }
+  }
+
+  @media (max-width: 535px) {
+    #image-1-preview{
+      margin-top: 20px;
+    }
+
+    .modal-images .modal-body{
+      height: 1200px;
+    } 
+
+    .img-control i.bx-x{
+      top: 10%;
+      right: 28%;
+    }
   }
 
   /*Responsive para pantalla mediana*/

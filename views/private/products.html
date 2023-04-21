@@ -2,337 +2,362 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!--This css file is to charger the navbar style-->
-  <link rel="stylesheet" href="../../resources/css/admin/menu.css" />
-  <!--In this css file are all styles to formularies-->
-  <link rel="stylesheet" href="../../resources/css/admin/main.css" />
-  <!--This is the bootstrap link to use the bootstrap  styles-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-  <!--This link is to use the icons at the boxicons-->
-  <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Products</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--This css file is to charger the navbar style-->
+    <link rel="stylesheet" href="../../resources/css/admin/menu.css" />
+    <!--In this css file are all styles to formularies-->
+    <link rel="stylesheet" href="../../resources/css/admin/main.css" />
+    <!--This is the bootstrap link to use the bootstrap  styles-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <!--This link is to use the icons at the boxicons-->
+    <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
 </head>
 
 <body>
-  <!--Charger the navbar-->
-  <aside></aside>
-  <!--In this class are contained all page-->
-  <div class="allinfo">
-    <!--In this class whit the main tag are contained everthing data to products-->
-    <main class="data">
-      <section>
-        <!--This button funtionated to responsive menu-->
-        <button class="showmenu"><i class="bx bx-menu"></i></button>
-        <!--This class is to structured the top section at the page-->
-        <div class="topmain">
-          <div class="texttop">
-            <p>PRODUCTS</p>
-          </div>
-          <div class="buttonstop">
-            <button>Export <i class="bx bx-export"></i></button>
-            <button>Print <i class="bx bxs-printer"></i></button>
-            <!--This button is to open modal, to do a insert at the table-->
-            <button type="button" id="red" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-              onclick="CreateProduct()">
-              <i class="bx bxs-plus-circle"></i> New product
-            </button>
+    <!--Charger the navbar-->
+    <aside></aside>
+    <!--In this class are contained all page-->
+    <div class="allinfo">
+        <!--In this class whit the main tag are contained everthing data to products-->
+        <main class="data">
+            <section>
+                <!--This button funtionated to responsive menu-->
+                <button class="showmenu"><i class="bx bx-menu"></i></button>
+                <!--This class is to structured the top section at the page-->
+                <div class="topmain">
+                    <div class="texttop">
+                        <p>PRODUCTS</p>
+                    </div>
+                    <div class="buttonstop">
+                        <button>Export <i class="bx bx-export"></i></button>
+                        <button>Print <i class="bx bxs-printer"></i></button>
+                        <!--This button is to open modal, to do a insert at the table-->
+                        <button type="button" id="red" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            onclick="CreateProduct()">
+                            <i class="bx bxs-plus-circle"></i> New product
+                        </button>
 
-            <!-- Modal -->
-            <div class="modal fade modal-xl" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <!--This class is to modify the header section at the modal-->
-                  <div class="modal-header">
-                    <p class="modal-title" id="modal-title"></p>
-                    <!--This button is to close the modal-->
-                    <button type="button" id="btnclose" data-bs-dismiss="modal" aria-label="Close"><i
-                        class="bx bx-x"></i></button>
-                  </div>
-                  <!--In this class are add elements like inputs, buttons, etc-->
-                  <form class="modal-body modal-P" id="save-form">
-                    <!--This class is to add inputs or selects-->
-                    <div class="Psection1">
-                      <input type="text" id="id" name="id">
-                      <div class="row">
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required name="Product_name" id="product-name" />
-                            <div class="underline"></div>
-                            <label>Product Name</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text" required name="Price" id="price" />
-                            <div class="underline"></div>
-                            <label>Price</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="select-data">
-                            <label>Category</label>
-                            <div class="select">
-                              <select name="Category" id="category"></select>
+                        <!-- Modal -->
+                        <div class="modal fade modal-xl" id="staticBackdrop" data-bs-backdrop="static"
+                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!--This class is to modify the header section at the modal-->
+                                    <div class="modal-header">
+                                        <p class="modal-title" id="modal-title"></p>
+                                        <!--This button is to close the modal-->
+                                        <button type="button" id="btnclose" data-bs-dismiss="modal"
+                                            aria-label="Close"><i class="bx bx-x"></i></button>
+                                    </div>
+                                    <!--In this class are add elements like inputs, buttons, etc-->
+                                    <form class="modal-body modal-P" id="save-form">
+                                        <!--This class is to add inputs or selects-->
+                                        <div class="Psection1">
+                                            <input type="text" id="id" name="id">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="input-data">
+                                                        <input type="text" required name="Product_name"
+                                                            id="product-name" />
+                                                        <div class="underline"></div>
+                                                        <label>Product Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="input-data">
+                                                        <input type="text" required name="Price" id="price" />
+                                                        <div class="underline"></div>
+                                                        <label>Price</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="select-data">
+                                                        <label>Category</label>
+                                                        <div class="select">
+                                                            <select name="Category" id="category"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="select-data">
+                                                        <label>Model</label>
+                                                        <div class="select">
+                                                            <select name="Model" id="model"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="select-data">
+                                                            <label>Status</label>
+                                                            <div class="select">
+                                                                <select name="Status" id="status"></select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-stock">
+                                                        <div class="input-data">
+                                                            <input type="text" name="Stock" id="stock" required />
+                                                            <div class="underline"></div>
+                                                            <label>Stock</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-description">
+                                                        <div class="input-data">
+                                                            <input type="text" name="product_description"
+                                                                id="product-description" required />
+                                                            <div class="underline"></div>
+                                                            <label>Product description</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <input type="file" name="imageProduct" id="file"
+                                                            accept=".jpg, .png">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--This class is to add buttons to do actions-->
+                                        <div class="Psection2">
+                                            <div class="image"></div>
+                                            <div class="btns">
+                                                <button id="clean">
+                                                    <i class="bx bxs-eraser"></i>CLEAN
+                                                </button>
+                                                <button id="adduser" type="submit">
+                                                    <i class="bx bxs-plus-circle"></i>ADD USER
+                                                </button>
+                                                <button id="update" type="submit">
+                                                    <i class='bx bxs-bookmark-plus'></i>CONFIRM
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                        <div class="col">
-                          <div class="select-data">
-                            <label>Model</label>
-                            <div class="select">
-                              <select name="Model" id="model"></select>
+                        <div class="modal-images modal fade modal-xl" id="modalimages" class="modalimages"
+                            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                            aria-labelledby="modalimagesLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!--This class is to modify the header section at the modal-->
+                                    <div class="modal-header">
+                                        <p class="modal-title" id="modal-title">EDIT IMAGES</p>
+                                        <!--This button is to close the modal-->
+                                        <button type="button" id="btnclose" data-bs-dismiss="modal"
+                                            aria-label="Close"><i class="bx bx-x" onclick="cleanImages()"></i></button>
+                                    </div>
+                                    <!--In this class are add elements like inputs, buttons, etc-->
+                                    <form class="modal-body" id="images-form" class="images-form">
+                                        <div class="row text-center">
+                                            <div class="col-image-product col-lg-3 col-md-6">
+                                                <input type="file" id="image-1" class="images-products"
+                                                    onchange="showPreview(event, 1);">
+                                                <div class="img-control">
+                                                    <i class='bx bx-x' id="delete-img-1"></i>
+                                                    <img src="" alt="" id="image-1-preview" class="images-preview">
+                                                </div>
+                                                <label for="image-1" class="images-label">
+                                                    <i class='bx bx-image-add'></i>Choose a photo
+                                                </label>
+                                            </div>
+                                            <div class="col-image-product col-lg-3 col-md-6">
+                                                <input type="file" id="image-2" class="images-products"
+                                                    onchange="showPreview(event, 2);">
+                                                <div class="img-control">
+                                                    <i class='bx bx-x' id="delete-img-2"></i>
+                                                    <img src="" alt="" id="image-2-preview" class="images-preview">
+                                                </div>
+                                                <label for="image-2" class="images-label">
+                                                    <i class='bx bx-image-add'></i>Choose a photo
+                                                </label>
+                                            </div>
+                                            <div class="col-image-product col-lg-3 col-md-6">
+                                                <input type="file" id="image-3" class="images-products"
+                                                    onchange="showPreview(event, 3);">
+                                                <div class="img-control">
+                                                    <i class='bx bx-x' id="delete-img-3"></i>
+                                                    <img src="" alt="" id="image-3-preview" class="images-preview">
+                                                </div>
+                                                <label for="image-3" class="images-label">
+                                                    <i class='bx bx-image-add'></i>Choose a photo
+                                                </label>
+                                            </div>
+                                            <div class="col-image-product col-lg-3 col-md-6">
+                                                <input type="file" id="image-4" class="images-products"
+                                                    onchange="showPreview(event, 4);">
+                                                <div class="img-control">
+                                                    <i class='bx bx-x' id="delete-img-4"></i>
+                                                    <img src="" alt="" id="image-4-preview" class="images-preview">
+                                                </div>
+                                                <label for="image-4" class="images-label">
+                                                    <i class='bx bx-image-add'></i>Choose a photo
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="select-data">
-                              <label>Status</label>
-                              <div class="select">
-                                <select name="Status" id="status"></select>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col col-stock">
-                            <div class="input-data">
-                              <input type="text" name="Stock" id="stock" required />
-                              <div class="underline"></div>
-                              <label>Stock</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-description">
-                            <div class="input-data">
-                              <input type="text" name="product_description" id="product-description" required />
-                              <div class="underline"></div>
-                              <label>Product description</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col">
-                            <input type="file" name="imageProduct" id="file" accept=".jpg, .png">
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                    <!--This class is to add buttons to do actions-->
-                    <div class="Psection2">
-                      <div class="image"></div>
-                      <div class="btns">
-                        <button id="clean">
-                          <i class="bx bxs-eraser"></i>CLEAN
-                        </button>
-                        <button id="adduser" type="submit">
-                          <i class="bx bxs-plus-circle"></i>ADD USER
-                        </button>
-                        <button id="update" type="submit">
-                          <i class='bx bxs-bookmark-plus'></i>CONFIRM
-                        </button>
-                      </div>
-                    </div>
-                  </form>
                 </div>
-              </div>
-            </div>
-            <div class="modal-images modal fade modal-xl" id="modalimages" class="modalimages" data-bs-backdrop="static" data-bs-keyboard="false"
-            tabindex="-1" aria-labelledby="modalimagesLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <!--This class is to modify the header section at the modal-->
-                  <div class="modal-header">
-                    <p class="modal-title" id="modal-title">EDIT IMAGES</p>
-                    <!--This button is to close the modal-->
-                    <button type="button" id="btnclose" data-bs-dismiss="modal" aria-label="Close"><i
-                        class="bx bx-x"></i></button>
-                  </div>
-                  <!--In this class are add elements like inputs, buttons, etc-->
-                  <form class="modal-body" id="images-form" class="images-form">
-                    <div class="row text-center">
-                      <div class="col-image-product col-lg-3 col-sm-6">
-                        <input type="file" id="image-1" class="images-products">
-                        <img src="" id="image-1-preview" class="images-preview">
-                        <label for="image-1" class="images-label">
-                          <i class='bx bx-image-add'></i>Choose a photo
-                        </label>
-                      </div>
-                      <div class="col-image-product col-lg-3 col-sm-6">
-                        <input type="file" id="image-2" class="images-products">
-                        <img src="" id="image-2-preview" class="images-preview">
-                        <label for="image-2" class="images-label">
-                          <i class='bx bx-image-add'></i>Choose a photo
-                        </label>
-                      </div>
-                      <div class="col-image-product col-lg-3 col-sm-6">
-                        <input type="file" id="image-3" class="images-products">
-                        <img src="" id="image-3-preview" class="images-preview">
-                        <label for="image-3" class="images-label">
-                          <i class='bx bx-image-add'></i>Choose a photo
-                        </label>
-                      </div>
-                      <div class="col-image-product col-lg-3 col-sm-6">
-                        <input type="file" id="image-4" class="images-products">
-                        <img src="" id="image-4-preview" class="images-preview">
-                        <label for="image-4" class="images-label">
-                          <i class='bx bx-image-add'></i>Choose a photo
-                        </label>
-                      </div>
+                <!--This section are all relationated with filters to looking for datas at the products-->
+                <div class="searchsection">
+                    <form class="search" id="form-search" method="post">
+                        <button type="submit" class="button-search"><i class="bx bx-search"></i></button>
+                        <input type="text" name="search" placeholder="Search anything..." />
+                        <i class="bx bx-slider"></i>
+                    </form>
+                    <div class="buttonsearch">
+                        <input type="date" class="btnfilter" />
+                        <div class="dropdown btnfilter">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="bx bxs-purchase-tag"></i>
+                                Status
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropdown btnfilter">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="bx bx-current-location"></i>
+                                Address
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropdown btnfilter">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="bx bxs-bookmark"></i>
+                                Save filters
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropdown btnfilter">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="bx bx-slider rotate"></i>
+                                More
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                  </form>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--This section are all relationated with filters to looking for datas at the products-->
-        <div class="searchsection">
-          <form class="search" id="form-search" method="post">
-            <button type="submit" class="button-search"><i class="bx bx-search"></i></button>
-            <input type="text" name="search" placeholder="Search anything..." />
-            <i class="bx bx-slider"></i>
-          </form>
-          <div class="buttonsearch">
-            <input type="date" class="btnfilter" />
-            <div class="dropdown btnfilter">
-              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bx bxs-purchase-tag"></i>
-                Status
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Another action</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </div>
-            <div class="dropdown btnfilter">
-              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bx bx-current-location"></i>
-                Address
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Another action</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </div>
-            <div class="dropdown btnfilter">
-              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bx bxs-bookmark"></i>
-                Save filters
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Another action</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </div>
-            <div class="dropdown btnfilter">
-              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bx bx-slider rotate"></i>
-                More
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Another action</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!--This section is to filter datas in the table, but datas with especifics parameters-->
-        <div class="filtertable">
-          <button class="active">All products <span>11</span></button>
-          <button>Sales <span>05</span></button>
-        </div>
-        <!--This class is show all datas to products, but in diferents sections-->
-        <div class="datatable">
-          <div class="infodatatable">
-            <p>Showing 21-30 of 88 results</p>
-          </div>
-          <div class="numbersdata">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <!--This section is to show how many items show in the tabla-->
-          <div class="itemstable">
-            <p>Items per page <span>10</span></p>
-          </div>
-        </div>
-        <!--In this section are contained the table to show products data-->
-        <div class="sectiontable">
-          <table class="table table-hover">
-            <!--Here are contained the columns to table-->
-            <thead>
-              <tr>
-                <th scope="col">Image</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Description</th>
-                <th scope="col">Status</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody id="tbody-rows"></tbody>
-          </table>
-        </div>
-      </section>
-    </main>
-  </div>
-  <!--This script is to bootstrap funcionality-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
-  <!--This js script is to add navbar at aside tag-->
-  <script src="../../controller/admin/menu.js"></script>
-  <script src="../../resources/js/sweetalert.min.js"></script>
-  <!--This js script is to do funcionality some components of bootstrap-->
-  <script src="../../controller/components.js"></script>
-  <script src="../../controller/admin/product.js"></script>
+                <!--This section is to filter datas in the table, but datas with especifics parameters-->
+                <div class="filtertable">
+                    <button class="active">All products <span>11</span></button>
+                    <button>Sales <span>05</span></button>
+                </div>
+                <!--This class is show all datas to products, but in diferents sections-->
+                <div class="datatable">
+                    <div class="infodatatable">
+                        <p>Showing 21-30 of 88 results</p>
+                    </div>
+                    <div class="numbersdata">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--This section is to show how many items show in the tabla-->
+                    <div class="itemstable">
+                        <p>Items per page <span>10</span></p>
+                    </div>
+                </div>
+                <!--In this section are contained the table to show products data-->
+                <div class="sectiontable">
+                    <table class="table table-hover">
+                        <!--Here are contained the columns to table-->
+                        <thead>
+                            <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-rows"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <!--This script is to bootstrap funcionality-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <!--This js script is to add navbar at aside tag-->
+    <script src="../../controller/admin/menu.js"></script>
+    <script src="../../resources/js/sweetalert.min.js"></script>
+    <!--This js script is to do funcionality some components of bootstrap-->
+    <script src="../../controller/components.js"></script>
+    <script src="../../controller/admin/product.js"></script>
 </body>
 
 </html>

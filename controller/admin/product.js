@@ -111,3 +111,21 @@ async function DeleteProduct(id){
         }
     }
 }
+
+
+//Product images
+
+function cleanImages(){
+    document.getElementById("image-1-preview").src="";
+    document.getElementById("image-2-preview").src="";
+    document.getElementById("image-3-preview").src="";
+    document.getElementById("image-4-preview").src="";
+}
+
+function showPreview(event, num){
+    if(event.target.files.length > 0){
+        var src = URL.createObjectURL(event.target.files[0]);
+        var preview = document.getElementById("image-"+num+"-preview");
+        preview.src= src;
+    }
+}
