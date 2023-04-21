@@ -3,7 +3,7 @@ const MODAL_TITLE = document.getElementById('exampleModalLabel');
 const SAVE_FORM = document.getElementById('save-form');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const SEARCH_FORM = document.getElementById('form-search');
-const SWITCH_STATE_EMPLOYEE=document.getElementById('flexSwitchCheckChecked')
+const SWITCH_STATE_EMPLOYEE=document.getElementById('flexSwitchCheckChecked');
 
 document.addEventListener('DOMContentLoaded', () => {
     fillTable();

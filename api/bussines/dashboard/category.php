@@ -28,7 +28,8 @@ if (isset($_GET['action'])) {
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
-                    $result['exception'] = 'Ingrese un valor para buscar';
+                    $result['status'] = 1; 
+                    $result['dataset'] = $category_model->readAll(); 
                 } elseif ($result['dataset'] = $category_model->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Si se encontraron resultados';
