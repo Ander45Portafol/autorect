@@ -95,16 +95,16 @@ async function updateEmployee(id) {
         document.getElementById('Employee_name').value = JSON.dataset.nombre_empleado;
         document.getElementById('Employee_lastname').value = JSON.dataset.apellido_empleado;
         document.getElementById('Employee_dui').value = JSON.dataset.dui_empleado;
-        document.getElementById('Employee_phone').value = JSON.dataset.telefono_empleado;
         document.getElementById('Employee_email').value = JSON.dataset.correo_empleado;
+        document.getElementById('Employee_phone').value = JSON.dataset.telefono_empleado;
         document.getElementById('Employee_date').value = JSON.dataset.nacimiento_empleado;
-        fillSelect(EMPLOYEE_API, 'readTypes', 'types', JSON.dataset.id_tipo_empleado);
         document.getElementById('Employee_address').value = JSON.dataset.direccion_empleado;
-        if (JSON.dataset.estado_usuario) {
-            document.getElementById('state-employee').checked=true;
+        if (JSON.dataset.estado_empleado) {
+            document.getElementById('flexSwitchCheckDefault').checked=true;
         }else{
-            document.getElementById('state-employee').checked=false;
+            document.getElementById('flexSwitchCheckDefault').checked=false;
         }
+        fillSelect(EMPLOYEE_API, 'readTypes', 'types', JSON.dataset.id_tipo_empleado);
     }
 
 }
