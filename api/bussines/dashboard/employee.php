@@ -60,27 +60,54 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'dui incorrecto';
                 } elseif (!$employee_model->setEmployeePhone($_POST['employee_phone'])) {
                     $result['exception'] = 'phone incorrecto';
-                } elseif (!isset($_POST['type'])) {
-                    $result['exception'] = 'Selecciona un tipo de usuario';
-                } else if (!$employee_model->setEmployeeMail($_POST['employee_email'])) {
+                } elseif (!$employee_model->setEmployeeMail($_POST['employee_email'])) {
                     $result['exception'] = 'Email incorrecto';
-                } elseif (!$employee_model->setEmployeeType($_POST['type'])) {
+                } elseif (!$employee_model->setEmployeeDate($_POST['employee_date'])) {
+                    $result['exception'] = 'Fecha incorrecto';
+                } elseif (!$employee_model->setEmployeeType($_POST['types'])) {
                     $result['exception'] = 'Tipo de usuario incorrecto';
-                } elseif (!$user_model->setPassword($_POST['password'])) {
-                    $result['exception'] = Validator::getAPasswordError();
-                } elseif (!is_uploaded_file($_FILES['imageUser']['tmp_name'])) {
-                    $result['exception'] = 'Selecione una imagen';
-                } elseif (!$user_model->setImagen($_FILES['imageUser'])) {
-                    $result['exception'] = Validator::getFileError();
-                } elseif ($user_model->createRow()) {
+                } elseif (!isset($_POST['types'])) {
+                    $result['exception'] = 'Selecciona un tipo de usuario';
+                } elseif (!$employee_model->setEmployeeAddress($_POST['employee_address'])) {
+                    $result['exception'] = 'Address incorrecta';
+                } elseif ($employee_model->createRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['imageUser'], $user_model->getRuta(), $user_model->getImagen())) {
-                        $result['message'] = 'Usuario creado, correctamente';
-                    } else {
-                        $result['message'] = 'Usuario creado, pero sin la imagen';
-                    }
-                } else {
+                    $result['message'] = 'Employee creado, correctamente';
+                } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No data';
+                }
+                break;
+            case 'update':
+                $_POST = Validator::validateForm($_POST);
+                if (!$employee_model->setId($_POST['id'])) {
+                    $reuslt['exception'] = 'Employee incorrecto';
+                } elseif (!$data = $employee_model->readOne()) {
+                    $result['exception'] = 'Employee inexistente';
+                } elseif (!$employee_model->setEmployeeName($_POST['employee_name'])) {
+                    $result['exception'] = 'Name Incorrecto';
+                } elseif (!$employee_model->setEmployeeDUI($_POST['employee_dui'])) {
+                    $result['exception'] = 'dui incorrecto';
+                } elseif (!$employee_model->setEmployeePhone($_POST['employee_phone'])) {
+                    $result['exception'] = 'phone incorrecto';
+                } elseif (!$employee_model->setEmployeeMail($_POST['employee_email'])) {
+                    $result['exception'] = 'Email incorrecto';
+                } elseif (!$employee_model->setEmployeeDate($_POST['employee_date'])) {
+                    $result['exception'] = 'Fecha incorrecto';
+                } elseif (!$employee_model->setEmployeeType($_POST['types'])) {
+                    $result['exception'] = 'Tipo de usuario incorrecto';
+                } elseif (!isset($_POST['types'])) {
+                    $result['exception'] = 'Selecciona un tipo de usuario';
+                } elseif (!$employee_model->setEmployeeAddress($_POST['employee_address'])) {
+                    $result['exception'] = 'Address incorrecta';
+                } elseif ($employee_model->updateRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Employee actualizado, correctamente';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Error en la actualizacion de data';
                 }
                 break;
             case 'delete':
