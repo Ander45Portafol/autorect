@@ -9,10 +9,20 @@ class Order extends OrderQueries{
     protected $id_cliente=null;
     protected $id_estado_pedido=null;
     protected $id_empleado=null;
+    protected $id_Detalle=null;
 
     public function setId($value){
         if(Validator::validateNaturalNumber($value)){
             $this->id=$value;
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public function setIdDetalle($value){
+        if(Validator::validateNaturalNumber($value)){
+            $this->id_Detalle=$value;
             return true;
         }
         else{
@@ -66,6 +76,9 @@ class Order extends OrderQueries{
 
     //metodos para obtener valores de los atributos
     public function getId(){
+        return $this->id_Detalle;
+    }
+    public function getIdDetalle(){
         return $this->id;
     }
     public function getDireccion(){
