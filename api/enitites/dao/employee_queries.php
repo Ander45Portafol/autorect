@@ -30,12 +30,12 @@ class EmployeeQueries
 
     public function searchRows($value)
     {
-        $sql = 'SELECT * 
+        $query = 'SELECT * 
                 FROM empleados 
                 WHERE nombre_empleado LIKE ? OR apellido_empleado LIKE ? OR correo_empleado LIKE ? OR dui_empleado LIKE ?  
                 ORDER BY id_empleado';
         $params = array("%$value%", "%$value%", "%$value%", "%$value%");
-        return Database::getRows($sql, $params);
+        return Database::getRows($query, $params);
     }
 
     public function createRow()
