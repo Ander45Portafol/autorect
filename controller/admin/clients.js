@@ -1,17 +1,21 @@
+//Constant to charger datas of the Clients API
 const CLIENTS_API='bussines/dashboard/clients.php';
+//Constant to manipulated datas in the table
 const TBODY_ROWS=document.getElementById('tbody-rows');
+//Constant to programated the action search
 const SEARCH_FORM=document.getElementById('form-search')
 
+//This event is to show datas in the table
 document.addEventListener('DOMContentLoaded',()=>{
     fillTable();
 })
-
+//This event is to do the search action in the API
 SEARCH_FORM.addEventListener('submit',(event)=>{
     event.preventDefault();
     const FORM=new FormData(SEARCH_FORM);
     fillTable(FORM);
 })
-
+//This function is to charger datas in the table
 async function fillTable(form=null){
     TBODY_ROWS.innerHTML='';
     (form)?action='search':action='readAll';
@@ -40,7 +44,7 @@ async function fillTable(form=null){
         sweetAlert(4,JSON.exception,true);
     }
 }
-
+//This function is to realized the delete action at the API
 async function DeleteClient(id){
     const RESPONSE=await confirmAction('¿Desea eliminar este cliente de forma permanente?')
     if (RESPONSE) {

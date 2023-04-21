@@ -1,38 +1,37 @@
-// Constante para establecer el formulario de primer usuario.
+//constant to use the container at the SING UP form 
 const SINGUP_FORM=document.getElementById('sign_up')
+//constant to use the formulary at the SING UP form 
 const FORM_SIGNUP=document.getElementById('contained-signup')
-// Constante para establecer el formulario de login.
+//constant to use the container at the LOGIN form 
 const LOGIN_FORM=document.getElementById('form_login')
+//constant to use the formulary at the LOGIN form 
 const APARECER_LOGIN=document.getElementById('contained-login')
-
-// Metodo manejador de eventos para cuando el documento ha cargado.
+//This event is to charger the elements in the page
 document.addEventListener('DOMContentLoaded', async ()=>{
-    // Peticion para consultar  los usuarios registrados
+    //This variable is to validate if users exits
     const JSON=await dataFetch(USER_API,'readUsers')
-    // Se comprueba si existe una sesion, de lo contrario se sigue con el flujo normal.
+    //Validate if session is started else the SING UP form is visible
     if (JSON.session) {
-        //Se direcciona a la pagina web del dashboard
         location.href='admin.html'
     }else if (JSON.status) {
-        // Se muestra el formulario para iniciar sesion.
         sweetAlert(4,JSON.message,true)
     }else{
-        // Se muestra el formulario par registrar el primer usuario
+        //The SING UP form is visible
         APARECER_LOGIN.style.display='none'
         FORM_SIGNUP.style.display='block'
         sweetAlert(4,JSON.exception,true)
     }
 })
 
-// Metodo manejador de eventos para cuando se envia el formulario de inicio de sesion
+//This event is to send the datas at validate if the credencials are corrects
 LOGIN_FORM.addEventListener('submit', async(event)=>{
-    //Se evita recargar la pagina web despues de enviar el formulario
+    //This event is used to don't recharger the website
     event.preventDefault();
-    // Constante tipo objeto con los datos del formulario.
+    //Constant like object with the formulary datas
     const FORM=new FormData(LOGIN_FORM)
-    //peticion para iniciar sesion.
+    //Send at the API that action is to do
     const JSON=await dataFetch(USER_API,'login',FORM)       	
-    //Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con le excepcion.
+    //Is validate if the answer at the API is to be OK, or not
     if (JSON.status) {
         sweetAlert(1,JSON.message,true,'admin.html')
     }else{
