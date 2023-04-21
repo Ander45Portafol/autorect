@@ -10,6 +10,7 @@ class Category extends CategoryQueries
     protected $nombre = null;
     protected $imagen = null;
     protected $descripcion = null;
+    protected $ruta = '../../images/categories/';
 
     //Method's set for each atribute
     public function setId($value)
@@ -32,8 +33,8 @@ class Category extends CategoryQueries
     }
     public function setImagen($value)
     {
-        if ($value) {
-            $this->imagen = $value;
+        if (Validator::validateImageFile($value, 1500, 1500)) {
+            $this->imagen = Validator::getFileName();
             return true;
         } else {
             return false;
@@ -65,4 +66,9 @@ class Category extends CategoryQueries
     {
         return $this->descripcion;
     }
+        //This method getRuta is to capture the url of the category image
+        public function getRuta()
+        {
+            return $this->ruta;
+        }
 }

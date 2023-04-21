@@ -53,7 +53,7 @@ async function fillTable(form=null){
         JSON.dataset.forEach(row=>{
             TBODY_ROWS.innerHTML+=`
                 <tr>
-                    <td>${row.id_categoria}</td>
+                <td><img src="${SERVER_URL}images/categories/${row.imagen_categoria}" class="image_product"></td>
                     <td>${row.nombre_categoria}</td>
                     <td>${row.descripcion_categoria}</td>
                     <td>
@@ -80,6 +80,7 @@ function createCategory(){
     document.getElementById('update').style.display='none';
     document.getElementById('addcategory').style.display='block';
     document.getElementById('clean').style.display='block';
+    document.getElementById('file').required=true;
 }
 //This function is to manipulated some controls and charger the repective data when the process is update
 async function updateCategory(id){
@@ -94,6 +95,7 @@ async function updateCategory(id){
         document.getElementById('id').value=JSON.dataset.id_categoria;
         document.getElementById('name').value=JSON.dataset.nombre_categoria;
         document.getElementById('description').value=JSON.dataset.descripcion_categoria;
+        document.getElementById('file').required=false;
     }
 }
 //This function is to communicate at the Api to do the delete action
