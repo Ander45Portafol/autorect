@@ -68,21 +68,21 @@
                         <div class="row">
                           <div class="col">
                             <div class="input-data">
-                              <input type="text" required name="employee_name" />
+                              <input type="text" required id="Employee_name" name="employee_name" />
                               <div class="underline"></div>
                               <label>Name</label>
                             </div>
                           </div>
                           <div class="col">
                             <div class="input-data">
-                              <input type="text" required name="employee_lastname" />
+                              <input type="text" required id="Employee_lastname" name="employee_lastname" />
                               <div class="underline"></div>
                               <label>Lastname</label>
                             </div>
                           </div>
                           <div class="col">
                             <div class="input-data">
-                              <input type="text" required name="employee_dui" />
+                              <input type="text" required id="Employee_dui" name="employee_dui" />
                               <div class="underline"></div>
                               <label>DUI</label>
                             </div>
@@ -91,21 +91,22 @@
                         <div class="row">
                           <div class="col">
                             <div class="input-data">
-                              <input type="text" required name="employee_phone" />
+                              <input type="text" required id="Employee_phone" name="employee_phone" />
                               <div class="underline"></div>
                               <label>Phone</label>
                             </div>
                           </div>
                           <div class="col">
                             <div class="input-data">
-                              <input type="text" required />
-                              <div class="underline"></div>
+                              <input type="text" required id="Employee_email" name="employee_email" />
+                              <div class=" underline">
+                              </div>
                               <label>Email</label>
                             </div>
                           </div>
                           <div class="col">
                             <div class="input-data">
-                              <input type="date" required />
+                              <input type="date" required id="Employee_date" name="employee_date" />
                               <div class="underline"></div>
                               <label>Birth day</label>
                             </div>
@@ -114,7 +115,7 @@
                         <div class="row">
                           <div class="col">
                             <div class="select-data">
-                              <label>Stype</label>
+                              <label>Type</label>
                               <div class="select">
                                 <select name="Types" id="types"></select>
                               </div>
@@ -125,7 +126,7 @@
                         <div class="row row-final">
                           <div class="col" id="caddress">
                             <div class="input-data">
-                              <input type="text" required />
+                              <input type="text" required id="Employee_address" name="employee_address" />
                               <div class="underline"></div>
                               <label>Address</label>
                             </div>
@@ -134,10 +135,13 @@
                           <div class="col col-btn">
                             <div class="btns">
                               <button id="clean">
-                                <i class="bx bxs-eraser"></i>CLEAN
+                                <i class="bx bxs-eraser" onclick="Clean()"></i>CLEAN
                               </button>
                               <button id="adduser">
                                 <i class="bx bxs-plus-circle"></i>ADD USER
+                              </button>
+                              <button id="update">
+                                <i class="bx bxs-plus-circle"></i>CONFIRM
                               </button>
                             </div>
                           </div>
@@ -152,11 +156,11 @@
         </div>
         <!--This section are all relationated with filters to looking for datas at the employees-->
         <div class="searchsection">
-          <div class="search" id="form-search" method="post">
-            <i class="bx bx-search"></i>
-            <input type="text" placeholder="Search anything..." />
+          <form class="search" id="form-search" method="post">
+            <button type="submit" class="button-search"><i class="bx bx-search"></i></button>
+            <input type="text" name="search" placeholder="Search name/email" />
             <i class="bx bx-slider"></i>
-          </div>
+          </form>
           <div class="buttonsearch">
             <input type="date" class="btnfilter" />
             <div class="dropdown btnfilter">
