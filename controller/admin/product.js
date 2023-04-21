@@ -67,7 +67,7 @@ function CreateProduct(){
     document.getElementById('update').style.display='none';
     document.getElementById('adduser').style.display='block';
     document.getElementById('clean').style.display='block';
-    //document.getElementById('file').required=true;
+    document.getElementById('file').required=true;
     fillSelect(CATEGORY_APi,'readAll','category')
     fillSelect(MODEL_API,'readAll','model')
     fillSelect(PRODUCTS_API,'readStatus','status')

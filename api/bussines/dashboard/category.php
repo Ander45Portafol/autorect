@@ -1,4 +1,5 @@
 <?php
+require_once('../../helpers/validator.php');
 //This url is to use data, of the atributes and queries through dependecies
 require_once('../../enitites/dto/category.php');
 //This if is to validate the action is to do
@@ -55,6 +56,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre incorrecto';
                 } elseif (!$category_model->setDescripcion($_POST['category_description'])) {
                     $result['exception'] = 'Descripcion incorrecta';
+                } elseif (!is_uploaded_file($_FILES['imageCategories']['tmp_name'])) {
+                    $result['exception'] = 'Selecione una imagen';
+                } elseif (!$category_model->setImagen($_FILES['imageCategories'])) {
+                    $result['exception'] = Validator::getFileError();
                 } elseif ($category_model->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Categoria creada correctamente';
@@ -73,9 +78,22 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre Incorrecto';
                 } elseif (!$category_model->setDescripcion($_POST['category_description'])) {
                     $result['exception'] = 'Descripcion incorrecta';
-                } elseif ($category_model->updateRow()) {
+                } elseif (!is_uploaded_file($_FILES['imageCategories']['tmp_name'])) {
+                    if ($category_model->updateRow($data['imagen_categoria'])) {
+                        $result['status'] = 1;
+                        $Result['message'] = 'Usuario actualizado, correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                } elseif (!$category_model->setImagen($_FILES['imageCategories'])) {
+                    $result['exception'] = Validator::getFileError();
+                } elseif ($category_model->updateRow($data['imagen_categoria'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Categoria actualizada, perfectamente';
+                    if (Validator::saveFile($_FILES['imageCategories'], $category_model->getRuta(), $category_model->getImagen())) {
+                        $Result['message'] = 'Usuario actualizado, correctamente';
+                    } else {
+                        $Result['message'] = 'Usuario actualizado, pero no se guardo la imagen';
+                    }
                 } else {
                     $result['exception'] = Database::getException();
                 }
