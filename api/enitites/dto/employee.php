@@ -48,7 +48,7 @@ class Employee extends EmployeeQueries
 
     public function setEmployeeDUI($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 9)) {
+        if (Validator::validateDUI($value)) {
             $this->employee_dui = $value;
             return true;
         } else {
@@ -58,7 +58,7 @@ class Employee extends EmployeeQueries
 
     public function setEmployeeMail($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 75)) {
+        if (Validator::validateEmail($value)) {
             $this->employee_mail = $value;
             return true;
         } else {
@@ -68,7 +68,7 @@ class Employee extends EmployeeQueries
 
     public function setEmployeePhone($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 10)) {
+        if (Validator::validatePhone($value)) {
             $this->employee_phone = $value;
             return true;
         } else {
@@ -78,7 +78,7 @@ class Employee extends EmployeeQueries
 
     public function setEmployeeDate($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 10)) {
+        if (Validator::validateDate($value)) {
             $this->employee_date = $value;
             return true;
         } else {
