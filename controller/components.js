@@ -26,7 +26,7 @@ async function dataFetch(filename, action, form = null) {
 
 function confirmAction(message) {
   return swal({
-    title: 'Advertencia',
+    title: 'Warning',
     text: message,
     icon: 'warning',
     closeOnCLickOutSide: false,
@@ -50,7 +50,7 @@ function confirmAction(message) {
 
 async function logOut() {
   // Se muestra un mensaje de confirmacion y se captura la respuesta en una constante
-  const RESPONSE = await confirmAction('¿Estas seguro de cerrar la sesion?')
+  const RESPONSE = await confirmAction('Are you sure you want log out?')
   // Se verifica la respuesta del mensaje
   if (RESPONSE) {
     // Peticion para eliminar la sesion.
@@ -68,7 +68,7 @@ function sweetAlert(type, text, timer, url = null) {
   // Se compara el tipo de mensaje a mostrar
   switch (type) {
     case 1:
-      title = "Exito";
+      title = "Success";
       icon = "success";
       break;
     case 2:
@@ -76,11 +76,11 @@ function sweetAlert(type, text, timer, url = null) {
       icon = "error";
       break;
     case 3:
-      title = "Advertencia";
+      title = "Warning";
       icon = "warning";
       break;
     case 4:
-      title = "Aviso";
+      title = "Info";
       icon = "info";
       break;
     default:
@@ -94,7 +94,7 @@ function sweetAlert(type, text, timer, url = null) {
     closeOnClickOutside: false,
     closeOnEsc: false,
     button: {
-      text: "Aceptar",
+      text: "Ok",
       className: "cyan",
     },
   };
@@ -113,7 +113,7 @@ async function fillSelect(filename, action, select, selected = null) {
   const JSON = await dataFetch(filename, action)
   let content = '';
   if (JSON.status) {
-    content += '<option disable selected>Seleccione una opcion</option>'
+    content += '<option disable selected>Select something</option>'
     JSON.dataset.forEach(row => {
       value = Object.values(row)[0]
       text = Object.values(row)[1]
@@ -124,7 +124,7 @@ async function fillSelect(filename, action, select, selected = null) {
       }
     })
   } else {
-    content += '<option>No hay opciones disponibles</option>'
+    content += '<option>No data to show</option>'
   }
   document.getElementById(select).innerHTML = content
 }
