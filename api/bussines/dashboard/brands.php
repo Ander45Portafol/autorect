@@ -32,7 +32,8 @@ if (isset($_GET['action'])) {
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
-                    $result['exception'] = 'Search Something';
+                    $result['status'] = 1; 
+                    $result['dataset'] = $brand_model->readAll(); 
                 } elseif ($result['dataset'] = $brand_model->searchRow($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Data was found';

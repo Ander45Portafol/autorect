@@ -40,7 +40,8 @@ if (isset($_GET['action'])) {
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
-                    $result['exception'] = 'Ingrese un valor para buscar';
+                    $result['status'] = 1; 
+                    $result['dataset'] = $employee_model->readAll(); 
                 } elseif ($result['dataset'] = $employee_model->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Si se encontraron resultados';
@@ -58,18 +59,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'lastname Incorrecto';
                 } elseif (!$employee_model->setEmployeeDUI($_POST['employee_dui'])) {
                     $result['exception'] = 'dui incorrecto';
+                }elseif (!$employee_model->setEmployeeMail($_POST['employee_email'])) {
+                    $result['exception'] = 'Email incorrecto';
                 } elseif (!$employee_model->setEmployeePhone($_POST['employee_phone'])) {
                     $result['exception'] = 'phone incorrecto';
-                } elseif (!$employee_model->setEmployeeMail($_POST['employee_email'])) {
-                    $result['exception'] = 'Email incorrecto';
                 } elseif (!$employee_model->setEmployeeDate($_POST['employee_date'])) {
                     $result['exception'] = 'Fecha incorrecto';
-                } elseif (!$employee_model->setEmployeeType($_POST['types'])) {
-                    $result['exception'] = 'Tipo de usuario incorrecto';
-                } elseif (!isset($_POST['types'])) {
-                    $result['exception'] = 'Selecciona un tipo de usuario';
                 } elseif (!$employee_model->setEmployeeAddress($_POST['employee_address'])) {
                     $result['exception'] = 'Address incorrecta';
+                }elseif (!$employee_model->setEmployeeStatus(isset($_POST['state-employee']) ? 1 : 0)) {
+                    $result['exception'] = 'Estado Incorrecto';
+                }elseif (!$employee_model->setEmployeeType($_POST['Types'])) {
+                    $result['exception'] = 'Tipo de usuario incorrecto';
+                } elseif (!isset($_POST['Types'])) {
+                    $result['exception'] = 'Selecciona un tipo de usuario';
                 } elseif ($employee_model->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Employee creado, correctamente';
@@ -87,20 +90,24 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Employee inexistente';
                 } elseif (!$employee_model->setEmployeeName($_POST['employee_name'])) {
                     $result['exception'] = 'Name Incorrecto';
+                }elseif (!$employee_model->setLastname($_POST['employee_lastname'])) {
+                    $result['exception'] = 'LastName Incorrecto';
                 } elseif (!$employee_model->setEmployeeDUI($_POST['employee_dui'])) {
                     $result['exception'] = 'dui incorrecto';
+                }elseif (!$employee_model->setEmployeeMail($_POST['employee_email'])) {
+                    $result['exception'] = 'Email incorrecto';
                 } elseif (!$employee_model->setEmployeePhone($_POST['employee_phone'])) {
                     $result['exception'] = 'phone incorrecto';
-                } elseif (!$employee_model->setEmployeeMail($_POST['employee_email'])) {
-                    $result['exception'] = 'Email incorrecto';
                 } elseif (!$employee_model->setEmployeeDate($_POST['employee_date'])) {
                     $result['exception'] = 'Fecha incorrecto';
-                } elseif (!$employee_model->setEmployeeType($_POST['types'])) {
-                    $result['exception'] = 'Tipo de usuario incorrecto';
-                } elseif (!isset($_POST['types'])) {
-                    $result['exception'] = 'Selecciona un tipo de usuario';
-                } elseif (!$employee_model->setEmployeeAddress($_POST['employee_address'])) {
+                }elseif (!$employee_model->setEmployeeAddress($_POST['employee_address'])) {
                     $result['exception'] = 'Address incorrecta';
+                }elseif (!$employee_model->setEmployeeStatus(isset($_POST['state-employee']) ? 1 : 0)) {
+                    $result['exception'] = 'Estado Incorrecto';
+                } elseif (!$employee_model->setEmployeeType($_POST['Types'])) {
+                    $result['exception'] = 'Tipo de usuario incorrecto';
+                } elseif (!isset($_POST['Types'])) {
+                    $result['exception'] = 'Selecciona un tipo de usuario';
                 } elseif ($employee_model->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Employee actualizado, correctamente';

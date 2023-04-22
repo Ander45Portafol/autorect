@@ -30,12 +30,12 @@ class EmployeeQueries
 
     public function searchRows($value)
     {
-        $sql = 'SELECT * 
+        $query = 'SELECT * 
                 FROM empleados 
                 WHERE nombre_empleado LIKE ? OR apellido_empleado LIKE ? OR correo_empleado LIKE ? OR dui_empleado LIKE ?  
                 ORDER BY id_empleado';
         $params = array("%$value%", "%$value%", "%$value%", "%$value%");
-        return Database::getRows($sql, $params);
+        return Database::getRows($query, $params);
     }
 
     public function createRow()
@@ -49,7 +49,8 @@ class EmployeeQueries
     public function updateRow()
     {
         $query = 'UPDATE empleados 
-                  SET nombre_empleado = ?, apellido_empleado = ?, dui_empleado = ?, correo_empleado = ?, telefono_empleado = ?, nacimiento_empleado = ?, direccion_empleado = ?, estado_empleado = ?, id_tipo_empleado = ?';
+                  SET nombre_empleado = ?, apellido_empleado = ?, dui_empleado = ?, correo_empleado = ?, telefono_empleado = ?, nacimiento_empleado = ?, direccion_empleado = ?, estado_empleado = ?, id_tipo_empleado = ?
+                  WHERE id_empleado = ?';
         $params = array($this->employee_name, $this->employee_lastname, $this->employee_dui, $this->employee_mail, $this->employee_phone, $this->employee_date, $this->employee_address, $this->employee_status, $this->employee_type, $this->employee_id);
         return Database::executeRow($query, $params);
     }
