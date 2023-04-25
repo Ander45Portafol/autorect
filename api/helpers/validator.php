@@ -1,10 +1,11 @@
 <?php
+//Class to generate validations at the server
 class Validator{
-
+    //Making atributs
     private static $passwordError=null;
     private static $fileName=null;
     private static $fileError=null;
-
+    //Method get of the atributs
     public static function getAPasswordError(){
         return self::$passwordError;
     }
@@ -14,6 +15,7 @@ class Validator{
     public static function getFileError(){
         return self::$fileError;
     }
+    //Function to validate form
     public static function validateForm($fields){
         foreach($fields as $index => $value){
             $value=trim($value);
@@ -21,51 +23,34 @@ class Validator{
         }
         return $fields;
     }
+    //Function to validate of the number are natural
     public static function validateNaturalNumber($value)
     {
-        // Se verifica que el valor sea un número entero mayor o igual a uno.
         if (filter_var($value, FILTER_VALIDATE_INT, array('min_range' => 1))) {
             return true;
         } else {
             return false;
         }
     }
-
-    /*
-    *   Método para validar el formato del DUI (Documento Único de Identidad).
-    *   Parámetros: $value (dato a validar).
-    *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
-    */
+    //Function to validate the strings of the used dui
     public static function validateDUI($value)
     {
-        // Se verifica que el número tenga el formato 00000000-0.
         if (preg_match('/^[0-9]{8}[-][0-9]{1}$/', $value)) {
             return true;
         } else {
             return false;
         }
     }
-
-        /*
-    *   Método para validar un número telefónico.
-    *   Parámetros: $value (dato a validar).
-    *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
-    */
+    //Function to validate the strings to use at the number phone
     public static function validatePhone($value)
     {
-        // Se verifica que el número tenga el formato 0000-0000 y que inicie con 2, 6 o 7.
         if (preg_match('/^[2,6,7]{1}[0-9]{3}[-][0-9]{4}$/', $value)) {
             return true;
         } else {
             return false;
         }
     }
-
-    /*
-    *   Método para validar un correo electrónico.
-    *   Parámetros: $value (dato a validar).
-    *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
-    */
+    //Function to validate the Email registrer
     public static function validateEmail($value)
     {
         if (filter_var($value, FILTER_VALIDATE_EMAIL)) {
@@ -74,7 +59,7 @@ class Validator{
             return false;
         }
     }
-
+    //Function to validate at the data are String
     public static function validateString($value, $minimum, $maximum)
     {
         // Se verifica el contenido y la longitud de acuerdo con la base de datos.
@@ -84,12 +69,10 @@ class Validator{
             return false;
         }
     }
-
+    //Function to validate image files
     public static function validateImageFile($file, $maxWidth, $maxHeigth)
     {
-        // Se obtienen las dimensiones y el tipo de la imagen.
         list($width, $height, $type) = getimagesize($file['tmp_name']);
-        // Se comprueba si el archivo tiene un tamaño mayor a 2MB.
         if ($file['size'] > 2097152) {
             self::$fileError = 'El tamaño de la imagen debe ser menor a 2MB';
             return false;
@@ -97,9 +80,7 @@ class Validator{
             self::$fileError = 'La dimensión de la imagen es incorrecta';
             return false;
         } elseif ($type == 2 || $type == 3) {
-            // Se obtiene la extensión del archivo y se convierte a minúsculas.
             $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-            // Se establece un nombre único para el archivo.
             self::$fileName = uniqid() . '.' . $extension;
             return true;
         } else {
@@ -107,6 +88,7 @@ class Validator{
             return false;
         }
     }
+    //Function to validate password 
     public static function validatePassword($value){
         if (strlen($value)<6) {
             self::$passwordError='Clave menor a 6 caracteres';
@@ -118,6 +100,7 @@ class Validator{
             return false;
         }
     }
+    //Function to validate of the data are Alphanumeric
     public static function validateAlphanumeric($value,$minimum,$maximum){
         if(preg_match('/^[a-zA-z0-9ñÑáÁéÉíÍóÓúÚ\s]{' . $minimum . ',' . $maximum.'}$/', $value)){
             return true;
@@ -125,6 +108,7 @@ class Validator{
             return false;
         }
     }
+    //Function to validate the data are boolean
     public static function validateBoolean($value){
         if ($value==1||$value==0||$value==true||$value=false) {
             return true;
@@ -132,10 +116,9 @@ class Validator{
             return false;
         }
     }
-
+    //Function to validate dates
     public static function validateDate($value)
     {
-        // Se dividen las partes de la fecha y se guardan en un arreglo en el siguiene orden: año, mes y día.
         $date = explode('-', $value);
         if (checkdate($date[1], $date[2], $date[0])) {
             return true;
@@ -143,34 +126,27 @@ class Validator{
             return false;
         }
     }
-
+    //Function to save files
     public static function saveFile($file, $path, $name)
     {
-        // Se verifica que el archivo sea movido al servidor.
         if (move_uploaded_file($file['tmp_name'], $path . $name)) {
             return true;
         } else {
             return false;
         }
     }
-
-    /*
-    *   Método para validar un archivo al momento de borrarlo del servidor.
-    *   Parámetros: $path (ruta del archivo) y $name (nombre del archivo).
-    *   Retorno: booleano (true si el archivo fue borrado del servidor o false en caso contrario).
-    */
+    //Function to delete file
     public static function deleteFile($path, $name)
     {
-        // Se comprueba que el archivo sea borrado del servidor.
         if (@unlink($path . $name)) {
             return true;
         } else {
             return false;
         }
     }
+    //Function to validate datas like money
     public static function validateMoney($value)
     {
-        // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
         if (preg_match('/^[0-9]+(?:\.[0-9]{1,2})?$/', $value)) {
             return true;
         } else {

@@ -1,36 +1,35 @@
-// Constante para completar la ruta de la API
+//Constant to charger the Users API 
 const USERS_API= '/bussines/dashboard/users.php'
-// Constante para establecer el formulario de buscar
+//Constant to use and to do the search process
 const SEARCH_FORM=document.getElementById('form-search')
-// Constante para cambiar el titulo del modal
+//Constant to manipulated the title in the modal
 const TITLE_MODAL=document.getElementById('exampleModalLabel')
-// Constante para establecer el formulario
+//Constant to use the form
 const  SAVE_FORM=document.getElementById('user-form')
-//Cosntantes para establecer el contenido de la tabla
+//Constant to charger datas in the table to users data
 const TBODY_ROWS=document.getElementById('tbody-rows-users')
-
+//Constant to manipulate the properties at the switch
 const SWITCH_STATE_USER=document.getElementById('flexSwitchCheckChecked')
-const OPTIONS={
-    dismissible:false
-}
+
+//Event to show the datas in the table
 document.addEventListener('DOMContentLoaded',()=>{
     fillTable()
 })
-
-const LimpiarCampos=()=>{
+//Function to Ccean inputs
+const Clean=()=>{
     document.getElementById('id').value='';
     document.getElementById('username').value='';
     document.getElementById('password').value='';
     fillSelect(USERS_API,'readEmployees','Employee')
     fillSelect(USERS_API,'readType_Users','user_type')
 }
-
+//This event is to programming that send parameters at the action in the API
 SEARCH_FORM.addEventListener('submit',(event)=>{
     event.preventDefault();
     const FORM=new FormData(SEARCH_FORM);
     fillTable(FORM);
 })
-
+//This event is to programming that send all respective datas at the Api
 SAVE_FORM.addEventListener('submit',async(event)=>{
     event.preventDefault();
     (document.getElementById('id').value)?action='update' : action= 'create';
@@ -39,24 +38,19 @@ SAVE_FORM.addEventListener('submit',async(event)=>{
     if (JSON.status) {
         fillTable();
         sweetAlert(1,JSON.mesage,true);
-        LimpiarCampos();
+        Clean();
         document.getElementById('btnclose').click();
     }else{
         sweetAlert(2,JSON.exception,false);
     }
 } )
 
-
+//This function is to charger datas in the table
 async function fillTable(form=null){
-    // Se inicializa el contenido de la tabla
     TBODY_ROWS.innerHTML='';
-    // Se verifica la accion a realizar
     (form) ? action = 'search' : action = 'readAll';
-    // Peticion para obtener los registros disponibles
     const JSON=await dataFetch(USERS_API,action,form);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepcion.
     if (JSON.status) {
-        // Se recorre el conjunto de registros fila por fila
         JSON.dataset.forEach(row => {
             TBODY_ROWS.innerHTML+=`
                 <tr>
@@ -78,11 +72,11 @@ async function fillTable(form=null){
                 </tr>
             `
         })
-        // Se muestra un mensaje de acuerdo con el resultado
     }else{
         sweetAlert(4, JSON.exception,true)
     }
 }
+//This function is to manipulated some controls when the process is create
 function CreateUser(){
     TITLE_MODAL.textContent='CREATE USER'
     document.getElementById('username').disabled=false
@@ -94,6 +88,8 @@ function CreateUser(){
     fillSelect(USERS_API,'readEmployees','Employee')
     fillSelect(USERS_API,'readType_Users','user_type')
 }
+
+//This function is to manipulated some controls and charger the repective data when the process is update
 async function UpdateUser(id){
     const FORM=new FormData();
     FORM.append('id',id);
@@ -121,6 +117,7 @@ async function UpdateUser(id){
     //SWITCH_STATE_USER.value='false'
 
 }
+//This function is to communicate at the Api to do the delete action
 async function DeleteUser(id){
     const RESPONSE=await confirmAction('¿Desea eliminar el usuario de forma permanente?')
     if (RESPONSE) {
