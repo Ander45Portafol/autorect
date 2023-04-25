@@ -335,6 +335,16 @@
     height: 30px;
     width: 45px;
   }
+  .table td .valoractions{
+    background-color: transparent;
+    color: #2E98BA;
+    border: 2px solid #2E98BA;
+    border-radius: 5px;
+    margin-left: 20px;
+    font-size: 16pt;
+    height: 30px;
+    width: 45px;
+  }
 
   /*This code is to add style at the order_details button in the table*/
   .sectiontable .table td .order_detail {

@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', async ()=>{
         sweetAlert(4,JSON.message,true)
     }else{
         //The SING UP form is visible
-        APARECER_LOGIN.style.display='none'
-        FORM_SIGNUP.style.display='block'
         sweetAlert(4,JSON.exception,true)
     }
 })

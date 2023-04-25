@@ -60,7 +60,7 @@ async function fillTable(form=null){
         JSON.dataset.forEach(row => {
             TBODY_ROWS.innerHTML+=`
                 <tr>
-                    <td>${row.id_usuario}</td>
+                    <td><img src="${SERVER_URL}images/users/${row.imagen_principal}" class="image_product"></td>
                     <td>${row.nombre_usuario}</td>
                     <td>${row.clave_usuario}</td>
                     <td>${row.estado_usuario}</td>

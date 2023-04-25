@@ -35,11 +35,7 @@ ASIDE.innerHTML=`     <ul class="nav flex-column">
   </li>
 
   </li>
-  <li class="nav-item">
-  <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Valorations"><a class="nav-link" href="valoration.html" id="valoration"><i class='bx bxs-star-half'></i></a></button>
-    
-  </li>
-
+  
   <li class="nav-item">
   <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Orders"><a class="nav-link" href="orders.html" id="Orders"><i class="bx bxs-box"></i></a></button>
 

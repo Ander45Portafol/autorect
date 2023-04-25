@@ -7,6 +7,7 @@ class products extends Products_queries
 {
     //Atributes to do manipule data
     protected $id_producto;
+    protected $id_valoracion;
     protected $nombre_producto;
     protected $descripcion;
     protected $precio;
@@ -22,6 +23,15 @@ class products extends Products_queries
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->id_producto = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setIdValoracion($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->id_valoracion = $value;
             return true;
         } else {
             return false;
@@ -103,6 +113,10 @@ class products extends Products_queries
     public function getId()
     {
         return $this->id_producto;
+    }
+    public function getIdValoracion()
+    {
+        return $this->id_valoracion;
     }
     public function getNombre_Producto()
     {

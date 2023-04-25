@@ -28,8 +28,8 @@ if (isset($_GET['action'])) {
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
-                    $result['status'] = 1; 
-                    $result['dataset'] = $category_model->readAll(); 
+                    $result['status'] = 1;
+                    $result['dataset'] = $category_model->readAll();
                 } elseif ($result['dataset'] = $category_model->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Si se encontraron resultados';
@@ -57,13 +57,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre incorrecto';
                 } elseif (!$category_model->setDescripcion($_POST['category_description'])) {
                     $result['exception'] = 'Descripcion incorrecta';
-                } elseif (!is_uploaded_file($_FILES['imageCategories']['tmp_name'])) {
-                    $result['exception'] = 'Selecione una imagen';
                 } elseif (!$category_model->setImagen($_FILES['imageCategories'])) {
                     $result['exception'] = Validator::getFileError();
                 } elseif ($category_model->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Categoria creada correctamente';
+                    if (Validator::saveFile($_FILES['imageCategories'], $category_model->getRuta(), $category_model->getImagen())) {
+                        $result['message'] = 'Producto creado, correctamente';
+                    } else {
+                        $result['message'] = 'Producto creado, pero sin la imagen';
+                    }
                 } else {
                     $result['exception'] = Database::getException();
                 }
