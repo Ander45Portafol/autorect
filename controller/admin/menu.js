@@ -1,3 +1,4 @@
+//Constant to use and charger sidebar in the aside on html
 const ASIDE=document.querySelector('aside') 
 
 ASIDE.innerHTML=`     <ul class="nav flex-column">

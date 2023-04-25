@@ -1,22 +1,31 @@
+//Constant to charger the Products API 
 const PRODUCTS_API='bussines/dashboard/products.php';
+//Constant to charger the Category API 
 const CATEGORY_APi='bussines/dashboard/category.php';
+//Constant to charger the Model API 
 const MODEL_API='bussines/dashboard/models.php';
+//Constant to use the products form
 const SAVE_FORM=document.getElementById('save-form');
+//Constant to use and to do the search process
 const SEARCH_FORM=document.getElementById('form-search')
+//Constant to manipulated the title in the products modal
 const TITLE_MODAL=document.getElementById('modal-title');
+//Constant to charger datas in the table to products data
 const TBODY_ROWS=document.getElementById('tbody-rows');
+//Constant to charger datas in the table to valorations datas
 const TBODY_VALORATIONS=document.getElementById('tbody-valorations');
 
+//Event to show the datas in the table
 document.addEventListener('DOMContentLoaded', ()=>{
     fillTable();
 })
-
+//This event is to programming that send parameters at the action in the API
 SEARCH_FORM.addEventListener('submit',(event)=>{
     event.preventDefault();
     const FORM=new FormData(SEARCH_FORM);
     fillTable(FORM);
 })
-
+//This event is to programming that send all respective datas at the Api
 SAVE_FORM.addEventListener('submit', async(event)=>{
     event.preventDefault();
     (document.getElementById('id').value)?action='update':action='create';
@@ -30,7 +39,7 @@ SAVE_FORM.addEventListener('submit', async(event)=>{
         sweetAlert(2,JSON.exception,false);
     }
 })
-
+//This function is to charger datas in the table
 async function fillTable(form=null){
     TBODY_ROWS.innerHTML='';
     (form) ? action = 'search': action = 'readAll'
@@ -64,6 +73,7 @@ async function fillTable(form=null){
         sweetAlert(4,JSON.exception, true);
     }
 }
+//This function is to manipulated some controls when the process is create
 function CreateProduct(){
     TITLE_MODAL.textContent='CREATE USER'
     document.getElementById('product-name').disabled=false
@@ -76,6 +86,7 @@ function CreateProduct(){
     fillSelect(MODEL_API,'readAll','model')
     fillSelect(PRODUCTS_API,'readStatus','status')
 }
+//This function is to manipulated some controls and charger the repective data when the process is update
 async function UpdateProduct(id){
     const FORM=new FormData();
     FORM.append('id',id);
@@ -98,6 +109,7 @@ async function UpdateProduct(id){
         sweetAlert(2,JSON.exception,false);
     }
 }
+//This function is to communicate at the Api to do the delete action
 async function DeleteProduct(id){
     const RESPONSE=await confirmAction('¿Desea eliminar el producto de forma permanente?')
     if (RESPONSE) {
@@ -140,6 +152,7 @@ async function fillTableValorations(id){
         sweetAlert(4,JSON.exception, true);
     }
 }
+//This function is to don't show any valoration
 async function DeleteValoration(id){
     const RESPONSE=await confirmAction('¿Desea eliminar la valoracion del producto de forma permanente?')
     if (RESPONSE) {

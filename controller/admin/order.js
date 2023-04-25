@@ -1,37 +1,34 @@
-// Constante para completar la ruta de la API
+//Constant to charger the Order Api
 const ORDER_API = "/bussines/dashboard/order.php";
-//Constantes para establecer el contenido de la tabla
+//Constant to use all rows in the table to Order datas
 const TBODY_ROWS = document.getElementById("tbody-rows-orders");
-// Constante para establecer el formulario de buscar
+//Constant to used the search form
 const SEARCH_FORM = document.getElementById("form-search");
-// Constante para cambiar el titulo del modal
+//Constatn to change te modal title
 const TITLE_MODAL = document.getElementById("exampleModalLabel");
-// Constante para establecer el formulario
+//Constant to use the order formulary
 const SAVE_FORM = document.getElementById("order-form");
-const ORDER_DETAIL_API = 'bussines/dashboard/order_detail.php';
+//Constant to use all rows in the table to Order detail datas
 const TBODY_DETAILS = document.getElementById('tbody-detail');
+//Constant to change properties in the Order detail modal
 const MODAL_DETAIL=document.getElementById('modal-detail');
 
+//This event is to charger datas in the table
 document.addEventListener("DOMContentLoaded", () => {
     fillTable();
 });
-
+//This event is to charger datas when the user needs at especific data
 SEARCH_FORM.addEventListener("submit", (event) => {
     event.preventDefault();
     const FORM = new FormData(SEARCH_FORM);
     fillTable(FORM);
 });
-
+//This function is to charger datas in the table to Order datas
 async function fillTable(form = null) {
-    // Se inicializa el contenido de la tabla
     TBODY_ROWS.innerHTML = "";
-    // Se verifica la accion a realizar
     form ? (action = "search") : (action = "readAll");
-    // Peticion para obtener los registros disponibles
     const JSON = await dataFetch(ORDER_API, action, form);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepcion.
     if (JSON.status) {
-        // Se recorre el conjunto de registros fila por fila
         JSON.dataset.forEach((row) => {
             TBODY_ROWS.innerHTML += `
                 <tr>
@@ -56,23 +53,17 @@ async function fillTable(form = null) {
                 </tr>
             `;
         });
-        // Se muestra un mensaje de acuerdo con el resultado
     } else {
         sweetAlert(4, JSON.exception, true);
     }
 }
-
+//This event is to charger datas in the table to Order details datas
 async function fillTableDetail(id) {
-    // Se inicializa el contenido de la tabla
     TBODY_DETAILS.innerHTML = "";
     const FORM = new FormData();
     FORM.append("id", id);
-    // Se verifica la accion a realizar
-    // Peticion para obtener los registros disponibles
     const JSON = await dataFetch(ORDER_API, 'readAllDetail', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepcion.
     if (JSON.status) {
-        // Se recorre el conjunto de registros fila por fila
         JSON.dataset.forEach((row) => {
             TBODY_DETAILS.innerHTML += `
                 <tr>
@@ -91,13 +82,11 @@ async function fillTableDetail(id) {
                 </tr>
             `;
         });
-        // Se muestra un mensaje de acuerdo con el resultado
     } else {
         sweetAlert(4, JSON.exception, true);
     }
 }
-
-
+//This arrow function is to do the clean action on the inputs ands selects
 const Clean = () => {
     SAVE_FORM.setAttribute("novalidate", "");
 
@@ -110,6 +99,7 @@ const Clean = () => {
     SAVE_FORM.removeAttribute("novalidate");
 };
 
+//This function is to manipulated some controls when the process is create
 function CreateOrder() {
     var fecha = new Date(); // Fecha actual
     var mes = fecha.getMonth() + 1; // Obteniendo mes
@@ -137,7 +127,7 @@ function CreateOrder() {
     document.getElementById("adduser").style.display = "block";
     document.getElementById("clean").style.display = "block";
 }
-
+//This event is to send all datas to realized the respective query
 SAVE_FORM.addEventListener("submit", async (event) => {
     event.preventDefault();
     document.getElementById("id").value
@@ -154,7 +144,7 @@ SAVE_FORM.addEventListener("submit", async (event) => {
         sweetAlert(2, JSON.exception, false);
     }
 });
-
+//This function is to manipulated some controls and charger the repective data when the process is update
 async function EditOrder(id) {
     const FORM = new FormData();
     FORM.append("id", id);
@@ -207,7 +197,7 @@ async function EditOrder(id) {
 
     //SWITCH_STATE_USER.value='false'
 }
-
+//This function is to realized the delete action at the API
 async function DeleteOrder(id) {
     const RESPONSE = await confirmAction(
         "¿Desea eliminar el pedido de forma permanente?"
@@ -224,6 +214,7 @@ async function DeleteOrder(id) {
         }
     }
 }
+//This function is to delete the order detail
 async function DeleteDetail(idDetalle) {
     const RESPONSE = await confirmAction(
         "¿Desea eliminar el pedido de forma permanente?"

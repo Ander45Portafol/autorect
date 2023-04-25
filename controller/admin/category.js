@@ -22,7 +22,7 @@ SEARCH_FORM.addEventListener('submit',(event)=>{
 })
 
 //Function to Ccean inputs
-const LimpiarCampos=()=>{
+const Clean=()=>{
     document.getElementById('id').value='';
     document.getElementById('name').value='';
     document.getElementById('description').value='';
@@ -37,14 +37,14 @@ SAVE_FORM.addEventListener('submit', async(event)=>{
     if (JSON.status) {
         fillTable();
         sweetAlert(1,JSON.message,true);
-        LimpiarCampos();
+        Clean();
         document.getElementById('btnclose').click();
     }else{
         sweetAlert(2,JSON.exception,false);
     }
 })
 
-//This event is to charger datas in the table
+//This function is to charger datas in the table
 async function fillTable(form=null){
     TBODY_ROWS.innerHTML='';
     (form) ? action = 'search': action = 'readAll'
