@@ -197,7 +197,7 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             //This action is to validate if exists users
             case 'readUsers':
-                if ($user_model->readAll()) {
+                if (!$user_model->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Debe autenticarse para ingresar';
                 } else {

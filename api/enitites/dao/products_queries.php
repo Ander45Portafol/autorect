@@ -11,7 +11,19 @@ class Products_queries
         $sql = 'SELECT * FROM productos ORDER BY id_producto';
         return Database::getRows($sql);
     }
-        //This function is to catch one data, whit the identicator
+    //This function is to show all datas of the products valorations
+    public function readAllValorations(){
+        $sql='SELECT c.nombre_producto, a.calificacion_producto,a.comentario,a.fecha_comentario,a.estado_comentario,a.id_valoracion FROM valoraciones a, detalles_pedidos b, productos c WHERE a.id_detalle_pedido = b.id_detalle_pedido AND b.id_producto=c.id_producto AND estado_comentario=true AND c.id_producto = ?';
+        $params=array($this->id_producto);
+        return Database::getRows($sql,$params);
+    }
+    //This function is to catch one data, whit the identicator at the valoration
+    public function readOneValoration(){
+        $sql='SELECT * FROM valoraciones WHERE id_valoracion=? ORDER BY id_valoracion';
+        $params=array($this->id_valoracion);
+        return Database::getRow($sql,$params);
+    }
+        //This function is to catch one data, whit the identicator at the product
     public function readOne()
     {
         $sql = 'SELECT * FROM productos WHERE id_producto=? ORDER BY id_producto';
@@ -30,6 +42,12 @@ class Products_queries
         $sql='SELECT * FROM productos WHERE nombre_producto ILIKE ? ORDER BY nombre_producto';
         $params=array("%$value%");
         return Database::getRows($sql,$params);
+    }
+    //This function is to change the status to product valoration
+    public function deleleteValoration(){
+        $sql='UPDATE valoraciones SET estado_comentario=false where id_valoracion=?';
+        $params=array($this->id_valoracion);
+        return Database::executeRow($sql,$params);
     }
         //This function is to delete the product data
     public function deleteRow()

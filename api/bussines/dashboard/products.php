@@ -23,6 +23,19 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                //This action is to show all valorations of the products
+            case 'readAllValoration':
+                if (!$product_model->setId($_POST['id_producto'])) {
+                    $result['exception'] = 'Producto incorrecta';
+                }elseif ($result['dataset'] = $product_model->readAllValorations()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
             //This action is to show the status of the product data in te select
             case 'readStatus':
                 if ($result['dataset'] = $product_model->readStatusProduct()) {
@@ -144,6 +157,19 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //This action is to delete data of the product valoration
+                case 'deleteValoration':
+                    if (!$product_model->setIdValoracion($_POST['id_valoracion'])) {
+                        $result['exception'] = 'Valoracion incorrecta';
+                    } elseif (!$data = $product_model->readOneValoration()) {
+                        $result['exception'] = 'Valoracion inexistente';
+                    } elseif ($product_model->deleleteValoration()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Valoracion Eliminada, correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
             //Case default if anything is executed
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';

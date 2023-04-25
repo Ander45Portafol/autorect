@@ -5,6 +5,7 @@ const SAVE_FORM=document.getElementById('save-form');
 const SEARCH_FORM=document.getElementById('form-search')
 const TITLE_MODAL=document.getElementById('modal-title');
 const TBODY_ROWS=document.getElementById('tbody-rows');
+const TBODY_VALORATIONS=document.getElementById('tbody-valorations');
 
 document.addEventListener('DOMContentLoaded', ()=>{
     fillTable();
@@ -50,6 +51,9 @@ async function fillTable(form=null){
                             </button>
                             <button class="delete" id="deletebtn" onclick="DeleteProduct(${row.id_producto})">
                                 <i class="bx bxs-trash"></i>
+                            </button>
+                            <button class="valoractions" id="valorationbtn" type="button" data-bs-toggle="modal" data-bs-target="#modal-valoration" onclick="fillTableValorations(${row.id_producto})">
+                            <i class='bx bxs-star-half'></i>
                             </button>
                         </div>
                     </td>
@@ -103,6 +107,49 @@ async function DeleteProduct(id){
         if (JSON.status) {
             fillTable()
             sweetAlert(1,JSON.message,true)
+        }else{
+            sweetAlert(2,JSON.exception,false)
+        }
+    }
+}
+//Methods to charger and to do the actions at realizated to valorations
+async function fillTableValorations(id){
+    const FORM=new FormData()
+    FORM.append('id_producto',id)
+    TBODY_VALORATIONS.innerHTML='';
+    const JSON= await dataFetch(PRODUCTS_API, 'readAllValoration', FORM);
+    if (JSON.status) {
+        JSON.dataset.forEach(row=>{
+            TBODY_VALORATIONS.innerHTML+=`
+                <tr>
+                    <td>${row.nombre_producto}</td>
+                    <td>${row.calificacion_producto}</td>
+                    <td>${row.comentario}</td>
+                    <td>${row.fecha_comentario}</td>
+                    <td>
+                        <div class="actions">
+                            <button class="delete" id="deletebtn" onclick="DeleteValoration(${row.id_valoracion})">
+                                <i class="bx bxs-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        })
+    }else{
+        sweetAlert(4,JSON.exception, true);
+    }
+}
+async function DeleteValoration(id){
+    const RESPONSE=await confirmAction('¿Desea eliminar la valoracion del producto de forma permanente?')
+    if (RESPONSE) {
+        const FORM=new FormData()
+        FORM.append('id_valoracion',id)
+        const JSON=await dataFetch(PRODUCTS_API,'deleteValoration',FORM)
+        if (JSON.status) {
+            fillTable()
+            sweetAlert(1,JSON.message,true)
+            document.getElementById('btnclose_valorations').click();
         }else{
             sweetAlert(2,JSON.exception,false)
         }

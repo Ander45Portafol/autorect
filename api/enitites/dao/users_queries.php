@@ -5,7 +5,7 @@ require_once('../../helpers/database.php');
 class UserQueries{
     //This function is to verificated if the user is correct in the login process
     public function checkUser($alias){
-        $sql='SELECT id_usuario from usuarios WHERE nombre_usuario = ?';
+        $sql='SELECT id_usuario from usuarioS WHERE nombre_usuario = ?';
         $params=array($alias);
         $data=Database::getRow($sql,$params);
         if ($data) {
@@ -29,7 +29,7 @@ class UserQueries{
     }
     //This function is show all datas of the users is used to show data in the table
     public function readAll(){
-        $sql='SELECT id_usuario, nombre_usuario, clave_usuario, estado_usuario, id_empleado, id_tipo_usuario, id_tema, id_idioma FROM usuarios ORDER BY id_usuario';
+        $sql='SELECT id_usuario, nombre_usuario, clave_usuario, estado_usuario, id_empleado, id_tipo_usuario, id_tema, id_idioma FROM usuarioS ORDER BY id_usuario';
         return Database::getRows($sql);
     }
     //This function is to search the users data, with parameters
