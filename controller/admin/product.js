@@ -1,7 +1,7 @@
 //Constant to charger the Products API 
 const PRODUCTS_API='bussines/dashboard/products.php';
 //Constant to charger the Category API 
-const CATEGORY_APi='bussines/dashboard/category.php';
+const CATEGORY_API='bussines/dashboard/category.php';
 //Constant to charger the Model API 
 const MODEL_API='bussines/dashboard/models.php';
 //Constant to use the products form
@@ -75,16 +75,16 @@ async function fillTable(form=null){
 }
 //This function is to manipulated some controls when the process is create
 function CreateProduct(){
-    TITLE_MODAL.textContent='CREATE USER'
+    TITLE_MODAL.textContent='CREATE PRODUCT'
     document.getElementById('product-name').disabled=false
     document.getElementById('price').disbled=false
     document.getElementById('update').style.display='none';
     document.getElementById('adduser').style.display='block';
     document.getElementById('clean').style.display='block';
     document.getElementById('file').required=true;
-    fillSelect(CATEGORY_APi,'readAll','category')
-    fillSelect(MODEL_API,'readAll','model')
-    fillSelect(PRODUCTS_API,'readStatus','status')
+    fillSelect(CATEGORY_API,'readAll','category');
+    fillSelect(MODEL_API,'readAll','model');
+    fillSelect(PRODUCTS_API,'readStatus','status');
 }
 //This function is to manipulated some controls and charger the repective data when the process is update
 async function UpdateProduct(id){
@@ -92,7 +92,7 @@ async function UpdateProduct(id){
     FORM.append('id',id);
     const JSON=await dataFetch(PRODUCTS_API,'readOne',FORM);
     if (JSON.status) {
-        TITLE_MODAL.textContent='UPDATE CATEGORY';
+        TITLE_MODAL.textContent='UPDATE PRODUCT';
         document.getElementById('update').style.display='block';
         document.getElementById('adduser').style.display='none';
         document.getElementById('clean').style.display='none';
@@ -140,7 +140,7 @@ async function fillTableValorations(id){
                     <td>${row.fecha_comentario}</td>
                     <td>
                         <div class="actions">
-                            <button class="delete" id="deletebtn" onclick="DeleteValoration(${row.id_valoracion})">
+                            <button class="delete" id="deletebtn" onclick="DeleteValoration(${row.id_valoracion},${row.estado_comentario})">
                                 <i class="bx bxs-trash"></i>
                             </button>
                         </div>
@@ -148,23 +148,22 @@ async function fillTableValorations(id){
                 </tr>
             `;
         })
-    }else{
-        sweetAlert(4,JSON.exception, true);
     }
 }
 //This function is to don't show any valoration
-async function DeleteValoration(id){
-    const RESPONSE=await confirmAction('¿Desea eliminar la valoracion del producto de forma permanente?')
+async function DeleteValoration(id, estado){
+    const RESPONSE=await confirmAction('¿Desea Cambiar la valoracion del producto de forma permanente?')
     if (RESPONSE) {
+        console.log(estado);
         const FORM=new FormData()
         FORM.append('id_valoracion',id)
-        const JSON=await dataFetch(PRODUCTS_API,'deleteValoration',FORM)
+        /*const JSON=await dataFetch(PRODUCTS_API,'deleteValoration',FORM)
         if (JSON.status) {
             fillTable()
             sweetAlert(1,JSON.message,true)
             document.getElementById('btnclose_valorations').click();
         }else{
             sweetAlert(2,JSON.exception,false)
-        }
+        }*/
     }
 }
