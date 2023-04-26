@@ -814,7 +814,7 @@
     flex-direction: row;
   }
 
-  .images-form input{
+  .images-form input[type="file"] {
     display: none;
   }
 

@@ -38,7 +38,7 @@ class Database{
     //Function to get all rows of the table
     public static function getRows($query,$values=null){
         if (self::executeRow($query,$values)) {
-            return self::$statement->FetchAll(PDO::FETCH_ASSOC);
+            return self::$statement->FetchAll(PDO::FETCH_BOTH);
         }else {
             return false;
         }
@@ -63,7 +63,7 @@ class Database{
                 self::$error='Violacion de llave foránea';
                 break;
             default:
-            self::$error='Ocurrio un problema en la base de datos';
+            //self::$error='Ocurrio un problema en la base de datos';
         }
     }
     //Function to show exceptions

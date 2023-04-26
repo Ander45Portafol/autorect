@@ -17,6 +17,7 @@ class products extends Products_queries
     protected $modelo;
     protected $estado_producto;
     protected $ruta = '../../images/products/';
+    protected $id_imagen_producto;
     protected $imagen_s;
 
     //Method's set for each atribute
@@ -111,6 +112,16 @@ class products extends Products_queries
         }
     }
 
+    public function setIdImg($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->id_imagen_producto = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setImagenS($file){
         if (Validator::validateImageFile($file, 1500, 1500)) {
             $this->imagen_s=Validator::getFileName();
@@ -168,6 +179,10 @@ class products extends Products_queries
 
     public function getImagenS(){
         return $this->imagen_s;
+    }
+
+    public function getIdImg(){
+        return $this->id_imagen_producto;
     }
 }
 

@@ -7,7 +7,7 @@ if (isset($_GET['action'])) {
     //Object to mecioned functions of the queries, through this object
     $product_model = new products;
     //This variable is to show the answer at the actions
-    $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
+    $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'idimagen' => 0);
     //Is to verficate if the session is started
     if (isset($_SESSION['id_usuario'])) {
         //Is to verificated that action is to do
@@ -171,7 +171,7 @@ if (isset($_GET['action'])) {
                     }
                     break;
             case 'readImgs':
-                if (!$product_model->setId($_POST['id'])) {
+                if (!$product_model->setId($_POST['id_producto'])) {
                     $result['exception'] = 'No existe ese producto';
                 } elseif ($result['dataset'] = $product_model->readImgs()) {
                     $result['status'] = 1;
@@ -183,16 +183,43 @@ if (isset($_GET['action'])) {
                 break;
             case 'createImg':
                 $num = $_POST['num'];
-                if (!$product_model->setImagenS($_FILES['input-img-' . $num]['name'])) {
+                if (!$product_model->setImagenS($_FILES['input-img-' . $num])) {
                     $result['exception'] = Validator::getFileError('input-img-' . $num);
                 } elseif(!$product_model->setId($_POST['id-p'])) {
                     $result['exception'] = 'No existe ese producto';
-                } elseif ($product_model->createImg()) {
+                } elseif ($id = $product_model->createImg()) {
                     $result['status'] = 1;
+                    $result['idimagen'] = $id;
                     if (Validator::saveFile($_FILES['input-img-' . $num], $product_model->getRuta(), $product_model->getImagenS())) {
                     $result['message'] = 'Imagen creada';
                     } else {
                     $result['message'] = 'Imagen no creada';
+                    }
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            case 'readLastImg':
+                if ($result['dataset'] = $product_model->readLastImg()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+            case 'deleteImg':
+                if (!$product_model->setIdImg($_POST['id_imagen_producto'])) {
+                    $result['exception'] = 'Error en el id';
+                }elseif (!$data = $product_model->readOneImg()) {
+                    $result['exception'] = 'Imagen inexistente';
+                }elseif ($product_model->deleteImg()) {
+                    $result['status'] = 1;
+                    if (Validator::deleteFile($product_model->getRuta(), $data['nombre_archivo_imagen'])) {
+                        $result['message'] = 'Imagen eliminada correctamente';
+                    } else {
+                        $result['message'] = 'Imagen eliminada pero no se borró la imagen';
                     }
                 } else {
                     $result['exception'] = Database::getException();

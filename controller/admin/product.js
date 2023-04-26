@@ -61,8 +61,11 @@ async function fillTable(form=null){
                             <button class="delete" id="deletebtn" onclick="DeleteProduct(${row.id_producto})">
                                 <i class="bx bxs-trash"></i>
                             </button>
+                            <button class="product_images" data-bs-toggle="modal" data-bs-target="#modalimages" onclick="readImgs(${row.id_producto})">
+                                <i class="bx bx-images"></i>
+                            </button>
                             <button class="valoractions" id="valorationbtn" type="button" data-bs-toggle="modal" data-bs-target="#modal-valoration" onclick="fillTableValorations(${row.id_producto})">
-                            <i class='bx bxs-star-half'></i>
+                                <i class='bx bxs-star-half'></i>
                             </button>
                         </div>
                     </td>
@@ -140,21 +143,41 @@ async function UpdateProduct(id){
         FORM.append('id-p', id_p); 
         const JSON = await dataFetch(PRODUCTS_API, 'createImg', FORM);
         if (JSON.status) {
+            document.getElementById('id-img-1').value= JSON.idimagen;
+            console.log(document.getElementById('id-img-1').value);
             sweetAlert(1,JSON.message,true);
         }else{
             sweetAlert(2,JSON.exception,false);
         }
     })
 
-    function readImgs(productId) {
+    async function readImgs(productId) {
+        const FORM = new FormData();
+        FORM.append('id_producto', productId); 
+        const JSON = await dataFetch(PRODUCTS_API, 'readImgs', FORM);
         document.getElementById('id-p').value = productId;
-        console.log(productId);
+        //console.log(JSON.dataset[0]);
+        const ruta = SERVER_URL + 'images/products/';
+        if(JSON.status){
+            document.getElementById("imga-1").classList.add("active");
+            document.getElementById("imgp-1").src=ruta+JSON.dataset[0].nombre_archivo_imagen;
+            document.getElementById("id-img-1").value = JSON.dataset[0].id_imagen_producto;
+        }
     }
 
     function cleanImages(){
         document.getElementById("imgp-1").src="";
         document.getElementById("imgt-1").style.display = "block";
         document.getElementById("imga-1").classList.remove("active");
+        document.getElementById("imgp-2").src="";
+        document.getElementById("imgt-2").style.display = "block";
+        document.getElementById("imga-2").classList.remove("active");
+        document.getElementById("imgp-3").src="";
+        document.getElementById("imgt-3").style.display = "block";
+        document.getElementById("imga-3").classList.remove("active");
+        document.getElementById("imgp-4").src="";
+        document.getElementById("imgt-4").style.display = "block";
+        document.getElementById("imga-4").classList.remove("active");
     }
 
     async function openFileSelector(num){
@@ -162,14 +185,26 @@ async function UpdateProduct(id){
         var img = document.getElementById("imgp-"+num);
         var input = document.getElementById("input-img-"+num);
         var text = document.getElementById("imgt-"+num);
+        var idimg = document.getElementById("id-img-"+num);
     
-        if(area.classList.contains("active")){
-            img.src = "";
-            area.classList.remove("active");
-            text.style.display = "block";
-        } else {
+        if(! area.classList.contains("active")){
             input.value = ""; 
             input.click();
+        } else {
+            const RESPONSE = await confirmAction('¿Desea eliminar la imagen?');
+            if (RESPONSE) {
+                const FORM=new FormData();
+                FORM.append('id_imagen_producto', idimg.value);
+                const JSON = await dataFetch(PRODUCTS_API,'deleteImg',FORM);
+                if (JSON.status) {
+                    img.src = "";
+                    area.classList.remove("active");
+                    text.style.display = "block";
+                    sweetAlert(1,JSON.message,true)
+                }else{
+                    sweetAlert(2,JSON.exception,false)
+                }
+            }
         }
     }
     
