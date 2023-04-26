@@ -156,26 +156,32 @@
                                     <div class="modal-header">
                                         <p class="modal-title" id="modal-title">EDIT IMAGES</p>
                                         <!--This button is to close the modal-->
-                                        <button type="button" id="btnclose" data-bs-dismiss="modal"
-                                            aria-label="Close" onclick="cleanImages()"><i class="bx bx-x"></i></button>
+                                        <button type="button" id="btnclose" data-bs-dismiss="modal" aria-label="Close"
+                                            onclick="cleanImages()"><i class="bx bx-x"></i></button>
                                     </div>
                                     <!--In this class are add elements like inputs, buttons, etc-->
-                                    <form class="images-form modal-body" id="images-form">
+                                    <div class="images-form modal-body" id="images-form">
+                                        <input type="text" id="id-p">
                                         <div class="row text-center">
                                             <div class="col-img col-lg-3 col-md-6 col-sm-6">
-                                                <div class="img-area" id="imga-1" data-img="x" onclick="openFileSelector(1)">
-                                                    <div id="imgt-1">
-                                                        <i class='bx bxs-cloud-upload'></i>
-                                                        <h3>Add image</h3>
-                                                        <p>File formats: <span> .jpg/.png </span></p>
+                                                <form id="form-1">
+                                                    <div class="img-area" id="imga-1" data-img="x"
+                                                        onclick="openFileSelector(1)">
+                                                        <div id="imgt-1">
+                                                            <i class='bx bxs-cloud-upload'></i>
+                                                            <h3>Add image</h3>
+                                                            <p>File formats: <span> .jpg/.png </span></p>
+                                                        </div>
+                                                        <img src="" id="imgp-1">
                                                     </div>
-                                                    <img src="" id="imgp-1">
-                                                </div>
-                                                <input type="file" id="input-img-1" onchange="showPreview(event, 1)">
-                                                <button type="submit" id="btnsubmit"></button>
+                                                    <input type="file" id="input-img-1" name="input-img-1"
+                                                        onchange="showPreview(event, 1)">
+                                                    <input type="hidden" name="num" value="1">
+                                                    <button type="submit" id="btnsubmit-1" form="form-1">Enviar</button>
+                                                </form>
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
