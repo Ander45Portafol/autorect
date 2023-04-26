@@ -72,7 +72,7 @@ async function fillTableDetail(id) {
                     <td>${row.direccion_pedido}</td>
                     <td>${row.fecha_pedido}</td>
                     <td>${row.precio_total}</td>
-                    <td class="action-btn">
+                    <td>
                         <div class="actions">
                             <button class="delete" id="deletebtn" onclick="DeleteDetail(${row.id_detalle_pedido})">
                                 <i class="bx bxs-trash"></i>

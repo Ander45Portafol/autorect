@@ -306,13 +306,6 @@
     text-align: center;
   }
 
-  .table .action-btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-
   /*This code is to add style at the edit button in the table*/
   .table td .edit {
     background-color: transparent;
@@ -722,11 +715,14 @@
     display: flex;
     flex-direction: row;
   }
-
+#Bname{
+  margin-bottom: 2rem;
+}
   .Bsection1 {
     width: 70%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .Bsection1 .input-data {

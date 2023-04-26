@@ -4,10 +4,6 @@ const FORMU = document.getElementById('save-form-B');
 const MODAL_TITLE = document.getElementById('modal-title');
 const SEARCH_F = document.getElementById('form-search');
 
-const OPTIONS = {
-    dismissible: false
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     fillTable()
 })
@@ -47,7 +43,7 @@ async function fillTable(form = null) {
                 <tr>
                     <td>${row.id_marca}</td>
                     <td>${row.nombre_marca}</td>
-                    <td>${row.logo_marca}</td>
+                    <td><img src="${SERVER_URL}images/brands/${row.logo_marca}" class="image_product"></td>
                     <td class="action-btn">
                         <div class="actions">
                             <button type="button" class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateBrand(${row.id_marca})">
@@ -71,6 +67,7 @@ function createBrand() {
     document.getElementById('update').style.display = 'none';
     document.getElementById('adduser').style.display = 'block';
     document.getElementById('clean').style.display = 'block';
+    document.getElementById('file').required=true;
 }
 
 async function updateBrand(id) {
@@ -82,6 +79,7 @@ async function updateBrand(id) {
         document.getElementById('update').style.display = 'block';
         document.getElementById('adduser').style.display = 'none';
         document.getElementById('clean').style.display = 'none';
+        document.getElementById('file').required=false;
         document.getElementById('id').value = JSON.dataset.id_marca;
         document.getElementById('brandname').value = JSON.dataset.nombre_marca;
     }

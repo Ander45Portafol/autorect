@@ -59,7 +59,7 @@ async function fillTable(form=null){
                     <td>${row.clave_usuario}</td>
                     <td>${row.estado_usuario}</td>
                     <td>${row.id_tipo_usuario}</td>
-                    <td class="action-btn">
+                    <td>
                         <div class="actions">
                             <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="UpdateUser(${row.id_usuario})">
                                 <i class="bx bxs-edit"></i>

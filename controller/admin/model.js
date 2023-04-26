@@ -48,15 +48,15 @@ async function cargarTabla(form=null){
                 <td>${row.nombre_modelo}</td>
                 <td>${row.anio_modelo}</td>
                 <td>${row.id_marca}</td>
-                <td class="action-btn">
-                <div class="actions">
-                <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateModel(${row.id_modelo})">
-                    <i class="bx bxs-edit"></i>
-                </button>
-                <button class="delete" id="deletebtn" onclick="deleteModel(${row.id_modelo})">
-                    <i class="bx bxs-trash"></i>
-                </button>
-            </div>
+                <td>
+                    <div class="actions">
+                        <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateModel(${row.id_modelo})">
+                            <i class="bx bxs-edit"></i>
+                        </button>
+                        <button class="delete" id="deletebtn" onclick="deleteModel(${row.id_modelo})">
+                            <i class="bx bxs-trash"></i>
+                        </button>
+                    </div>
                 </td>
             </tr>
         `;

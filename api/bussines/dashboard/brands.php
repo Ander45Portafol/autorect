@@ -32,8 +32,8 @@ if (isset($_GET['action'])) {
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
-                    $result['status'] = 1; 
-                    $result['dataset'] = $brand_model->readAll(); 
+                    $result['status'] = 1;
+                    $result['dataset'] = $brand_model->readAll();
                 } elseif ($result['dataset'] = $brand_model->searchRow($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Data was found';
@@ -47,9 +47,15 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$brand_model->setBrandName($_POST['BrandName'])) {
                     $result['exception'] = 'There was an error with the brand name';
-                } else if ($brand_model->createRow()) {
+                } elseif (!$brand_model->setBrandLogo($_FILES['imageBrand'])) {
+                    $result['exception'] = Validator::getFileError();
+                } elseif ($brand_model->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'The brand has been created';
+                    if (Validator::saveFile($_FILES['imageBrand'], $brand_model->getRuta(), $brand_model->getLogo())) {
+                        $result['message'] = 'Marca creado, correctamente';
+                    } else {
+                        $result['message'] = 'Marca creado, pero sin la imagen';
+                    }
                 } else {
                     $result['exception'] = Database::getException();
                 }
