@@ -350,6 +350,19 @@
   .sectiontable .table td .order_detail {
     border: 2px solid #2E98BA;
     color: #2E98BA;
+    background-color: transparent;
+    font-size: 16pt;
+    border-radius: 5px;
+    width: 45px;
+    height: 30px;
+    margin-left: 20px;
+  }
+
+  /*This code is to add style the images button in the table*/
+  .sectiontable .table td .product_images {
+    border: 2px solid #5DBB63;
+    color: #5DBB63;
+    background-color: transparent;
     font-size: 16pt;
     border-radius: 5px;
     width: 45px;
@@ -399,7 +412,7 @@
   width: 50px;
 }
   /*This code is to section the modal body*/
-  .modal-body {
+  .modal-body{
     width: 100%;
     height: 55vh;
     display: flex;
@@ -791,6 +804,144 @@
     cursor: pointer;
     border-bottom: 3px solid #000;
     text-align: center;
+  }
+
+  /**/
+  .images-form{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+
+  .images-form input{
+    display: none;
+  }
+
+  .img-area{
+    position: relative;
+    background-color: #f2f2f2;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .img-area i{
+    font-size: 100px;
+  }
+
+  .img-area h3{
+    margin-bottom: 6px;
+  }
+
+  .img-area p{
+    color: #999;
+  }
+
+  .img-area p span{
+    color: black;
+    font-size:16px;
+    font-weight: bold;
+  }
+
+  .img-area img[src=""] {
+    visibility: hidden;
+  }
+
+  .img-area img{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 100;
+  }
+
+  .img-area::before{
+    content: attr(data-img);
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    color: #fff;
+    font-size: 60px;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: all .3s ease;
+    z-index: 200;
+  }
+
+  .img-area.active:hover::before{
+    opacity: 1;
+  }
+
+  @media (min-width: 1200px) {
+    .img-area{
+      width: 200px;
+      height: 200px;
+    }
+
+    .img-area h3{
+      font-size: 20px;
+      font-weight: 500px;
+    }
+  }
+
+  @media (max-width: 1199px) and (min-width: 991px){
+    .img-area{
+      width: 160px;
+      height: 160px;
+    }
+
+    .img-area h3{
+      font-size: 16px;
+      font-weight: 500px;
+    }
+    
+    .img-area i{
+      font-size: 80px;
+    }
+
+    .img-area p, .img-area p span{
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 991px) and (min-width: 576px){
+    .modal-images .modal-body{
+      height: 450px;
+    } 
+  }
+
+  @media (max-width: 575px){
+    .modal-images .modal-body{
+      height: 950px;
+    } 
+
+    .img-area{
+      width: 200px;
+      height: 200px;
+    }
+
+    .col-img{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   /*Responsive para pantalla mediana*/

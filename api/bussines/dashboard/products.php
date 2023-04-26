@@ -170,7 +170,34 @@ if (isset($_GET['action'])) {
                         $result['exception'] = Database::getException();
                     }
                     break;
-            //Case default if anything is executed
+            case 'readImgs':
+                if (!$product_model->setId($_POST['id'])) {
+                    $result['exception'] = 'No existe ese producto';
+                } elseif ($result['dataset'] = $product_model->readImgs()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'];
+                }
+                break;
+            case 'createImg':
+                $num = $_POST['num'];
+                if (!$product_model->setImagenS($_FILES['input-img-' . $num]['name'])) {
+                    $result['exception'] = Validator::getFileError('input-img-' . $num);
+                } elseif(!$product_model->setId($_POST['id-p'])) {
+                    $result['exception'] = 'No existe ese producto';
+                } elseif ($product_model->createImg()) {
+                    $result['status'] = 1;
+                    if (Validator::saveFile($_FILES['input-img-' . $num], $product_model->getRuta(), $product_model->getImagenS())) {
+                    $result['message'] = 'Imagen creada';
+                    } else {
+                    $result['message'] = 'Imagen no creada';
+                    }
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

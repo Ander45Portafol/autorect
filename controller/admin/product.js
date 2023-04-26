@@ -110,20 +110,87 @@ async function UpdateProduct(id){
     }
 }
 //This function is to communicate at the Api to do the delete action
-async function DeleteProduct(id){
-    const RESPONSE=await confirmAction('¿Desea eliminar el producto de forma permanente?')
-    if (RESPONSE) {
-        const FORM=new FormData()
-        FORM.append('id_producto',id)
-        const JSON=await dataFetch(PRODUCTS_API,'delete',FORM)
-        if (JSON.status) {
-            fillTable()
-            sweetAlert(1,JSON.message,true)
-        }else{
-            sweetAlert(2,JSON.exception,false)
+    async function DeleteProduct(id){
+        const RESPONSE=await confirmAction('¿Desea eliminar el producto de forma permanente?')
+        if (RESPONSE) {
+            const FORM=new FormData()
+            FORM.append('id_producto',id)
+            const JSON=await dataFetch(PRODUCTS_API,'delete',FORM)
+            if (JSON.status) {
+                fillTable()
+                sweetAlert(1,JSON.message,true)
+            }else{
+                sweetAlert(2,JSON.exception,false)
+            }
         }
     }
-}
+
+
+    //Product images
+
+    const imgform1=document.getElementById('form-1');
+    const imgform2=document.getElementById('form-2');
+    const imgform3=document.getElementById('form-3');
+    const imgform4=document.getElementById('form-4');
+
+    imgform1.addEventListener('submit', async(event)=>{
+        event.preventDefault();
+        const id_p = document.getElementById('id-p').value; 
+        const FORM = new FormData(imgform1);
+        FORM.append('id-p', id_p); 
+        const JSON = await dataFetch(PRODUCTS_API, 'createImg', FORM);
+        if (JSON.status) {
+            sweetAlert(1,JSON.message,true);
+        }else{
+            sweetAlert(2,JSON.exception,false);
+        }
+    })
+
+    function readImgs(productId) {
+        document.getElementById('id-p').value = productId;
+        console.log(productId);
+    }
+
+    function cleanImages(){
+        document.getElementById("imgp-1").src="";
+        document.getElementById("imgt-1").style.display = "block";
+        document.getElementById("imga-1").classList.remove("active");
+    }
+
+    async function openFileSelector(num){
+        var area = document.getElementById("imga-"+num);
+        var img = document.getElementById("imgp-"+num);
+        var input = document.getElementById("input-img-"+num);
+        var text = document.getElementById("imgt-"+num);
+    
+        if(area.classList.contains("active")){
+            img.src = "";
+            area.classList.remove("active");
+            text.style.display = "block";
+        } else {
+            input.value = ""; 
+            input.click();
+        }
+    }
+    
+    
+    async function showPreview(event, num){
+        var preview = document.getElementById("imgp-"+num);
+        var area = document.getElementById("imga-"+num);
+        var text = document.getElementById("imgt-"+num);
+        var btnsubmit = document.getElementById("btnsubmit-"+num)
+
+        event.target.files.length = 0;
+        if(event.target.files.length > 0){
+            var src = URL.createObjectURL(event.target.files[0]);
+            console.log(src);
+            preview.src= src;
+            area.classList.add("active");
+            text.style.display = "none";
+            btnsubmit.click();
+        }
+    }
+
 //Methods to charger and to do the actions at realizated to valorations
 async function fillTableValorations(id){
     const FORM=new FormData()
@@ -168,3 +235,4 @@ async function DeleteValoration(id){
         }
     }
 }
+
