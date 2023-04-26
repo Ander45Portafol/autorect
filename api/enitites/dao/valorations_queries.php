@@ -4,30 +4,47 @@ require_once('../../helpers/database.php');
 //Class create to controller all queries at the database
 class Valorations_queries
 {
-        //This function is show all datas of the valorations is used to show data in the table
+    //This function is show all datas of the valorations is used to show data in the table
     public function readAll()
     {
-        $sql = 'SELECT * FROM valoraciones WHERE estado_comentario=true ORDER BY calificacion_producto DESC';
-        return Database::getRows($sql);
+        $query = 'SELECT * 
+                  FROM valoraciones 
+                  WHERE estado_comentario = true 
+                  ORDER BY calificacion_producto 
+                  DESC';
+        return Database::getRows($query);
     }
-        //This function is to catch one data, whit the identicator
+
+    //This function is to catch one data, whit the identicator
     public function readOne()
     {
-        $sql = 'SELECT * FROM valoraciones WHERE id_valoracion=? ORDER BY calificacion_producto';
+        $query = 'SELECT * 
+                  FROM valoraciones 
+                  WHERE id_valoracion = ? 
+                  ORDER BY calificacion_producto';
         $params = array($this->id_valoracion);
-        return Database::getRow($sql, $params);
+        return Database::getRow($query, $params);
     }
-        //This function is to delete the valorations data
-    public function deleteRow(){
-        $sql='UPDATE valoraciones SET estado_comentario=false WHERE id_valoracion=?';
-        $params=array($this->id_valoracion);
-        return Database::executeRow($sql,$params);
-    }
-        //This function is to search the valorations data, with parameters
+
+    //This function is to search the valorations data, with parameters
     public function searchRow($value)
     {
-        $sql='SELECT * FROM valoraciones WHERE id_detalle_pedido=? AND estado_comentario=true ORDER BY calificacion_producto';
-        $params=array("$value");
-        return Database::getRows($sql,$params);
+        $query = 'SELECT * 
+                  FROM valoraciones 
+                  WHERE id_detalle_pedido = ? 
+                  AND estado_comentario = true 
+                  ORDER BY calificacion_producto';
+        $params = array("$value");
+        return Database::getRows($query, $params);
+    }
+
+    //This function is to delete the valorations data
+    public function deleteRow()
+    {
+        $query = 'UPDATE valoraciones 
+                  SET estado_comentario = false 
+                  WHERE id_valoracion = ?';
+        $params = array($this->id_valoracion);
+        return Database::executeRow($query, $params);
     }
 }

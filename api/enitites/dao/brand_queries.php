@@ -21,17 +21,19 @@ class BrandQueries
         return Database::getRow($query, $params);
     }
 
-    public function searchRow($value){
+    public function searchRow($value)
+    {
         $query = 'SELECT *
                   FROM marcas
                   WHERE nombre_marca
-                  LIKE ?
+                  ILIKE ?
                   ORDER BY id_marca';
         $params = array("%$value%");
         return Database::getRows($query, $params);
     }
 
-    public function createRow(){
+    public function createRow()
+    {
         $query = 'INSERT INTO marcas
                   (nombre_marca, logo_marca)
                   VALUES(?,?)';
@@ -39,7 +41,8 @@ class BrandQueries
         return Database::executeRow($query, $params);
     }
 
-    public function updateRow(){
+    public function updateRow()
+    {
         $query = 'UPDATE marcas
                   SET nombre_marca = ?, logo_marca = ?
                   WHERE id_marca = ?';
@@ -47,7 +50,7 @@ class BrandQueries
         return Database::executeRow($query, $params);
     }
 
-        public function deleteRow()
+    public function deleteRow()
     {
         $query = 'DELETE 
                   FROM marcas
