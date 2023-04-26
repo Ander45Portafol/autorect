@@ -23,7 +23,7 @@ class CategoryQueries
     //This function is show all datas of the categories is used to show data in the table
     public function readAll()
     {
-        $sql = 'SELECT id_categoria,imagen_categoria,nombre_categoria, descripcion_categoria FROM categorias ORDER BY id_categoria';
+        $sql = 'SELECT id_categoria,nombre_categoria, descripcion_categoria,imagen_categoria FROM categorias ORDER BY id_categoria';
         return Database::getRows($sql);
     }
     //This function is to catch one data, whit the identicator
