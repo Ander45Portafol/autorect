@@ -7,8 +7,10 @@ class EmployeeQueries
     //Function to fill the table 
     public function readAll()
     {
-        $query = "SELECT *
-                  FROM empleados
+        $query = "SELECT a.id_empleado,a.nombre_empleado,a.apellido_empleado,a.dui_empleado,a.correo_empleado,a.telefono_empleado,a.estado_empleado,b.tipo_empleado
+                  FROM empleados a
+                  INNER JOIN tipos_empleados b
+                  USING(id_tipo_empleado)
                   ORDER BY id_empleado";
         return Database::getRows($query);
     }

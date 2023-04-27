@@ -67,7 +67,7 @@ async function fillTable(form = null) {
                     <td>${row.nombre_producto}</td>
                     <td>${row.precio_producto}</td>
                     <td>${row.descripcion_producto}</td>
-                    <td>${row.id_estado_producto}</td>
+                    <td>${row.estado_producto}</td>
                     <td>
                         <div class="actions">
                             <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateProduct(${row.id_producto})">
@@ -158,7 +158,7 @@ async function fillTableValorations(id) {
     const JSON = await dataFetch(PRODUCTS_API, 'readAllValoration', FORM);
     if (JSON.status) {
         JSON.dataset.forEach(row => {
-            (row.estado_comentario) ? estado = 'activo' : estado = 'inactivo';
+            (row.estado_comentario) ? estado = 'active' : estado = 'inactive';
             TBODY_VALORATIONS.innerHTML += `
                 <tr>
                     <td>${row.nombre_producto}</td>

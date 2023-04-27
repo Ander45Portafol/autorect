@@ -39,8 +39,10 @@ class UserQueries
     //This function is show all datas of the users is used to show data in the table
     public function readAll()
     {
-        $query = "SELECT * 
-                  FROM usuarios 
+        $query = "SELECT a.id_usuario,a.nombre_usuario,a.clave_usuario,a.imagen_usuario,a.estado_usuario, b.tipo_usuario 
+                  FROM usuarios a 
+                  INNER JOIN tipos_usuarios b
+                  USING(id_tipo_usuario)
                   ORDER BY id_usuario";
         return Database::getRows($query);
     }

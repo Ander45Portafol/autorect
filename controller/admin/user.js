@@ -58,7 +58,7 @@ async function fillTable(form=null){
                     <td>${row.nombre_usuario}</td>
                     <td>${row.clave_usuario}</td>
                     <td>${row.estado_usuario}</td>
-                    <td>${row.id_tipo_usuario}</td>
+                    <td>${row.tipo_usuario}</td>
                     <td>
                         <div class="actions">
                             <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="updateUser(${row.id_usuario})">

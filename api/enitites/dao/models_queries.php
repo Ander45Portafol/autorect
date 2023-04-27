@@ -6,8 +6,10 @@ class ModelQueries{
 
     //This function is show all datas of the models is used to show data in the table
     public function readAll(){
-        $query = "SELECT id_modelo, nombre_modelo, anio_modelo, id_marca 
-                  FROM modelos 
+        $query = "SELECT a.id_modelo, a.nombre_modelo, a.anio_modelo, a.id_marca,b.nombre_marca 
+                  FROM modelos a
+                  INNER JOIN marcas b
+                  USING(id_marca)
                   ORDER BY id_modelo";
         return Database::getRows($query);
     }

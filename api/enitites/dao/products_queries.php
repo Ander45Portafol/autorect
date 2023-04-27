@@ -8,8 +8,10 @@ class ProductQueries
     //This function is show all datas of the products is used to show data in the table
     public function readAll()
     {
-        $query = "SELECT * 
-                  FROM productos 
+        $query = "SELECT a.id_producto, a.imagen_principal,a.nombre_producto,a.precio_producto,a.descripcion_producto, b.estado_producto
+                  FROM productos a
+                  INNER JOIN estados_productos b
+                  USING(id_estado_producto)
                   ORDER BY id_producto";
         return Database::getRows($query);
     }
