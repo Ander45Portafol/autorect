@@ -13,48 +13,48 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['id_usuario'])) {
         //Is to verificated that action is to do
         switch ($_GET['action']) {
-                //This action is to capture the client data
+            //This action is to capture the client data
             case 'readAll':
                 if ($result['dataset'] = $client_model->readAll()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen registros';
+                    $result['message'] = 'Data was found';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay datos registrados';
+                    $result['exception'] = 'No data to show';
                 }
                 break;
-                //This action is to search the especific data
+            //This action is to search the especific data
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
-                    $result['status'] = 1; 
-                    $result['dataset'] = $client_model->readAll(); 
+                    $result['status'] = 1;
+                    $result['dataset'] = $client_model->readAll();
                 } elseif ($result['dataset'] = $client_model->searchRows($_POST['search'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Si se encontraron resultados';
+                    $result['message'] = 'Data was found';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay coincidencias';
+                    $result['exception'] = 'No data to show';
                 }
                 break;
-                //This action is to delete data of the client
+            //This action is to delete data of the client
             case 'delete':
-                if (!$client_model->setIdCliente($_POST['id_cliente'])) {
-                    $result['exception'] = 'Cliente incorrecto';
+                if (!$client_model->setCLientId($_POST['id_cliente'])) {
+                    $result['exception'] = 'Wrong client';
                 } elseif (!$data = $client_model->readOne()) {
-                    $result['exception'] = 'Cliente inexistente';
+                    $result['exception'] = 'The client does not exist';
                 } elseif ($client_model->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Cliente Eliminado, correctamente';
+                    $result['message'] = 'The client was deleted successfully';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                //Case default if anything is executed
+            //Case default if anything is executed
             default:
-                $result['exception'] = 'Acción no disponible dentro de la sesión';
+                $result['exception'] = 'This action cant be performed in the session';
                 break;
         }
         //indicate the tyoe of the content to show and yours respective strings
@@ -62,9 +62,9 @@ if (isset($_GET['action'])) {
         //Show the result in format JSON and return at the controller
         print(json_encode($result));
     } else {
-        print(json_encode('Acceso denegado'));
+        print(json_encode('Access denied'));
     }
 } else {
     //If nothing are compilating, the api show this message in format JSON
-    print(json_encode('Recurso no disponible'));
+    print(json_encode('File unavaliable'));
 }
