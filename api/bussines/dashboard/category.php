@@ -1,19 +1,20 @@
 <?php
+//Dependencies
 require_once('../../helpers/validator.php');
-//This url is to use data, of the atributes and queries through dependecies
 require_once('../../enitites/dto/category.php');
-//This if is to validate the action is to do
+
+//Validate what action is being done
 if (isset($_GET['action'])) {
     session_start();
-    //Object to mecioned functions of the queries, through this object
+    //Object to mention the functions of the queries
     $category_model = new Category;
-    //This variable is to show the answer at the actions
+    //Variable to show the answer of the actions
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
-    //Is to verficate if the session is started
+    //Validate if the session is started
     if (isset($_SESSION['id_usuario'])) {
-        //Is to verificated that action is to do
+        //Actions
         switch ($_GET['action']) {
-            //This action is to charger datas in the table
+            //Action to fill the table
             case 'readAll':
                 if ($result['dataset'] = $category_model->readAll()) {
                     $result['status'] = 1;
@@ -24,7 +25,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data to show';
                 }
                 break;
-            //This action is to search the especific data
+            //Action to search categories
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -39,7 +40,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data avaliable';
                 }
                 break;
-            //This action is verificate the exists of the category
+            //Action to read one category
             case 'readOne':
                 if (!$category_model->setId($_POST['id'])) {
                     $result['exception'] = 'Wrong category';
@@ -51,7 +52,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'The category does not exist';
                 }
                 break;
-            //This action is to create a new category and verificate data to send at the queries file
+            //Action to create a category
             case 'create':
                 if (!$category_model->setCategoryName($_POST['category_name'])) {
                     $result['exception'] = 'Wrong name';
@@ -70,7 +71,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is to update a category and verificate data to send at the queries file
+            //Action to update a category
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$category_model->setId($_POST['id'])) {
@@ -101,7 +102,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is to delete data of the category
+            //Action to delete a category
             case 'delete':
                 if (!$category_model->setId($_POST['id_categoria'])) {
                     $result['exception'] = 'Wrong category';
@@ -114,11 +115,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //Case default if anything is executed
+            //Default case if the action being performed does not exist
             default:
                 $result['exception'] = 'This action cant be performed in the session';
         }
-        //indicate the tyoe of the content to show and yours respective strings
+        //Indicate the content type
         header('content-type: application/json; charset=utf-8');
         //Show the result in format JSON and return at the controller
         print(json_encode($result));
@@ -126,6 +127,6 @@ if (isset($_GET['action'])) {
         print(json_encode('Access denied'));
     }
 } else {
-    //If nothing are compilating, the api show this message in format JSON
+    //If nothing is compilating, the api show this message in format JSON
     print(json_encode('File unavaliable'));
 }
