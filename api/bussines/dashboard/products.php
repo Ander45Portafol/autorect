@@ -1,18 +1,19 @@
 <?php
-//This url is to use data, of the atributes and queries through dependecies
+//Dependencies
 require_once('../../enitites/dto/products.php');
-//This if is to validate the action is to do
+
+//Validate what action is being done
 if (isset($_GET['action'])) {
     session_start();
-    //Object to mecioned functions of the queries, through this object
+    //Object to mention the functions of the queries
     $product_model = new Product;
-    //This variable is to show the answer at the actions
+    //Variable to show the answer of the actions
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
-    //Is to verficate if the session is started
+    //Validate if the session is started
     if (isset($_SESSION['id_usuario'])) {
-        //Is to verificated that action is to do
+        //Actions
         switch ($_GET['action']) {
-            //This action is to charger datas in the table
+            //Action to fill the table
             case 'readAll':
                 if ($result['dataset'] = $product_model->readAll()) {
                     $result['status'] = 1;
@@ -23,7 +24,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data';
                 }
                 break;
-            //This action is to show all valorations of the products
+            //Action to read all the valorations per product
             case 'readAllValoration':
                 if (!$product_model->setId($_POST['id_producto'])) {
                     $result['exception'] = 'Wrong product';
@@ -36,7 +37,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data';
                 }
                 break;
-            //This action is to show the status of the product data in te select
+            //Action to read all the status of the products
             case 'readStatus':
                 if ($result['dataset'] = $product_model->readStatusProduct()) {
                     $result['status'] = 1;
@@ -47,7 +48,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data';
                 }
                 break;
-            //This action is to search the especific data
+            //Action to search for products
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -62,7 +63,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data';
                 }
                 break;
-            //This action is verificate the exists of the product
+            //Action to read one product
             case 'readOne':
                 if (!$product_model->setId($_POST['id'])) {
                     $result['exception'] = 'Wrong product';
@@ -74,7 +75,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'The category does not exist';
                 }
                 break;
-            //This action is to create a new product and verificate data to send at the queries file
+            //Action to create a product
             case 'create':
                 if (!$product_model->setProductName($_POST['Product_name'])) {
                     $result['exception'] = 'Wrong name';
@@ -103,7 +104,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is to update a product and verificate data to send at the queries file
+            //Action to update a product
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$product_model->setId($_POST['id'])) {
@@ -144,7 +145,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is to delete data of the product
+            //Action to delete a product
             case 'delete':
                 if (!$product_model->setId($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecta';
@@ -157,7 +158,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is to delete data of the product valoration
+            //Actions to change the status of the valoration
             case 'FalseValoration':
                 if (!$product_model->setValorationId($_POST['id_valoracion'])) {
                     $result['exception'] = 'Wrong valoration';
@@ -182,6 +183,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            //Action to read the images per product
             case 'readImgs':
                 if (!$product_model->setId($_POST['id_producto'])) {
                     $result['exception'] = 'The product does not exist';
@@ -193,6 +195,7 @@ if (isset($_GET['action'])) {
                     $result['exception'];
                 }
                 break;
+            //Action to create an image asigned to a product
             case 'createImg':
                 $num = $_POST['num'];
                 if (!$product_model->setSImg($_FILES['input-img-' . $num])) {
@@ -211,6 +214,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            //Action to delete an image
             case 'deleteImg':
                 if (!$product_model->setImgId($_POST['id_imagen_producto'])) {
                     $result['exception'] = 'Wrong id';
@@ -231,7 +235,7 @@ if (isset($_GET['action'])) {
             default:
                 $result['exception'] = 'The action can not be performed';
         }
-        //indicate the tyoe of the content to show and yours respective strings
+        //Indicate the content type
         header('content-type: application/json; charset=utf-8');
         //Show the result in format JSON and return at the controller
         print(json_encode($result));
