@@ -2,56 +2,65 @@
 require_once('../../helpers/validator.php');
 require_once('../../enitites/dao/models_queries.php');
 //Class with dependeces at he Querie's file
-class Models extends ModelsQueries{
+class Model extends ModelQueries
+{
     //Atributes to do manipule data
-    protected $id=null;
-    protected $nombre_modelo=null;
-    protected $anio_modelo=null;
-    protected $marca=null;
+    protected $model_id = null;
+    protected $model_name = null;
+    protected $model_year = null;
+    protected $brand = null;
     //Method's set for each atribute
-    public function setID($value){
+    public function setID($value)
+    {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id=$value;
+            $this->model_id = $value;
             return true;
-        }else {
+        } else {
             return false;
         }
     }
-    public function setModelo($value){
-        if (Validator::validateAlphanumeric($value, 1,75)) {
-            $this->nombre_modelo=$value;
+    public function setModelName($value)
+    {
+        if (Validator::validateAlphanumeric($value, 1, 75)) {
+            $this->model_name = $value;
             return true;
-        }else {
+        } else {
             return false;
         }
     }
-    public function setAnio($value){
-        if (Validator::validateAlphanumeric($value,1,5)) {
-            $this->anio_modelo=$value;
+    public function setModelYear($value)
+    {
+        if (Validator::validateAlphanumeric($value, 1, 5)) {
+            $this->model_year = $value;
             return true;
-        }else {
+        } else {
             return false;
         }
     }
-    public function setMarcas($value){
+    public function setModelBrand($value)
+    {
         if (Validator::validateNaturalNumber($value)) {
-            $this->marca=$value;
+            $this->brand = $value;
             return true;
-        }else {
+        } else {
             return false;
         }
     }
     //Method's get for each atribute
-    public function getID(){
-        return $this->id;
+    public function getID()
+    {
+        return $this->model_id;
     }
-    public function getNombreModelo(){
-        return $this->nombre_modelo;
+    public function getModelName()
+    {
+        return $this->model_name;
     }
-    public function getAnio(){
-        return $this->anio_modelo;
+    public function getModelYear()
+    {
+        return $this->model_year;
     }
-    public function getMarca(){
-        return $this->marca;
+    public function getModelBrand()
+    {
+        return $this->brand;
     }
 }

@@ -6,8 +6,8 @@ class Brand extends BrandQueries
 {
     protected $brand_id = null;
     protected $brand_name = null;
-    protected $brand_logo = null;    
-    protected $ruta = '../../images/brands/';
+    protected $brand_logo = null;
+    protected $route = '../../images/brands/';
 
     public function setID($value)
     {
@@ -53,8 +53,8 @@ class Brand extends BrandQueries
     {
         return $this->brand_logo;
     }
-    public function getRuta()
+    public function getRoute()
     {
-        return $this->ruta;
+        return $this->route;
     }
 }
