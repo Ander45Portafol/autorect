@@ -114,7 +114,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre Incorrecto';
                 } elseif (!$product_model->setPrecio($_POST['Price'])) {
                     $result['exception'] = 'Precio de producto incorrecto';
-                } elseif (!$product_model->setExistencias($_POST['Stock'])) {
+                } elseif (!$product_model->setExistencias($_POST['NewStock'])) {
                     $reuslt['exception'] = 'Existencias no validas';
                 } elseif (!$product_model->setCategoria($_POST['Category'])) {
                     $result['exception'] = 'Seleccione una categoria';
@@ -125,7 +125,7 @@ if (isset($_GET['action'])) {
                 } elseif (!$product_model->setDescripcion($_POST['product_description'])) {
                     $result['exception'] = 'Descripcion incorrecta';
                 } elseif (!is_uploaded_file($_FILES['imageProduct']['tmp_name'])) {
-                    if ($user_model->updateRow($data['imagen_principal'])) {
+                    if ($product_model->updateRow($data['imagen_principal'])) {
                         $result['status'] = 1;
                         $Result['message'] = 'Producto actualizado, correctamente';
                     } else {

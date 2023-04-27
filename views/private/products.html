@@ -59,23 +59,26 @@
                     <div class="Psection1">
                       <input type="text" id="id" name="id">
                       <div class="row">
-                        <div class="col">
+                        <div class="col col-4">
                           <div class="input-data">
                             <input type="text" required name="Product_name" id="product-name" />
                             <div class="underline"></div>
                             <label>Product Name</label>
                           </div>
                         </div>
-                        <div class="col">
+                        <div class="col col-4">
                           <div class="input-data">
                             <input type="text" required name="Price" id="price" />
                             <div class="underline"></div>
                             <label>Price</label>
                           </div>
                         </div>
+                        <div class="col col-4">
+                          <input type="file" name="imageProduct" id="fileProduct" accept=".jpg, .png">
+                        </div>
                       </div>
                       <div class="row">
-                        <div class="col">
+                        <div class="col col-4">
                           <div class="select-data">
                             <label>Category</label>
                             <div class="select">
@@ -83,7 +86,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="col">
+                        <div class="col col-4">
                           <div class="select-data">
                             <label>Model</label>
                             <div class="select">
@@ -91,42 +94,44 @@
                             </div>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="select-data">
-                              <label>Status</label>
-                              <div class="select">
-                                <select name="Status" id="status"></select>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col col-stock">
-                            <div class="input-data">
-                              <input type="text" name="Stock" id="stock" required />
-                              <div class="underline"></div>
-                              <label>Stock</label>
+                        <div class="col col-4">
+                          <div class="select-data">
+                            <label>Status</label>
+                            <div class="select">
+                              <select name="Status" id="status"></select>
                             </div>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-description">
-                            <div class="input-data">
-                              <input type="text" name="product_description" id="product-description" required />
-                              <div class="underline"></div>
-                              <label>Product description</label>
-                            </div>
+                      </div>
+                      <div class="row">
+                        <div class="col col-description">
+                          <div class="input-data" id="input-description">
+                            <input type="text" name="product_description" id="product-description" required />
+                            <div class="underline"></div>
+                            <label>Product description</label>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col">
-                            <input type="file" name="imageProduct" id="file" accept=".jpg, .png">
+                      </div>
+                      <div class="row">
+                        <div class="col-4">
+                          <div class="input-data" id="input-stock">
+                            <input type="text" name="Stock" id="stock" required />
+                            <div class="underline"></div>
+                            <label>Stock</label>
                           </div>
                         </div>
+                        <div class="col col-4">
+                          <div class="addstock">
+                            <label id="newstocklabel">Add Stock</label>
+                            <input type="number" id="addExists">
+                          </div>
+
+                        </div>
+                        <input type="text" id="newstock" name="NewStock">
                       </div>
                     </div>
                     <!--This class is to add buttons to do actions-->
                     <div class="Psection2">
-                      <div class="image"></div>
                       <div class="btns">
                         <button id="clean">
                           <i class="bx bxs-eraser"></i>CLEAN
@@ -312,6 +317,7 @@
     crossorigin="anonymous"></script>
   <!--This js script is to add navbar at aside tag-->
   <script src="../../controller/admin/menu.js"></script>
+  <script src="../../controller/admin/account.js"></script>
   <script src="../../resources/js/sweetalert.min.js"></script>
   <!--This js script is to do funcionality some components of bootstrap-->
   <script src="../../controller/components.js"></script>

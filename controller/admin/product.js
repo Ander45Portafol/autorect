@@ -19,6 +19,14 @@ const TBODY_VALORATIONS = document.getElementById('tbody-valorations');
 document.addEventListener('DOMContentLoaded', () => {
     fillTable();
 })
+function Clean(){
+    document.getElementById('product-name').value = "";
+    document.getElementById('stock').value = "";
+    document.getElementById('addExists').value="";
+    document.getElementById('price').value = "";
+    document.getElementById('newstock').value='';
+    document.getElementById('product-description').value = "";
+}
 //This event is to programming that send parameters at the action in the API
 SEARCH_FORM.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -28,17 +36,23 @@ SEARCH_FORM.addEventListener('submit', (event) => {
 //This event is to programming that send all respective datas at the Api
 SAVE_FORM.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (action=='update') {
+        updateStock();
+    }
     (document.getElementById('id').value) ? action = 'update' : action = 'create';
     const FORM = new FormData(SAVE_FORM);
     const JSON = await dataFetch(PRODUCTS_API, action, FORM);
     if (JSON.status) {
+        console.log(document.getElementById('addExists').value);
         fillTable();
+        Clean();
         sweetAlert(1, JSON.message, true);
         document.getElementById('btnclose').click();
     } else {
         sweetAlert(2, JSON.exception, false);
     }
 })
+
 //This function is to charger datas in the table
 async function fillTable(form = null) {
     TBODY_ROWS.innerHTML = '';
@@ -76,12 +90,16 @@ async function fillTable(form = null) {
 //This function is to manipulated some controls when the process is create
 function CreateProduct() {
     TITLE_MODAL.textContent = 'CREATE PRODUCT'
+    Clean();
     document.getElementById('product-name').disabled = false
     document.getElementById('price').disbled = false
     document.getElementById('update').style.display = 'none';
     document.getElementById('adduser').style.display = 'block';
+    document.getElementById('newstocklabel').style.display='none';
+    document.getElementById('addExists').style.display='none';
+    document.getElementById('newstock').style.display='none';
     document.getElementById('clean').style.display = 'block';
-    document.getElementById('file').required = true;
+    document.getElementById('fileProduct').required = true;
     fillSelect(CATEGORY_API, 'readAll', 'category');
     fillSelect(MODEL_API, 'readAll', 'model');
     fillSelect(PRODUCTS_API, 'readStatus', 'status');
@@ -96,15 +114,17 @@ async function UpdateProduct(id) {
         document.getElementById('update').style.display = 'block';
         document.getElementById('adduser').style.display = 'none';
         document.getElementById('clean').style.display = 'none';
+        document.getElementById('addExists').style.display='block';
         document.getElementById('id').value = JSON.dataset.id_producto;
         document.getElementById('product-name').value = JSON.dataset.nombre_producto;
         document.getElementById('stock').value = JSON.dataset.existencias;
+        document.getElementById('stock').disabled=true;
         document.getElementById('price').value = JSON.dataset.precio_producto;
         document.getElementById('product-description').value = JSON.dataset.descripcion_producto;
-        fillSelect(CATEGORY_APi, 'readAll', 'category', JSON.dataset.id_categoria)
-        fillSelect(MODEL_API, 'readAll', 'model', JSON.dataset.id_modelo)
-        fillSelect(PRODUCTS_API, 'readStatus', 'status', JSON.dataset.id_estado_producto)
-        document.getElementById('file').required = false;
+        fillSelect(CATEGORY_API, 'readAll', 'category', JSON.dataset.id_categoria);
+        fillSelect(MODEL_API, 'readAll', 'model',JSON.dataset.id_modelo);
+        fillSelect(PRODUCTS_API, 'readStatus', 'status', JSON.dataset.id_estado_producto);
+        document.getElementById('fileProduct').required = false;
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -177,4 +197,10 @@ async function StatusValoration(id, estado, id_product) {
             }
         }
     }
+}
+function updateStock(){
+    let existencias=parseInt(document.getElementById('addExists').value);
+    let numberdata=parseInt(document.getElementById('stock').value);
+    let newdata=existencias+numberdata;
+    document.getElementById('newstock').value=newdata;
 }

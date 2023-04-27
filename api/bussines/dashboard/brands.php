@@ -68,9 +68,22 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'The data does not exist';
                 } else if (!$brand_model->setBrandName($_POST['BrandName'])) {
                     $result['exception'] = 'There was an error with the brand name';
-                } else if ($brand_model->updateRow()) {
+                } elseif (!is_uploaded_file($_FILES['imageBrand']['tmp_name'])) {
+                    if ($brand_model->updateRow($data['logo_marca'])) {
+                        $result['status'] = 1;
+                        $Result['message'] = 'Marca actualizado, correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                } elseif (!$brand_model->setBrandLogo($_FILES['imageBrand'])) {
+                    $result['exception'] = Validator::getFileError();
+                } elseif ($brand_model->updateRow($data['logo_marca'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'The brand has been created';
+                    if (Validator::saveFile($_FILES['imageBrand'], $brand_model->getRuta(), $brand_model->getLogo())) {
+                        $Result['message'] = 'Marca actualizado, correctamente';
+                    } else {
+                        $Result['message'] = 'Marca actualizado, pero no se guardo la imagen';
+                    }
                 } else {
                     $result['exception'] = Database::getException();
                 }
