@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../enitites/dao/users_queries.php');
+require_once('../../entities/dao/users_queries.php');
 
 //Class with dependencies at the queries file
 class User extends UserQueries

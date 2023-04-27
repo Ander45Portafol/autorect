@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../enitites/dao/models_queries.php');
+require_once('../../entities/dao/models_queries.php');
 //Class with dependencies at the queries file
 class Model extends ModelQueries
 {

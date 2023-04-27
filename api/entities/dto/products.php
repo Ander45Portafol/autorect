@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../enitites/dao/products_queries.php');
+require_once('../../entities/dao/products_queries.php');
 
 //Class with dependencies at the queries file
 class Product extends ProductQueries

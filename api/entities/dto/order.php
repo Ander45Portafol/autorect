@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../enitites/dao/order_queries.php');
+require_once('../../entities/dao/order_queries.php');
 
 //Class with dependencies at the queries file
 class Order extends OrderQueries
