@@ -219,7 +219,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Wrong username';
                 } elseif ($user_model->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Error in authentication';
+                    $result['message'] = 'Login successfully';
                     $_SESSION['id_usuario'] = $user_model->getId();
                     $_SESSION['nombre_usuario'] = $user_model->getUserName();
                 } else {
