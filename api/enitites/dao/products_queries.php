@@ -117,7 +117,6 @@ class ProductQueries
         $params = array($this->id_producto);
         return Database::executeRow($query, $params);
     }
-}
 
     public function readImgs()
     {
@@ -126,7 +125,8 @@ class ProductQueries
         return Database::getRows($sql, $params);
     }
 
-    public function readOneImg(){
+    public function readOneImg()
+    {
         $sql = 'SELECT id_imagen_producto, nombre_archivo_imagen FROM imagenes_productos WHERE id_imagen_producto = ?;';
         $params = array($this->id_imagen_producto);
         return Database::getRow($sql, $params);
@@ -139,7 +139,8 @@ class ProductQueries
         return Database::getLastRow($sql, $params);
     }
 
-    public function deleteImg(){
+    public function deleteImg()
+    {
         $sql = 'DELETE FROM imagenes_productos WHERE id_imagen_producto = ?';
         $params = array($this->id_imagen_producto);
         return Database::executeRow($sql, $params);

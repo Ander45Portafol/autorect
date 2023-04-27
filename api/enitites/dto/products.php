@@ -176,14 +176,14 @@ class products extends ProductQueries
     {
         return $this->ruta;
     }
-}
 
-
-    public function getImagenS(){
+    public function getImagenS()
+    {
         return $this->imagen_s;
     }
 
-    public function getIdImg(){
+    public function getIdImg()
+    {
         return $this->id_imagen_producto;
     }
 }
