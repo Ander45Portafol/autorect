@@ -113,13 +113,10 @@ async function updateUser(id){
     }else{
         sweetAlert(2,JSON.exception,false);
     }
-
-    //SWITCH_STATE_USER.value='false'
-
 }
 //This function is to communicate at the Api to do the delete action
 async function deleteUser(id){
-    const RESPONSE=await confirmAction('¿Desea eliminar el usuario de forma permanente?')
+    const RESPONSE=await confirmAction('Do you want to delete the user permanently?')
     if (RESPONSE) {
         const FORM=new FormData()
         FORM.append('id_usuario',id)

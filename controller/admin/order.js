@@ -101,14 +101,14 @@ const Clean = () => {
 
 //This function is to manipulated some controls when the process is create
 function createOrder() {
-    var fecha = new Date(); // Fecha actual
-    var mes = fecha.getMonth() + 1; // Obteniendo mes
-    var dia = fecha.getDate(); // Obteniendo día
-    var anio = fecha.getFullYear(); // Obteniendo año
-    if (dia < 10) dia = "0" + dia; // Agrega cero si el menor de 10
-    if (mes < 10) mes = "0" + mes; // Agrega cero si el menor de 10
+    var fecha = new Date();
+    var mes = fecha.getMonth() + 1; 
+    var dia = fecha.getDate(); 
+    var anio = fecha.getFullYear(); 
+    if (dia < 10) dia = "0" + dia;
+    if (mes < 10) mes = "0" + mes; 
 
-    var fechaMaxima = new Date(fecha.getTime() + 14 * 24 * 60 * 60 * 1000); // Sumando 14 días a la fecha actual, se multiplica la cantidad de milisegundos por la cantidad de dias
+    var fechaMaxima = new Date(fecha.getTime() + 14 * 24 * 60 * 60 * 1000); // Adding 14 days to the current date, multiply the number of milliseconds by the number of dayss
     var mesMaximo = fechaMaxima.getMonth() + 1;
     var diaMaximo = fechaMaxima.getDate();
     var anioMaximo = fechaMaxima.getFullYear();
@@ -127,6 +127,7 @@ function createOrder() {
     document.getElementById("adduser").style.display = "block";
     document.getElementById("clean").style.display = "block";
 }
+
 //This event is to send all datas to realized the respective query
 SAVE_FORM.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -144,6 +145,7 @@ SAVE_FORM.addEventListener("submit", async (event) => {
         sweetAlert(2, JSON.exception, false);
     }
 });
+
 //This function is to manipulated some controls and charger the repective data when the process is update
 async function editOrder(id) {
     const FORM = new FormData();
@@ -198,7 +200,7 @@ async function editOrder(id) {
 //This function is to realized the delete action at the API
 async function deleteOrder(id) {
     const RESPONSE = await confirmAction(
-        "¿Desea eliminar el pedido de forma permanente?"
+        "Do you want to delete the order permanently?"
     );
     if (RESPONSE) {
         const FORM = new FormData();
@@ -215,7 +217,7 @@ async function deleteOrder(id) {
 //This function is to delete the order detail
 async function deleteDetail(idDetalle) {
     const RESPONSE = await confirmAction(
-        "¿Desea eliminar el pedido de forma permanente?"
+        "Do you want to delete the requested detail permanently?"
     );
     if (RESPONSE) {
         const FORM = new FormData();
