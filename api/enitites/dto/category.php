@@ -2,7 +2,7 @@
 require_once('../../helpers/validator.php');
 require_once('../../enitites/dao/category_queries.php');
 
-//Class with dependeces at he Querie's file
+//Class with dependencies at the queries file
 class Category extends CategoryQueries
 {
     //Atributes to do manipule data
