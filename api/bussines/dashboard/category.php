@@ -1,7 +1,7 @@
 <?php
 //Dependencies
 require_once('../../helpers/validator.php');
-require_once('../../enitites/dto/category.php');
+require_once('../../entities/dto/category.php');
 
 //Validate what action is being done
 if (isset($_GET['action'])) {

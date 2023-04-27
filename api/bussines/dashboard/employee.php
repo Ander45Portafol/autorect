@@ -1,7 +1,7 @@
 <?php
 
 //Dependencies
-require_once('../../enitites/dto/employee.php');
+require_once('../../entities/dto/employee.php');
 
 //Validate what action is being done
 if (isset($_GET['action'])) {
