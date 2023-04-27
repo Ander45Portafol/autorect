@@ -1,11 +1,11 @@
 <?php
-//This url is to use data, of the atributes and queries through dependecies
+//Dependencies
 require_once('../../enitites/dto/clients.php');
 
-//This if is to validate the action is to do
+//Validate what action is being done
 if (isset($_GET['action'])) {
     session_start();
-    //Object to mecioned functions of the queries, through this object
+    //Object to mention the functions of the queries
     $client_model = new Client;
     //This variable is to show the answer at the actions
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
