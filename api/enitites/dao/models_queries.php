@@ -17,7 +17,7 @@ class ModelQueries{
         $query = "SELECT id_modelo, nombre_modelo, anio_modelo, id_marca 
                   FROM modelos 
                   WHERE id_modelo = ?";
-        $params=array($this->id);
+        $params=array($this->model_id);
         return Database::getRow($query,$params);
     }
 
@@ -45,7 +45,7 @@ class ModelQueries{
         $query = "INSERT INTO modelos
                   (nombre_modelo,anio_modelo,id_marca) 
                   VALUES (?,?,?)";
-        $params=array($this->nombre_modelo,$this->anio_modelo,$this->marca);
+        $params=array($this->model_name,$this->model_year,$this->brand);
         return Database::executeRow($query,$params);
     }
 
@@ -54,7 +54,7 @@ class ModelQueries{
         $query = "UPDATE modelos 
                   SET nombre_modelo = ?, anio_modelo = ?, id_marca = ? 
                   WHERE id_modelo = ?";
-        $params=array($this->nombre_modelo,$this->anio_modelo,$this->marca, $this->id);
+        $params=array($this->model_name,$this->model_year,$this->brand, $this->model_id);
         return Database::executeRow($query,$params);
     }
 
@@ -64,7 +64,7 @@ class ModelQueries{
         $query = "DELETE 
                   FROM modelos 
                   WHERE id_modelo = ?";
-        $params = array($this->id);
+        $params = array($this->model_id);
         return Database::executeRow($query, $params);
     }
 }

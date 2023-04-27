@@ -6,184 +6,186 @@ require_once('../../enitites/dao/products_queries.php');
 class products extends ProductQueries
 {
     //Atributes to do manipule data
-    protected $id_producto;
-    protected $id_valoracion;
-    protected $nombre_producto;
-    protected $descripcion;
-    protected $precio;
-    protected $imagen;
-    protected $existencias;
-    protected $categoria;
-    protected $modelo;
-    protected $estado_producto;
-    protected $ruta = '../../images/products/';
-    protected $id_imagen_producto;
-    protected $imagen_s;
+    protected $product_id;
+    protected $valoration_id;
+    protected $product_name;
+    protected $product_description;
+    protected $product_price;
+    protected $product_img;
+    protected $product_stock;
+    protected $product_category;
+    protected $product_model;
+    protected $product_status;
+    protected $route = '../../images/products/';
+    protected $product_img_id;
+    protected $s_img;
 
     //Method's set for each atribute
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id_producto = $value;
+            $this->product_id = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setIdValoracion($value)
+    public function setValorationId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id_valoracion = $value;
+            $this->valoration_id = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setNombre_Producto($value)
+    public function setProductName($value)
     {
         if (Validator::validateAlphanumeric($value, 0, 80)) {
-            $this->nombre_producto = $value;
+            $this->product_name = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setDescripcion($value)
+    public function setProductDescription($value)
     {
         if (Validator::validateAlphanumeric($value, 0, 150)) {
-            $this->descripcion = $value;
+            $this->product_description = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setPrecio($value)
+    public function setProductPrice($value)
     {
         if (Validator::validateMoney($value)) {
-            $this->precio = $value;
+            $this->product_price = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setImagen($file)
+    public function setProductImg($file)
     {
         if (Validator::validateImageFile($file, 1500, 1500)) {
-            $this->imagen = Validator::getFileName();
+            $this->product_img = Validator::getFileName();
             return true;
         } else {
             return false;
         }
     }
-    public function setExistencias($value)
+    public function setProductStock($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->existencias = $value;
+            $this->product_stock = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setCategoria($value)
+    public function setProductCategory($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->categoria = $value;
+            $this->product_category = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setModelo($value)
+    public function setProductModel($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->modelo = $value;
+            $this->product_model = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setEstado_Producto($value)
+    public function setProductStatus($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->estado_producto = $value;
+            $this->product_status = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setIdImg($value)
+    public function setImgId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id_imagen_producto = $value;
+            $this->product_img_id = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setImagenS($file){
+    public function setSImg($file)
+    {
         if (Validator::validateImageFile($file, 1500, 1500)) {
-            $this->imagen_s=Validator::getFileName();
+            $this->s_img = Validator::getFileName();
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
     // Metodos get de los atributos
-    public function getId(){
-        return $this->id_producto;
-    }
-    public function getIdValoracion()
+    public function getId()
     {
-        return $this->id_valoracion;
+        return $this->product_id;
     }
-    public function getNombre_Producto()
+    public function getValorationId()
     {
-        return $this->nombre_producto;
+        return $this->valoration_id;
     }
-    public function getDescripcion()
+    public function getProductName()
     {
-        return $this->descripcion;
+        return $this->product_name;
     }
-    public function getPrecio()
+    public function getProductDescription()
     {
-        return $this->precio;
+        return $this->product_description;
     }
-    public function getImagen()
+    public function getProductPrice()
     {
-        return $this->imagen;
+        return $this->product_price;
     }
-    public function getExistencias()
+    public function getProductImg()
     {
-        return $this->existencias;
+        return $this->product_img;
     }
-    public function getCategoria()
+    public function getProductStock()
     {
-        return $this->categoria;
+        return $this->product_stock;
     }
-    public function getModelo()
+    public function getProductCategory()
     {
-        return $this->modelo;
+        return $this->product_category;
     }
-    public function getEstado_Producto()
+    public function getProductModel()
     {
-        return $this->estado_producto;
+        return $this->product_model;
+    }
+    public function getProductStatus()
+    {
+        return $this->product_status;
     }
     //This method getRuta is to capture the url of the products image
-    public function getRuta()
+    public function getRoute()
     {
-        return $this->ruta;
+        return $this->route;
     }
 
-    public function getImagenS()
+    public function getSImg()
     {
-        return $this->imagen_s;
+        return $this->s_img;
     }
 
-    public function getIdImg()
+    public function getProductImgId()
     {
-        return $this->id_imagen_producto;
+        return $this->product_img_id;
     }
 }

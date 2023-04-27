@@ -2,98 +2,107 @@
 require_once('../../helpers/validator.php');
 require_once('../../enitites/dao/order_queries.php');
 
-class Order extends OrderQueries{
-    protected $id=null;
-    protected $direccion=null;
-    protected $fecha=null;
-    protected $id_cliente=null;
-    protected $id_estado_pedido=null;
-    protected $id_empleado=null;
-    protected $id_Detalle=null;
+class Order extends OrderQueries
+{
+    protected $order_id = null;
+    protected $order_address = null;
+    protected $order_date = null;
+    protected $client_id = null;
+    protected $order_status_id = null;
+    protected $employee_id = null;
+    protected $detail_id = null;
 
-    public function setId($value){
-        if(Validator::validateNaturalNumber($value)){
-            $this->id=$value;
+    public function setId($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->order_id = $value;
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    public function setIdDetalle($value){
-        if(Validator::validateNaturalNumber($value)){
-            $this->id_Detalle=$value;
+    public function setDetailId($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->detail_id = $value;
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    public function setDireccion($value){
-        if(Validator::validateAlphanumeric($value,1,200)){
-            $this->direccion=$value;
+    public function setAdrress($value)
+    {
+        if (Validator::validateAlphanumeric($value, 1, 200)) {
+            $this->order_address = $value;
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    public function setFecha($value){
+    public function setDate($value)
+    {
         if (Validator::validateDate($value)) {
-            $this->fecha=$value; 
+            $this->order_date = $value;
             return true;
-        }else {
+        } else {
             return false;
         }
     }
-    public function setId_Cliente($value){
-        if(Validator::validateNaturalNumber($value)){
-            $this->id_cliente=$value;
+    public function setClientId($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->client_id = $value;
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    public function setId_Estado($value){
-        if(Validator::validateNaturalNumber($value)){
-            $this->id_estado_pedido=$value;
+    public function setStatusId($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->order_status_id = $value;
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    public function setId_Empleado($value){
-        if(Validator::validateNaturalNumber($value)){
-            $this->id_empleado=$value;
+    public function setEmployeeId($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->employee_id = $value;
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
     //metodos para obtener valores de los atributos
-    public function getId(){
-        return $this->id_Detalle;
+    public function getId()
+    {
+        return $this->detail_id;
     }
-    public function getIdDetalle(){
-        return $this->id;
+    public function getDetailId()
+    {
+        return $this->order_id;
     }
-    public function getDireccion(){
-        return $this->direccion;
+    public function getAddress()
+    {
+        return $this->order_address;
     }
-    public function getFecha(){
-        return $this->fecha;
+    public function getDate()
+    {
+        return $this->order_date;
     }
-    public function getIdCliente(){
-        return $this->id_cliente;
+    public function getClientId()
+    {
+        return $this->client_id;
     }
-    public function getIdEstado(){
-        return $this->id_estado_pedido;
+    public function getStatusId()
+    {
+        return $this->order_status_id;
     }
-    public function getIdEmpleado(){
-        return $this->id_empleado;
+    public function getEmployeeId()
+    {
+        return $this->employee_id;
     }
 }

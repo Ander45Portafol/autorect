@@ -5,94 +5,94 @@ require_once('../../enitites/dao/users_queries.php');
 class User extends UserQueries
 {
     //Atributes to do manipule data
-    protected $id = null;
-    protected $nombre_usuario = null;
-    protected $clave_usuario = null;
-    protected $imagen = null;
-    protected $estado_usuario = null;
-    protected $empleado = null;
-    protected $tipo_usuario = null;
-    protected $tema = null;
-    protected $idioma = null;
-    protected $ruta = '../../images/users/';
+    protected $user_id = null;
+    protected $user_name = null;
+    protected $user_password = null;
+    protected $user_img = null;
+    protected $user_status = null;
+    protected $user_employee = null;
+    protected $user_type = null;
+    protected $theme = null;
+    protected $lenguage = null;
+    protected $route = '../../images/users/';
 
     //Method's set for each atribute
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id = $value;
+            $this->user_id = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setUser($value)
+    public function setUserName($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->nombre_usuario = $value;
+            $this->user_name = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setPassword($value)
+    public function setPasswordUser($value)
     {
         if (Validator::validatePassword($value)) {
-            $this->clave_usuario = $value;
+            $this->user_password = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setImagen($file)
+    public function setImgUser($file)
     {
         if (Validator::validateImageFile($file, 1500, 1500)) {
-            $this->imagen = Validator::getFileName();
+            $this->user_img = Validator::getFileName();
             return true;
         } else {
             return false;
         }
     }
-    public function setEstadoUser($value)
+    public function setUserStatus($value)
     {
         if (Validator::validateBoolean($value)) {
-            $this->estado_usuario = $value;
+            $this->user_status = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setEmpleado($value)
+    public function setEmployee($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->empleado = $value;
+            $this->user_employee = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setTipo_User($value)
+    public function setUserType($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->tipo_usuario = $value;
+            $this->user_type = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setTema($value)
+    public function setTheme($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->tema = $value;
+            $this->theme = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setIdioma($value)
+    public function setLenguage($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idioma = $value;
+            $this->lenguage = $value;
             return true;
         } else {
             return false;
@@ -101,39 +101,39 @@ class User extends UserQueries
     //Method's get for each atribute
     public function getId()
     {
-        return $this->id;
+        return $this->user_id;
     }
-    public function getUser()
+    public function getUserName()
     {
-        return $this->nombre_usuario;
+        return $this->user_name;
     }
-    public function getPassword()
+    public function getPasswordUser()
     {
-        return $this->clave_usuario;
+        return $this->user_password;
     }
-    public function getImagen()
+    public function getUserImg()
     {
-        return $this->imagen;
+        return $this->user_img;
     }
-    public function getEstadoUser()
+    public function getUserStatus()
     {
-        return $this->estado_usuario;
+        return $this->user_status;
     }
-    public function getEmpleado()
+    public function getEmployee()
     {
-        return $this->empleado;
+        return $this->user_employee;
     }
-    public function getTema()
+    public function getTheme()
     {
-        return $this->tema;
+        return $this->theme;
     }
-    public function getIdioma()
+    public function getLenguage()
     {
-        return $this->idioma;
+        return $this->lenguage;
     }
     //This method getRuta is to capture the url of the users image
-    public function getRuta()
+    public function getRoute()
     {
-        return $this->ruta;
+        return $this->route;
     }
 }
