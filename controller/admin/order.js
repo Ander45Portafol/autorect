@@ -39,10 +39,10 @@ async function fillTable(form = null) {
                     <td>${row.nombre_completo_empleado}</td>
                     <td class="action-btn">
                         <div class="actions">
-                            <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="EditOrder(${row.id_pedido})">
+                            <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editOrder(${row.id_pedido})">
                                 <i class="bx bxs-edit"></i>
                             </button>
-                            <button class="delete" id="deletebtn" onclick="DeleteOrder(${row.id_pedido})">
+                            <button class="delete" id="deletebtn" onclick="deleteOrder(${row.id_pedido})">
                                 <i class="bx bxs-trash"></i>
                             </button>
                             <button type="button" class="order_detail" data-bs-toggle="modal" data-bs-target="#modal-detail" onclick="fillTableDetail(${row.id_pedido})">
@@ -74,7 +74,7 @@ async function fillTableDetail(id) {
                     <td>${row.precio_total}</td>
                     <td>
                         <div class="actions">
-                            <button class="delete" id="deletebtn" onclick="DeleteDetail(${row.id_detalle_pedido})">
+                            <button class="delete" id="deletebtn" onclick="deleteDetail(${row.id_detalle_pedido})">
                                 <i class="bx bxs-trash"></i>
                             </button>
                         </div>
@@ -100,7 +100,7 @@ const Clean = () => {
 };
 
 //This function is to manipulated some controls when the process is create
-function CreateOrder() {
+function createOrder() {
     var fecha = new Date(); // Fecha actual
     var mes = fecha.getMonth() + 1; // Obteniendo mes
     var dia = fecha.getDate(); // Obteniendo día
@@ -145,7 +145,7 @@ SAVE_FORM.addEventListener("submit", async (event) => {
     }
 });
 //This function is to manipulated some controls and charger the repective data when the process is update
-async function EditOrder(id) {
+async function editOrder(id) {
     const FORM = new FormData();
     FORM.append("id", id);
     const JSON = await dataFetch(ORDER_API, "readOne", FORM);
@@ -194,11 +194,9 @@ async function EditOrder(id) {
     } else {
         sweetAlert(2, JSON.exception, false);
     }
-
-    //SWITCH_STATE_USER.value='false'
 }
 //This function is to realized the delete action at the API
-async function DeleteOrder(id) {
+async function deleteOrder(id) {
     const RESPONSE = await confirmAction(
         "¿Desea eliminar el pedido de forma permanente?"
     );
@@ -215,7 +213,7 @@ async function DeleteOrder(id) {
     }
 }
 //This function is to delete the order detail
-async function DeleteDetail(idDetalle) {
+async function deleteDetail(idDetalle) {
     const RESPONSE = await confirmAction(
         "¿Desea eliminar el pedido de forma permanente?"
     );

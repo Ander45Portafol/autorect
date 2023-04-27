@@ -5,7 +5,7 @@ const FORM_SIGNUP=document.getElementById('contained-signup')
 //constant to use the container at the LOGIN form 
 const LOGIN_FORM=document.getElementById('form_login')
 //constant to use the formulary at the LOGIN form 
-const APARECER_LOGIN=document.getElementById('contained-login')
+const SHOWUP_LOGIN=document.getElementById('contained-login')
 //This event is to charger the elements in the page
 document.addEventListener('DOMContentLoaded', async ()=>{
     //This variable is to validate if users exits
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
         sweetAlert(4,JSON.message,true)
     }else{
         //The SING UP form is visible
-        APARECER_LOGIN.style.display='none';
+        SHOWUP_LOGIN.style.display='none';
         FORM_SIGNUP.style.display='block';
         sweetAlert(4,JSON.exception,true)
     }
