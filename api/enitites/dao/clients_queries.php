@@ -21,8 +21,8 @@ class Client_Queries
     //This function is to search the clients data, with parameters
     public function searchRows($value)
     {
-        $sql = 'SELECT id_cliente,nombre_cliente, apellido_cliente, usuario_cliente, dui_cliente,telefono_cliente, estado_cliente FROM clientes WHERE dui_cliente ILIKE ? AND estado_cliente=true ORDER BY id_cliente';
-        $params = array("%$value%");
+        $sql = 'SELECT id_cliente,nombre_cliente, apellido_cliente, usuario_cliente, dui_cliente,telefono_cliente, estado_cliente FROM clientes WHERE dui_cliente ILIKE ? OR nombre_cliente ILIKE ? AND estado_cliente=true ORDER BY id_cliente';
+        $params = array("%$value%","%$value%");
         return Database::getRows($sql, $params);
     }
     //This function is to delete the client data

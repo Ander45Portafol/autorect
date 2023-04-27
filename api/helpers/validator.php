@@ -1,25 +1,30 @@
 <?php
 //Class to generate validations at the server
-class Validator{
+class Validator
+{
     //Making atributs
-    private static $passwordError=null;
-    private static $fileName=null;
-    private static $fileError=null;
+    private static $passwordError = null;
+    private static $fileName = null;
+    private static $fileError = null;
     //Method get of the atributs
-    public static function getAPasswordError(){
+    public static function getAPasswordError()
+    {
         return self::$passwordError;
     }
-    public static function getFileName(){
+    public static function getFileName()
+    {
         return self::$fileName;
     }
-    public static function getFileError(){
+    public static function getFileError()
+    {
         return self::$fileError;
     }
     //Function to validate form
-    public static function validateForm($fields){
-        foreach($fields as $index => $value){
-            $value=trim($value);
-            $fields[$index]=$value;
+    public static function validateForm($fields)
+    {
+        foreach ($fields as $index => $value) {
+            $value = trim($value);
+            $fields[$index] = $value;
         }
         return $fields;
     }
@@ -89,30 +94,33 @@ class Validator{
         }
     }
     //Function to validate password 
-    public static function validatePassword($value){
-        if (strlen($value)<6) {
-            self::$passwordError='Clave menor a 6 caracteres';
+    public static function validatePassword($value)
+    {
+        if (strlen($value) < 6) {
+            self::$passwordError = 'Clave menor a 6 caracteres';
             return false;
-        }elseif (strlen($value)<=72) {    
+        } elseif (strlen($value) <= 72) {
             return true;
-        }else{
-            self::$passwordError='Clave mayor a 72 caracteres';
+        } else {
+            self::$passwordError = 'Clave mayor a 72 caracteres';
             return false;
         }
     }
     //Function to validate of the data are Alphanumeric
-    public static function validateAlphanumeric($value,$minimum,$maximum){
-        if(preg_match('/^[a-zA-z0-9ñÑáÁéÉíÍóÓúÚ\s]{' . $minimum . ',' . $maximum.'}$/', $value)){
+    public static function validateAlphanumeric($value, $minimum, $maximum)
+    {
+        if (preg_match('/^[a-zA-z0-9ñÑáÁéÉíÍóÓúÚ\s]{' . $minimum . ',' . $maximum . '}$/', $value)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
     //Function to validate the data are boolean
-    public static function validateBoolean($value){
-        if ($value==1||$value==0||$value==true||$value=false) {
+    public static function validateBoolean($value)
+    {
+        if ($value == 1 || $value == 0 || $value == true || $value = false) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
