@@ -3,7 +3,7 @@ require_once('../../helpers/validator.php');
 require_once('../../enitites/dao/products_queries.php');
 
 //Class with dependeces at he Querie's file
-class products extends Products_queries
+class products extends ProductQueries
 {
     //Atributes to do manipule data
     protected $id_producto;
