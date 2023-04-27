@@ -1,18 +1,26 @@
+//Constant to the API
 const BRANDS_API = 'bussines/dashboard/brands.php';
+//Constant to the table
 const TBODY_ROWS = document.getElementById('tbody-rows');
+//Constant to the form
 const FORMU = document.getElementById('save-form-B');
+//Constant to the model title
 const MODAL_TITLE = document.getElementById('modal-title');
+//Constant to the search form
 const SEARCH_F = document.getElementById('form-search');
 
+//Event to fill the table
 document.addEventListener('DOMContentLoaded', () => {
     fillTable()
 })
 
+//Function to clean the form
 const Clean = () => {
     document.getElementById('id').value = '';
     document.getElementById('brandname').value = '';
 }
 
+//Event to create or update a brand
 FORMU.addEventListener('submit', async (event) => {
     event.preventDefault();
     (document.getElementById('id').value) ? action = 'update' : action = 'create';
@@ -27,12 +35,14 @@ FORMU.addEventListener('submit', async (event) => {
     }
 })
 
+//Event to search brands
 SEARCH_F.addEventListener('submit', (event) => {
     event.preventDefault();
     const FORM = new FormData(SEARCH_F);
     fillTable(FORM);
 })
 
+//Function to fill the table
 async function fillTable(form = null) {
     TBODY_ROWS.innerHTML = '';
     (form) ? action = 'search' : action = 'readAll'
@@ -62,6 +72,7 @@ async function fillTable(form = null) {
     }
 }
 
+//Function to prepare the form when the create button is clicked
 function createBrand() {
     MODAL_TITLE.textContent = 'CREATE BRAND';
     document.getElementById('update').style.display = 'none';
@@ -70,6 +81,7 @@ function createBrand() {
     document.getElementById('file').required=true;
 }
 
+//Function to prepare the form when the update button is clicked
 async function updateBrand(id) {
     const FORM = new FormData();
     FORM.append('id', id);
@@ -85,6 +97,7 @@ async function updateBrand(id) {
     }
 }
 
+//Function to delete a brand
 async function deleteBrand(id) {
     const RESPONSE = await confirmAction('Do you want to delete this brand?');
     if (RESPONSE) {

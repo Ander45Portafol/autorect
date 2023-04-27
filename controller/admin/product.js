@@ -137,7 +137,7 @@ async function updateProduct(id) {
 }
 //This function is to communicate at the Api to do the delete action
 async function deleteProduct(id) {
-    const RESPONSE = await confirmAction('¿Desea eliminar el producto de forma permanente?')
+    const RESPONSE = await confirmAction('Do you want to delete the product permanently?')
     if (RESPONSE) {
         const FORM = new FormData()
         FORM.append('id_producto', id)
@@ -180,7 +180,7 @@ async function fillTableValorations(id) {
 }
 //This function is to change status at comentaries any valoration
 async function statusValoration(id, estado, id_product) {
-    const RESPONSE = await confirmAction('¿Desea Cambiar la valoracion del producto de forma permanente?')
+    const RESPONSE = await confirmAction('Do you want to change the product rating permanently?')
     if (RESPONSE) {
         const FORM = new FormData()
         FORM.append('id_valoracion', id)
@@ -204,6 +204,8 @@ async function statusValoration(id, estado, id_product) {
         }
     }
 }
+
+//Function to update the stock of the product 
 function updateStock(){
     let existencias=parseInt(document.getElementById('addExists').value);
     let numberdata=parseInt(document.getElementById('stock').value);
@@ -221,11 +223,13 @@ function updateStock(){
 
 //Product images
 
+    //Constants to the images forms
     const imgform1=document.getElementById('form-1');
     const imgform2=document.getElementById('form-2');
     const imgform3=document.getElementById('form-3');
     const imgform4=document.getElementById('form-4');
 
+    //Events to create an image
     imgform1.addEventListener('submit', async(event)=>{
         event.preventDefault();
         const ID_P = document.getElementById('id-p').value; 
@@ -294,6 +298,7 @@ function updateStock(){
         }
     })
 
+    //Function to fill the forms with images
     async function readImgs(productId) {
         const FORM = new FormData();
         FORM.append('id_producto', productId); 
@@ -339,6 +344,7 @@ function updateStock(){
         }
     }
  
+    //Function to clean the forms
     function cleanImages(){
         document.getElementById("imgp-1").src="";
         document.getElementById("imgt-1").style.display = "block";
@@ -354,6 +360,7 @@ function updateStock(){
         document.getElementById("imga-4").classList.remove("active");
     }
 
+    //Function to open the file selector
     async function openFileSelector(num){
         var area = document.getElementById("imga-"+num);
         var img = document.getElementById("imgp-"+num);
@@ -382,7 +389,7 @@ function updateStock(){
         }
     }
     
-    
+    //Function to show the preview of the images
     async function showPreview(event, num){
         var preview = document.getElementById("imgp-"+num);
         var area = document.getElementById("imga-"+num);

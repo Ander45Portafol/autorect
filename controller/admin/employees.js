@@ -1,14 +1,22 @@
+//Constant to the API
 const EMPLOYEE_API = 'bussines/dashboard/employee.php';
+//Constant to the modal title
 const MODAL_TITLE = document.getElementById('exampleModalLabel');
+//Constant to the form
 const SAVE_FORM = document.getElementById('save-form');
+//Constant to the table
 const TBODY_ROWS = document.getElementById('tbody-rows');
+//Constant to the search form
 const SEARCH_FORM = document.getElementById('form-search');
+//Const to switch of status
 const SWITCH_STATE_EMPLOYEE=document.getElementById('flexSwitchCheckChecked');
 
+//Event to fill the table
 document.addEventListener('DOMContentLoaded', () => {
     fillTable();
 })
 
+//Function to fill the table
 async function fillTable(form = null) {
     TBODY_ROWS.innerHTML = '';
     (form) ? action = 'search' : action = 'readAll'
@@ -43,6 +51,7 @@ async function fillTable(form = null) {
     }
 }
 
+//Event to create or update an employee
 SAVE_FORM.addEventListener('submit', async (event) => {
     event.preventDefault();
     (document.getElementById('id').value) ? action = 'update' : action = 'create';
@@ -58,6 +67,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     }
 })
 
+//Function to clean the form
 const Clean = () => {
     document.getElementById('id').value = '';
     document.getElementById('Employee_name').value = '';
@@ -69,12 +79,14 @@ const Clean = () => {
     document.getElementById('Employee_address').value = '';
 }
 
+//Event to search employees
 SEARCH_FORM.addEventListener('submit', (event) => {
     event.preventDefault();
     const FORM = new FormData(SEARCH_FORM);
     fillTable(FORM);
 })
 
+//Function to prepare the form when the create button is clicked
 function createEmployee() {
     MODAL_TITLE.textContent = 'CREATE EMPLOYEE';
     fillSelect(EMPLOYEE_API, 'readTypes', 'types');
@@ -82,6 +94,8 @@ function createEmployee() {
     document.getElementById('adduser').style.display = 'block';
     document.getElementById('clean').style.display = 'block';
 }
+
+//Function to prepare the form when the update button is clicked
 async function updateEmployee(id) {
     const FORM = new FormData();
     FORM.append('id', id);
@@ -108,6 +122,8 @@ async function updateEmployee(id) {
     }
 
 }
+
+//Function to delete an employee
 async function deleteEmployee(id) {
     const RESPONSE = await confirmAction('Do you want to delete this employee?')
     if (RESPONSE) {
