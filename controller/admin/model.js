@@ -91,7 +91,7 @@ async function updateModel(id){
 }
 //This function is to do the delete process in the models
 async function deleteModel(id){
-    const RESPONSE=await confirmAction('¿Desea eliminar el modelo de forma permanente?');
+    const RESPONSE=await confirmAction('Do you want to delete the model permanently?');
     if (RESPONSE) {
         const FORM=new FormData();
         FORM.append('id_modelo', id);

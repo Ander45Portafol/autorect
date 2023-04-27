@@ -100,7 +100,7 @@ async function updateCategory(id){
 }
 //This function is to communicate at the Api to do the delete action
 async function deleteCategory(id){
-    const RESPONSE=await confirmAction('¿Desea eliminar el usuario de forma permanente?')
+    const RESPONSE=await confirmAction('Do you want to delete the category permanently?')
     if (RESPONSE) {
         const FORM=new FormData()
         FORM.append('id_categoria',id)
