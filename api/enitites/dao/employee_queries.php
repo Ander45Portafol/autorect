@@ -1,9 +1,10 @@
 <?Php
+//Dependencies
 require_once('../../helpers/database.php');
 
 class EmployeeQueries
 {
-
+    //Function to fill the table 
     public function readAll()
     {
         $query = "SELECT *
@@ -12,6 +13,7 @@ class EmployeeQueries
         return Database::getRows($query);
     }
 
+    //Function to read the data of one employee
     public function readOne()
     {
         $query = "SELECT * 
@@ -21,6 +23,7 @@ class EmployeeQueries
         return Database::getRow($query, $params);
     }
 
+    //Function to read the types of employee
     public function readTypes()
     {
         $query = "SELECT * 
@@ -28,6 +31,7 @@ class EmployeeQueries
         return Database::getRows($query);
     }
 
+    //Function to search employees
     public function searchRows($value)
     {
         $query = "SELECT * 
@@ -44,6 +48,7 @@ class EmployeeQueries
         return Database::getRows($query, $params);
     }
 
+    //Function to create a employee
     public function createRow()
     {
         $query = "INSERT INTO empleados 
@@ -53,6 +58,7 @@ class EmployeeQueries
         return Database::executeRow($query, $params);
     }
 
+    //Function to update a employee
     public function updateRow()
     {
         $query = "UPDATE empleados 
@@ -62,6 +68,7 @@ class EmployeeQueries
         return Database::executeRow($query, $params);
     }
 
+    //Function to delete a employee
     public function deleteRow()
     {
         $query = "DELETE 

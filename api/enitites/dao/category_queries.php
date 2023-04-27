@@ -3,7 +3,7 @@ require_once('../../helpers/validator.php');
 //Here are used the functions in the database file
 require_once('../../helpers/database.php');
 
-//Class create to controller all queries at the database
+//Class to control all queries at the database
 class CategoryQueries
 {
     //This function is show all datas of the categories is used to show data in the table
@@ -14,7 +14,7 @@ class CategoryQueries
                   ORDER BY id_categoria";
         return Database::getRows($query);
     }
-    //This function is to catch one data, whit the identicator
+    //This function is to catch one data with the identicator
     public function readOne()
     {
         $query = "SELECT id_categoria,imagen_categoria,nombre_categoria, descripcion_categoria 
@@ -24,7 +24,7 @@ class CategoryQueries
         return Database::getRow($query, $params);
     }
 
-    //This function is to search the categories data, with parameters
+    //This function is to search the categories data with parameters
     public function searchRows($value)
     {
         $query = "SELECT id_categoria, nombre_categoria, descripcion_categoria 
@@ -36,7 +36,7 @@ class CategoryQueries
         return Database::getRows($query, $params);
     }
 
-    //This function is to create a new category  with de respective data
+    //This function is to create a new category with the respective data
     public function createRow()
     {
         $query = "INSERT INTO categorias
