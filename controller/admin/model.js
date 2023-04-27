@@ -47,7 +47,7 @@ async function fillTable(form=null){
                 <td>${row.id_modelo}</td>
                 <td>${row.nombre_modelo}</td>
                 <td>${row.anio_modelo}</td>
-                <td>${row.id_marca}</td>
+                <td>${row.nombre_marca}</td>
                 <td>
                     <div class="actions">
                         <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateModel(${row.id_modelo})">
