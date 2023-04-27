@@ -85,7 +85,7 @@ if (isset($_GET['action'])) {
                 } elseif (!is_uploaded_file($_FILES['imageCategories']['tmp_name'])) {
                     if ($category_model->updateRow($data['imagen_categoria'])) {
                         $result['status'] = 1;
-                        $Result['message'] = 'The user was updated successfully';
+                        $Result['message'] = 'The category was updated successfully';
                     } else {
                         $result['exception'] = Database::getException();
                     }
@@ -94,9 +94,9 @@ if (isset($_GET['action'])) {
                 } elseif ($category_model->updateRow($data['imagen_categoria'])) {
                     $result['status'] = 1;
                     if (Validator::saveFile($_FILES['imageCategories'], $category_model->getRoute(), $category_model->getCategoryImg())) {
-                        $Result['message'] = 'The user was updated successfully';
+                        $Result['message'] = 'The category was updated successfully';
                     } else {
-                        $Result['message'] = 'The user was updated without image';
+                        $Result['message'] = 'The category was updated without image';
                     }
                 } else {
                     $result['exception'] = Database::getException();

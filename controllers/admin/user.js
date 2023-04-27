@@ -37,7 +37,7 @@ SAVE_FORM.addEventListener('submit',async(event)=>{
     const JSON=await dataFetch(USERS_API, action, FORM);
     if (JSON.status) {
         fillTable();
-        sweetAlert(1,JSON.mesage,true);
+        sweetAlert(1,JSON.message,true);
         Clean();
         document.getElementById('btnclose').click();
     }else{

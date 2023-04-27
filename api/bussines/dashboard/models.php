@@ -40,7 +40,7 @@ if (isset($_GET['action'])) {
             case 'readBrand':
                 if ($result['dataset'] = $models_model->readBrand()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Data wasfound';
+                    $result['message'] = 'Data was found';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
