@@ -75,6 +75,9 @@ async function fillTable(form = null) {
                             <button class="delete" id="deletebtn" onclick="DeleteProduct(${row.id_producto})">
                                 <i class="bx bxs-trash"></i>
                             </button>
+                            <button class="product_images" data-bs-toggle="modal" data-bs-target="#modalimages" onclick="readImgs(${row.id_producto})">
+                                <i class="bx bx-images"></i>
+                            </button>
                             <button class="valoractions" id="valorationbtn" type="button" data-bs-toggle="modal" data-bs-target="#modal-valoration" onclick="fillTableValorations(${row.id_producto})">
                             <i class='bx bxs-star-half'></i>
                             </button>
