@@ -14,7 +14,7 @@ class UserQueries
         $data = Database::getRow($query, $params);
         if ($data) {
             $this->user_id = $data['id_usuario'];
-            $this->nombre_usuario = $alias;
+            $this->user_name = $alias;
             return true;
         } else {
             return false;
