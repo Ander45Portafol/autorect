@@ -20,7 +20,7 @@ class ClientQueries
         $query = "SELECT * 
                   FROM clientes 
                   WHERE id_cliente = ?";
-        $params = array($this->idCliente);
+        $params = array($this->client_id);
         return Database::getRow($query, $params);
     }
     //This function is to search the clients data, with parameters
@@ -43,7 +43,7 @@ class ClientQueries
         $query = "UPDATE clientes 
                   SET estado_cliente = false 
                   WHERE id_cliente = ?";
-        $params = array($this->idCliente);
+        $params = array($this->client_id);
         return Database::executeRow($query, $params);
     }
 }

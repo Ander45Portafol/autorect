@@ -17,7 +17,7 @@ class OrderQueries
         $query = "SELECT * 
                   FROM pedidos 
                   WHERE id_pedido = ?";
-        $params = array($this->id);
+        $params = array($this->order_id);
         return Database::getRow($query, $params);
     }
 
@@ -27,7 +27,7 @@ class OrderQueries
         $query = "SELECT * 
                   FROM detalles_pedidos 
                   WHERE id_detalle_pedido = ?";
-        $params = array($this->id_Detalle);
+        $params = array($this->detail_id);
         return Database::getRow($query, $params);
     }
 
@@ -75,7 +75,7 @@ class OrderQueries
         $query = "INSERT INTO pedidos
                   (direccion_pedido, fecha_pedido, id_cliente, id_estado_pedido, id_empleado) 
                   VALUES (?, ?, ?, ?, ?)";
-        $params = array($this->direccion, $this->fecha, $this->id_cliente, $this->id_estado_pedido, $this->id_empleado);
+        $params = array($this->order_address, $this->order_date, $this->client_id, $this->order_status_id, $this->employee_id);
         return Database::executeRow($query, $params);
     }
 
@@ -85,7 +85,7 @@ class OrderQueries
         $query = "UPDATE pedidos 
                   SET direccion_pedido = ?, fecha_pedido = ?, id_cliente = ?, id_estado_pedido = ?, id_empleado = ? 
                   WHERE id_pedido = ?";
-        $params = array($this->direccion, $this->fecha, $this->id_cliente, $this->id_estado_pedido, $this->id_empleado, $this->id);
+        $params = array($this->order_address, $this->order_date, $this->client_id, $this->order_status_id, $this->employee_id, $this->order_id);
         return Database::executeRow($query, $params);
     }
 
@@ -94,7 +94,7 @@ class OrderQueries
     {
         $query = "DELETE FROM pedidos 
                   WHERE id_pedido = ?";
-        $params = array($this->id);
+        $params = array($this->order_id);
         return Database::executeRow($query, $params);
     }
     //Method to delete an order detail
@@ -103,7 +103,7 @@ class OrderQueries
         $query = "DELETE 
                   FROM detalles_pedidos 
                   WHERE id_detalle_pedido = ?";
-        $params = array($this->id_Detalle);
+        $params = array($this->detail_id);
         return Database::executeRow($query, $params);
     }
     public function readAllDetail()
@@ -114,7 +114,7 @@ class OrderQueries
                   WHERE  a.id_pedido = b.id_pedido 
                   AND a.id_producto = c.id_producto 
                   AND a.id_pedido = ?";
-        $params = array($this->id);
+        $params = array($this->order_id);
         return Database::getRows($query, $params);
     }
 }

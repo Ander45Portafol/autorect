@@ -6,44 +6,44 @@ require_once('../../enitites/dao/category_queries.php');
 class Category extends CategoryQueries
 {
     //Atributes to do manipule data
-    protected $id = null;
-    protected $nombre = null;
-    protected $imagen = null;
-    protected $descripcion = null;
-    protected $ruta = '../../images/categories/';
+    protected $category_id = null;
+    protected $category_name = null;
+    protected $category_img = null;
+    protected $category_description = null;
+    protected $route = '../../images/categories/';
 
     //Method's set for each atribute
     public function setId($value)
     {
         if ($value) {
-            $this->id = $value;
+            $this->category_id = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setNombre($value)
+    public function setName($value)
     {
         if ($value) {
-            $this->nombre = $value;
+            $this->category_name = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setImagen($value)
+    public function setImg($value)
     {
         if (Validator::validateImageFile($value, 1500, 1500)) {
-            $this->imagen = Validator::getFileName();
+            $this->category_img = Validator::getFileName();
             return true;
         } else {
             return false;
         }
     }
-    public function setDescripcion($value)
+    public function setDescription($value)
     {
         if ($value) {
-            $this->descripcion = $value;
+            $this->category_description = $value;
             return true;
         } else {
             return false;
@@ -52,23 +52,23 @@ class Category extends CategoryQueries
     //Method's get for each atribute
     public function getId()
     {
-        return $this->id;
+        return $this->category_id;
     }
-    public function getNombre()
+    public function getName()
     {
-        return $this->nombre;
+        return $this->category_name;
     }
-    public function getImagen()
+    public function getImg()
     {
-        return $this->imagen;
+        return $this->category_img;
     }
-    public function getDescripcion()
+    public function getDescription()
     {
-        return $this->descripcion;
+        return $this->category_description;
     }
-        //This method getRuta is to capture the url of the category image
-        public function getRuta()
-        {
-            return $this->ruta;
-        }
+    //This method getRuta is to capture the url of the category image
+    public function getROute()
+    {
+        return $this->route;
+    }
 }

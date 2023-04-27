@@ -5,13 +5,13 @@ require_once('../../enitites/dao/clients_queries.php');
 class Client extends ClientQueries
 {
     //Atributes to do manipule data
-    protected $idCliente = null;
+    protected $client_id = null;
 
     //Method's set for each atribute
-    public function setIdCliente($value)
+    public function setCLientId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idCliente = $value;
+            $this->client_id = $value;
             return true;
         } else {
             return false;
@@ -21,6 +21,6 @@ class Client extends ClientQueries
     //Method's get for each atribute
     public function getID()
     {
-        return $this->idCliente;
+        return $this->client_id;
     }
 }

@@ -13,7 +13,7 @@ class UserQueries
         $params = array($alias);
         $data = Database::getRow($query, $params);
         if ($data) {
-            $this->id = $data['id_usuario'];
+            $this->user_id = $data['id_usuario'];
             $this->nombre_usuario = $alias;
             return true;
         } else {
@@ -27,7 +27,7 @@ class UserQueries
         $query = "SELECT clave_usuario 
                   FROM usuarios 
                   WHERE id_usuario = ?";
-        $params = array($this->id);
+        $params = array($this->user_id);
         $data = Database::getRow($query, $params);
         if ($password == $data['clave_usuario']) {
             return true;
@@ -51,7 +51,7 @@ class UserQueries
         $query = "SELECT id_usuario, nombre_usuario, imagen_usuario, clave_usuario, estado_usuario, id_empleado, id_tipo_usuario 
                   FROM usuarios 
                   WHERE id_usuario = ?";
-        $params = array($this->id);
+        $params = array($this->user_id);
         return Database::getRow($query, $params);
     }
 
@@ -89,19 +89,19 @@ class UserQueries
         $query = "INSERT INTO usuarios
                   (nombre_usuario,clave_usuario,imagen_usuario,estado_usuario,id_empleado,id_tipo_usuario,id_tema,id_idioma) 
                   VALUES(?,?,?,?,?,?,?,?)";
-        $params = array($this->nombre_usuario, $this->clave_usuario, $this->imagen, $this->estado_usuario, $this->empleado, $this->tipo_usuario, $this->tema = 1, $this->idioma = 2);
+        $params = array($this->user_name, $this->user_password, $this->user_img, $this->user_status, $this->user_employee, $this->user_type, $this->theme = 1, $this->lenguage = 2);
         return Database::executeRow($query, $params);
     }
 
     //This function is to update the users data
     public function updateRow($current_image)
     {
-        ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
+        ($this->user_img) ? Validator::deleteFile($this->getRoute(), $current_image) : $this->user_img = $current_image;
 
         $query = "UPDATE usuarios 
                   SET nombre_usuario = ?, clave_usuario = ?, imagen_usuario = ?, estado_usuario = ?, id_empleado = ?, id_tipo_usuario = ? 
                   WHERE id_usuario = ?";
-        $params = array($this->nombre_usuario, $this->clave_usuario, $this->imagen, $this->estado_usuario, $this->empleado, $this->tipo_usuario, $this->id);
+        $params = array($this->user_name, $this->user_password, $this->user_img, $this->user_status, $this->user_employee, $this->user_type, $this->user_id);
         return Database::executeRow($query, $params);
     }
 
@@ -111,7 +111,7 @@ class UserQueries
         $query = "DELETE 
                   FROM usuarios 
                   WHERE id_usuario = ?";
-        $params = array($this->id);
+        $params = array($this->user_id);
         return Database::executeRow($query, $params);
     }
 

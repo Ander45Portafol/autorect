@@ -22,7 +22,7 @@ class ProductQueries
                   WHERE a.id_detalle_pedido = b.id_detalle_pedido 
                   AND b.id_producto = c.id_producto 
                   AND c.id_producto = ?";
-        $params = array($this->id_producto);
+        $params = array($this->product_id);
         return Database::getRows($query, $params);
     }
 
@@ -33,7 +33,7 @@ class ProductQueries
                   FROM productos 
                   WHERE id_producto = ? 
                   ORDER BY id_producto";
-        $params = array($this->id_producto);
+        $params = array($this->product_id);
         return Database::getRow($query, $params);
     }
 
@@ -44,7 +44,7 @@ class ProductQueries
                   FROM valoraciones 
                   WHERE id_valoracion = ? 
                   ORDER BY id_valoracion";
-        $params = array($this->id_valoracion);
+        $params = array($this->valoration_id);
         return Database::getRow($query, $params);
     }
 
@@ -62,7 +62,7 @@ class ProductQueries
         $query = "UPDATE valoraciones 
                   SET estado_comentario = false 
                   WHERE id_valoracion = ?";
-        $params = array($this->id_valoracion);
+        $params = array($this->valoration_id);
         return Database::executeRow($query, $params);
     }
     public function TrueValoration()
@@ -70,7 +70,7 @@ class ProductQueries
         $query = "UPDATE valoraciones 
                   SET estado_comentario = true 
                   WHERE id_valoracion = ?";
-        $params = array($this->id_valoracion);
+        $params = array($this->valoration_id);
         return Database::executeRow($query, $params);
     }
 
@@ -92,19 +92,19 @@ class ProductQueries
         $query = "INSERT INTO productos
                   (nombre_producto, descripcion_producto, precio_producto, imagen_principal,existencias, id_categoria, id_modelo, id_estado_producto) 
                   VALUES(?,?,?,?,?,?,?,?)";
-        $params = array($this->nombre_producto, $this->descripcion, $this->precio, $this->imagen, $this->existencias, $this->categoria, $this->modelo, $this->estado_producto);
+        $params = array($this->product_name, $this->product_description, $this->product_price, $this->product_img, $this->product_stock, $this->product_category, $this->product_model, $this->product_status);
         return Database::executeRow($query, $params);
     }
 
     //This function is to update the products data
     public function updateRow($current_image)
     {
-        ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
+        ($this->product_img) ? Validator::deleteFile($this->getRoute(), $current_image) : $this->product_img = $current_image;
 
         $query = "UPDATE productos 
                   SET nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, imagen_principal = ?, existencias = ?, id_categoria = ?, id_modelo = ?, id_estado_producto = ? 
                   WHERE id_producto = ?";
-        $params = array($this->nombre_producto, $this->descripcion, $this->precio, $this->imagen, $this->existencias, $this->categoria, $this->modelo, $this->estado_producto, $this->id_producto);
+        $params = array($this->product_name, $this->product_description, $this->product_price, $this->product_img, $this->product_stock, $this->product_category, $this->product_model, $this->product_status, $this->product_id);
         return Database::executeRow($query, $params);
     }
 
@@ -114,35 +114,35 @@ class ProductQueries
         $query = "DELETE 
                   FROM productos 
                   WHERE id_producto = ?";
-        $params = array($this->id_producto);
+        $params = array($this->product_id);
         return Database::executeRow($query, $params);
     }
 
     public function readImgs()
     {
         $sql = 'SELECT id_imagen_producto, nombre_archivo_imagen FROM imagenes_productos WHERE id_producto = ?;';
-        $params = array($this->id_producto);
+        $params = array($this->product_id);
         return Database::getRows($sql, $params);
     }
 
     public function readOneImg()
     {
         $sql = 'SELECT id_imagen_producto, nombre_archivo_imagen FROM imagenes_productos WHERE id_imagen_producto = ?;';
-        $params = array($this->id_imagen_producto);
+        $params = array($this->product_img_id);
         return Database::getRow($sql, $params);
     }
 
     public function createImg()
     {
         $sql = 'INSERT INTO imagenes_productos(nombre_archivo_imagen, id_producto) VALUES(?,?)';
-        $params = array($this->imagen_s, $this->id_producto);
+        $params = array($this->s_img, $this->product_id);
         return Database::getLastRow($sql, $params);
     }
 
     public function deleteImg()
     {
         $sql = 'DELETE FROM imagenes_productos WHERE id_imagen_producto = ?';
-        $params = array($this->id_imagen_producto);
+        $params = array($this->product_img_id);
         return Database::executeRow($sql, $params);
     }
 }
