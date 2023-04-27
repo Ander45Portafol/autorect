@@ -3,7 +3,7 @@ require_once('../../helpers/database.php');
 
 class OrderQueries
 {
-    //Method to fill the table
+    //Function to fill the table
     public function readAll()
     {
         $query = "SELECT * 
@@ -11,7 +11,7 @@ class OrderQueries
         return Database::getRows($query);
     }
 
-    //Method to see the data of a single row
+    //Function to see the data of a single row
     public function readOne()
     {
         $query = "SELECT * 
@@ -21,7 +21,7 @@ class OrderQueries
         return Database::getRow($query, $params);
     }
 
-    //Method to see the data of a single row
+    //Function to see the data of a single row
     public function readOneDetail()
     {
         $query = "SELECT * 
@@ -31,7 +31,7 @@ class OrderQueries
         return Database::getRow($query, $params);
     }
 
-    //Method to fill the combobox
+    //Functions to fill the combobox
     public function readEstados()
     {
         $query = "SELECT id_estado_pedido, estado_pedido 
@@ -57,7 +57,7 @@ class OrderQueries
         return Database::getRows($query);
     }
 
-    //Method to search on the table
+    //Function to search on the table
     public function searchRows($value)
     {
         $query = "SELECT * 
@@ -69,7 +69,7 @@ class OrderQueries
         return Database::getRows($query, $params);
     }
 
-    //Method to create an order
+    //Function to create an order
     public function createRow()
     {
         $query = "INSERT INTO pedidos
@@ -79,7 +79,7 @@ class OrderQueries
         return Database::executeRow($query, $params);
     }
 
-    //Method to update an order
+    //Function to update an order
     public function updateRow()
     {
         $query = "UPDATE pedidos 
@@ -89,7 +89,7 @@ class OrderQueries
         return Database::executeRow($query, $params);
     }
 
-    //Method to delete an order
+    //Function to delete an order
     public function deleteRow()
     {
         $query = "DELETE FROM pedidos 
@@ -97,7 +97,7 @@ class OrderQueries
         $params = array($this->order_id);
         return Database::executeRow($query, $params);
     }
-    //Method to delete an order detail
+    //Function to delete an order detail
     public function deleteDetailRow()
     {
         $query = "DELETE 
@@ -106,6 +106,8 @@ class OrderQueries
         $params = array($this->detail_id);
         return Database::executeRow($query, $params);
     }
+
+    //Function to read the details per order
     public function readAllDetail()
     {
         $query = "SELECT a.id_detalle_pedido,c.imagen_principal,c.nombre_producto,b.direccion_pedido,b.fecha_pedido,c.precio_producto, a.precio_producto 

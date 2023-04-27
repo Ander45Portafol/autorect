@@ -1,7 +1,7 @@
 <?php
 //Here are used the functions in the database file
 require_once('../../helpers/database.php');
-//Class create to controller all queries at the database
+//Class to control all queries at the database
 class ModelQueries{
 
     //This function is show all datas of the models is used to show data in the table
@@ -12,7 +12,7 @@ class ModelQueries{
         return Database::getRows($query);
     }
 
-    //This function is to catch one data, whit the identicator
+    //This function is to catch one data with the identicator
     public function readOne(){
         $query = "SELECT id_modelo, nombre_modelo, anio_modelo, id_marca 
                   FROM modelos 
@@ -28,7 +28,7 @@ class ModelQueries{
         return Database::getRows($query);
     }
 
-    //This function is to search the models data, with parameters
+    //This function is to search the models data with parameters
     public function searchRow($value)
     {
         $query = "SELECT id_modelo, nombre_modelo, anio_modelo, id_marca 
@@ -40,7 +40,7 @@ class ModelQueries{
         return Database::getRows($query, $params);
     }
 
-    //This function is to create a new model  with de respective data
+    //This function is to create a new model with the respective data
     public function createRow(){
         $query = "INSERT INTO modelos
                   (nombre_modelo,anio_modelo,id_marca) 
