@@ -63,9 +63,9 @@ if (isset($_GET['action'])) {
                 } elseif ($category_model->createRow()) {
                     $result['status'] = 1;
                     if (Validator::saveFile($_FILES['imageCategories'], $category_model->getRoute(), $category_model->getCategoryImg())) {
-                        $result['message'] = 'The product was created successfully';
+                        $result['message'] = 'The category was created successfully';
                     } else {
-                        $result['message'] = 'The product was created without image';
+                        $result['message'] = 'The category was created without image';
                     }
                 } else {
                     $result['exception'] = Database::getException();
