@@ -12,7 +12,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['id_usuario'])) {
         //Is to verificated that action is to do
         switch ($_GET['action']) {
-            //This action is to charger datas in the table
+                //This action is to charger datas in the table
             case 'readAll':
                 if ($result['dataset'] = $product_model->readAll()) {
                     $result['status'] = 1;
@@ -27,7 +27,7 @@ if (isset($_GET['action'])) {
             case 'readAllValoration':
                 if (!$product_model->setId($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecta';
-                }elseif ($result['dataset'] = $product_model->readAllValorations()) {
+                } elseif ($result['dataset'] = $product_model->readAllValorations()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
@@ -36,7 +36,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            //This action is to show the status of the product data in te select
+                //This action is to show the status of the product data in te select
             case 'readStatus':
                 if ($result['dataset'] = $product_model->readStatusProduct()) {
                     $result['status'] = 1;
@@ -47,12 +47,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            //This action is to search the especific data
+                //This action is to search the especific data
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
-                    $result['status'] = 1; 
-                    $result['dataset'] = $product_model->readAll(); 
+                    $result['status'] = 1;
+                    $result['dataset'] = $product_model->readAll();
                 } elseif ($result['dataset'] = $product_model->searchRow($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Si se encontraron resultados';
@@ -62,7 +62,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            //This action is verificate the exists of the product
+                //This action is verificate the exists of the product
             case 'readOne':
                 if (!$product_model->setId($_POST['id'])) {
                     $result['exception'] = 'Producto Incorrecto';
@@ -74,7 +74,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Categoria Inexiste';
                 }
                 break;
-            //This action is to create a new product and verificate data to send at the queries file
+                //This action is to create a new product and verificate data to send at the queries file
             case 'create':
                 if (!$product_model->setNombre_Producto($_POST['Product_name'])) {
                     $result['exception'] = 'Nombre Incorrecto';
@@ -103,7 +103,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is to update a product and verificate data to send at the queries file
+                //This action is to update a product and verificate data to send at the queries file
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$product_model->setId($_POST['id'])) {
@@ -114,7 +114,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre Incorrecto';
                 } elseif (!$product_model->setPrecio($_POST['Price'])) {
                     $result['exception'] = 'Precio de producto incorrecto';
-                } elseif (!$product_model->setExistencias($_POST['Stock'])) {
+                } elseif (!$product_model->setExistencias($_POST['NewStock'])) {
                     $reuslt['exception'] = 'Existencias no validas';
                 } elseif (!$product_model->setCategoria($_POST['Category'])) {
                     $result['exception'] = 'Seleccione una categoria';
@@ -125,7 +125,7 @@ if (isset($_GET['action'])) {
                 } elseif (!$product_model->setDescripcion($_POST['product_description'])) {
                     $result['exception'] = 'Descripcion incorrecta';
                 } elseif (!is_uploaded_file($_FILES['imageProduct']['tmp_name'])) {
-                    if ($user_model->updateRow($data['imagen_principal'])) {
+                    if ($product_model->updateRow($data['imagen_principal'])) {
                         $result['status'] = 1;
                         $Result['message'] = 'Producto actualizado, correctamente';
                     } else {
@@ -144,7 +144,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is to delete data of the product
+                //This action is to delete data of the product
             case 'delete':
                 if (!$product_model->setId($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecta';
@@ -158,19 +158,31 @@ if (isset($_GET['action'])) {
                 }
                 break;
                 //This action is to delete data of the product valoration
-                case 'deleteValoration':
-                    if (!$product_model->setIdValoracion($_POST['id_valoracion'])) {
-                        $result['exception'] = 'Valoracion incorrecta';
-                    } elseif (!$data = $product_model->readOneValoration()) {
-                        $result['exception'] = 'Valoracion inexistente';
-                    } elseif ($product_model->deleleteValoration()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Valoracion Eliminada, correctamente';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                    break;
-            //Case default if anything is executed
+            case 'FalseValoration':
+                if (!$product_model->setIdValoracion($_POST['id_valoracion'])) {
+                    $result['exception'] = 'Valoracion incorrecta';
+                } elseif (!$data = $product_model->readOneValoration()) {
+                    $result['exception'] = 'Valoracion inexistente';
+                } elseif ($product_model->FalseValoration()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Valoracion Eliminada, correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            case 'TrueValoration':
+                if (!$product_model->setIdValoracion($_POST['id_valoracion'])) {
+                    $result['exception'] = 'Valoracion incorrecta';
+                } elseif (!$data = $product_model->readOneValoration()) {
+                    $result['exception'] = 'Valoracion inexistente';
+                } elseif ($product_model->TrueValoration()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Valoracion Eliminada, correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+                //Case default if anything is executed
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

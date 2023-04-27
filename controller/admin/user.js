@@ -54,12 +54,12 @@ async function fillTable(form=null){
         JSON.dataset.forEach(row => {
             TBODY_ROWS.innerHTML+=`
                 <tr>
-                    <td><img src="${SERVER_URL}images/users/${row.imagen_principal}" class="image_product"></td>
+                    <td><img src="${SERVER_URL}images/users/${row.imagen_usuario}" class="image_product"></td>
                     <td>${row.nombre_usuario}</td>
                     <td>${row.clave_usuario}</td>
                     <td>${row.estado_usuario}</td>
                     <td>${row.id_tipo_usuario}</td>
-                    <td class="action-btn">
+                    <td>
                         <div class="actions">
                             <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="UpdateUser(${row.id_usuario})">
                                 <i class="bx bxs-edit"></i>

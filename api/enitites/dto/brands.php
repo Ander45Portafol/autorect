@@ -6,7 +6,8 @@ class Brand extends BrandQueries
 {
     protected $brand_id = null;
     protected $brand_name = null;
-    protected $brand_logo = null;
+    protected $brand_logo = null;    
+    protected $ruta = '../../images/brands/';
 
     public function setID($value)
     {
@@ -28,10 +29,10 @@ class Brand extends BrandQueries
         }
     }
 
-    public function setBrandLogo($value)
+    public function setBrandLogo($file)
     {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->brand_name = $value;
+        if (Validator::validateImageFile($file, 1500, 1500)) {
+            $this->brand_logo = Validator::getFileName();
             return true;
         } else {
             return false;
@@ -51,5 +52,9 @@ class Brand extends BrandQueries
     public function getLogo()
     {
         return $this->brand_logo;
+    }
+    public function getRuta()
+    {
+        return $this->ruta;
     }
 }

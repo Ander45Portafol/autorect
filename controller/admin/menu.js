@@ -53,9 +53,9 @@ ASIDE.innerHTML=`     <ul class="nav flex-column">
   </li>
 </div>
 <div class="bottomnav">
-    <li class="nav-item">
+    <li class="nav-item" id="logout-btn">
     <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Log-Out"><a class="btn" onclick="logOut()" id="logout"><i class="bx bxs-log-out"></i></a></button>
         
       </li>
 </div>
-</ul>`
+</ul>`;

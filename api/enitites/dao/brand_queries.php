@@ -39,7 +39,8 @@ class BrandQueries
         return Database::executeRow($query, $params);
     }
 
-    public function updateRow(){
+    public function updateRow($current_image){
+        ($this->brand_logo) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->brand_logo = $current_image;
         $query = 'UPDATE marcas
                   SET nombre_marca = ?, logo_marca = ?
                   WHERE id_marca = ?';

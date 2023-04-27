@@ -67,12 +67,12 @@ async function fillTableDetail(id) {
         JSON.dataset.forEach((row) => {
             TBODY_DETAILS.innerHTML += `
                 <tr>
-                    <td>${row.imagen_principal}</td>
+                    <td><img src="${SERVER_URL}images/products/${row.imagen_principal}" class="image_product"></td>
                     <td>${row.nombre_producto}</td>
                     <td>${row.direccion_pedido}</td>
                     <td>${row.fecha_pedido}</td>
                     <td>${row.precio_total}</td>
-                    <td class="action-btn">
+                    <td>
                         <div class="actions">
                             <button class="delete" id="deletebtn" onclick="DeleteDetail(${row.id_detalle_pedido})">
                                 <i class="bx bxs-trash"></i>

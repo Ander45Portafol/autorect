@@ -105,7 +105,18 @@
     border: none;
     height: 50px;
     width: 50px;
-
+  }
+  #btnclose_valorations{
+    background-color: transparent;
+    border: none;
+    height: 50px;
+    width: 50px;
+  }
+  #btnclose_detail{
+    background-color: transparent;
+    border: none;
+    height: 50px;
+    width: 50px;
   }
 
   /*Style to search section in the formulary*/
@@ -304,13 +315,6 @@
 
   .table {
     text-align: center;
-  }
-
-  .table .action-btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
   }
 
   /*This code is to add style at the edit button in the table*/
@@ -538,10 +542,6 @@
   margin-top: 1rem;
   width: 100%;
 }
-.col-stock{
-  display: flex;
-  align-items: flex-end;
-}
   .btns #update {
     border-radius: 5px;
     width: 150px;
@@ -627,14 +627,38 @@
 
   /*Products*/
   .Psection1 {
-    width: 60%;
+    width: 80%;
   }
-
+  .Psection1 .input-data{
+    width: 250px;
+  }
+  .Psection1 .input-data input{
+    width: 100%;
+  }
+  #fileProduct{
+    margin-top: 2rem;
+  }
+  .addstock{
+    margin-top: 1rem;
+  }
+  #input-description{
+    width: 100%;
+  }
+  #input-stock label{
+    height: 30px;
+    margin-bottom: 0;
+  }
+  #inputstocklabel{
+    display: block;
+  }
+  .Psection1 .select-data{
+    width: 250px;
+  }
   .Psection2 {
-    width: 25%;
+    width: 10%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     margin-left: 3rem;
   }
@@ -722,11 +746,14 @@
     display: flex;
     flex-direction: row;
   }
-
+#Bname{
+  margin-bottom: 2rem;
+}
   .Bsection1 {
     width: 70%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .Bsection1 .input-data {
@@ -792,7 +819,9 @@
     border-bottom: 3px solid #000;
     text-align: center;
   }
-
+  #newstock{
+    display: none;
+  }
   /*Responsive para pantalla mediana*/
   @media screen and (min-width:1882px) {
     aside {
