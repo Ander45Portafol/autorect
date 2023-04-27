@@ -148,6 +148,99 @@
                 </div>
               </div>
             </div>
+            <div class="modal-images modal fade modal-xl" id="modalimages" class="modalimages"
+                            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                            aria-labelledby="modalimagesLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!--This class is to modify the header section at the modal-->
+                                    <div class="modal-header">
+                                        <p class="modal-title" id="modal-title">EDIT IMAGES</p>
+                                        <!--This button is to close the modal-->
+                                        <button type="button" id="btnclose" data-bs-dismiss="modal" aria-label="Close"
+                                            onclick="cleanImages()"><i class="bx bx-x"></i></button>
+                                    </div>
+                                    <!--In this class are add elements like inputs, buttons, etc-->
+                                    <div class="images-form modal-body">
+                                        <input type="hidden" id="id-p">
+                                        <div class="row text-center">
+                                            <div class="col-img col-lg-3 col-md-6 col-sm-6">
+                                                <form id="form-1" enctype="multipart/form-data">
+                                                    <div class="img-area" id="imga-1" data-img="x"
+                                                        onclick="openFileSelector(1)">
+                                                        <div id="imgt-1">
+                                                            <i class='bx bxs-cloud-upload'></i>
+                                                            <h3>Add image</h3>
+                                                            <p>File formats: <span> .jpg/.png </span></p>
+                                                        </div>
+                                                        <img src="" id="imgp-1">
+                                                    </div>
+                                                    <input type="hidden" id="id-img-1">
+                                                    <input type="file" id="input-img-1" name="input-img-1"
+                                                        onchange="showPreview(event, 1)">
+                                                    <input type="hidden" name="num" value="1">
+                                                    <button class="submitimgs" type="submit" id="btnsubmit-1" form="form-1">Enviar</button>
+                                                </form>
+                                            </div>
+                                            <div class="col-img col-lg-3 col-md-6 col-sm-6">
+                                                <form id="form-2" enctype="multipart/form-data">
+                                                    <div class="img-area" id="imga-2" data-img="x"
+                                                        onclick="openFileSelector(2)">
+                                                        <div id="imgt-2">
+                                                            <i class='bx bxs-cloud-upload'></i>
+                                                            <h3>Add image</h3>
+                                                            <p>File formats: <span> .jpg/.png </span></p>
+                                                        </div>
+                                                        <img src="" id="imgp-2">
+                                                    </div>
+                                                    <input type="hidden" id="id-img-2">
+                                                    <input type="file" id="input-img-2" name="input-img-2"
+                                                        onchange="showPreview(event, 2)">
+                                                    <input type="hidden" name="num" value="2">
+                                                    <button class="submitimgs" type="submit" id="btnsubmit-2" form="form-2">Enviar</button>
+                                                </form>
+                                            </div>
+                                            <div class="col-img col-lg-3 col-md-6 col-sm-6">
+                                                <form id="form-3" enctype="multipart/form-data">
+                                                    <div class="img-area" id="imga-3" data-img="x"
+                                                        onclick="openFileSelector(3)">
+                                                        <div id="imgt-3">
+                                                            <i class='bx bxs-cloud-upload'></i>
+                                                            <h3>Add image</h3>
+                                                            <p>File formats: <span> .jpg/.png </span></p>
+                                                        </div>
+                                                        <img src="" id="imgp-3">
+                                                    </div>
+                                                    <input type="hidden" id="id-img-3">
+                                                    <input type="file" id="input-img-3" name="input-img-3"
+                                                        onchange="showPreview(event, 3)">
+                                                    <input type="hidden" name="num" value="3">
+                                                    <button class="submitimgs" type="submit" id="btnsubmit-3" form="form-3">Enviar</button>
+                                                </form>
+                                            </div>
+                                            <div class="col-img col-lg-3 col-md-6 col-sm-6">
+                                                <form id="form-4" enctype="multipart/form-data">
+                                                    <div class="img-area" id="imga-4" data-img="x"
+                                                        onclick="openFileSelector(4)">
+                                                        <div id="imgt-4">
+                                                            <i class='bx bxs-cloud-upload'></i>
+                                                            <h3>Add image</h3>
+                                                            <p>File formats: <span> .jpg/.png </span></p>
+                                                        </div>
+                                                        <img src="" id="imgp-4">
+                                                    </div>
+                                                    <input type="hidden" id="id-img-4">
+                                                    <input type="file" id="input-img-4" name="input-img-4"
+                                                        onchange="showPreview(event, 4)">
+                                                    <input type="hidden" name="num" value="4">
+                                                    <button class="submitimgs" type="submit" id="btnsubmit-4" form="form-4">Enviar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
           </div>
         </div>
         <!--This section are all relationated with filters to looking for datas at the products-->

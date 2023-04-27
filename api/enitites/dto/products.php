@@ -17,6 +17,8 @@ class products extends Products_queries
     protected $modelo;
     protected $estado_producto;
     protected $ruta = '../../images/products/';
+    protected $id_imagen_producto;
+    protected $imagen_s;
 
     //Method's set for each atribute
     public function setId($value)
@@ -109,9 +111,28 @@ class products extends Products_queries
             return false;
         }
     }
-    //Method's get for each atribute
-    public function getId()
+
+    public function setIdImg($value)
     {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->id_imagen_producto = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setImagenS($file){
+        if (Validator::validateImageFile($file, 1500, 1500)) {
+            $this->imagen_s=Validator::getFileName();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    // Metodos get de los atributos
+    public function getId(){
         return $this->id_producto;
     }
     public function getIdValoracion()
@@ -155,4 +176,13 @@ class products extends Products_queries
     {
         return $this->ruta;
     }
+
+    public function getImagenS(){
+        return $this->imagen_s;
+    }
+
+    public function getIdImg(){
+        return $this->id_imagen_producto;
+    }
 }
+

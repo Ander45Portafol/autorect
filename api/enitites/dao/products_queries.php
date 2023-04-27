@@ -80,4 +80,29 @@ class Products_queries
         $params = array($this->nombre_producto, $this->descripcion, $this->precio, $this->imagen, $this->existencias, $this->categoria, $this->modelo, $this->estado_producto, $this->id_producto);
         return Database::executeRow($sql, $params);
     }
+    public function readImgs()
+    {
+        $sql = 'SELECT id_imagen_producto, nombre_archivo_imagen FROM imagenes_productos WHERE id_producto = ?;';
+        $params = array($this->id_producto);
+        return Database::getRows($sql, $params);
+    }
+
+    public function readOneImg(){
+        $sql = 'SELECT id_imagen_producto, nombre_archivo_imagen FROM imagenes_productos WHERE id_imagen_producto = ?;';
+        $params = array($this->id_imagen_producto);
+        return Database::getRow($sql, $params);
+    }
+
+    public function createImg()
+    {
+        $sql = 'INSERT INTO imagenes_productos(nombre_archivo_imagen, id_producto) VALUES(?,?)';
+        $params = array($this->imagen_s, $this->id_producto);
+        return Database::getLastRow($sql, $params);
+    }
+
+    public function deleteImg(){
+        $sql = 'DELETE FROM imagenes_productos WHERE id_imagen_producto = ?';
+        $params = array($this->id_imagen_producto);
+        return Database::executeRow($sql, $params);
+    }
 }

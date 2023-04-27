@@ -40,11 +40,10 @@ class Database
         }
     }
     //Function to get all rows of the table
-    public static function getRows($query, $values = null)
-    {
-        if (self::executeRow($query, $values)) {
-            return self::$statement->FetchAll(PDO::FETCH_ASSOC);
-        } else {
+    public static function getRows($query,$values=null){
+        if (self::executeRow($query,$values)) {
+            return self::$statement->FetchAll(PDO::FETCH_BOTH);
+        }else {
             return false;
         }
     }
