@@ -1,9 +1,9 @@
 //In this variable is used to manipulated the data charger in the table
-const CUERPO_TEXTO=document.getElementById('tbody-rows');
+const TBODY_ROWS=document.getElementById('tbody-rows');
 //In this variable are charging the titule in the modal
-const titulo_modal=document.getElementById('modal-title');
+const MODEL_TITLE=document.getElementById('modal-title');
 //In this variable is create to manipulated the form data
-const FORMULARIO=document.getElementById('save-form-M');
+const FORMU=document.getElementById('save-form-M');
 //This variable is create to make funcionated the search method
 const SEARCH_FORM=document.getElementById('form-search')
 //In this variable are using the Api
@@ -11,17 +11,17 @@ const MODELS_API='/bussines/dashboard/models.php';
 
 //This event is to charger table in the formulary
 document.addEventListener('DOMContentLoaded', ()=>{
-    cargarTabla();
+    fillTable();
 })
 
 //This is the event to form to do the update or create process
-FORMULARIO.addEventListener('submit' ,async (event)=>{
+FORMU.addEventListener('submit' ,async (event)=>{
     event.preventDefault();
     (document.getElementById('id').value)?action='update':action='create';
-    const FORM =new FormData(FORMULARIO);
-    const JSON=await dataFetch(MODELS_API, action, FORM);
+    const FORM =new FormData(FORMU);
+    const JSON=await dataFetch(MODELS_API, action, FORMU);
     if (JSON.status) {
-        cargarTabla();
+        fillTable();
         sweetAlert(1, JSON.message, true);
     }else{
         sweetAlert(2, JSON.exception, false);
@@ -32,17 +32,17 @@ FORMULARIO.addEventListener('submit' ,async (event)=>{
 SEARCH_FORM.addEventListener('submit',(event)=>{
     event.preventDefault();
     const FORM=new FormData(SEARCH_FORM);
-    cargarTabla(FORM);
+    fillTable(FORM);
 })
 
 //This function is to charger the models data in the table
-async function cargarTabla(form=null){
-    CUERPO_TEXTO.innerHTML='';
+async function fillTable(form=null){
+    TBODY_ROWS.innerHTML='';
     (form)?action='search':action='readAll';
     const JSON=await dataFetch(MODELS_API, action, form);
     if (JSON.status) {
         JSON.dataset.forEach(row=>{
-            CUERPO_TEXTO.innerHTML+=`
+            TBODY_ROWS.innerHTML+=`
             <tr>
                 <td>${row.id_modelo}</td>
                 <td>${row.nombre_modelo}</td>
@@ -67,7 +67,7 @@ async function cargarTabla(form=null){
 }
 //This function is to change somethings when the process are create
 function createModel(){
-    titulo_modal.textContent='CREATE MODEL';
+    MODAL_TITLE.textContent='CREATE MODEL';
     fillSelect(MODELS_API,'readBrand','brand');
     document.getElementById('update').style.display='none';
     document.getElementById('adduser').style.display='block';
@@ -97,7 +97,7 @@ async function deleteModel(id){
         FORM.append('id_modelo', id);
         const JSON =await dataFetch(MODELS_API, 'delete', FORM);
         if (JSON.status) {
-            cargarTabla();
+            fillTable();
             sweetAlert(1,JSON.message,true);
         }else{
             sweetAlert(2,JSON.exception,true);

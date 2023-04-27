@@ -61,7 +61,7 @@ async function fillTable(form=null){
                             <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateCategory(${row.id_categoria})">
                                 <i class="bx bxs-edit"></i>
                             </button>
-                            <button class="delete" id="deletebtn" onclick="DeleteCategory(${row.id_categoria})">
+                            <button class="delete" id="deletebtn" onclick="deleteCategory(${row.id_categoria})">
                                 <i class="bx bxs-trash"></i>
                             </button>
                         </div>
@@ -99,7 +99,7 @@ async function updateCategory(id){
     }
 }
 //This function is to communicate at the Api to do the delete action
-async function DeleteCategory(id){
+async function deleteCategory(id){
     const RESPONSE=await confirmAction('¿Desea eliminar el usuario de forma permanente?')
     if (RESPONSE) {
         const FORM=new FormData()
