@@ -182,6 +182,51 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                case 'readImgs':
+                if (!$product_model->setId($_POST['id_producto'])) {
+                    $result['exception'] = 'No existe ese producto';
+                } elseif ($result['dataset'] = $product_model->readImgs()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'];
+                }
+                break;
+            case 'createImg':
+                $num = $_POST['num'];
+                if (!$product_model->setImagenS($_FILES['input-img-' . $num])) {
+                    $result['exception'] = Validator::getFileError('input-img-' . $num);
+                } elseif(!$product_model->setId($_POST['id-p'])) {
+                    $result['exception'] = 'No existe ese producto';
+                } elseif ($id = $product_model->createImg()) {
+                    $result['status'] = 1;
+                    $result['idimagen'] = $id;
+                    if (Validator::saveFile($_FILES['input-img-' . $num], $product_model->getRuta(), $product_model->getImagenS())) {
+                    $result['message'] = 'Imagen creada';
+                    } else {
+                    $result['message'] = 'Imagen no creada';
+                    }
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            case 'deleteImg':
+                if (!$product_model->setIdImg($_POST['id_imagen_producto'])) {
+                    $result['exception'] = 'Error en el id';
+                }elseif (!$data = $product_model->readOneImg()) {
+                    $result['exception'] = 'Imagen inexistente';
+                }elseif ($product_model->deleteImg()) {
+                    $result['status'] = 1;
+                    if (Validator::deleteFile($product_model->getRuta(), $data['nombre_archivo_imagen'])) {
+                        $result['message'] = 'Imagen eliminada correctamente';
+                    } else {
+                        $result['message'] = 'Imagen eliminada pero no se borró la imagen';
+                    }
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
                 //Case default if anything is executed
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
