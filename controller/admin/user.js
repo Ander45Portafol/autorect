@@ -61,10 +61,10 @@ async function fillTable(form=null){
                     <td>${row.id_tipo_usuario}</td>
                     <td>
                         <div class="actions">
-                            <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="UpdateUser(${row.id_usuario})">
+                            <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="updateUser(${row.id_usuario})">
                                 <i class="bx bxs-edit"></i>
                             </button>
-                            <button class="delete" id="deletebtn" onclick="DeleteUser(${row.id_usuario})">
+                            <button class="delete" id="deletebtn" onclick="deleteUser(${row.id_usuario})">
                                 <i class="bx bxs-trash"></i>
                             </button>
                         </div>
@@ -77,7 +77,7 @@ async function fillTable(form=null){
     }
 }
 //This function is to manipulated some controls when the process is create
-function CreateUser(){
+function createUser(){
     TITLE_MODAL.textContent='CREATE USER'
     document.getElementById('username').disabled=false
     document.getElementById('password').disbled=false
@@ -90,7 +90,7 @@ function CreateUser(){
 }
 
 //This function is to manipulated some controls and charger the repective data when the process is update
-async function UpdateUser(id){
+async function updateUser(id){
     const FORM=new FormData();
     FORM.append('id',id);
     const JSON=await dataFetch(USERS_API,'readOne',FORM);
@@ -118,7 +118,7 @@ async function UpdateUser(id){
 
 }
 //This function is to communicate at the Api to do the delete action
-async function DeleteUser(id){
+async function deleteUser(id){
     const RESPONSE=await confirmAction('¿Desea eliminar el usuario de forma permanente?')
     if (RESPONSE) {
         const FORM=new FormData()

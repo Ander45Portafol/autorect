@@ -32,7 +32,7 @@ async function fillTable(form=null){
                     <td>${row.telefono_cliente}</td>
                     <td class="action-btn">
                         <div class="actions">
-                            <button class="delete" id="deletebtn" onclick="DeleteClient(${row.id_cliente})">
+                            <button class="delete" id="deletebtn" onclick="deleteClient(${row.id_cliente})">
                             <i class="bx bxs-trash"></i>
                             </button>
                         </div>
@@ -45,7 +45,7 @@ async function fillTable(form=null){
     }
 }
 //This function is to realized the delete action at the API
-async function DeleteClient(id){
+async function deleteClient(id){
     const RESPONSE=await confirmAction('¿Desea eliminar este cliente de forma permanente?')
     if (RESPONSE) {
         const FORM=new FormData()

@@ -69,10 +69,10 @@ async function fillTable(form = null) {
                     <td>${row.id_estado_producto}</td>
                     <td>
                         <div class="actions">
-                            <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="UpdateProduct(${row.id_producto})">
+                            <button class="edit" id="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updateProduct(${row.id_producto})">
                                 <i class="bx bxs-edit"></i>
                             </button>
-                            <button class="delete" id="deletebtn" onclick="DeleteProduct(${row.id_producto})">
+                            <button class="delete" id="deletebtn" onclick="deleteProduct(${row.id_producto})">
                                 <i class="bx bxs-trash"></i>
                             </button>
                             <button class="product_images" data-bs-toggle="modal" data-bs-target="#modalimages" onclick="readImgs(${row.id_producto})">
@@ -91,7 +91,7 @@ async function fillTable(form = null) {
     }
 }
 //This function is to manipulated some controls when the process is create
-function CreateProduct() {
+function createProduct() {
     TITLE_MODAL.textContent = 'CREATE PRODUCT'
     Clean();
     document.getElementById('product-name').disabled = false
@@ -108,7 +108,7 @@ function CreateProduct() {
     fillSelect(PRODUCTS_API, 'readStatus', 'status');
 }
 //This function is to manipulated some controls and charger the repective data when the process is update
-async function UpdateProduct(id) {
+async function updateProduct(id) {
     const FORM = new FormData();
     FORM.append('id', id);
     const JSON = await dataFetch(PRODUCTS_API, 'readOne', FORM);
@@ -133,7 +133,7 @@ async function UpdateProduct(id) {
     }
 }
 //This function is to communicate at the Api to do the delete action
-async function DeleteProduct(id) {
+async function deleteProduct(id) {
     const RESPONSE = await confirmAction('¿Desea eliminar el producto de forma permanente?')
     if (RESPONSE) {
         const FORM = new FormData()
@@ -165,7 +165,7 @@ async function fillTableValorations(id) {
                     <td>${row.fecha_comentario}</td>
                     <td>
                         <div class="actions">
-                            <button class="delete" id="deletebtn" onclick="StatusValoration(${row.id_valoracion},${row.estado_comentario},${id})">
+                            <button class="delete" id="deletebtn" onclick="statusValoration(${row.id_valoracion},${row.estado_comentario},${id})">
                                 <i class='bx bx-refresh'></i>
                             </button>
                         </div>
@@ -176,7 +176,7 @@ async function fillTableValorations(id) {
     }
 }
 //This function is to change status at comentaries any valoration
-async function StatusValoration(id, estado, id_product) {
+async function statusValoration(id, estado, id_product) {
     const RESPONSE = await confirmAction('¿Desea Cambiar la valoracion del producto de forma permanente?')
     if (RESPONSE) {
         const FORM = new FormData()
@@ -217,9 +217,9 @@ function updateStock(){
 
     imgform1.addEventListener('submit', async(event)=>{
         event.preventDefault();
-        const id_p = document.getElementById('id-p').value; 
+        const ID_P = document.getElementById('id-p').value; 
         const FORM = new FormData(imgform1);
-        FORM.append('id-p', id_p); 
+        FORM.append('id-p', ID_P); 
         const JSON = await dataFetch(PRODUCTS_API, 'createImg', FORM);
         if (JSON.status) {
             document.getElementById('id-img-1').value= JSON.idimagen;
@@ -234,9 +234,9 @@ function updateStock(){
 
     imgform2.addEventListener('submit', async(event)=>{
         event.preventDefault();
-        const id_p = document.getElementById('id-p').value; 
+        const ID_P = document.getElementById('id-p').value; 
         const FORM = new FormData(imgform2);
-        FORM.append('id-p', id_p); 
+        FORM.append('id-p', ID_P); 
         const JSON = await dataFetch(PRODUCTS_API, 'createImg', FORM);
         if (JSON.status) {
             document.getElementById('id-img-2').value= JSON.idimagen;
@@ -251,9 +251,9 @@ function updateStock(){
 
     imgform3.addEventListener('submit', async(event)=>{
         event.preventDefault();
-        const id_p = document.getElementById('id-p').value; 
+        const ID_P = document.getElementById('id-p').value; 
         const FORM = new FormData(imgform3);
-        FORM.append('id-p', id_p); 
+        FORM.append('id-p', ID_P); 
         const JSON = await dataFetch(PRODUCTS_API, 'createImg', FORM);
         if (JSON.status) {
             document.getElementById('id-img-3').value= JSON.idimagen;
@@ -268,9 +268,9 @@ function updateStock(){
 
     imgform4.addEventListener('submit', async(event)=>{
         event.preventDefault();
-        const id_p = document.getElementById('id-p').value; 
+        const ID_P = document.getElementById('id-p').value; 
         const FORM = new FormData(imgform4);
-        FORM.append('id-p', id_p); 
+        FORM.append('id-p', ID_P); 
         const JSON = await dataFetch(PRODUCTS_API, 'createImg', FORM);
         if (JSON.status) {
             document.getElementById('id-img-4').value= JSON.idimagen;
