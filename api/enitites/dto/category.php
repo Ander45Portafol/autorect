@@ -22,7 +22,7 @@ class Category extends CategoryQueries
             return false;
         }
     }
-    public function setName($value)
+    public function setCategoryName($value)
     {
         if ($value) {
             $this->category_name = $value;
@@ -31,7 +31,7 @@ class Category extends CategoryQueries
             return false;
         }
     }
-    public function setImg($value)
+    public function setCategoryImg($value)
     {
         if (Validator::validateImageFile($value, 1500, 1500)) {
             $this->category_img = Validator::getFileName();
@@ -40,7 +40,7 @@ class Category extends CategoryQueries
             return false;
         }
     }
-    public function setDescription($value)
+    public function setCategoryDescription($value)
     {
         if ($value) {
             $this->category_description = $value;
@@ -54,20 +54,20 @@ class Category extends CategoryQueries
     {
         return $this->category_id;
     }
-    public function getName()
+    public function getCategoryName()
     {
         return $this->category_name;
     }
-    public function getImg()
+    public function getCategoryImg()
     {
         return $this->category_img;
     }
-    public function getDescription()
+    public function getCategoryDescription()
     {
         return $this->category_description;
     }
     //This method getRuta is to capture the url of the category image
-    public function getROute()
+    public function getRoute()
     {
         return $this->route;
     }

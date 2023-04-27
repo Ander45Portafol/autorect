@@ -2,7 +2,7 @@
 require_once('../../helpers/validator.php');
 require_once('../../enitites/dao/models_queries.php');
 //Class with dependeces at he Querie's file
-class Models extends ModelQueries
+class Model extends ModelQueries
 {
     //Atributes to do manipule data
     protected $model_id = null;
@@ -19,7 +19,7 @@ class Models extends ModelQueries
             return false;
         }
     }
-    public function setModel($value)
+    public function setModelName($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 75)) {
             $this->model_name = $value;
@@ -28,7 +28,7 @@ class Models extends ModelQueries
             return false;
         }
     }
-    public function setYear($value)
+    public function setModelYear($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 5)) {
             $this->model_year = $value;
@@ -37,7 +37,7 @@ class Models extends ModelQueries
             return false;
         }
     }
-    public function setBrand($value)
+    public function setModelBrand($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->brand = $value;
@@ -59,7 +59,7 @@ class Models extends ModelQueries
     {
         return $this->model_year;
     }
-    public function getBrand()
+    public function getModelBrand()
     {
         return $this->brand;
     }

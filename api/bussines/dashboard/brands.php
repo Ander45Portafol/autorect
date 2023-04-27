@@ -51,10 +51,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Validator::getFileError();
                 } elseif ($brand_model->createRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['imageBrand'], $brand_model->getRuta(), $brand_model->getLogo())) {
-                        $result['message'] = 'Marca creado, correctamente';
+                    if (Validator::saveFile($_FILES['imageBrand'], $brand_model->getRoute(), $brand_model->getLogo())) {
+                        $result['message'] = 'The brand was created successfully';
                     } else {
-                        $result['message'] = 'Marca creado, pero sin la imagen';
+                        $result['message'] = 'Brand created without image';
                     }
                 } else {
                     $result['exception'] = Database::getException();
@@ -71,7 +71,7 @@ if (isset($_GET['action'])) {
                 } elseif (!is_uploaded_file($_FILES['imageBrand']['tmp_name'])) {
                     if ($brand_model->updateRow($data['logo_marca'])) {
                         $result['status'] = 1;
-                        $Result['message'] = 'Marca actualizado, correctamente';
+                        $Result['message'] = 'The brand was updated successfully';
                     } else {
                         $result['exception'] = Database::getException();
                     }
@@ -79,10 +79,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Validator::getFileError();
                 } elseif ($brand_model->updateRow($data['logo_marca'])) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['imageBrand'], $brand_model->getRuta(), $brand_model->getLogo())) {
-                        $Result['message'] = 'Marca actualizado, correctamente';
+                    if (Validator::saveFile($_FILES['imageBrand'], $brand_model->getRoute(), $brand_model->getLogo())) {
+                        $Result['message'] = 'The brand was updated successfully';
                     } else {
-                        $Result['message'] = 'Marca actualizado, pero no se guardo la imagen';
+                        $Result['message'] = 'The brand was updated without image';
                     }
                 } else {
                     $result['exception'] = Database::getException();
