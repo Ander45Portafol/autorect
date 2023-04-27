@@ -14,6 +14,7 @@ const TITLE_MODAL = document.getElementById('modal-title');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 //Constant to charger datas in the table to valorations datas
 const TBODY_VALORATIONS = document.getElementById('tbody-valorations');
+const stockplus=document.getElementById('addExists');
 
 //Event to show the datas in the table
 document.addEventListener('DOMContentLoaded', () => {
@@ -96,6 +97,7 @@ function CreateProduct() {
     Clean();
     document.getElementById('product-name').disabled = false
     document.getElementById('price').disbled = false
+    document.getElementById('stock').disabled=false;
     document.getElementById('update').style.display = 'none';
     document.getElementById('adduser').style.display = 'block';
     document.getElementById('newstocklabel').style.display='none';
@@ -117,6 +119,7 @@ async function UpdateProduct(id) {
         document.getElementById('update').style.display = 'block';
         document.getElementById('adduser').style.display = 'none';
         document.getElementById('clean').style.display = 'none';
+        document.getElementById('newstocklabel').style.display='block';
         document.getElementById('addExists').style.display='block';
         document.getElementById('id').value = JSON.dataset.id_producto;
         document.getElementById('product-name').value = JSON.dataset.nombre_producto;
@@ -204,8 +207,16 @@ async function StatusValoration(id, estado, id_product) {
 function updateStock(){
     let existencias=parseInt(document.getElementById('addExists').value);
     let numberdata=parseInt(document.getElementById('stock').value);
-    let newdata=existencias+numberdata;
-    document.getElementById('newstock').value=newdata;
+    if (existencias==0) {
+        let newdata=numberdata;
+        document.getElementById('newstock').value=newdata;
+    }else if (existencias<0) {
+        let newdata=numberdata-existencias;
+        document.getElementById('newstock').value=newdata;
+    }else{
+        let newdata=existencias+numberdata;
+        document.getElementById('newstock').value=newdata;
+    }
 }
 
 //Product images
