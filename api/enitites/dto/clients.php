@@ -1,7 +1,7 @@
 <?php
 require_once('../../helpers/validator.php');
 require_once('../../enitites/dao/clients_queries.php');
-//Class with dependeces at he Querie's file
+//Class with dependencies at the queries file
 class Client extends ClientQueries
 {
     //Atributes to do manipule data
