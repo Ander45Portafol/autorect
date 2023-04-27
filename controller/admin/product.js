@@ -144,9 +144,62 @@ async function UpdateProduct(id){
         const JSON = await dataFetch(PRODUCTS_API, 'createImg', FORM);
         if (JSON.status) {
             document.getElementById('id-img-1').value= JSON.idimagen;
-            console.log(document.getElementById('id-img-1').value);
             sweetAlert(1,JSON.message,true);
         }else{
+            document.getElementById("imga-1").classList.remove("active");
+            document.getElementById("imgp-1").src="";
+            document.getElementById("imgt-1").style.display = "block";
+            sweetAlert(2,JSON.exception,false);
+        }
+    })
+
+    imgform2.addEventListener('submit', async(event)=>{
+        event.preventDefault();
+        const id_p = document.getElementById('id-p').value; 
+        const FORM = new FormData(imgform2);
+        FORM.append('id-p', id_p); 
+        const JSON = await dataFetch(PRODUCTS_API, 'createImg', FORM);
+        if (JSON.status) {
+            document.getElementById('id-img-2').value= JSON.idimagen;
+            sweetAlert(1,JSON.message,true);
+        }else{
+            document.getElementById("imga-2").classList.remove("active");
+            document.getElementById("imgp-2").src="";
+            document.getElementById("imgt-2").style.display = "block";
+            sweetAlert(2,JSON.exception,false);
+        }
+    })
+
+    imgform3.addEventListener('submit', async(event)=>{
+        event.preventDefault();
+        const id_p = document.getElementById('id-p').value; 
+        const FORM = new FormData(imgform3);
+        FORM.append('id-p', id_p); 
+        const JSON = await dataFetch(PRODUCTS_API, 'createImg', FORM);
+        if (JSON.status) {
+            document.getElementById('id-img-3').value= JSON.idimagen;
+            sweetAlert(1,JSON.message,true);
+        }else{
+            document.getElementById("imga-3").classList.remove("active");
+            document.getElementById("imgp-3").src="";
+            document.getElementById("imgt-3").style.display = "block";
+            sweetAlert(2,JSON.exception,false);
+        }
+    })
+
+    imgform4.addEventListener('submit', async(event)=>{
+        event.preventDefault();
+        const id_p = document.getElementById('id-p').value; 
+        const FORM = new FormData(imgform4);
+        FORM.append('id-p', id_p); 
+        const JSON = await dataFetch(PRODUCTS_API, 'createImg', FORM);
+        if (JSON.status) {
+            document.getElementById('id-img-4').value= JSON.idimagen;
+            sweetAlert(1,JSON.message,true);
+        }else{
+            document.getElementById("imga-4").classList.remove("active");
+            document.getElementById("imgp-4").src="";
+            document.getElementById("imgt-4").style.display = "block";
             sweetAlert(2,JSON.exception,false);
         }
     })
@@ -156,15 +209,46 @@ async function UpdateProduct(id){
         FORM.append('id_producto', productId); 
         const JSON = await dataFetch(PRODUCTS_API, 'readImgs', FORM);
         document.getElementById('id-p').value = productId;
-        //console.log(JSON.dataset[0]);
         const ruta = SERVER_URL + 'images/products/';
         if(JSON.status){
-            document.getElementById("imga-1").classList.add("active");
-            document.getElementById("imgp-1").src=ruta+JSON.dataset[0].nombre_archivo_imagen;
-            document.getElementById("id-img-1").value = JSON.dataset[0].id_imagen_producto;
+            if(JSON.dataset.length == 1){
+                document.getElementById("imga-1").classList.add("active");
+                document.getElementById("imgp-1").src=ruta+JSON.dataset[0].nombre_archivo_imagen;
+                document.getElementById("id-img-1").value = JSON.dataset[0].id_imagen_producto;
+            }else if(JSON.dataset.length == 2){
+                document.getElementById("imga-1").classList.add("active");
+                document.getElementById("imgp-1").src=ruta+JSON.dataset[0].nombre_archivo_imagen;
+                document.getElementById("id-img-1").value = JSON.dataset[0].id_imagen_producto;
+                document.getElementById("imga-2").classList.add("active");
+                document.getElementById("imgp-2").src=ruta+JSON.dataset[1].nombre_archivo_imagen;
+                document.getElementById("id-img-2").value = JSON.dataset[1].id_imagen_producto;
+            }else if(JSON.dataset.length == 3){
+                document.getElementById("imga-1").classList.add("active");
+                document.getElementById("imgp-1").src=ruta+JSON.dataset[0].nombre_archivo_imagen;
+                document.getElementById("id-img-1").value = JSON.dataset[0].id_imagen_producto;
+                document.getElementById("imga-2").classList.add("active");
+                document.getElementById("imgp-2").src=ruta+JSON.dataset[1].nombre_archivo_imagen;
+                document.getElementById("id-img-2").value = JSON.dataset[1].id_imagen_producto;
+                document.getElementById("imga-3").classList.add("active");
+                document.getElementById("imgp-3").src=ruta+JSON.dataset[2].nombre_archivo_imagen;
+                document.getElementById("id-img-3").value = JSON.dataset[2].id_imagen_producto;
+            }else if(JSON.dataset.length == 4){
+                document.getElementById("imga-1").classList.add("active");
+                document.getElementById("imgp-1").src=ruta+JSON.dataset[0].nombre_archivo_imagen;
+                document.getElementById("id-img-1").value = JSON.dataset[0].id_imagen_producto;
+                document.getElementById("imga-2").classList.add("active");
+                document.getElementById("imgp-2").src=ruta+JSON.dataset[1].nombre_archivo_imagen;
+                document.getElementById("id-img-2").value = JSON.dataset[1].id_imagen_producto;
+                document.getElementById("imga-3").classList.add("active");
+                document.getElementById("imgp-3").src=ruta+JSON.dataset[2].nombre_archivo_imagen;
+                document.getElementById("id-img-3").value = JSON.dataset[2].id_imagen_producto;
+                document.getElementById("imga-4").classList.add("active");
+                document.getElementById("imgp-4").src=ruta+JSON.dataset[3].nombre_archivo_imagen;
+                document.getElementById("id-img-4").value = JSON.dataset[3].id_imagen_producto;
+            }
         }
     }
-
+ 
     function cleanImages(){
         document.getElementById("imgp-1").src="";
         document.getElementById("imgt-1").style.display = "block";
@@ -218,7 +302,6 @@ async function UpdateProduct(id){
         event.target.files.length = 0;
         if(event.target.files.length > 0){
             var src = URL.createObjectURL(event.target.files[0]);
-            console.log(src);
             preview.src= src;
             area.classList.add("active");
             text.style.display = "none";

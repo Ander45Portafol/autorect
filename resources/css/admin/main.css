@@ -889,6 +889,10 @@
     opacity: 1;
   }
 
+  .submitimgs{
+    display: none !important;
+  }
+
   @media (min-width: 1200px) {
     .img-area{
       width: 200px;
