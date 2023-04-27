@@ -46,7 +46,7 @@ async function fillTable(form=null){
 }
 //This function is to realized the delete action at the API
 async function deleteClient(id){
-    const RESPONSE=await confirmAction('¿Desea eliminar este cliente de forma permanente?')
+    const RESPONSE=await confirmAction('Do you want to delete this client permanently?')
     if (RESPONSE) {
         const FORM=new FormData()
         FORM.append('id_cliente',id)
