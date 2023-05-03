@@ -82,18 +82,18 @@ footer.innerHTML = `
         <!-- Social media links -->
         <div class="social-footer col-lg-3 col-sm-6">
             <a href="https://www.facebook.com/">
-                <img src="../../resources/images/public/facebook_logo.svg" alt="facebook"> @Autorect_SV
+                <img src="../../resources/images/facebook_logo.svg" alt="facebook"> @Autorect_SV
             </a>
             <a href="https://twitter.com/">
-                <img src="../../resources/images/public/twitter_logo.svg" alt="twitter"> @Autorect_SV
+                <img src="../../resources/images/twitter_logo.svg" alt="twitter"> @Autorect_SV
             </a>
             <a href="https://www.instagram.com/">
-                <img src="../../resources/images/public/instagram_logo.svg" alt="instagram"> @Autorect_SV
+                <img src="../../resources/images/instagram_logo.svg" alt="instagram"> @Autorect_SV
             </a>
         </div>
         <!-- Logo Autorect -->
         <div class="logo-footer col-lg-6 col-sm-6">
-            <img src="../../resources/images/logos/logo_svg.svg" alt="logo_footer">
+            <img src="../../resources/images/logo_svg.svg" alt="logo_footer">
         </div>
         <!-- Information links -->
         <div class="information-footer col-lg-3 col-sm-12">
