@@ -119,7 +119,7 @@ class Employee extends EmployeeQueries
     //Function to set the type of employee
     public function setEmployeeType($value)
     {
-        if (Validator::validateBoolean($value)) {
+        if (Validator::validateNaturalNumber($value)) {
             $this->employee_type = $value;
             return true;
         } else {
