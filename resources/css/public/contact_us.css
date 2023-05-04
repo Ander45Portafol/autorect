@@ -55,7 +55,7 @@
 /*Style for the container of the form*/
 .cont-form{
     padding: 50px;
-    height: 75vh;
+    height: 65vh;
     background-color: var(--secondary-color);
 }
 
@@ -84,7 +84,7 @@ h4{
 
 /*Map size*/
 iframe{
-    height: 75vh;
+    height: 65vh;
     width: 100%;
 }
 
@@ -114,5 +114,15 @@ iframe{
 @media (max-width: 991px) {
     .map-col{
         margin-top: 50px;
+    }
+}
+
+@media (max-height: 1250px){
+    .cont-form{
+        height: 75vh;
+    }
+
+    iframe{
+        height: 75vh;
     }
 }
