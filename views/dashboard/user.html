@@ -14,7 +14,7 @@
   <!--This is the bootstrap link to use the bootstrap style-->
   <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Models</title>
+  <title>Users</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
   <aside></aside>
   <!--In this class are contained all page-->
   <div class="allinfo">
-    <!--In this class whit the main tag are contained everthing data to models-->
+    <!--In this class whit the main tag are contained everthing data to users-->
     <main class="data">
       <section>
         <!--This button funtionated to responsive menu-->
@@ -30,96 +30,113 @@
         <!--This class is to structured the top section at the page-->
         <div class="topmain">
           <div class="texttop">
-            <p>MODELS</p>
+            <p>USERS</p>
           </div>
           <div class="buttonstop">
-            <button>Export <i class="bx bx-export"></i></button>
-            <button>Print <i class="bx bxs-printer"></i></button>
+            <button class="stop" data-tooltip="btnprueba">Export <i class="bx bx-export"></i></button>
+            <button class="stop">Print <i class="bx bxs-printer"></i></button>
             <!--This button is to open modal, to do a insert at the table-->
-            <button type="button" id="red" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="createModel()">
-              <i class="bx bxs-plus-circle"></i> New Model
+            <button type="button" id="red" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="createUser()">
+              <i class="bx bxs-plus-circle"></i>New User
             </button>
 
             <!-- Modal -->
-            <div class="modal fade modal-xl" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <!--This class is to modify the header section at the modal-->
                   <div class="modal-header">
-                    <p class="modal-title" id="modal-title"></p>
+                    <!--In this class charge the title modal-->
+                    <p class="modal-title" id="exampleModalLabel"></p>
                     <!--This button is to close the modal-->
                     <button type="button" id="btnclose" data-bs-dismiss="modal" aria-label="Close">
                       <i class="bx bx-x"></i>
                     </button>
                   </div>
                   <!--In this class are add elements like inputs, buttons, etc-->
-                  <div class="modal-body modal-M">
-                    <!--This class is to add inputs or selects-->
-                    <form method="post" id="save-form-M">
-                      <div class="Msection1">
-                        <input type="number" name="id" id="id">
-                        <div class="row">
-                          <div class="col">
-                            <div class="input-data">
-                              <input type="text" name="ModelName" id="modelname" required />
-                              <div class="underline"></div>
-                              <label>Model name</label>
+                  <form class="modal-body modal-U" id="user-form" method="post">
+                    <div class="section1">
+                      <input type="number" name="id" id="id">
+                      <div class="row">
+                        <div class="col">
+                          <div class="input-data">
+                            <input type="text"  id="username" name="username" required />
+                            <div class="underline"></div>
+                            <label>Username</label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="input-data">
+                            <input type="password" id="password" name="password" required />
+                            <div class="underline"></div>
+                            <label>Password</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="select-data">
+                            <label>Employee</label>
+                            <div class="select">
+                              <select name="employee" id="Employee"></select>
                             </div>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="input-data">
-                              <input type="text" name="ModelYear" id="modelyear" required />
-                              <div class="underline"></div>
-                              <label>Model year</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="select-data">
-                              <label>Brand</label>
-                              <div class="select">
-                                <select name="Brand" id="brand"></select>
-                              </div>
+                        <div class="col">
+                          <div class="select-data">
+                            <label>User type</label>
+                            <div class="select">
+                              <select name="user_type" id="user_type"></select>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <!--This class is to add buttons-->
-                      <div class="Msection2">
-                        <div class="btns">
-                          <button id="clean">
-                            <i class="bx bxs-eraser"></i>CLEAN
-                          </button>
-                          <button id="adduser" type="submit">
-                            <i class="bx bxs-plus-circle"></i>ADD
-                          </button>
-                          <button id="update" type="submit">
-                            <i class='bx bxs-bookmark-plus'></i>CONFIRM
-                          </button>
+                      <div class="row">
+                        <div class="col-6" id="switch-state-user">
+                          <label class="form-check-label" for="flexSwitchCheckDefault">State User</label>
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" name="state_user" id="flexSwitchCheckDefault" checked>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <input type="file" name="imageUser" id="file" accept=".jpg, .png">
                         </div>
                       </div>
-                    </form>
-
-                  </div>
+                    </div>
+                    <div class="section2">
+                      <input type="file" name="imagen" id="archivo">
+                      <input type="button" id="button" value="Subir imagen" class="btnimagen" onclick="openFile()">
+                      
+                      <div class="imagen"></div>
+                      <div class="btns">
+                        <button id="clean">
+                          <i class="bx bxs-eraser"></i>CLEAN
+                        </button>
+                        <button id="adduser" type="submit">
+                          <i class="bx bxs-plus-circle"></i>ADD USER
+                        </button>
+                        <button id="update" type="submit">
+                          <i class='bx bxs-bookmark-plus'></i>CONFIRM
+                        </button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!--This section are all relationated with filters to looking for datas at the models-->
+        <!--This section are all relationated with filters to looking for datas at the users-->
         <div class="searchsection">
           <form class="search" id="form-search" method="post">
             <button type="submit" class="button-search"><i class="bx bx-search"></i></button>
-            <input type="text" name="search" placeholder="Name Models ..." />
+            <input type="text" name="search" placeholder="Username..." />
             <i class="bx bx-slider"></i>
           </form>
           <div class="buttonsearch">
-            <input type="date" class="btnfilter" />
-            <div class="dropdown btnfilter">
+            <input type="date" class="btnfilter sm-disable" />
+            <div class="dropdown btnfilter sm-disable">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bx bxs-purchase-tag"></i>
                 Status
@@ -134,7 +151,7 @@
                 </li>
               </ul>
             </div>
-            <div class="dropdown btnfilter">
+            <div class="dropdown btnfilter sm-disable" id="btn-address">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bx bx-current-location"></i>
                 Address
@@ -149,7 +166,7 @@
                 </li>
               </ul>
             </div>
-            <div class="dropdown btnfilter">
+            <div class="dropdown btnfilter sm-disable" id="btnSaveF">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bx bxs-bookmark"></i>
                 Save filters
@@ -164,7 +181,7 @@
                 </li>
               </ul>
             </div>
-            <div class="dropdown btnfilter">
+            <div class="dropdown btnfilter sm-active">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bx bx-slider rotate"></i>
                 More
@@ -183,10 +200,10 @@
         </div>
         <!--This section is to filter datas in the table, but datas with especifics parameters-->
         <div class="filtertable">
-          <button class="active">All models <span>11</span></button>
-          <button>Today <span>05</span></button>
+          <button class="active">All users <span>11</span></button>
+          <button>Admin users <span>03</span></button>
         </div>
-        <!--This class is show all datas to models, but in diferents sections-->
+        <!--This class is show all datas to users, but in diferents sections-->
         <div class="datatable">
           <div class="infodatatable">
             <p>Showing 21-30 of 88 results</p>
@@ -201,6 +218,7 @@
                 </li>
                 <li class="page-item">
                   <a class="page-link" href="#">1</a>
+                </li>
                 <li class="page-item">
                   <a class="page-link" href="#">2</a>
                 </li>
@@ -220,23 +238,25 @@
             <p>Items per page <span>10</span></p>
           </div>
         </div>
-        <!--In this section are contained the table to show models data-->
+        <!--In this section are contained the table to show users data-->
         <div class="sectiontable">
-          <div class="table-responsive">
-            <table class="table table-hover scroll">
+          <div class=" table-responsive">
+            <table class="table table-hover">
               <!--Here are contained the columns to table-->
               <thead>
                 <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Model name</th>
-                  <th scope="col">Model year</th>
-                  <th scope="col">Brand</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">User</th>
+                  <th scope="col">Password</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">User type</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
-              <tbody id="tbody-rows"></tbody>
+              <tbody id="tbody-rows-users"></tbody>
             </table>
           </div>
+        </div>
       </section>
     </main>
   </div>
@@ -245,11 +265,12 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
   <script src="../../resources/js/sweetalert.min.js"></script>
-  <!--This js script is to add navbar at aside tag-->
-  <script src="../../controllers/Admin/menu.js"></script>
   <!--This js script is to do funcionality some components of bootstrap-->
   <script src="../../controllers/components.js"></script>
-  <script src="../../controllers/admin/model.js"></script>
+  <script src="../../controllers/dashboard/account.js"></script>
+  <!--This js script is to add navbar at aside tag-->
+  <script src="../../controllers/dashboard/menu.js"></script>
+  <script src="../../controllers/dashboard/user.js"></script>
 </body>
 
 </html>

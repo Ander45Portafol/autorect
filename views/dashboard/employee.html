@@ -13,8 +13,7 @@
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
   <!--This is the bootstrap link to use the bootstrap style-->
   <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Users</title>
+  <title>Employees</title>
 </head>
 
 <body>
@@ -22,7 +21,7 @@
   <aside></aside>
   <!--In this class are contained all page-->
   <div class="allinfo">
-    <!--In this class whit the main tag are contained everthing data to users-->
+    <!--In this class whit the main tag are contained everthing data to employees-->
     <main class="data">
       <section>
         <!--This button funtionated to responsive menu-->
@@ -30,24 +29,24 @@
         <!--This class is to structured the top section at the page-->
         <div class="topmain">
           <div class="texttop">
-            <p>USERS</p>
+            <p>EMPLOYEES</p>
           </div>
           <div class="buttonstop">
-            <button class="stop" data-tooltip="btnprueba">Export <i class="bx bx-export"></i></button>
-            <button class="stop">Print <i class="bx bxs-printer"></i></button>
+            <button>Export <i class="bx bx-export"></i></button>
+            <button>Print <i class="bx bxs-printer"></i></button>
             <!--This button is to open modal, to do a insert at the table-->
-            <button type="button" id="red" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="createUser()">
-              <i class="bx bxs-plus-circle"></i>New User
+            <button type="button" class="btn" id="red-employee" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+              onclick="createEmployee()">
+              <i class="bx bxs-plus-circle"></i> New Employee
             </button>
 
             <!-- Modal -->
-            <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-              aria-hidden="true">
+            <div class="modal fade modal-xl" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <!--This class is to modify the header section at the modal-->
                   <div class="modal-header">
-                    <!--In this class charge the title modal-->
                     <p class="modal-title" id="exampleModalLabel"></p>
                     <!--This button is to close the modal-->
                     <button type="button" id="btnclose" data-bs-dismiss="modal" aria-label="Close">
@@ -55,88 +54,121 @@
                     </button>
                   </div>
                   <!--In this class are add elements like inputs, buttons, etc-->
-                  <form class="modal-body modal-U" id="user-form" method="post">
-                    <div class="section1">
-                      <input type="number" name="id" id="id">
-                      <div class="row">
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="text"  id="username" name="username" required />
-                            <div class="underline"></div>
-                            <label>Username</label>
+                  <div class="modal-body">
+                    <form id="save-form" method="post" enctype="multipart/form-data">
+                      <!--This class is to add inputs or selects-->
+                      <div class="Esection1">
+                        <div class="row">
+                          <div class="col">
+                            <input type="text" class="hide" id="id" name="id">
                           </div>
                         </div>
-                        <div class="col">
-                          <div class="input-data">
-                            <input type="password" id="password" name="password" required />
-                            <div class="underline"></div>
-                            <label>Password</label>
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required id="Employee_name" name="employee_name" />
+                              <div class="underline"></div>
+                              <label>Name</label>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="select-data">
-                            <label>Employee</label>
-                            <div class="select">
-                              <select name="employee" id="Employee"></select>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required id="Employee_lastname" name="employee_lastname" />
+                              <div class="underline"></div>
+                              <label>Lastname</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required id="Employee_dui" name="employee_dui" />
+                              <div class="underline"></div>
+                              <label>DUI</label>
                             </div>
                           </div>
                         </div>
-                        <div class="col">
-                          <div class="select-data">
-                            <label>User type</label>
-                            <div class="select">
-                              <select name="user_type" id="user_type"></select>
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required id="Employee_phone" name="employee_phone" />
+                              <div class="underline"></div>
+                              <label>Phone</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="text" required id="Employee_email" name="employee_email" />
+                              <div class=" underline">
+                              </div>
+                              <label>Email</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-data">
+                              <input type="date" required id="Employee_date" name="employee_date" />
+                              <div class="underline"></div>
+                              <label>Birth day</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="select-data">
+                              <label>Type</label>
+                              <div class="select">
+                                <select name="Types" id="types"></select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-6" id="caddress">
+                            <div class="input-data">
+                              <input type="text" required id="Employee_address" name="employee_address" />
+                              <div class="underline"></div>
+                              <label>Address</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6" id="switch-state-user">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">State Employee</label>
+                            <div class="form-check form-switch">
+                              <input class="form-check-input" type="checkbox" role="switch" name="state-employee" id="flexSwitchCheckDefault" checked>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row row-final">
+                          <!--This classi is to show buttons-->
+                          <div class="col col-btn">
+                            <div class="btns">
+                              <button id="clean">
+                                <i class="bx bxs-eraser" onclick="Clean()"></i>CLEAN
+                              </button>
+                              <button id="adduser">
+                                <i class="bx bxs-plus-circle"></i>ADD
+                              </button>
+                              <button id="update">
+                                <i class="bx bxs-plus-circle"></i>CONFIRM
+                              </button>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col-6" id="switch-state-user">
-                          <label class="form-check-label" for="flexSwitchCheckDefault">State User</label>
-                          <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" name="state_user" id="flexSwitchCheckDefault" checked>
-                          </div>
-                        </div>
-                        <div class="col-6">
-                          <input type="file" name="imageUser" id="file" accept=".jpg, .png">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="section2">
-                      <input type="file" name="imagen" id="archivo">
-                      <input type="button" id="button" value="Subir imagen" class="btnimagen" onclick="openFile()">
-                      
-                      <div class="imagen"></div>
-                      <div class="btns">
-                        <button id="clean">
-                          <i class="bx bxs-eraser"></i>CLEAN
-                        </button>
-                        <button id="adduser" type="submit">
-                          <i class="bx bxs-plus-circle"></i>ADD USER
-                        </button>
-                        <button id="update" type="submit">
-                          <i class='bx bxs-bookmark-plus'></i>CONFIRM
-                        </button>
-                      </div>
-                    </div>
-                  </form>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!--This section are all relationated with filters to looking for datas at the users-->
+        <!--This section are all relationated with filters to looking for datas at the employees-->
         <div class="searchsection">
           <form class="search" id="form-search" method="post">
             <button type="submit" class="button-search"><i class="bx bx-search"></i></button>
-            <input type="text" name="search" placeholder="Username..." />
+            <input type="text" name="search" placeholder="Search name/email" />
             <i class="bx bx-slider"></i>
           </form>
           <div class="buttonsearch">
-            <input type="date" class="btnfilter sm-disable" />
-            <div class="dropdown btnfilter sm-disable">
+            <input type="date" class="btnfilter" />
+            <div class="dropdown btnfilter">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bx bxs-purchase-tag"></i>
                 Status
@@ -151,7 +183,7 @@
                 </li>
               </ul>
             </div>
-            <div class="dropdown btnfilter sm-disable" id="btn-address">
+            <div class="dropdown btnfilter">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bx bx-current-location"></i>
                 Address
@@ -166,7 +198,7 @@
                 </li>
               </ul>
             </div>
-            <div class="dropdown btnfilter sm-disable" id="btnSaveF">
+            <div class="dropdown btnfilter">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bx bxs-bookmark"></i>
                 Save filters
@@ -181,7 +213,7 @@
                 </li>
               </ul>
             </div>
-            <div class="dropdown btnfilter sm-active">
+            <div class="dropdown btnfilter">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bx bx-slider rotate"></i>
                 More
@@ -200,8 +232,8 @@
         </div>
         <!--This section is to filter datas in the table, but datas with especifics parameters-->
         <div class="filtertable">
-          <button class="active">All users <span>11</span></button>
-          <button>Admin users <span>03</span></button>
+          <button class="active">All employees <span>11</span></button>
+          <button>Supervisors <span>03</span></button>
         </div>
         <!--This class is show all datas to users, but in diferents sections-->
         <div class="datatable">
@@ -240,22 +272,23 @@
         </div>
         <!--In this section are contained the table to show users data-->
         <div class="sectiontable">
-          <div class=" table-responsive">
-            <table class="table table-hover">
-              <!--Here are contained the columns to table-->
-              <thead>
-                <tr>
-                  <th scope="col">Image</th>
-                  <th scope="col">User</th>
-                  <th scope="col">Password</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">User type</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="tbody-rows-users"></tbody>
-            </table>
-          </div>
+          <table class="table table-hover">
+            <!--Here are contained the columns to table-->
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">DUI</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Status</th>
+                <th scope="col">Employee type</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-rows"></tbody>
+          </table>
         </div>
       </section>
     </main>
@@ -267,10 +300,10 @@
   <script src="../../resources/js/sweetalert.min.js"></script>
   <!--This js script is to do funcionality some components of bootstrap-->
   <script src="../../controllers/components.js"></script>
-  <script src="../../controllers/admin/account.js"></script>
+  <script src="../../controllers/dashboard/account.js"></script>
   <!--This js script is to add navbar at aside tag-->
-  <script src="../../controllers/Admin/menu.js"></script>
-  <script src="../../controllers/admin/user.js"></script>
+  <script src="../../controllers/dashboard/menu.js"></script>
+  <script src="../../controllers/dashboard/employees.js"></script>
 </body>
 
 </html>
