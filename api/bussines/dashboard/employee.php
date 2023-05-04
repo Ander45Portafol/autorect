@@ -1,13 +1,20 @@
 <?php
 
-require_once('../../enitites/dto/employee.php');
+//Dependencies
+require_once('../../entities/dto/employee.php');
 
+//Validate what action is being done
 if (isset($_GET['action'])) {
     session_start();
+    //Object to mention the functions of the queries
     $employee_model = new Employee;
+    //Variable to show the answer of the actions
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
+    //Validate if the session is started
     if (isset($_SESSION['id_usuario'])) {
+        //Actions
         switch ($_GET['action']) {
+            //Action to fill the table
             case 'readAll':
                 if ($result['dataset'] = $employee_model->readAll()) {
                     $result['status'] = 1;
@@ -18,6 +25,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data to show';
                 }
                 break;
+            //Action to read one employee
             case 'readOne':
                 if (!$employee_model->setId($_POST['id'])) {
                     $result['exception'] = 'Wrong employee';
@@ -29,6 +37,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'The employee does not exist';
                 }
                 break;
+            //Action to read the types of employees
             case 'readTypes':
                 if ($result['dataset'] = $employee_model->readTypes()) {
                     $result['status'] = 1;
@@ -37,6 +46,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            //Action to search employees
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -51,6 +61,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data to show';
                 }
                 break;
+            //Action to create a employee
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$employee_model->setEmployeeName($_POST['employee_name'])) {
@@ -82,6 +93,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data';
                 }
                 break;
+            //Action to update a employee
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$employee_model->setId($_POST['id'])) {
@@ -117,6 +129,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'There was an error on update proccess';
                 }
                 break;
+            //Action to delete a employee
             case 'delete':
                 if (!$employee_model->setId($_POST['id_empleado'])) {
                     $result['exception'] = 'Wrong employee';
@@ -129,14 +142,19 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            //Default case if the action being performed does not exist
             default:
                 $result['exception'] = 'The action can not be performed';
                 break;
         }
+        //Indicate the content type
+        header('content-type: application/json; charset=utf-8');
+         //Show the result in format JSON and return at the controller
         print(json_encode($result));
     } else {
         print(json_encode('Access denied'));
     }
 } else {
+    //If nothing is compilating, the api show this message in format JSON
     print(json_encode('File unavaliable'));
 }

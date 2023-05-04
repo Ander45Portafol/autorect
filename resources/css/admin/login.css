@@ -16,7 +16,7 @@ body .imagen {
 }
 
 body {
-    background-image: url(../../images/logos/car.jpg);
+    background-image: url(../../images/car.jpg);
     background-size: cover;
     overflow: visible;
 }
