@@ -1,6 +1,6 @@
 <?php
 //Dependencies
-require_once('../../enitites/dto/models.php');
+require_once('../../entities/dto/models.php');
 
 //Validate what action is being done
 if (isset($_GET['action'])) {
@@ -40,7 +40,7 @@ if (isset($_GET['action'])) {
             case 'readBrand':
                 if ($result['dataset'] = $models_model->readBrand()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Data wasfound';
+                    $result['message'] = 'Data was found';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {

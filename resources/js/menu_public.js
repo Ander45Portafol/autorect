@@ -5,7 +5,7 @@ header.innerHTML = `
 <nav class="navbar fixed-top navbar-expand-lg navbar2">
 <div class="container">
     <a class="navbar-brand" href="#">
-        <img class="logo-navbar" src="../../resources/images/logos/logo_svg.svg">
+        <img class="logo-navbar" src="../../resources/images/logo_svg.svg">
     </a>
     <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -13,7 +13,7 @@ header.innerHTML = `
         <span class="navbar-toggler-icon"></span>
     </button>
     <a type="button" href="cart.html" class="btn-cart order-lg-2">
-        <img src="../../resources/images/public/cart.svg" alt="cart">
+        <img src="../../resources/images/cart.svg" alt="cart">
     </a>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto order-lg-1">
@@ -31,7 +31,7 @@ header.innerHTML = `
             </li>
         </ul>
         <a type="button" class="btn-login btn btn-light btn-xs order-lg-3" href="login_public.html">
-            LOGIN <img class="img-btn-login" src="../../resources/images/public/login_icono.svg" alt="loginimg">
+            LOGIN <img class="img-btn-login" src="../../resources/images/login_icono.svg" alt="loginimg">
         </a>
     </div>
 </div>

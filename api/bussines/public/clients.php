@@ -1,24 +1,24 @@
 <?php
 //Dependencies
-require_once('../../entities/dto/users.php');
+require_once('../../entities/dto/clients.php');
 
 //Validate what action is being done
 if (isset($_GET['action'])) {
     session_start();
     //Object to mention the functions of the queries
-    $user_model = new User;
+    $client_model = new     Client;
     //Variable to show the answer of the actions
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     //Validate if the session is started
-    if (isset($_SESSION['id_usuario'])) {
+    if (isset($_SESSION['id_cliente'])) {
         $result['session'] = 1;
         //Actions
         switch ($_GET['action']) {
             //Action to get the active user
             case 'getUser':
-                if (isset($_SESSION['nombre_usuario'])) {
+                if (isset($_SESSION['usuario_cliente'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['nombre_usuario'];
+                    $result['username'] = $_SESSION['usuario_cliente'];
                 }
                 break;
             //Action to log out
