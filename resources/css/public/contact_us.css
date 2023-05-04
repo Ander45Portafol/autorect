@@ -57,6 +57,18 @@
     padding: 50px;
     height: 70vh;
     background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-title{
+    width: 100%;
+}
+
+.submit{
+    width: 100%;
 }
 
 /*Subtitles style*/
@@ -90,7 +102,7 @@ iframe{
 
 /*Button for submit style*/
 .btn-submit{
-    margin-top: 3vh;
+    margin-top: 4.5vh;
     float: right;
     background-color: var(--focus-color);
     border: none;
