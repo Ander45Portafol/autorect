@@ -55,7 +55,7 @@
 /*Style for the container of the form*/
 .cont-form{
     padding: 50px;
-    height: 65vh;
+    height: 70vh;
     background-color: var(--secondary-color);
 }
 
@@ -84,13 +84,13 @@ h4{
 
 /*Map size*/
 iframe{
-    height: 65vh;
+    height: 70vh;
     width: 100%;
 }
 
 /*Button for submit style*/
 .btn-submit{
-    margin-top: 50px;
+    margin-top: 3vh;
     float: right;
     background-color: var(--focus-color);
     border: none;
@@ -114,15 +114,5 @@ iframe{
 @media (max-width: 991px) {
     .map-col{
         margin-top: 50px;
-    }
-}
-
-@media (max-height: 1250px){
-    .cont-form{
-        height: 75vh;
-    }
-
-    iframe{
-        height: 75vh;
     }
 }
