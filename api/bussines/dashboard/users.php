@@ -1,26 +1,27 @@
 <?php
-//This url is to use data, of the atributes and queries through dependecies
-require_once('../../enitites/dto/users.php');
-//This if is to validate the action is to do
+//Dependencies
+require_once('../../entities/dto/users.php');
+
+//Validate what action is being done
 if (isset($_GET['action'])) {
     session_start();
-    //Object to mecioned functions of the queries, through this object
+    //Object to mention the functions of the queries
     $user_model = new User;
-    //This variable is to show the answer at the actions
+    //Variable to show the answer of the actions
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
-    //Is to verficate if the session is started
+    //Validate if the session is started
     if (isset($_SESSION['id_usuario'])) {
         $result['session'] = 1;
-        //Is to verificated that action is to do
+        //Actions
         switch ($_GET['action']) {
-            //This action is to capture the user data
+            //Action to get the active user
             case 'getUser':
                 if (isset($_SESSION['nombre_usuario'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['nombre_usuario'];
                 }
                 break;
-            //This action is to close session
+            //Action to log out
             case 'logOut':
                 if (session_destroy()) {
                     $result['status'] = 1;
@@ -29,7 +30,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'There was a problem with the session';
                 }
                 break;
-            //This action is to show all data of the user
+            //Action to read the user data
             case 'readProfile':
                 if ($reuslt['dataset'] = $user->readProfile()) {
                     $result['status'] = 1;
@@ -39,17 +40,17 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'The user does not exist';
                 }
                 break;
-            //In this action to can edit all data respective at the user
+            //Action to edit the data of the user
             case 'editProfile':
                 $_POST = Validator::validateForm($_POST);
                 if (!$user_model->setUserName($_POST[''])) {
                     # code...
                 }
                 break;
-            //This action is to could change your password
+            //Action to change the password
             case 'changePassword':
                 break;
-            //This action is to charger datas in the table
+            //Action to fill the table
             case 'readAll':
                 if ($result['dataset'] = $user_model->readAll()) {
                     $result['status'] = 1;
@@ -58,7 +59,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is to show the employees data in te select
+            //Action to read the employees
             case 'readEmployees':
                 if ($result['dataset'] = $user_model->readEmployees()) {
                     $result['status'] = 1;
@@ -67,7 +68,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is to show the types of users data in te select
+            //Action to read the users types
             case 'readType_Users':
                 if ($result['dataset'] = $user_model->readType_Users()) {
                     $result['status'] = 1;
@@ -76,7 +77,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is to search the especific data
+            //Action to search for users
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -91,7 +92,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data';
                 }
                 break;
-            //This action is to create a new user and verificate data to send at the queries file
+            //Action to create a user
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$user_model->setUserName($_POST['username'])) {
@@ -123,7 +124,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is verificate the exists of the user
+            //Action to read one user
             case 'readOne':
                 if (!$user_model->setId($_POST['id'])) {
                     $result['exception'] = 'Wrong user';
@@ -135,7 +136,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'The user does not exist';
                 }
                 break;
-            //This action is to update a user and verificate data to send at the queries file
+            //Action to update a user
             case 'update':
                 $_POST = Validator::validateForm(($_POST));
                 if (!$user_model->setId($_POST['id'])) {
@@ -172,7 +173,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is to delete data of the user
+            //Action to delete a user
             case 'delete':
                 if ($_POST['id_usuario'] == $_SESSION['id_usuario']) {
                     $result['exception'] = 'You can delete your user';
@@ -190,7 +191,7 @@ if (isset($_GET['action'])) {
             //Case default if anything is executed
             default:
                 $result['exception'] = 'The action can not be performed';
-                break;
+            break;
         }
     } else {
         //This switch is to validate actions when the session is not active
@@ -218,20 +219,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Wrong username';
                 } elseif ($user_model->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Error in authentication';
+                    $result['message'] = 'Login successfully';
                     $_SESSION['id_usuario'] = $user_model->getId();
                     $_SESSION['nombre_usuario'] = $user_model->getUserName();
                 } else {
                     $result['exception'] = 'Wrong password';
                 }
                 break;
-            //If any action is realized is active the default action
+            //Default case if the action being performed does not exist
             default:
                 $result['exception'] = 'The action can not be performed';
                 break;
         }
     }
-    //indicate the tyoe of the content to show and yours respective strings
+    //Indicate the content type
     header('content-type: application/json; charset=utf-8');
     //Show the result in format JSON and return at the controller
     print(json_encode($result));
