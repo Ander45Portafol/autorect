@@ -1,7 +1,7 @@
 //In this variable is used to manipulated the data charger in the table
 const TBODY_ROWS=document.getElementById('tbody-rows');
 //In this variable are charging the titule in the modal
-const MODEL_TITLE=document.getElementById('modal-title');
+const MODAL_TITLE=document.getElementById('modal-title');
 //In this variable is create to manipulated the form data
 const FORMU=document.getElementById('save-form-M');
 //This variable is create to make funcionated the search method
@@ -9,6 +9,7 @@ const SEARCH_FORM=document.getElementById('form-search')
 //In this variable are using the Api
 const MODELS_API='/bussines/dashboard/models.php';
 
+const BRANDS_API='/bussines/dashboard/brands.php';
 //This event is to charger table in the formulary
 document.addEventListener('DOMContentLoaded', ()=>{
     fillTable();
@@ -68,7 +69,7 @@ async function fillTable(form=null){
 //This function is to change somethings when the process are create
 function createModel(){
     MODAL_TITLE.textContent='CREATE MODEL';
-    fillSelect(MODELS_API,'readBrand','brand');
+    fillSelect(BRANDS_API,'readAll','brand');
     document.getElementById('update').style.display='none';
     document.getElementById('adduser').style.display='block';
     document.getElementById('clean').style.display='block';
