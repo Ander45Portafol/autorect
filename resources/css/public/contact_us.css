@@ -87,6 +87,8 @@ h4{
 /*Size of the message imput*/
 .message-form{
     height: 15vh;
+    min-height: 15vh !important;
+    max-height: 30vh;   
 }
 
 /*Align map*/

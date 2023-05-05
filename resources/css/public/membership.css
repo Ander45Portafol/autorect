@@ -1,0 +1,59 @@
+/*Local font usage*/
+@import url(../../fonts/Roboto/Roboto-Regular.ttf);
+
+/*Roboto + style for all*/
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/*Root variables (colors)*/
+:root{
+    --primary-color: #FFFFFF;
+    --secondary-color: #1F1F1F;
+    --focus-color: #822727;
+    --light-red-color: #8B3A3A;
+}
+
+/*Main container*/
+.main-cont{
+    margin-top: 66px;
+}
+
+.title{
+    margin-top: 50px;
+    font-weight: bold;
+    color: var(--focus-color);
+}
+
+.row{
+    margin-top: 70px;
+}
+
+.card{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: 430px !important;
+    background-color: var(--secondary-color);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.card-header{
+    border-bottom: none;
+    color: white;
+    background-color: var(--secondary-color);
+    font-size: 32px;
+}
+
+.memb-col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-price{
+    color: #9C9A9A;
+}
