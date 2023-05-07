@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     if (JSON.session) {
         location.href='admin.html'
     }else if (JSON.status) {
-        sweetAlert(4,JSON.message,true)
+        
     }else{
         //The SING UP form is visible
         SHOWUP_LOGIN.style.display='none';
