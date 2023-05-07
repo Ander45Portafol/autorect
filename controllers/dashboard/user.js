@@ -52,12 +52,13 @@ async function fillTable(form=null){
     const JSON=await dataFetch(USERS_API,action,form);
     if (JSON.status) {
         JSON.dataset.forEach(row => {
+            (row.estado_usuario) ? estado = 'active' : estado = 'inactive';
             TBODY_ROWS.innerHTML+=`
                 <tr>
                     <td><img src="${SERVER_URL}images/users/${row.imagen_usuario}" class="image_product"></td>
                     <td>${row.nombre_usuario}</td>
                     <td>${row.clave_usuario}</td>
-                    <td>${row.estado_usuario}</td>
+                    <td>${estado}</td>
                     <td>${row.tipo_usuario}</td>
                     <td>
                         <div class="actions">

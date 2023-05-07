@@ -91,9 +91,8 @@ class ClientQueries
     //This function is show all datas of the clients is used to show data in the table
     public function readAll()
     {
-        $query = "SELECT id_cliente,nombre_cliente, apellido_cliente, usuario_cliente, dui_cliente,telefono_cliente 
-                  FROM clientes 
-                  WHERE estado_cliente = true";
+        $query = "SELECT id_cliente,nombre_cliente, apellido_cliente, usuario_cliente, dui_cliente,estado_cliente,telefono_cliente 
+                  FROM clientes";
         return Database::getRows($query);
     }
 
@@ -120,7 +119,22 @@ class ClientQueries
         $params = array("%$value%", "%$value%");
         return Database::getRows($query, $params);
     }
-
+    public function FalseClient()
+    {
+        $query = "UPDATE clientes 
+                  SET estado_cliente = false 
+                  WHERE id_cliente = ?";
+        $params = array($this->client_id);
+        return Database::executeRow($query, $params);
+    }
+    public function TrueClient()
+    {
+        $query = "UPDATE clientes 
+                  SET estado_cliente = true 
+                  WHERE id_cliente = ?";
+        $params = array($this->client_id);
+        return Database::executeRow($query, $params);
+    }
     //This function is to delete the client data
     public function deleteRow()
     {

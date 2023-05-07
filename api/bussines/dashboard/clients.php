@@ -39,6 +39,31 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data to show';
                 }
                 break;
+                case 'FalseClient':
+                    if (!$client_model->setCLientId($_POST['id_cliente'])) {
+                        $result['exception'] = 'Wrong client';
+                    } elseif (!$data = $client_model->readOne()) {
+                        $result['exception'] = 'The valoration does not exist';
+                    } elseif ($client_model->FalseClient()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'The client was deleted';
+                    } else {
+
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
+                case 'TrueClient':
+                    if (!$client_model->setCLientId($_POST['id_cliente'])) {
+                        $result['exception'] = 'Wrong client';
+                    } elseif (!$data = $client_model->readOne()) {
+                        $result['exception'] = 'The valoration does not exist';
+                    } elseif ($client_model->TrueClient()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'The client was deleted';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
             //This action is to delete data of the client
             case 'delete':
                 if (!$client_model->setCLientId($_POST['id_cliente'])) {

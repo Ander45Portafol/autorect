@@ -14,7 +14,7 @@ const TITLE_MODAL = document.getElementById('modal-title');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 //Constant to charger datas in the table to valorations datas
 const TBODY_VALORATIONS = document.getElementById('tbody-valorations');
-const stockplus=document.getElementById('addExists');
+const stockplus_p=document.getElementById('addExists');
 
 //Event to show the datas in the table
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,13 +34,16 @@ SEARCH_FORM.addEventListener('submit', (event) => {
     const FORM = new FormData(SEARCH_FORM);
     fillTable(FORM);
 })
+stockplus_p.addEventListener('change',(event)=>{
+    updateStock();
+})
 //This event is to programming that send all respective datas at the Api
 SAVE_FORM.addEventListener('submit', async (event) => {
     event.preventDefault();
-    if (action=='update') {
+    (document.getElementById('id').value) ? action = 'update' : action = 'create';
+    if(action=='update'){
         updateStock();
     }
-    (document.getElementById('id').value) ? action = 'update' : action = 'create';
     const FORM = new FormData(SAVE_FORM);
     const JSON = await dataFetch(PRODUCTS_API, action, FORM);
     if (JSON.status) {
@@ -204,19 +207,17 @@ async function statusValoration(id, estado, id_product) {
         }
     }
 }
-
 //Function to update the stock of the product 
 function updateStock(){
-    let existencias=parseInt(document.getElementById('addExists').value);
+    let stockplus=parseInt(document.getElementById('addExists').value);
     let numberdata=parseInt(document.getElementById('stock').value);
-    if (existencias==0) {
+    if (stockplus==0) {
         let newdata=numberdata;
         document.getElementById('newstock').value=newdata;
-    }else if (existencias<0) {
-        let newdata=numberdata-existencias;
-        document.getElementById('newstock').value=newdata;
+    }else if (stockplus<0) {
+        sweetAlert(2,JSON.exception,false);
     }else{
-        let newdata=existencias+numberdata;
+        let newdata=stockplus+numberdata;
         document.getElementById('newstock').value=newdata;
     }
 }

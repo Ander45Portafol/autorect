@@ -22,18 +22,22 @@ async function fillTable(form=null){
     const JSON=await dataFetch(CLIENTS_API,action,form);
     if (JSON.status) {
         JSON.dataset.forEach(row=>{
+            (row.estado_cliente) ? estado = 'active' : estado = 'inactive';
             TBODY_ROWS.innerHTML+=`
                 <tr>
-                    <td>${row.id_cliente}</td>
                     <td>${row.nombre_cliente}</td>
                     <td>${row.apellido_cliente}</td>
                     <td>${row.usuario_cliente}</td>
                     <td>${row.dui_cliente}</td>
+                    <td>${estado}</td>
                     <td>${row.telefono_cliente}</td>
                     <td class="action-btn">
                         <div class="actions">
+                            <button class="delete" id="deletebtn" onclick="statusClient(${row.id_cliente},${row.estado_cliente})">
+                                <i class='bx bx-refresh'></i>
+                            </button>
                             <button class="delete" id="deletebtn" onclick="deleteClient(${row.id_cliente})">
-                            <i class="bx bxs-trash"></i>
+                                <i class="bx bxs-trash"></i>
                             </button>
                         </div>
                     </td>
@@ -56,6 +60,32 @@ async function deleteClient(id){
             sweetAlert(1,JSON.message,true)
         }else{
             sweetAlert(2,JSON.exception,false)
+        }
+    }
+}
+
+async function statusClient(id,estado) {
+    const RESPONSE = await confirmAction('Do you want to change the Client rating permanently?')
+    if (RESPONSE) {
+        const FORM = new FormData()
+        FORM.append('id_cliente', id)
+        if (estado === true) {
+            const JSON = await dataFetch(CLIENTS_API, 'FalseClient', FORM)
+            if (JSON.status) {
+                sweetAlert(1, JSON.message, true);
+                fillTable();
+            }
+            else {
+                sweetAlert(2, JSON.exception, false)
+            }
+        } else if (estado === false) {
+            const JSON = await dataFetch(CLIENTS_API, 'TrueClient', FORM)
+            if (JSON.status) {
+                fillTable();
+                sweetAlert(1, JSON.message, true);
+            } else {
+                sweetAlert(2, JSON.exception, false)
+            }
         }
     }
 }
