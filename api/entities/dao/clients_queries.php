@@ -9,7 +9,7 @@ class ClientQueries
     public function checkUser($alias)
     {
         //select with parameters to compare (usuario_cliente)
-        $query = "SELECT id_cliente 
+        $query = "SELECT id_cliente, estado_cliente
                   FROM clientes 
                   WHERE usuario_cliente = ?";
         //setting paramethers with the information that was colected
@@ -20,6 +20,7 @@ class ClientQueries
         if ($data) {
             //returning information true
             $this->client_id = $data['id_cliente'];
+            $this->status=$data['estado_cliente'];
             $this->user_name = $alias;
             return true;
         } else {
