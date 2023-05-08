@@ -30,16 +30,20 @@
                 <p>Let's login to your account <span>.</span></p>
             </div>
             <div class="textlogin">
-                <form action="" class="formlogin">
+                <form action="" class="formlogin" id="formlogin">
                     <div class="input-data ">
-                        <input type="text" required>
+                        <input type="text" id="username" name="username" required>
                         <div class="underline"></div>
                         <label>Username</label>
                     </div>
                     <div class="input-data" id="pass">
-                        <input type="password" required>
+                        <input type="password" id="password" name="password" required>
                         <div class="underline"></div>
                         <label>Password</label>
+                    </div>
+                    <div class="buttons">
+                        <button type="submit" id="btnlogin">Login</button>
+                        <button id="btnregistrer" onclick="changepanelRegistrer()">Registrer</button>
                     </div>
                 </form>
             </div>
@@ -51,11 +55,6 @@
                 <div class="forget">
                     <a href="">Forgot password?</a>
                 </div>
-            </div>
-            <!-- Login button -->
-            <div class="buttons">
-                <a type="button" id="btnlogin" href="index.html">Login</a>
-                <button id="btnregistrer" onclick="changepanelRegistrer()">Registrer</button>
             </div>
         </div>
         <!-- Register form -->
@@ -69,7 +68,8 @@
                 <p id="final">Already a member? <span><a href="">Log in</a></span></p>
             </div>
             <div class="infoRegistrer">
-                <form action="" class="data-registrer">
+                <form action="" class="data-registrer" id="data-registrer">
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
                     <div class="nameRegistrer">
                         <div class="input-data">
                             <input type="text" required>
@@ -105,6 +105,11 @@
 
     <!-- JS -->
     <script src="../../resources/js/login.js"></script>
+    <script src="../../resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/public/account.js"></script>
+    <script src="../../controllers/components.js"></script>
+    <script src="../../controllers/public/login.js"></script>
+    <script src="../../controllers/public/singup.js"></script>
 </body>
 
 </html>

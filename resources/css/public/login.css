@@ -121,7 +121,6 @@ transform: scaleX(1);
 .contenedor .buttons{
     display: flex;
     flex-direction: row;
-    margin-left:8.6rem ;
     margin-top: 2rem;
 }
 .contenedor .buttons #btnlogin{
