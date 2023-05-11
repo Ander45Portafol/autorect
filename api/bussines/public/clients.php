@@ -1,242 +1,109 @@
 <?php
-//Dependencies
 require_once('../../entities/dto/clients.php');
 
-//Validate what action is being done
+// Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
+    // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
-    //Object to mention the functions of the queries
-    $client_model = new     Client;
-    //Variable to show the answer of the actions
-    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
-    //Validate if the session is started
+    // Se instancia la clase correspondiente.
+    $client_model = new Client;
+    // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
+    $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null);
+    // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
     if (isset($_SESSION['id_cliente'])) {
         $result['session'] = 1;
-        //Actions
+        // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
-            //Action to get the active user
             case 'getUser':
                 if (isset($_SESSION['usuario_cliente'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['usuario_cliente'];
+                } else {
+                    $result['exception'] = 'nombre de usuario indefinido';
                 }
                 break;
-            //Action to log out
             case 'logOut':
                 if (session_destroy()) {
                     $result['status'] = 1;
-                    $result['message'] = 'The session was deleted successfully';
+                    $result['message'] = 'Sesión eliminada correctamente';
                 } else {
-                    $result['exception'] = 'There was a problem with the session';
+                    $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
                 break;
-            //Action to read the user data
-            case 'readProfile':
-                if ($reuslt['dataset'] = $user->readProfile()) {
-                    $result['status'] = 1;
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'The user does not exist';
-                }
-                break;
-            //Action to edit the data of the user
-            case 'editProfile':
-                $_POST = Validator::validateForm($_POST);
-                if (!$user_model->setUserName($_POST[''])) {
-                    # code...
-                }
-                break;
-            //Action to change the password
-            case 'changePassword':
-                break;
-            //Action to fill the table
-            case 'readAll':
-                if ($result['dataset'] = $user_model->readAll()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Data was found';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            //Action to read the employees
-            case 'readEmployees':
-                if ($result['dataset'] = $user_model->readEmployees()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'The data was loaded';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            //Action to read the users types
-            case 'readType_Users':
-                if ($result['dataset'] = $user_model->readType_Users()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Data was found';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            //Action to search for users
-            case 'search':
-                $_POST = Validator::validateForm($_POST);
-                if ($_POST['search'] == '') {
-                    $result['status'] = 1;
-                    $result['dataset'] = $user_model->readAll();
-                } elseif ($result['dataset'] = $user_model->searchRows($_POST['search'])) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Data was found';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No data';
-                }
-                break;
-            //Action to create a user
-            case 'create':
-                $_POST = Validator::validateForm($_POST);
-                if (!$user_model->setUserName($_POST['username'])) {
-                    $result['exception'] = 'The user does not exist';
-                } elseif (!$user_model->setUserStatus(isset($_POST['state_user']) ? 1 : 0)) {
-                    $result['exception'] = 'Wrong status';
-                } elseif (!isset($_POST['employee'])) {
-                    $result['exception'] = 'Select an employee';
-                } elseif (!$user_model->setEmployee($_POST['employee'])) {
-                    $result['exception'] = 'Wrong employee';
-                } elseif (!isset($_POST['user_type'])) {
-                    $result['exception'] = 'Select an user type';
-                } elseif (!$user_model->setUserType($_POST['user_type'])) {
-                    $result['exception'] = 'The type is incorrect';
-                } elseif (!$user_model->setPasswordUser($_POST['password'])) {
-                    $result['exception'] = Validator::getAPasswordError();
-                } elseif (!is_uploaded_file($_FILES['imageUser']['tmp_name'])) {
-                    $result['exception'] = 'Select an image';
-                } elseif (!$user_model->setImgUser($_FILES['imageUser'])) {
-                    $result['exception'] = Validator::getFileError();
-                } elseif ($user_model->createRow()) {
-                    $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['imageUser'], $user_model->getRoute(), $user_model->getUserImg())) {
-                        $result['message'] = 'The user was created successfully';
-                    } else {
-                        $result['message'] = 'The user was created without image';
-                    }
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            //Action to read one user
-            case 'readOne':
-                if (!$user_model->setId($_POST['id'])) {
-                    $result['exception'] = 'Wrong user';
-                } elseif ($result['dataset'] = $user_model->readOne()) {
-                    $result['status'] = 1;
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'The user does not exist';
-                }
-                break;
-            //Action to update a user
-            case 'update':
-                $_POST = Validator::validateForm(($_POST));
-                if (!$user_model->setId($_POST['id'])) {
-                    $result['exception'] = 'Wrong user';
-                } elseif (!$data = $user_model->readOne()) {
-                    $result['exception'] = 'The user does not exist';
-                } elseif (!$user_model->setUserName($_POST['username'])) {
-                    $result['exception'] = 'Wrong username';
-                } elseif (!$user_model->setPasswordUser($_POST['password'])) {
-                    $result['exception'] = 'Wrong password';
-                } elseif (!$user_model->setUserStatus(isset($_POST['state_user']) ? 1 : 0)) {
-                    $result['exception'] = 'Wrong status';
-                } elseif (!$user_model->setEmployee($_POST['employee'])) {
-                    $result['exception'] = 'Select an employee';
-                } elseif (!$user_model->setUserType($_POST['user_type'])) {
-                    $result['exception'] = 'Select an user type';
-                } elseif (!is_uploaded_file($_FILES['imageUser']['tmp_name'])) {
-                    if ($user_model->updateRow($data['imagen_usuario'])) {
-                        $result['status'] = 1;
-                        $Result['message'] = 'THe user was updated successfully';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                } elseif (!$user_model->setImgUser($_FILES['imageUser'])) {
-                    $result['exception'] = Validator::getFileError();
-                } elseif ($user_model->updateRow($data['imagen_usuario'])) {
-                    $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['imageUser'], $user_model->getRoute(), $user_model->getUserImg())) {
-                        $Result['message'] = 'The user was updated successfully';
-                    } else {
-                        $Result['message'] = 'The user was updated without image';
-                    }
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            //Action to delete a user
-            case 'delete':
-                if ($_POST['id_usuario'] == $_SESSION['id_usuario']) {
-                    $result['exception'] = 'You can delete your user';
-                } elseif (!$user_model->setId($_POST['id_usuario'])) {
-                    $result['exception'] = 'Wrong user';
-                } elseif (!$user_model->readOne()) {
-                    $result['exception'] = 'The user does not exist';
-                } elseif ($user_model->deleteRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'The user was deleted successfully';
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            //Case default if anything is executed
             default:
-                $result['exception'] = 'The action can not be performed';
-            break;
+                $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
     } else {
-        //This switch is to validate actions when the session is not active
+        // Se compara la acción a realizar cuando el cliente no ha iniciado sesión.
         switch ($_GET['action']) {
-            //This action is to validate if exists users
-            case 'readUsers':
-                if ($user_model->readAll()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'You must authenticate to login';
-                } else {
-                    $result['exception'] = 'Have to create an user to login';
-                }
-                break;
-            //This action is when don't exists users and this process is to create the first user
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
-                if (!$user->setUser($_POST[''])) {
-                    $result['exception'] = 'Wrong user';
+                $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
+                $ip = $_SERVER['REMOTE_ADDR'];
+
+                $data = array('secret' => $secretKey, 'response' => $_POST['g-recaptcha-response'], 'remoteip' => $ip);
+
+                $options = array(
+                    'http' => array('header'  => "Content-type: application/x-www-form-urlencoded\r\n", 'method' => 'POST', 'content' => http_build_query($data)),
+                    'ssl' => array('verify_peer' => false, 'verify_peer_name' => false)
+                );
+
+                $url = 'https://www.google.com/recaptcha/api/siteverify';
+                $context  = stream_context_create($options);
+                $response = file_get_contents($url, false, $context);
+                $captcha = json_decode($response, true);
+
+                if (!$captcha['success']) {
+                    $result['recaptcha'] = 1;
+                    $result['exception'] = 'No eres humano';
+                } elseif (!$client_model->setName($_POST['nombres'])) {
+                    $result['exception'] = 'Nombres incorrectos';
+                } elseif (!$client_model->setLastname($_POST['apellidos'])) {
+                    $result['exception'] = 'Apellidos incorrectos';
+                } elseif (!$client_model->setClientMail($_POST['correo'])) {
+                    $result['exception'] = 'Correo incorrecto';
+                } elseif (!$client_model->setClientAddress($_POST['direccion'])) {
+                    $result['exception'] = 'Dirección incorrecta';
+                } elseif (!$client_model->setClientDui($_POST['dui'])) {
+                    $result['exception'] = 'DUI incorrecto';
+                } elseif (!$cliente->setNacimiento($_POST['nacimiento'])) {
+                    $result['exception'] = 'Fecha de nacimiento incorrecta';
+                } elseif (!$cliente->setTelefono($_POST['telefono'])) {
+                    $result['exception'] = 'Teléfono incorrecto';
+                } elseif ($_POST['clave'] != $_POST['confirmar_clave']) {
+                    $result['exception'] = 'Claves diferentes';
+                } elseif (!$client_model->setPassword($_POST['clave'])) {
+                    $result['exception'] = Validator::getAPasswordError();
+                } elseif ($cliente->createRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Cuenta registrada correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
                 }
                 break;
-            //This action is to validate the users data like username and password, to active the session
             case 'login':
                 $_POST = Validator::validateForm($_POST);
-                if (!$user_model->checkUser($_POST['username'])) {
-                    $result['exception'] = 'Wrong username';
-                } elseif ($user_model->checkPassword($_POST['clave'])) {
+                if (!$client_model->checkUser($_POST['username'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif (!$client_model->getStatus()) {
+                    $result['exception'] = 'La cuenta ha sido desactivada';
+                } elseif ($client_model->checkPassword($_POST['password'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Login successfully';
-                    $_SESSION['id_usuario'] = $user_model->getId();
-                    $_SESSION['nombre_usuario'] = $user_model->getUserName();
+                    $result['message'] = 'Autenticación correcta';
+                    $_SESSION['id_cliente'] = $client_model->getId();
+                    $_SESSION['correo_cliente'] = $client_model->getMail();
                 } else {
-                    $result['exception'] = 'Wrong password';
+                    $result['exception'] = 'Clave incorrecta';
                 }
                 break;
-            //Default case if the action being performed does not exist
             default:
-                $result['exception'] = 'The action can not be performed';
-                break;
+                $result['exception'] = 'Acción no disponible fuera de la sesión';
         }
     }
-    //Indicate the content type
+    // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
     header('content-type: application/json; charset=utf-8');
-    //Show the result in format JSON and return at the controller
+    // Se imprime el resultado en formato JSON y se retorna al controlador.
     print(json_encode($result));
 } else {
-    //If nothing are compilating, the api show this message in format JSON
-    print(json_encode('File unavaliable'));
+    print(json_encode('Recurso no disponible'));
 }
