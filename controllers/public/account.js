@@ -84,7 +84,7 @@ function changeMenu() {
     var currentPageName = currentPage.substring(currentPage.lastIndexOf('/') + 1);
 
     var nav = document.querySelector('nav');
-    if(currentPageName = 'index.html'){
+    if(currentPageName == "index.html"){
         if (window.innerWidth < 1280) {
             nav.classList.add('navbar2');
         } else {
