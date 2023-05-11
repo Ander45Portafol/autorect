@@ -1,19 +1,3 @@
-/*Function to remove the transparency of the navbar*/ 
-var nav = document.querySelector('nav');
-
-window.addEventListener('scroll', function () {
-  if(this.window.innerWidth < 1280){
-    nav.classList.add('navbar2');
-  }else{
-    if (window.pageYOffset > 200) {
-      nav.classList.add('navbar2');
-    } else {
-      nav.classList.remove('navbar2');
-    }
-  }
-});
-
-
 /*Function to make the carousel responsive*/
 function updateCarousel(){
   var multipleCardCarousel = document.querySelector(

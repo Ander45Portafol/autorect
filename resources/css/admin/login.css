@@ -18,7 +18,7 @@ body .imagen {
 body {
     background-image: url(../../images/car.jpg);
     background-size: cover;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .contenedor .formlogin {
