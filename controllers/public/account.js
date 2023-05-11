@@ -1,10 +1,10 @@
-const USER_API='bussines/public/clients.php';
+const USER_API = 'bussines/public/clients.php';
 const HEADER = document.querySelector('header')
-document.addEventListener('DOMContentLoaded',async ()=>{
-    const JSON =await dataFetch(USER_API,'getUser');
+document.addEventListener('DOMContentLoaded', async () => {
+    const JSON = await dataFetch(USER_API, 'getUser');
     if (JSON.session) {
         HEADER.innerHTML = `
-<nav class="navbar fixed-top navbar-expand-lg navbar2">
+<nav class="navbar fixed-top navbar-expand-lg">
 <div class="container">
     <a class="navbar-brand" href="#">
         <img class="logo-navbar" src="../../resources/images/logo_svg.svg">
@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded',async ()=>{
 </div>
 </nav>`;
     }
-    else{
+    else {
         HEADER.innerHTML = `
-<nav class="navbar fixed-top navbar-expand-lg navbar2">
+<nav class="navbar fixed-top navbar-expand-lg">
 <div class="container">
     <a class="navbar-brand" href="#">
         <img class="logo-navbar" src="../../resources/images/logo_svg.svg">
@@ -76,4 +76,28 @@ document.addEventListener('DOMContentLoaded',async ()=>{
 </div>
 </nav>`;
     }
-})
+    changeMenu();
+});
+
+function changeMenu() {
+    var currentPage = window.location.pathname;
+    var currentPageName = currentPage.substring(currentPage.lastIndexOf('/') + 1);
+
+    var nav = document.querySelector('nav');
+    if(currentPageName = 'index.html'){
+        if (window.innerWidth < 1280) {
+            nav.classList.add('navbar2');
+        } else {
+            if (window.pageYOffset > 200) {
+                nav.classList.add('navbar2');
+            } else {
+                nav.classList.remove('navbar2');
+            }
+        }
+    }else{
+        nav.classList.add('navbar2');
+    }
+}
+
+// call function on scroll
+window.addEventListener('scroll', changeMenu);
