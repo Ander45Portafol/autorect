@@ -19,7 +19,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['usuario_cliente'];
                 } else {
-                    $result['exception'] = 'nombre de usuario indefinido';
+                    $result['exception'] = 'Usuario, indefinido';
                 }
                 break;
             case 'logOut':
@@ -91,7 +91,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['id_cliente'] = $client_model->getId();
-                    $_SESSION['correo_cliente'] = $client_model->getMail();
+                    $_SESSION['usuario_cliente'] = $client_model->getUsername();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }
