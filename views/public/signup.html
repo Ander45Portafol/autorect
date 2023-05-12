@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../resources/css/public/login.css">
+    <link rel="icon" href="../../resources/images/Icon.jpeg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Page icon -->
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="contenedor">
+        <!-- Register form -->
+        <div class="formRegistrer">
+            <div class="logoRegistrer">
+                <img src="../../resources/images/logo_login.png" alt="logo">
+            </div>
+            <div class="textRegistrer">
+                <h4>SIGN IN FOR ME</h4>
+                <p id="second">Create new account<span>.</span></p>
+                <p id="final">Already a member? <span><a href="">Log in</a></span></p>
+            </div>
+            <div class="infoRegistrer">
+                <form action="" class="data-registrer" id="data-registrer">
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+                    <div class="nameRegistrer">
+                        <div class="input-data">
+                            <input type="text" name="firstname" id="firstname" required>
+                            <div class="underline"></div>
+                            <label>First name</label>
+                        </div>
+                        <div class="input-data" id="lastname-content">
+                            <input type="text" name="lastname" id="lastname" required>
+                            <div class="underline"></div>
+                            <label>Last name</label>
+                        </div>
+                    </div>
+                    <div class="allinfo">
+                        <div class="input-data">
+                            <input type="email" name="email" id="email" required>
+                            <div class="underline"></div>
+                            <label>Email</label>
+                        </div>
+                        <div class="section-password">
+                            <div class="input-data">
+                                <input type="password" name="password" id="password" required>
+                                <div class="underline"></div>
+                                <label>Password</label>
+                            </div>
+                            <div class="input-data" id="confirm-password">
+                                <input type="password" name="confirm_password" id="confirm_password" required>
+                                <div class="underline"></div>
+                                <label>Confirm Password</label>
+                            </div>
+                        </div>
+                        <div class="input-data">
+                            <input type="text" name="phone" id="phone" required>
+                            <div class="underline"></div>
+                            <label>Phone</label>
+                        </div>
+                    </div>
+                    <!-- Create account button -->
+                    <div class="buttonsRegistrer">
+                        <button type="submit" id="createCount">Create account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="../../resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/components.js"></script>
+    <script src="../../controllers/public/singup.js"></script>
+</body>
+
+</html>

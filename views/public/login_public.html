@@ -43,7 +43,7 @@
                     </div>
                     <div class="buttons">
                         <button type="submit" id="btnlogin">Login</button>
-                        <button id="btnregistrer" onclick="changepanelRegistrer()">Registrer</button>
+                        <button id="btnregistrer"><a href="../public/signup.html">Registrer</a></button>
                     </div>
                 </form>
             </div>
@@ -57,50 +57,6 @@
                 </div>
             </div>
         </div>
-        <!-- Register form -->
-        <div class="formRegistrer">
-            <div class="logoRegistrer">
-                <img src="../../resources/images/logo_login.png" alt="logo">
-            </div>
-            <div class="textRegistrer">
-                <h4>SIGN IN FOR ME</h4>
-                <p id="second">Create new account<span>.</span></p>
-                <p id="final">Already a member? <span><a href="">Log in</a></span></p>
-            </div>
-            <div class="infoRegistrer">
-                <form action="" class="data-registrer" id="data-registrer">
-                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-                    <div class="nameRegistrer">
-                        <div class="input-data">
-                            <input type="text" required>
-                            <div class="underline"></div>
-                            <label>First name</label>
-                        </div>
-                        <div class="input-data" id="textbox">
-                            <input type="text" required>
-                            <div class="underline"></div>
-                            <label>Last name</label>
-                        </div>
-                    </div>
-                    <div class="allinfo">
-                        <div class="input-data">
-                            <input type="email" required>
-                            <div class="underline"></div>
-                            <label>Email</label>
-                        </div>
-                        <div class="input-data">
-                            <input type="password" required>
-                            <div class="underline"></div>
-                            <label>Password</label>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <!-- Create account button -->
-            <div class="buttonsRegistrer">
-                <button id="createCount" onclick="changepanelLogin()">Create account</button>
-            </div>
-        </div>
     </main>
 
     <!-- JS -->
@@ -109,7 +65,6 @@
     <script src="../../controllers/public/account.js"></script>
     <script src="../../controllers/components.js"></script>
     <script src="../../controllers/public/login.js"></script>
-    <script src="../../controllers/public/singup.js"></script>
 </body>
 
 </html>

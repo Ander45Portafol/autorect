@@ -68,7 +68,7 @@ class Database
                 self::$error = 'Violacion de llave foránea';
                 break;
             default:
-                self::$error = 'Ocurrio un problema en la base de datos';
+                //self::$error = 'Ocurrio un problema en la base de datos';
         }
     }
     //Function to show exceptions

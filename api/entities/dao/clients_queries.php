@@ -145,4 +145,11 @@ class ClientQueries
         $params = array($this->client_id);
         return Database::executeRow($query, $params);
     }
+    public function createRow()
+    {
+        $sql = 'INSERT INTO clientes(nombre_cliente,apellido_cliente,correo_cliente,usuario_cliente,telefono_cliente,clave_cliente)
+                VALUES(?, ?, ?, ?, ?,?)';
+        $params = array($this->client_name, $this->client_lastname, $this->client_mail, $this->client_name,$this->client_phone, $this->password);
+        return Database::executeRow($sql, $params);
+    }
 }
