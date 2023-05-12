@@ -39,28 +39,29 @@
             </div>
             <div class="row">
                 <!-- Form -->
-                <div class="cont-form col-lg-6 col-sm-12">
+                <form class="cont-form col-lg-6 col-sm-12">
+                    <input type="hidden" id="inputid"> 
                     <div class="form-title">
                         <h4 class="text-white text-left"> Send us a message </h4>
                     </div>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Your name" aria-label="Your name"
-                            aria-describedby="basic-addon1" readonly>
+                            aria-describedby="basic-addon1" readonly id="nameinput">
                     </div>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Email address" aria-label="Email"
-                            aria-describedby="basic-addon1">
+                            aria-describedby="basic-addon1" id="emailinput">
                     </div>
                     <div class="input-group">
                         <textarea class="message-form form-control" placeholder="Your message goes here"
-                            aria-label="With textarea"></textarea>
+                            aria-label="With textarea" id="messageinput"></textarea>
                     </div>
                     <div class="submit">
                         <button class="btn-submit btn btn-primary text-right">
                             <img src="../../resources/images/submit_icon.svg" alt="submit" class="img-submit">
                         </button>
                     </div>
-                </div>
+                </form>
                 <!-- Map -->
                 <div class="map-col col-lg-6 col-sm-12">
                     <iframe
@@ -79,6 +80,7 @@
     <script src="../../resources/js/sweetalert.min.js"></script>
     <script src="../../controllers/components.js"></script>
     <script src="../../controllers/public/account.js"></script>
+    <script src="../../controllers/public/contacts.js"></script>
     <!-- Bootstrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
