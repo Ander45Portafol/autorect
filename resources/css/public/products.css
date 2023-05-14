@@ -1,4 +1,3 @@
-/*Local font usage*/
 @import url(../../fonts/Roboto/Roboto-Regular.ttf);
 
 /*root variables*/
@@ -17,241 +16,104 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-
-/*body config*/
-body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-}
-
-/*navbar general*/
-
-/*nav search*/
-.btn {
-  font-size: 20px;
-  color: var(--focus-color);
-  font-weight: 30px;
-  border: none;
-  display: flex;
-  align-items: center;
-}
-
-/*input search config*/
-input[type="search"] {
-  border-color: var(--focus-color);
-  border-width: 2px;
-  width: 300px;
-}
-
-/*drawing a line*/
-.line {
-  content: "";
-  position: relative;
-  width: 100%;
-  height: 3px;
-  background-color: var(--reference-grey) !important;
-  display: flex;
-  margin-left: 72px;
-  justify-content: center;
-}
-
-/*drawing a vertical line*/
-.v.line {
-  border-left: thick solid 3px;
-  height: 100%;
-  top: 115px;
-  width: 3px;
-  left: 300px;
-  position: absolute;
-  background-color: var(--reference-grey);
-}
-
-/*section config*/
-section {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-/*aside config*/
-aside {
-  width: 15%;
-  height: 20%;
-  margin: 20px;
-  box-sizing: border-box;
-}
-
-/*filters aside*/
-aside .offcanvas-title {
-  color: var(--focus-color);
-  font-size: 20px;
-}
-
-/*badges with number*/
-aside .offcanvas-body ul li .badge {
-  background-color: var(--reference-grey) !important;
-}
-
-/*leyends of the aside*/
-aside .offcanvas-body ul li label {
-  color: var(--focus-color) !important;
-}
-
-/*label of the aside*/
-aside .offcanvas-body .lab {
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--focus-color);
-}
-
-/*another label*/
-aside .offcanvas-body .lab2 {
-  margin-left: 150px;
-}
-
-/*product cards*/
-.cards_container {
-  margin: 20px;
-  width: 85%;
-  align-items: center;
-}
-
-/*rounded button*/
-.cards_container .card a{
-  display: flex;
-  text-decoration: none;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--focus-color);
-  border: none;
-  margin-left: 225px;
-  position: absolute;
-  margin-top: -95px;
-  color: var(--primary-color);
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-}
-
-/*reviews stars*/
-.cards_container .card .bxs-star {
-  color: var(--focus-color);
-  font-size: 20px;
-}
-
-/*general cards*/
-.cards_container .card {
-  background-color: var(--cards-white);
-  border: none;
-}
-
-/*span in cards*/
-.cards_container .card span {
-  color: var(--secondary-color);
-  font-size: 20px;
-  font-weight: 800;
-  margin-left: 250px;
-}
-
-/*pagination*/
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-left: 320px;
-}
-
-/*Responsive*/
-
-@media screen and (min-width: 768px) {
-  /*drawing a vertical line*/
-  .v.line {
-    border-left: thick solid 3px;
-    height: 95vh;
-    width: 3px;
-    left: 360px;
-    position: absolute;
-    background-color: var(--reference-grey);
-  }
-  /*section config*/
-  section {
-    display: flex;
+main{
     width: 100%;
-    height: 100%;
+    margin-top: 2rem;
+    padding:0 2rem;
+    margin-top: 6rem;
+}
+.top_products{
+    border-bottom: 3px solid #1F1F1F;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+.top_products h4{
+    color: #822727;
+    font-weight: 600;
+}
+.search input {
+    border-radius: 10px;
+    border: 2px solid #822727;
+    position: relative;
+    width: 400px;
+    height: 40px;
+    color: #822727;
+    outline: #822727;
+    padding-left: 35px;
+    z-index: 1;
   }
 
-  /*aside config*/
-  aside {
+  .search button {
+    background-color: transparent;
+    width: 40px;
+    position: absolute;
+    z-index: 10;
+    border: none;
+
+  }
+
+  .search .bx-search {
+    font-size: 16pt;
+    color: #822727;
+    margin-top: 12px;
+  }
+section{
+    width: 100%;
+    margin-top: 2rem ;
+    display: flex;
+}
+section aside{
     width: 20%;
-    height: 10%;
-    margin: 30px;
-  }
-
-  /*filters aside*/
-  aside .offcanvas-title {
-    color: var(--focus-color);
-    font-size: 20px;
-  }
-
-  /*badges with number*/
-  aside .offcanvas-body ul li .badge {
-    background-color: var(--reference-grey) !important;
-  }
-
-  /*leyends of the aside*/
-  aside .offcanvas-body ul li label {
-    color: var(--focus-color) !important;
-  }
-
-  /*label of the aside*/
-  aside .offcanvas-body .lab {
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--focus-color);
-  }
-
-  /*another label*/
-  aside .offcanvas-body .lab2 {
-    margin-left: 250px;
-  }
-  .cards_container {
+    border-right: 3px solid #1F1F1F;
+    padding-right: 2rem;
+}
+section aside h5{
+    color: #822727;
+    font-weight: 500;
+} 
+section .products-content{
+    width: 80%;
+}
+/*product cards*/
+.products-content {
     margin: 20px;
-    width: 75%;
+    width: 85%;
     align-items: center;
   }
-
+  
   /*rounded button*/
-  .cards_container .card button {
+  .products-content .card a{
     display: flex;
+    text-decoration: none;
     align-items: center;
     justify-content: center;
     background-color: var(--focus-color);
     border: none;
-    margin-left: 230px;
+    margin-left: 190px;
     position: absolute;
-    margin-top: -100px;
+    margin-top: -95px;
     color: var(--primary-color);
     width: 50px;
     height: 50px;
     border-radius: 25px;
   }
-
   /*reviews stars*/
-  .cards_container .card .bxs-star {
+.products-content .card .bxs-star {
     color: var(--focus-color);
     font-size: 20px;
   }
-
+  
   /*general cards*/
-  .cards_container .card {
+  .products-content  .card {
     background-color: var(--cards-white);
     border: none;
   }
+  
   /*span in cards*/
-  .cards_container .card span {
+  .products-content  .card span {
     color: var(--secondary-color);
     font-size: 20px;
     font-weight: 800;
-    margin-left: 100px;
+    margin-left: 20px;
   }
-}
