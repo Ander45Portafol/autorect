@@ -1,8 +1,18 @@
 const PRODUCT_API='bussines/public/products.php';
 const PRODUCT=document.getElementById('cards_container');
+const SEARCH_PRODUCT=document.getElementById('search-product');
 
 document.addEventListener('DOMContentLoaded',async()=>{
-    const JSON=await dataFetch(PRODUCT_API, 'readAll');
+    FillProduct();
+})
+SEARCH_PRODUCT.addEventListener('submit',async (event)=>{
+    event.preventDefault();
+    const FORM=new FormData(SEARCH_PRODUCT);
+    FillProduct(FORM);
+})
+async function FillProduct(form=null){
+    (form)?action='search':action='readAll';
+    const JSON=await dataFetch(PRODUCT_API,action,form);
     if (JSON.status) {
         PRODUCT.innerHTML='';
         JSON.dataset.forEach(row=>{
@@ -22,4 +32,4 @@ document.addEventListener('DOMContentLoaded',async()=>{
         </div>`;
         });
     }
-})
+}
