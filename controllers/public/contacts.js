@@ -10,6 +10,14 @@ async function getUser(){
     }
 }
 
+document.addEventListener('DOMContentLoaded', async () => {
+    const JSON = await dataFetch(USER_API, 'getUser');
+    
+    if(JSON.status){
+        nameInput.value = JSON.fullname;
+    }
+});
+
 nameInput.addEventListener('focus', () => {
     getUser();
 });
