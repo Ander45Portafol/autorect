@@ -18,6 +18,20 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No existen categorías para mostrar';
             }
             break;
+        case 'search':
+            $_POST = Validator::validateForm($_POST);
+            if ($_POST['search'] == '') {
+                $result['status'] = 1;
+                $result['dataset'] = $product_model->readAll();
+            } elseif ($result['dataset'] = $product_model->searchRow($_POST['search'])) {
+                $result['status'] = 1;
+                $result['message'] = 'Data was found';
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'No data';
+            }
+            break;
         default:
             $result['exception'] = 'Acción no disponible';
     }
