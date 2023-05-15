@@ -1,0 +1,128 @@
+@import url(../../fonts/Roboto/Roboto-Regular.ttf);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+body{
+    overflow-x: hidden;
+}
+main{
+    width: 100%;
+    padding: 0 2rem;
+    padding-top: 6rem;
+}
+main .top_details{
+    border-bottom: 3px solid #1F1F1F;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+main .top_details h4 {
+    color: #822727;
+    font-weight: 600;
+}
+section{
+    margin-top: 2rem;
+}
+.product_detail{
+    display: flex;
+}
+.product_detail .left{
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem;
+}
+.product_detail .left .otherimages{
+    text-align: center;
+    opacity: 0.5;
+}
+.product_detail .left .otherimages img{
+    height: 50px;
+    width: 60px;
+}
+.right .red{
+    color: #822727;
+    font-weight: 700;
+}
+.right h2{
+    font-weight: 700;
+}
+.right .valoration{
+    display: flex;
+}
+#stars{
+    margin-right: 2rem;
+}
+.right input{
+    border: 2px solid #822727;
+    width: 60px;
+    text-align: center;
+    outline: #822727;
+}
+#addCart{
+    height: 30px;
+    width: 130px;
+    border-radius: 5px;
+    margin-left: 1rem;
+    border: none;
+    background-color: #822727;
+    color: #FFF;
+    font-weight: 700;
+    font-size: 10pt;
+}
+.right .black{
+    font-size: 8pt;
+    color: #1F1F1F;
+    font-weight: bolder;
+}
+.right .black span{
+    color: #747474;font-weight: 500;
+}
+.product_data{
+    margin-top: 3rem;
+}
+.product_data .buttons{
+    display: flex;
+    border-bottom: 1px solid #747474;
+    justify-content: center;
+}
+.product_data .buttons button{
+    background-color: transparent;
+    border: none;
+    margin:0 30px;
+    height: 50px;
+    font-size: 14pt;
+    width: 120px;
+}
+.buttons .active{
+    color: #822727;
+    font-weight: 700;
+}
+.product_data p{
+    margin-top: 2rem;
+}
+.related{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    color: #1F1F1F;
+    display: flex;
+    justify-content: center;
+}
+.title h2{
+    width: 20%;
+    text-align: center;
+    border-bottom: 5px solid #822727;
+}
+.products_related{
+    display: flex;
+    margin-top: 2rem;
+}
+.imagen_product{
+    width: 150px;
+    height: 80px;
+}
