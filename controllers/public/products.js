@@ -16,6 +16,8 @@ async function FillProduct(form=null){
     if (JSON.status) {
         PRODUCT.innerHTML='';
         JSON.dataset.forEach(row=>{
+            url = `product_details.html?id=${row.id_producto}&categoria=${row.id_categoria}`;
+            console.log(url);
             PRODUCT.innerHTML+=`                    <div class="col">
             <div class="card">
                 <img src="${SERVER_URL}images/products/${row.imagen_principal}" class="imagen_product">
@@ -24,7 +26,7 @@ async function FillProduct(form=null){
                     <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
                             class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
                         <span>${row.precio_producto}</span>
-                        <a href="product_details.html" class="button" type="button"><i
+                        <a href="${url}" onclick="probar(${url})" class="button" type="button"><i
                                 class='bx bxs-cart'></i></a>
                     </p>
                 </div>
@@ -32,4 +34,7 @@ async function FillProduct(form=null){
         </div>`;
         });
     }
+}
+function probar(link){
+    console.log(link);
 }
