@@ -33,7 +33,7 @@ class ClientQueries
     public function checkPassword($password)
     {
         //select with parameters to compare (id_cliente)
-        $query = "SELECT clave_cliente 
+        $query = "SELECT clave_cliente, nombre_cliente, apellido_cliente
                   FROM clientes 
                   WHERE id_cliente = ?";
         //setting paramethers with the information that was colected
@@ -42,6 +42,8 @@ class ClientQueries
         $data = Database::getRow($query, $params);
         //comparing information to do something
         if ($password == $data['clave_cliente']) {
+            $this->client_name = $data['nombre_cliente'];
+            $this->client_lastname = $data['apellido_cliente'];
             //returning information true
             return true;
         } else {
