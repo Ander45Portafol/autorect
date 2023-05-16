@@ -34,98 +34,42 @@
                     </div>
                 </div>
                 <div class="right">
-                    <h2>Lamborghini L.Brake</h2>
+                    <h2 id="product_title"></h2>
                     <div class="valoration">
                         <p class="red" id="stars"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
                                 class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
                         </p>
                         <p>10 (costumers reviews)</p>
                     </div>
-                    <p class="red">$150.00</p>
-                    <hr>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, vero mollitia animi
+                    <p class="red" id="price_product"></p>
+                    <div class="line"></div>
+                    <p id="description_product">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates,
+                        vero mollitia animi
                         laboriosam nulla tempore esse praesentium omnis qui cupiditate est et dolorum doloremque illo,
                         explicabo minus ab ipsa quae?</p>
                     <div class="add">
                         <input type="number">
                         <button id="addCart">ADD TO CART</button>
                     </div>
-                    <hr>
-                    <p class="black">Categories: <span>Brakes, Lamborghini, Front</span></p>
-                    <p class="black">Tag: <span>Breaks</span></p>
+                    <div class="line"></div>
+                    <p class="black">Categories: <span id="category_product"></span></p>
+                    <p class="black">Model: <span id="brand_product"></span></p>
                 </div>
             </div>
             <div class="product_data">
                 <div class="buttons">
-                    <button class="active">Description</button>
-                    <button>Reviews(10)</button>
+                    <button>Reviews <span id="number_reviews"></span></button>
                 </div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel libero quam. Vestibulum suscipit
-                    auctor ullamcorper. Duis pellentesque enim nunc, non elementum ligula porttitor sit amet. Mauris
-                    finibus odio eget euismod hendrerit. Aliquam ut tincidunt ex, vitae vulputate ex. Vivamus et nisi
-                    tincidunt, sodales velit ac, posuere erat. In vitae orci elementum, semper ipsum et, sagittis tellus
-
-                    Fusce blandit pellentesque enim at convallis. Nulla commodo ex sit amet tortor venenatis, at
-                    lobortis lacus varius. Ut malesuada in orci non facilisis. Fusce maximus dolor non erat blandit
-                    ultrices. Donec eget velit semper, facilisis erat at, gravida sapien. Etiam nibh augue, pretium at
-                    eros auctor, tincidunt semper enim. Maecenas eleifend quam eu lorem pellentesque dignissim. Mauris
-                    varius, est sed viverra semper, purus erat efficitur orci, sed aliquet lacus tortor in est. Etiam
-                    mauris ex, interdum ac auctor nec, imperdiet non sapien. Phasellus fermentum, lectus a placerat
-                    aliquam, urna odio posuere nibh, a accumsan est velit et nisi. Pellentesque porttitor vestibulum
-                    rutrum. Aliquam imperdiet laoreet libero, et congue justo fermentum ut. In ac sapien est. Integer id
-                    diam ex. Curabitur fringilla nisi sed sapien cursus, ac malesuada orci vestibulum. Cras efficitur
-                    fermentum risus et pretium.
-                </p>
+                <div class="product-reviews" id="product_reviews">
+                </div>
             </div>
             <hr>
             <div class="related">
                 <div class="title">
                     <h2>Related Products</h2>
                 </div>
-                <div class="products_related">
-                    <div class="col">
-                        <div class="card">
-                            <img src="../../resources/images/lambo_ejem.svg " class="imagen_product">
-                            <div class="card-body">
-                                <h5 class="card-title">Lamborghini L.Brake</h5>
-                                <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
-                                        class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
-                                    <span>$56.67</span>
-                                    <a href="product_details.html" class="button" type="button"><i
-                                            class='bx bxs-cart'></i></a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="../../resources/images/lambo_ejem.svg " class="imagen_product">
-                            <div class="card-body">
-                                <h5 class="card-title">Lamborghini L.Brake</h5>
-                                <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
-                                        class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
-                                    <span>$56.67</span>
-                                    <a href="product_details.html" class="button" type="button"><i
-                                            class='bx bxs-cart'></i></a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="../../resources/images/lambo_ejem.svg " class="imagen_product">
-                            <div class="card-body">
-                                <h5 class="card-title">Lamborghini L.Brake</h5>
-                                <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
-                                        class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
-                                    <span>$56.67</span>
-                                    <a href="product_details.html" class="button" type="button"><i
-                                            class='bx bxs-cart'></i></a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="products_related" id="products_related">
+                    <div class="row row-cols-4 row-cols-md-4 g-4 s-1" id="cards_container"></div>
                 </div>
             </div>
         </section>
@@ -137,6 +81,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    <script src="../../controllers/public/product_detail.js"></script>
 </body>
 
 </html>
