@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $client_model = new Client;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null, 'fullname' => null);
+    $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null, 'fullname' => null, 'id' => null);
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
     if (isset($_SESSION['id_cliente'])) {
         $result['session'] = 1;
@@ -19,6 +19,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['usuario_cliente'];
                     $result['fullname'] = $_SESSION['nombre_completo_cliente'];
+                    $result['id'] = $_SESSION['id_cliente'];
                 } else {
                     $result['exception'] = 'Usuario, indefinido';
                 }

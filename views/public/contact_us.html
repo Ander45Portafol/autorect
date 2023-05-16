@@ -17,7 +17,7 @@
     <!-- Footer CSS file - CSS -->
     <link rel="stylesheet" href="../../resources/css/public/footer.css">
     <!-- Page icon -->
-    <link rel="shortcut icon" href="../../resources/images/logos/logo_login.png">
+    <link rel="shortcut icon" href="../../resources/images/logo_login.png">
     <!-- Page title -->
     <title>Autorect - Contact Us</title>
 </head>
@@ -39,25 +39,25 @@
             </div>
             <div class="row">
                 <!-- Form -->
-                <form class="cont-form col-lg-6 col-sm-12">
-                    <input type="hidden" id="inputid"> 
+                <form class="cont-form col-lg-6 col-sm-12" id="contact_form" method="POST">
+                    <input type="hidden" id="idinput" name="idinput"> 
                     <div class="form-title">
                         <h4 class="text-white text-left"> Send us a message </h4>
                     </div>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Your name" aria-label="Your name"
-                            aria-describedby="basic-addon1" readonly id="nameinput">
+                            aria-describedby="basic-addon1" readonly id="nameinput" name="nameinput">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Email address" aria-label="Email"
-                            aria-describedby="basic-addon1" id="emailinput">
+                        <input type="email" class="form-control" placeholder="Email address" aria-label="Email"
+                            aria-describedby="basic-addon1" id="emailinput" name="emailinput" required>
                     </div>
                     <div class="input-group">
                         <textarea class="message-form form-control" placeholder="Your message goes here"
-                            aria-label="With textarea" id="messageinput"></textarea>
+                            aria-label="With textarea" id="messageinput" name="messageinput" maxlength="500" required></textarea>
                     </div>
                     <div class="submit">
-                        <button class="btn-submit btn btn-primary text-right">
+                        <button class="btn-submit btn btn-primary text-right" type="submit" id="btn-submit">
                             <img src="../../resources/images/submit_icon.svg" alt="submit" class="img-submit">
                         </button>
                     </div>

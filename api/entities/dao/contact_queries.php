@@ -2,14 +2,13 @@
 //Dependencies
 require_once('../../helpers/database.php');
 
-class ConctactQueries
+class ContactQueries
 {
-    public function readInfo()
+    public function createRow()
     {
-        $space = " ";
-        $query = "SELECT id_cliente, CONCAT(nombre_cliente, '$space', apellido_cliente) as nombre_completo_cliente
-                FROM clientes
-                WHERE id_cliente = ?";
-        return Database::getRows($query);
+        $query = "INSERT INTO informacion_contactos(correo_contactante, mensaje, fecha, estado_contacto, id_cliente)
+        VALUES (?, ?, CURRENT_DATE, DEFAULT, ?);";
+        $params = array($this->contacting_email, $this->message, $this->client_id);
+        return Database::executeRow($query, $params);
     }
 }
