@@ -92,8 +92,11 @@ class Order extends OrderQueries
         }
     }
     public function setQuantityProduct($value){
-        if (Validator::) {
-            # code...
+        if (Validator::validateNaturalNumber($value)) {
+            $this->quantity_product = $value;
+            return true;
+        } else {
+            return false;
         }
     }
 

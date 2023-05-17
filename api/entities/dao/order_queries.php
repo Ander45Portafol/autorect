@@ -119,4 +119,23 @@ class OrderQueries
         $params = array($this->order_id);
         return Database::getRows($query, $params);
     }
+    public function startOrder()
+    {
+        $query = "SELECT id_pedido FROM pedidos WHERE id_estado_pedido='true' AND id_cliente=?";
+        $params = array($_SESSION['id_cliente']);
+        if ($data = Database::getRow($query, $params)) {
+            $this->order_id = $data['id_pedido'];
+            return true;
+        } else {
+            $sql = 'INSERT INTO pedidos(fecha_pedido, id_cliente)
+            VALUES(?, ?)';
+            $params = array($this->order_date, $_SESSION['id_cliente']);
+            // Se obtiene el ultimo valor insertado en la llave primaria de la tabla pedidos.
+            if ($this->order_id = Database::getLastRow($sql, $params)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 }
