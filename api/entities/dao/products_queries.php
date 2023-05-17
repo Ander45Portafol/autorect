@@ -43,7 +43,7 @@ class ProductQueries
     //This function is to catch one data with the identicator at the product
     public function readOne()
     {
-        $query = "SELECT a.id_producto, a.imagen_principal,a.nombre_producto,a.precio_producto,a.descripcion_producto, b.estado_producto, a.id_categoria, c.nombre_categoria,d.nombre_modelo
+        $query = "SELECT a.id_producto, a.imagen_principal,a.nombre_producto,a.precio_producto,a.descripcion_producto, b.estado_producto, a.id_categoria, c.nombre_categoria,d.nombre_modelo, a.existencias, a.id_modelo, a.id_estado_producto
                   FROM productos a
                   INNER JOIN estados_productos b
                   USING(id_estado_producto)
