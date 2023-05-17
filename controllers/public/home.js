@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (JSON.status) {
         JSON.dataset.forEach(row => {
             const carouselClass = count === 0 ? 'carousel-item active' : 'carousel-item';
-
+            var url = `product_details.html?id=${row.id_producto}&categoria=${row.id_categoria}`;
             CAROUSEL.innerHTML += `    
             <div class="${carouselClass}">
                         <div class="card">
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <div class="card-body">
                                 <h5 class="card-title">${row.nombre_producto} - $${row.precio_producto}</h5>
                                 <p class="card-text">${row.descripcion_producto}</p>
-                                <a href="product_details.html" class="btn btn-primary">More details</a>
+                                <a href="${url}" class="btn btn-primary">More details</a>
                             </div>
                         </div>
                     </div>               

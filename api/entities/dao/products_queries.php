@@ -31,7 +31,7 @@ class ProductQueries
     //This function is to show the 10 most selled products 
     public function readTop10()
     {
-        $query = "SELECT pr.id_producto, pr.nombre_producto, pr.descripcion_producto, pr.precio_producto, pr.imagen_principal, COUNT(dp.id_producto) as num
+        $query = "SELECT pr.id_producto, pr.nombre_producto, pr.descripcion_producto, pr.precio_producto, pr.imagen_principal, pr.id_categoria, COUNT(dp.id_producto) as num
         FROM detalles_pedidos as dp
         INNER JOIN productos as pr
         ON dp.id_producto = pr.id_producto
