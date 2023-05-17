@@ -6,123 +6,145 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<!-- Nav CSS file - CSS -->
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- Nav CSS file - CSS -->
     <link rel="stylesheet" href="../../resources/css/public/cart.css">
     <link rel="stylesheet" href="../../resources/css/public/menu.css">
+    <!--This is the css local to use icons of boxicons-->
+    <link rel="stylesheet" href="../../resources/css/boxicons.min.css" />
     <link rel="shortcut icon" href="../../resources/images/logo_login.png">
+    <!-- Footer CSS file - CSS -->
+    <link rel="stylesheet" href="../../resources/css/public/footer.css">
+
     <title>Cart</title>
 </head>
 
 <body>
     <header>
     </header>
-
     <main>
-        <!--Main container-->
-        <div class="container">
-            <!--Top info (title and line)-->
-            <div class="top">
-                <h2 class="page_title">
-                    Order Details
-                </h2>
-                <div class="line"></div>
-            </div>
-            <!--All products info container-->
-            <div class="data_container">
-                <div class="products_container">
-                    <div class="titles_container">
-                        <div class="items">
-                            <h2>Items</h2>
-                        </div>
-                        <div class="Q_P">
-                            <h2>Quantity</h2>
-                            <h2>Price</h2>
+        <div class="top">
+            <h2>Order Details</h2>
+        </div>
+        <div class="order_detail">
+            <div class="detail_left">
+                <div class="header_detail">
+                    <p>Item</p>
+                    <P>Quantity</P>
+                    <p>Price</p>
+                </div>
+                <div class="detail_product">
+                    <div class="product">
+                        <img class="detail_img" src="../../resources/images/lambo_ejem.svg " alt="">
+                        <div class="product-title">
+                            <p class="title">Lamborghini L.Brake</p>
+                            <p>Lamborghini Aventador left brake model 2023, color red</p>
                         </div>
                     </div>
-                    <div class="order_details">
-                        <div class="product">
-                            <div class="product_img">
-                                <img class="imagen" src="../../resources/images/lambo_ejem.svg">
-                            </div>
-                            <div class="product_desc">
-                                <h2>Lamborghini L. Brake</h2>
-                                <span>Lamborghini Aventador left brake model <br> 2023, color red</span>
-                            </div>
-                            <div class="counter">
-                                <h2> - 1 +</h2>
-                            </div>
-                            <div class="price">
-                                <h2>$250</h2>
-                            </div>
-                        </div>
-                        <div class="total">
-                            <div class="titles">
-                                <h3>Unit price:</h3>
-                                <h3>Recurring:</h3>
-                                <h3>Total:</h3>
-                            </div>
-                            <div class="prices">
-                                <h3>$250</h3>
-                                <h3>$200</h3>
-                                <h3>$450</h3>
-                            </div>
-                        </div>
+                    <div class="quantity_product">
+                        <button><i class='bx bx-minus'></i></button>
+                        <p>1</p>
+                        <button><i class='bx bx-plus'></i></button>
+                    </div>
+                    <div class="price_product">
+                        <p>$230</p>
                     </div>
                 </div>
-                <!--Delivery details card-->
-                <div class="card_info_container">
-                    <div class="card_title">
-                        <h1>Payment Info</h1>
-                    </div>
-                    <div class="card_paymethods">
-                        <h4>Payment methods</h4>
-                    </div>
-                    <div class="radiobuttonC">
-                        <div class="radiobutton">
-                            <input type="radio"> <span>Credit Card</span>
-                            <input type="radio"> <span>Paypal</span>
+                <hr>
+                <div class="detail_product">
+                    <div class="product">
+                        <img class="detail_img" src="../../resources/images/lambo_ejem.svg " alt="">
+                        <div class="product-title">
+                            <p class="title">Lamborghini L.Brake</p>
+                            <p>Lamborghini Aventador left brake model 2023, color red</p>
                         </div>
                     </div>
-                    <div class="name">
-                        <h4>Name on Card:</h4>
-                        <h5>Daniel Eli Lopez Molina</h5>
+                    <div class="quantity_product">
+                        <button><i class='bx bx-minus'></i></button>
+                        <p>1</p>
+                        <button><i class='bx bx-plus'></i></button>
                     </div>
-                    <div class="card_number">
-                        <h4>Card Number:</h4>
-                        <h5>.... .... ....</h5>
+                    <div class="price_product">
+                        <p>$230</p>
                     </div>
-                    <div class="card_year">
-                        <div class="datechoose">
-                            <h4>Expiration Date:</h4>
-                            <input class="calendar" type="date">
-                        </div>
-                        <div class="cvv">
-                            <h4>cvv:</h4>
-                            <h3>004</h3>
-                        </div>
-                    </div>
-                    <div class="billing">
-                        <h4>Billing Address:</h4>
-                        <input type="text">
-                    </div>
-                    <div class="green_rbt">
-                        <div class="radiobtn_green">
-                            <input type="radio"> <span>Accept terms and conditions</span>
+                </div>
+                <hr>
+                <div class="detail_product">
+                    <div class="product">
+                        <img class="detail_img" src="../../resources/images/lambo_ejem.svg " alt="">
+                        <div class="product-title">
+                            <p class="title">Lamborghini L.Brake</p>
+                            <p>Lamborghini Aventador left brake model 2023, color red</p>
                         </div>
                     </div>
-                    <button class="confirm">Confirm Order</button>
+                    <div class="quantity_product">
+                        <button><i class='bx bx-minus'></i></button>
+                        <p>1</p>
+                        <button><i class='bx bx-plus'></i></button>
+                    </div>
+                    <div class="price_product">
+                        <p>$230</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="detail_product">
+                    <div class="product">
+                        <img class="detail_img" src="../../resources/images/lambo_ejem.svg " alt="">
+                        <div class="product-title">
+                            <p class="title">Lamborghini L.Brake</p>
+                            <p>Lamborghini Aventador left brake model 2023, color red</p>
+                        </div>
+                    </div>
+                    <div class="quantity_product">
+                        <button><i class='bx bx-minus'></i></button>
+                        <p>1</p>
+                        <button><i class='bx bx-plus'></i></button>
+                    </div>
+                    <div class="price_product">
+                        <p>$230</p>
+                    </div>
+                </div>
+            </div>
+            <div class="detail_right">
+                <div class="content-card">
+                    <h4>Payment Info</h4>
+                    <p class="title-card">Payment Method:</p>
+                    <div class="credit-card">
+                        <input type="checkbox">
+                        <p class="text-card">Credit Card</p>
+                    </div>
+                    <p class="title-card">Name on Card:</p>
+                    <p class="text-card">Anderson Isaac Aguilar Ramos</p>
+                    <p class="title-card">Card Number:</p>
+                    <p class="text-card">... ... ...</p>
+                    <div class="separate">
+                        <div class="left">
+                            <p class="title-card">Expiration Date:</p>
+                            <input type="date">
+                        </div>
+                        <div class="right">
+                            <p class="title-card">CVV:</p>
+                            <P class="text-card">004</P>
+                        </div>
+                    </div>
+                    <input type="checkbox">
+                    <label>Accept terms and conditions</label>
+                    <div class="button">
+                        <button>Confirm Order</button>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
-
     <footer>
     </footer>
-        <script src="../../resources/js/menu_public.js"></script>
+    <script src="../../controllers/components.js"></script>
+    <script src="../../resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/public/account.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="../../resources/js/footer_public.js"></script>
 </body>
 
 </html>

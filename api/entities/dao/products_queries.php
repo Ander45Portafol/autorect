@@ -8,7 +8,7 @@ class ProductQueries
     //This function is show all datas of the products is used to show data in the table
     public function readAll()
     {
-        $query = "SELECT a.id_producto, a.imagen_principal,a.nombre_producto,a.precio_producto,a.descripcion_producto, b.estado_producto
+        $query = "SELECT a.id_producto, a.imagen_principal,a.nombre_producto,a.precio_producto,a.descripcion_producto, b.estado_producto, a.id_categoria
                   FROM productos a
                   INNER JOIN estados_productos b
                   USING(id_estado_producto)
@@ -43,8 +43,14 @@ class ProductQueries
     //This function is to catch one data with the identicator at the product
     public function readOne()
     {
-        $query = "SELECT * 
-                  FROM productos 
+        $query = "SELECT a.id_producto, a.imagen_principal,a.nombre_producto,a.precio_producto,a.descripcion_producto, b.estado_producto, a.id_categoria, c.nombre_categoria,d.nombre_modelo
+                  FROM productos a
+                  INNER JOIN estados_productos b
+                  USING(id_estado_producto)
+                  INNER JOIN categorias c
+				  USING (id_categoria)
+                  INNER JOIN modelos d
+                  USING (id_modelo)
                   WHERE id_producto = ? 
                   ORDER BY id_producto";
         $params = array($this->product_id);
@@ -162,5 +168,31 @@ class ProductQueries
         $sql = 'DELETE FROM imagenes_productos WHERE id_imagen_producto = ?';
         $params = array($this->product_img_id);
         return Database::executeRow($sql, $params);
+    }
+    public function productsRelated()
+    {
+        $query = "SELECT a.id_producto, a.imagen_principal,a.nombre_producto,a.precio_producto,a.descripcion_producto, b.estado_producto
+        FROM productos a
+        INNER JOIN estados_productos b
+        USING(id_estado_producto)
+        WHERE id_categoria=? AND id_producto!=?
+        ORDER BY id_producto";
+        $params = array($this->product_category,$this->product_id);
+        return Database::getRows($query, $params);
+    }
+    public function productsReview(){
+        $query="SELECT a.calificacion_producto, a.comentario, a.fecha_comentario, a.estado_comentario, CONCAT(d.nombre_cliente,' ',d.apellido_cliente) AS client_name
+        FROM valoraciones a
+        INNER JOIN detalles_pedidos b
+        USING(id_detalle_pedido)
+        INNER JOIN pedidos c
+        USING (id_pedido)
+        INNER JOIN clientes d
+        USING (id_cliente)
+        INNER JOIN productos e
+        USING (id_producto)
+        WHERE e.id_producto=? AND a.estado_comentario=true";
+        $params=array($this->product_id);
+        return Database::getRows($query,$params);
     }
 }
