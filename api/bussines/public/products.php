@@ -15,7 +15,16 @@ if (isset($_GET['action'])) {
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
             } else {
-                $result['exception'] = 'No existen categorías para mostrar';
+                $result['exception'] = 'No existen productos para mostrar';
+            }
+            break;
+        case 'readTop10':
+            if ($result['dataset'] = $product_model->readTop10()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'No existen productos para mostrar';
             }
             break;
         default:
