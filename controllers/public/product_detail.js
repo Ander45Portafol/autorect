@@ -51,7 +51,7 @@ async function productReviews(form){
     }else{
         REVIEWS.innerHTML=`
         <div class="reviews">
-            <h3>Don't exits comentarys</h3>
+            <h3>There's no comments to show</h3>
         </div>`;
     }
 }
