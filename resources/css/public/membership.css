@@ -15,6 +15,7 @@
     --secondary-color: #1F1F1F;
     --focus-color: #822727;
     --light-red-color: #8B3A3A;
+    --light-gray-color: #9C9A9A;
 }
 
 /*Main container*/
@@ -28,7 +29,7 @@
     color: var(--focus-color);
 }
 
-.row{
+.title-row{
     margin-top: 70px;
 }
 
@@ -45,7 +46,7 @@
     border-bottom: none;
     color: white;
     background-color: var(--secondary-color);
-    font-size: 32px;
+    font-size: 40px;
 }
 
 .memb-col{
@@ -54,6 +55,38 @@
     justify-content: center;
 }
 
+.price{
+    color: #9C9A9A;
+    font-size:  80px;
+    text-align: right;
+}
+
+.desp-price{
+    text-align: left;
+    padding-left: 0;
+}
+
 .text-price{
     color: #9C9A9A;
+    margin-bottom: 0;
+}
+
+.features-row h5, .discounts-row h5{
+    color: white;
+    font-weight: bold;
+}
+
+.features-row p{
+    color: var(--light-gray-color);
+}
+
+.discounts-row button{
+    width: 100%;
+    background-color: var(--focus-color);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
