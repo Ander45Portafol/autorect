@@ -13,6 +13,7 @@ class Order extends OrderQueries
     protected $order_status_id = null;
     protected $employee_id = null;
     protected $detail_id = null;
+    protected $quantity_product=null;
 
     //Function to set the order ID
     public function setId($value)
@@ -88,6 +89,11 @@ class Order extends OrderQueries
             return true;
         } else {
             return false;
+        }
+    }
+    public function setQuantityProduct($value){
+        if (Validator::) {
+            # code...
         }
     }
 
