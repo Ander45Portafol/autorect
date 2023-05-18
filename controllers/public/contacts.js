@@ -59,7 +59,7 @@ formInfo.addEventListener('submit', async (event) => {
         sweetAlert(1, 'Email sent successfully', false);
         emailInput.value = '';
         messageInput.value = '';
-    } else if(!JSON.status && JSON.mail == 1){
+    } else if(JSON.status && JSON.mail == 0){
         sweetAlert(3, 'Record saved, but mail could not be sent', false);
     } else{
         sweetAlert(2, JSON.exception, false);

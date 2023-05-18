@@ -1,7 +1,31 @@
 const PRODUCT_API = 'bussines/public/products.php';
+const MEMBERSHIP_API = 'bussines/public/memberships.php';
 const CAROUSEL = document.getElementById('product-carousel');
+const MEMBERSHIP_ROW = document.getElementById('memberships-row');
 
 document.addEventListener('DOMContentLoaded', async () => {
+    fillCarousel();
+    fillMemberships();
+})
+
+window.addEventListener("resize", function () {
+    updateCarousel();
+});
+
+/*Function to fill the memberships*/ 
+async function fillMemberships(){
+    const JSON = await dataFetch(MEMBERSHIP_API, 'readImgs');
+    if (JSON.status) {
+        JSON.dataset.forEach(row => {
+            MEMBERSHIP_ROW.innerHTML += `    
+            <img src="../../api/images/memberships/${row.imagen_membresia}" alt="${row.tipo_membresia}">
+            `;
+        })
+    }
+}
+
+/*Function to fill the carousel*/ 
+async function fillCarousel(){
     var count = 0;
     const JSON = await dataFetch(PRODUCT_API, 'readTop10');
     if (JSON.status) {
@@ -39,14 +63,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
             count++;
         });
+        updateCarousel();
     }
-
-    updateCarousel();
-})
-
-window.addEventListener("resize", function () {
-    updateCarousel();
-});
+}
 
 /*Function to make the carousel responsive*/
 function updateCarousel() {
