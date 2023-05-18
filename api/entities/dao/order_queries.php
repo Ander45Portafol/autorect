@@ -119,4 +119,35 @@ class OrderQueries
         $params = array($this->order_id);
         return Database::getRows($query, $params);
     }
+    public function startOrder()
+    {
+        $query = "SELECT id_pedido FROM pedidos WHERE id_estado_pedido=1 AND id_cliente=?";
+        $params = array($_SESSION['id_cliente']);
+        if ($data = Database::getRow($query, $params)) {
+            $this->order_id = $data['id_pedido'];
+            return true;
+        } else {
+            $sql = 'INSERT INTO pedidos(fecha_pedido,id_estado_pedido, id_cliente)
+            VALUES(?, ?,?)';
+            $params = array($this->order_date=date("d-m-Y"),$this->order_status_id=1, $_SESSION['id_cliente']);
+            if ($this->order_id = Database::getLastRow($sql, $params)) {
+                return true;
+            } else {
+                return Database::getException();
+            }
+        }
+    }
+    public function createDetail(){
+        $query="INSERT INTO detalles_pedidos(cantidad_producto,precio_producto,id_pedido,id_producto) values (?,(SELECT precio_producto FROM productos WHERE id_producto = ?),?,?)";
+        $params=array($this->quantity_product,$this->id_product,$this->order_id,$this->id_product);
+        return Database::executeRow($query,$params);
+    }
+    public function readOrderDetail()
+    {
+        $sql = 'SELECT id_detalle, nombre_producto, detalle_pedido.precio_producto, detalle_pedido.cantidad_producto
+                FROM pedidos INNER JOIN detalle_pedido USING(id_pedido) INNER JOIN productos USING(id_producto)
+                WHERE id_pedido = ?';
+        $params = array($this->id_pedido);
+        return Database::getRows($sql, $params);
+    }
 }
