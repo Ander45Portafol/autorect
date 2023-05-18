@@ -26,7 +26,7 @@ async function FillProduct(form=null){
                     <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
                             class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
                         <span>${row.precio_producto}</span>
-                        <a href="${url}" onclick="probar(${url})" class="button" type="button"><i
+                        <a href="${url}" class="button" type="button"><i
                                 class='bx bxs-cart'></i></a>
                     </p>
                 </div>
@@ -34,7 +34,4 @@ async function FillProduct(form=null){
         </div>`;
         });
     }
-}
-function probar(link){
-    console.log(link);
 }

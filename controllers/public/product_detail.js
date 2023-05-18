@@ -5,14 +5,20 @@ const PRODUCT_TITLE=document.getElementById('product_title');
 const REVIEWS=document.getElementById('product_reviews');
 const VALORATION=document.getElementById('valorations');
 const REVIEWS_RECORDS=document.getElementById('number_reviews');
+const ORDER_API ='bussines/public/order.php';
+const ORDER=document.getElementById('add_product');
 
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', async ()=>{
     const FORM = new FormData();
     FORM.append('id_categoria', PARAMS.get('categoria'));
     FORM.append('id_producto',PARAMS.get('id'));
     productData(FORM);
     productRelated(FORM);
     productReviews(FORM);
+    const JSON=await dataFetch(PRODUCT_API,'readOne',FORM);
+    if (JSON.status) {
+        document.getElementById('id_product').value=JSON.dataset.id_producto;
+    }
 })
 async function productData(form){
     const JSONP=await dataFetch(PRODUCT_API,'readOne',form);
@@ -87,3 +93,15 @@ async function productRelated(form){
         })
     }
 }
+ORDER.addEventListener('submit', async(event)=>{
+    event.preventDefault();
+    const FORM=new FormData(ORDER);
+    const JSON=await dataFetch(ORDER_API,'createDetail',FORM);
+    if (JSON.status) {
+        sweetAlert(1, JSON.message, true);
+    }else if (JSON.session) {
+        sweetAlert(2, JSON.exception, false);
+    }else{
+        sweetAlert(3, JSON.exception, true);
+    }
+});
