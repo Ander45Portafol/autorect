@@ -29,8 +29,8 @@ async function fillMemberships() {
                                 <div class="col-12">
                                     <h5>Discounts and other benefits</h5>
                                 </div>
-                                <div class="col-12" data-bs-toggle="modal" data-bs-target="#modal${row.tipo_membresia}">
-                                    <button> Get started </button>
+                                <div class="col-12">
+                                    <button onclick="getUser('#modal${row.tipo_membresia}')"> Get started </button>
                                 </div>
                             </div>
                             <div class="row features-row">
@@ -83,7 +83,7 @@ async function fillModals() {
                             </div>
                             <div class="footer-m modal-footer text-left">
                                 <p>Whole Purchase Price: <span> ${row.precio_membresia} </span></p>
-                                <button type="button" class="btn-confirm">Confirm purchase</button>
+                                <button type="button" class="btn-confirm" onclick="updateMembership(${row.id_tipo_membresia})">Confirm purchase</button>
                             </div>
                         </div>
                     </div>
@@ -92,12 +92,47 @@ async function fillModals() {
         })
 
     }
+}
 
-    async function getUser() {
-        const JSON = await dataFetch(USER_API, 'getUser');
+var client_id = 0;
+var client_membership = 0;
 
-        if (!JSON.session) {
-            sweetAlert(3, 'To buy a membership, you need to log in', false);
+async function updateMembership(type_id){
+    const FORM = new FormData();
+    FORM.append('id_tipo_membresia', type_id);
+    FORM.append('id_cliente', client_id);
+
+    const actual = await dataFetch(USER_API, 'readActualMembership', FORM);
+    client_membership = actual.dataset.id_tipo_membresia;
+
+    if(type_id == client_membership){
+        sweetAlert(2,'You already belong to that membership',false);
+    }else{
+        const RESPONSE=await confirmAction('Confirm purchase?');
+        if(RESPONSE){
+            const JSON = await dataFetch(USER_API, 'updateMembership', FORM);
+            if (JSON.status) {
+                modal.hide();
+                sweetAlert(5,JSON.message,false);
+            }else{
+                sweetAlert(2,JSON.exception,false);
+            }
         }
+    }
+}
+
+var modal;
+
+async function getUser(id) {
+    modal = new bootstrap.Modal(id);
+    const JSON = await dataFetch(USER_API, 'getUser');
+
+    if (!JSON.session) {
+        sweetAlert(3, 'To buy a membership, you need to log in', false);
+        return 0;
+    }else{
+        modal.show();
+        client_id = JSON.id;
+        client_membership = JSON.membership;
     }
 }

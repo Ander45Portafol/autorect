@@ -155,4 +155,20 @@ class ClientQueries
         $params = array($this->client_name, $this->client_lastname, $this->client_mail, $this->client_name,$status_client,$this->client_phone, $this->password);
         return Database::executeRow($sql, $params);
     }
+
+    public function readActualMembership(){
+        $query = "SELECT id_tipo_membresia
+                  FROM clientes 
+                  WHERE id_cliente = ?";
+        $params = array($this->client_id);
+        return Database::getRow($query, $params);
+    }
+
+    public function updateMembership(){
+        $query = "UPDATE clientes 
+                    SET id_tipo_membresia = ? 
+                    WHERE id_cliente = ?";
+        $params = array($this->membership_type, $this->client_id);
+        return Database::executeRow($query, $params);
+    }
 }

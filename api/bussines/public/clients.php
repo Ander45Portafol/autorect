@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $client_model = new Client;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null, 'fullname' => null, 'id' => null);
+    $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null, 'fullname' => null, 'id' => 0);
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
     if (isset($_SESSION['id_cliente'])) {
         $result['session'] = 1;
@@ -30,6 +30,30 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Sesión eliminada correctamente';
                 } else {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
+                }
+                break;
+            case 'readActualMembership':
+                if (!$client_model->setCLientId($_POST['id_cliente'])) {
+                    $result['exception'] = 'Wrong client';
+                }elseif ($result['dataset'] = $client_model->readActualMembership()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Error';
+                }
+                break;
+            case 'updateMembership':
+                $_POST = Validator::validateForm($_POST);
+                if (!$client_model->setCLientId($_POST['id_cliente'])) {
+                    $result['exception'] = 'Wrong client';
+                } elseif (!$client_model->setMembershipType($_POST['id_tipo_membresia'])) {
+                    $result['exception'] = 'Wrong membership type';
+                } elseif ($client_model->updateMembership()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Thank you for your purchase!';
+                } else {
+                    $result['exception'] = Database::getException();
                 }
                 break;
             default:
@@ -70,7 +94,7 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['id_cliente'] = $client_model->getId();
                     $_SESSION['usuario_cliente'] = $client_model->getUsername();
-                    $_SESSION['nombre_completo_cliente'] = $client_model->getName().' '.$client_model->getLastname();
+                    $_SESSION['nombre_completo_cliente'] = $client_model->getName() . ' ' . $client_model->getLastname();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }
