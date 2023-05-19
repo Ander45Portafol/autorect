@@ -126,3 +126,51 @@ section .products-content {
   font-weight: 800;
   margin-left: 20px;
 }
+
+.btn-categories, .btn-years{
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+}
+
+.categories-count, .years-count{
+  background-color: var(--focus-color);
+}
+
+.price-section{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-label.lab {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+}
+
+.form-range {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: center;
+}
+
+.form-range::-webkit-slider-thumb{
+  background-color: var(--focus-color);
+  box-shadow: 0 0 5px var(--focus-color) !important;
+}
+
+.form-range::-webkit-slider-thumb:active{
+  background-color: var(--focus-color) !important;
+}
+
+.form-label.lab2 {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+}
+

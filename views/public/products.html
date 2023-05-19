@@ -31,92 +31,30 @@
                     aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <ul class="list-group">
+                    <ul class="list-categories list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Silvins
-                            <span class=" counter badge bg-primary rounded-pill">82</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Wheels
-                            <span class="badge bg-primary rounded-pill">29</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Doors
-                            <span class="badge bg-primary rounded-pill">11</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Breaks
-                            <span class="badge bg-primary rounded-pill">50</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Car hoods
-                            <span class="badge bg-primary rounded-pill">36</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Bumpers
-                            <span class="badge bg-primary rounded-pill">17</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Seats
-                            <span class="badge bg-primary rounded-pill">130</span>
+                            <button class="btn-categories">Silvins</button>
+                            <span class="categories-count counter badge rounded-pill">82</span>
                         </li>
                     </ul>
                     <br>
                     <h5 class="offcanvas-title" id="offcanvasLabel">Price</h5>
                     <br>
-                    <label for="customRange1" class="form-label lab">$5.00</label>
-                    <label for="customRange1" class="form-label lab lab2">$250.00</label>
-                    <input type="range" class="form-range" id="customRange1">
+                    <div class="price-section">
+                        <label for="priceRangeLeft" class="form-label lab">$5.00</label>
+                        <input type="range" class="form-range" id="priceRange" name="priceRange" min="5.00" max="250.00" value="5.00">
+                        <label for="priceRangeRight" class="form-label lab lab2">$250.00</label>
+                    </div>                      
                     <br>
                     <br>
                     <h5 class="offcanvas-title" id="offcanvasLabel">Year</h5>
                     <br>
-                    <ul class="list-group">
+                    <ul class="years-list list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
-                                aria-label="">
-                            2011
-                            <span class="badge bg-primary rounded-pill">27</span>
+                            <button class="btn-years">2011</button>
+                            <span class="years-count counter badge rounded-pill">82</span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
-                                aria-label="">
-                            2012
-                            <span class="badge bg-primary rounded-pill">09</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
-                                aria-label="">
-                            2013
-                            <span class="badge bg-primary rounded-pill">12</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
-                                aria-label="">
-                            2014
-                            <span class="badge bg-primary rounded-pill">15</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
-                                aria-label="">
-                            2015
-                            <span class="badge bg-primary rounded-pill">93</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
-                                aria-label="">
-                            2016
-                            <span class="badge bg-primary rounded-pill">102</span>
-                        </li>
-                    </ul>
-                    <br>
-                    <h5 class="offcanvas-title" id="offcanvasLabel">Sales</h5>
-                    <br>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Products on sale
-                        <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value=""
-                            aria-label="">
-                    </li>
+                    </ul>   
             </aside>
             <div class="products-content">
                 <div class="row row-cols-4 row-cols-md-4 g-4 s-1" id="cards_container"></div>
