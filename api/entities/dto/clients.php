@@ -104,7 +104,7 @@ class Client extends ClientQueries
     public function setPassword($value)
     {
         if (Validator::validatePassword($value)) {
-            $this->user_name = $value;
+            $this->password = $value;
             return true;
         } else {
             return false;

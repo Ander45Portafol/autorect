@@ -15,9 +15,68 @@ if (isset($_GET['action'])) {
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
             } else {
-                $result['exception'] = 'No existen categorías para mostrar';
+                $result['exception'] = 'No existen productos para mostrar';
             }
             break;
+        case 'readTop10':
+            if ($result['dataset'] = $product_model->readTop10()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'No existen productos para mostrar';
+            }
+            break;
+            case 'readOne':
+                if (!$product_model->setId($_POST['id_producto'])) {
+                    $result['exception'] = 'Wrong product';
+                } elseif ($result['dataset'] = $product_model->readOne()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'The category does not exist';
+                }
+                break;
+        case 'search':
+            $_POST = Validator::validateForm($_POST);
+            if ($_POST['search'] == '') {
+                $result['status'] = 1;
+                $result['dataset'] = $product_model->readAll();
+            } elseif ($result['dataset'] = $product_model->searchRow($_POST['search'])) {
+                $result['status'] = 1;
+                $result['message'] = 'Data was found';
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'No data';
+            }
+            break;
+        case 'productsRelated':
+            if (!$product_model->setProductCategory($_POST['id_categoria'])) {
+                $result['exception'] = 'Categoría incorrecta';
+            }elseif (!$product_model->setId($_POST['id_producto'])) {
+                $result['exception'] = 'Producto incorrecta';
+            } elseif ($result['dataset'] = $product_model->productsRelated()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'No existen productos para mostrar';
+            }
+            break;
+            case 'productReview':
+                if (!$product_model->setId($_POST['id_producto'])) {
+                    $result['exception'] = 'Wrong product';
+                } elseif ($result['dataset'] = $product_model->productsReview()) {
+                    $result['status'] = 1;
+                    $result['message'] = count($result['dataset']);
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'The category does not exist';
+                }
+                break;
         default:
             $result['exception'] = 'Acción no disponible';
     }

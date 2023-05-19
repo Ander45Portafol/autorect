@@ -139,7 +139,6 @@ transform: scaleX(1);
 }
 .contenedor .buttons #btnregistrer{
     background-color: #525252;
-    color: #FFF;
     margin-left: 2.5rem;
     border-radius: 20px;
     font-size: 12pt;
@@ -147,10 +146,13 @@ transform: scaleX(1);
     height: 60px;
     width: 150px;
 }
+#btnregistrer a{
+    text-decoration: none;
+    color: #FFF;
+}
 .contenedor .formRegistrer{
     width: 50%;
     height: 119vh;
-    display: none;
     position: relative;
 }
 .contenedor .formRegistrer .logoRegistrer img{
@@ -186,16 +188,23 @@ transform: scaleX(1);
 }
 .contenedor .infoRegistrer{
     margin-left: 8rem;
-    margin-top: 6rem;
+    width: 100%;
+    margin-top: 2rem;
 }
 .contenedor .infoRegistrer .data-registrer .nameRegistrer{
     display: flex;
     flex-direction: row;
 }
 .contenedor .infoRegistrer .data-registrer .nameRegistrer .input-data{
-    width: 175px;
+    width: 250px;
 }
-.contenedor .infoRegistrer .data-registrer .nameRegistrer #textbox{
+.contenedor .infoRegistrer .data-registrer .allinfo .section-password .input-data{
+    width: 250px;
+}
+.contenedor .infoRegistrer .data-registrer .allinfo .section-password #confirm-password{
+    margin-left: 3rem;
+}
+.contenedor .infoRegistrer .data-registrer .nameRegistrer #lastname-content{
     margin-left: 3rem;
 }
 .contenedor .infoRegistrer .data-registrer .nameRegistrer .input-data  input{
@@ -203,14 +212,16 @@ transform: scaleX(1);
 }
 .contenedor .infoRegistrer .data-registrer .allinfo .input-data{
     margin-top: 2rem;
-    width: 400px;
+    width: 550px;
 }
 .contenedor .infoRegistrer .data-registrer .allinfo .input-data input{
     width: 100%;
 }
 .contenedor .buttonsRegistrer{
     margin-top: 2rem;
-    margin-left: 15rem;
+    width: 62%;
+    display: flex;
+    justify-content: center;
 }
 .contenedor .buttonsRegistrer button{
     background-color: #822727;
@@ -220,4 +231,7 @@ transform: scaleX(1);
     font-size: 12pt;
     height: 65px;
     width: 200px;
+}
+.section-password{
+    display: flex;
 }

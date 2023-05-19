@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $client_model = new Client;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null);
+    $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null, 'fullname' => null, 'id' => 0);
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
     if (isset($_SESSION['id_cliente'])) {
         $result['session'] = 1;
@@ -18,8 +18,10 @@ if (isset($_GET['action'])) {
                 if (isset($_SESSION['usuario_cliente'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['usuario_cliente'];
+                    $result['fullname'] = $_SESSION['nombre_completo_cliente'];
+                    $result['id'] = $_SESSION['id_cliente'];
                 } else {
-                    $result['exception'] = 'nombre de usuario indefinido';
+                    $result['exception'] = 'Usuario, indefinido';
                 }
                 break;
             case 'logOut':
@@ -30,6 +32,30 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
                 break;
+            case 'readActualMembership':
+                if (!$client_model->setCLientId($_POST['id_cliente'])) {
+                    $result['exception'] = 'Wrong client';
+                }elseif ($result['dataset'] = $client_model->readActualMembership()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Error';
+                }
+                break;
+            case 'updateMembership':
+                $_POST = Validator::validateForm($_POST);
+                if (!$client_model->setCLientId($_POST['id_cliente'])) {
+                    $result['exception'] = 'Wrong client';
+                } elseif (!$client_model->setMembershipType($_POST['id_tipo_membresia'])) {
+                    $result['exception'] = 'Wrong membership type';
+                } elseif ($client_model->updateMembership()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Thank you for your purchase!';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
@@ -38,43 +64,19 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
-                $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
-                $ip = $_SERVER['REMOTE_ADDR'];
-
-                $data = array('secret' => $secretKey, 'response' => $_POST['g-recaptcha-response'], 'remoteip' => $ip);
-
-                $options = array(
-                    'http' => array('header'  => "Content-type: application/x-www-form-urlencoded\r\n", 'method' => 'POST', 'content' => http_build_query($data)),
-                    'ssl' => array('verify_peer' => false, 'verify_peer_name' => false)
-                );
-
-                $url = 'https://www.google.com/recaptcha/api/siteverify';
-                $context  = stream_context_create($options);
-                $response = file_get_contents($url, false, $context);
-                $captcha = json_decode($response, true);
-
-                if (!$captcha['success']) {
-                    $result['recaptcha'] = 1;
-                    $result['exception'] = 'No eres humano';
-                } elseif (!$client_model->setName($_POST['nombres'])) {
+                if (!$client_model->setName($_POST['firstname'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$client_model->setLastname($_POST['apellidos'])) {
+                } elseif (!$client_model->setLastname($_POST['lastname'])) {
                     $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$client_model->setClientMail($_POST['correo'])) {
+                } elseif (!$client_model->setClientMail($_POST['email'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif (!$client_model->setClientAddress($_POST['direccion'])) {
-                    $result['exception'] = 'Dirección incorrecta';
-                } elseif (!$client_model->setClientDui($_POST['dui'])) {
-                    $result['exception'] = 'DUI incorrecto';
-                } elseif (!$cliente->setNacimiento($_POST['nacimiento'])) {
-                    $result['exception'] = 'Fecha de nacimiento incorrecta';
-                } elseif (!$cliente->setTelefono($_POST['telefono'])) {
+                } elseif (!$client_model->setClientPhone($_POST['phone'])) {
                     $result['exception'] = 'Teléfono incorrecto';
-                } elseif ($_POST['clave'] != $_POST['confirmar_clave']) {
+                } elseif ($_POST['password'] != $_POST['confirm_password']) {
                     $result['exception'] = 'Claves diferentes';
-                } elseif (!$client_model->setPassword($_POST['clave'])) {
+                } elseif (!$client_model->setPassword($_POST['password'])) {
                     $result['exception'] = Validator::getAPasswordError();
-                } elseif ($cliente->createRow()) {
+                } elseif ($client_model->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Cuenta registrada correctamente';
                 } else {
@@ -91,7 +93,8 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['id_cliente'] = $client_model->getId();
-                    $_SESSION['correo_cliente'] = $client_model->getMail();
+                    $_SESSION['usuario_cliente'] = $client_model->getUsername();
+                    $_SESSION['nombre_completo_cliente'] = $client_model->getName() . ' ' . $client_model->getLastname();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }

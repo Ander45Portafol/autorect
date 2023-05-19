@@ -11,322 +11,157 @@
     --description-gray: #636363;
     --green: #2C823B;
 }
-
-/*General aplication CSS*/
 *{
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
+    margin: 0;
     font-family: 'Roboto', sans-serif;
 }
-
-/*Body background-color property aplication*/
 body{
-    width: 100%;
-    height: 100%;
-    background-color: var(--primary-color);
-}
-
-/*Top data container - title*/
-.top{
-    color: var(--focus-color);
-    font-size: 25px;
-    margin-left: 10px;
-}
-
-/*General data intern container*/
-.data_container{
-    content: '';
-    position: fixed;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-    flex-direction: row;
-    margin-left: 10px;
-    height: 100%;
-}
-/*Products in the order container*/
-.products_container{
-    content: '';
-    position: absolute;
-    width: 55%;
-    background-color: var(--primary-color);
-    margin: 10px;
-    height: 70%;
-}
-
-/*Card info CSS*/
-.card_info_container{
-    position: absolute;
-    display: flex;
-    background-color: var(--secondary-color);
-    width: 20%;
-    margin-top: 30px;
-    margin-left: 1200px;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    width: 100%;
 }
-
-/*Contains all the tiles of the top*/
-.titles_container{
+footer{
+    position: sticky;
+    margin-top: 2rem;
+}
+main{
+    width: 100%;
+    margin-top: 2rem;
+    padding:0 2rem;
+    margin-top: 6rem;
+}
+.top{
+    border-bottom: 2px solid #1F1F1F;
+}
+.top h2{
+    color: #822727;
+    font-weight:600 ;
+}
+.order_detail{
     display: flex;
-    align-items: center;
-    flex-direction: row;
-    position: relative;
+    width: 100%;
+    margin-top: 2rem;
 }
-
-/*label of the top*/
-.items{
+.detail_left{
+    width: 70%;
+}
+.detail_right{
+    width: 30%;
+}
+.header_detail{
+    width: 100%;
     display: flex;
-    align-items: center;
-    position: absolute;
-    margin-top: 190px;
-    color: var(--focus-color);
+    justify-content: space-between;
 }
-
-/*subtitles*/
-
-.Q_P{
+.header_detail p{
+    color:#822727 ;
+    font-weight: 600;font-size: 14pt;
+}
+.detail_product{
     display: flex;
-    align-items: center;
-    position: absolute;
-    margin-top: 190px;
-    margin-left: 70vh;
-    color: var(--focus-color);
+    width: 100%;
+    justify-content: space-between;
 }
-
-/*spacing of the elements*/
-.Q_P h2{
-    margin: 60px;
-}
-
-/*title of the card*/
-.card_title{
-    margin: 20px;
-    color: var(--primary-color);
-}
-
-/*options of payment*/
-.card_paymethods h4{   
-    margin-left: 20px;
-    color: var(--card-subtitle-color);
-}
-
-/*radios of the card*/
-.radiobutton{
-    color: var(--primary-color);
-    border-radius: 10px;
-    width: 100px;
-    margin: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    accent-color: var(--primary-color);
-}
-
-/*control of radio*/
-input[type="radio"]{
-    margin-top: 10px;
-}
-
-/*client info title - name*/
-.name h4{
-    margin-left: 20px;
-    color: var(--card-subtitle-color);
-}
-
-/*client info name*/
-.name h5{
-    color: var(--primary-color);
-    font-size: 15px;
-    margin-left: 20px;
-}
-
-/*client info card number*/
-.card_number h4{
-    margin-left: 20px;
-    margin-top: 20px;
-    color: var(--card-subtitle-color);
-}
-
-/*client info card number*/
-.card_number h5{
-    margin-left: 20px;
-    color: var(--primary-color);
-    font-weight: bold;
-    border-radius: 50px;
-    font-size: 30px;
-}
-
-/*year*/
-.card_year{
+.product{
     display: flex;
-    flex-direction: row;
-}
 
-/*date picker*/
-.datechoose h4{
-    margin-left: 20px;
-    color: var(--card-subtitle-color);
-    margin-top: 15px;
 }
-
-/*input date config*/
-input[type="date"]{
-    background-color: var(--primary-color);
-    border-color: var(--focus-color);
-    color: var(--secondary-color);
-    font-family: 'Roboto', sans-serif;
+.product-title{
+    display: flex;
+    flex-direction: column;
+    width:250px;
+    margin-left: 2rem;
+    margin-right: 6rem;
+}
+.product-title p{
+    margin: 0;
+    padding: 0;
+}
+.product-title .title{
     font-weight: 600;
-    border-radius: 3px;
-    margin-top: 20px;
+    font-size: 14pt;
 }
-
-/*input text config*/
-input[type="text"]{
-    border-color: var(--primary-color);
-    border-radius: 2px;
-    border: solid 1px;
-    margin-top: 20px;
+.detail_img{
+    height: 100px;
 }
-
-/*date chooser*/
-.datechoose .calendar{
+.quantity_product{
+    width: 100%;
+    display: flex;
+}
+.quantity_product button{
+    background-color: transparent;
     border: none;
-    width: 100px;
-    height: 30px;
-    margin-left: 20px;
+    margin: 0 1.5rem;
+    height: 40px;
+    border-radius: 5px;
+    padding: 0 0.5rem;
 }
-
-/*cvv title*/
-.cvv{
-    margin-top: 13px;
-    margin-left: 50px;
+.quantity_product button:hover{
+    border: 2px solid #1F1F1F;
 }
-
-/*cvv span*/
-.cvv h4{
-    color: var(--card-subtitle-color);
+.quantity_product p{
+    margin-top: 5px;
 }
-
-/*cvv leyend*/
-.cvv h3{
-    color: var(--primary-color);
-    margin-top: 20px;
-}
-
-/*address*/
-.billing{
-    margin-left: 20px;
-    margin-top: 20px;
-}
-
-/*address leyend*/
-.billing h4{
-    color: var(--card-subtitle-color);
-}
-
-/*address input*/
-.billing input{
-    height: 30px;
-    width: 250px;
-    background-color: var(--secondary-color);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-}
-
-/*termns and conditions radio*/
-.radiobtn_green{
-    margin-left: 20px;
-    margin-top: 20px;
-    color: var(--primary-color);
-    accent-color: var(--green);
-}
-
-/*confirm button*/
-.confirm{
+.detail_right{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 45px;
-    width: 250px;
-    background-color: var(--primary-color);
+}
+.content-card{
+    background-color: #1F1F1F;
+    width: 75%;
+    height: 100%;
+    color: #FFFFFF;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+.content-card h4{
+    font-weight: 700;
+}
+.separate{
+    display: flex;
+}
+.separate .right{
+    margin-left: 2rem;
+}
+.title-card{
+    color: #636363;
+    font-size: 8;
+    padding: 0;
+    margin: 0;
+}
+.text-card{
+    color: white;
+    font-size: 12;
+    font-weight: 600;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.content-card button{
+    background-color: #FFFFFF;
+    width: 150px;
+    height: 50px;
     border-radius: 10px;
-    margin-top: 90px;
-    margin-left: 60px;
-    font-size: 15px;
-    font-weight: bold;
 }
-
-/*hover of the button*/
-.confirm:hover{
-    background-color: var(--focus-color);
-    transition: 0.3s;
-    border: none;
-    color: var(--primary-color);
-}
-
-/*Products details CSS*/
-
-/*conteiner display*/
-.product{
+.credit-card{
     display: flex;
 }
-
-/*product img*/
-.product .imagen{
-    margin-top: 120px;
-    width: 200px;
-    height: 200px;
+.credit-card .text-card{
+    margin-top: 18px;
+    margin-left: 10px;
 }
-
-/*leyend of descount*/
-.product .product_desc{
-    color: var(--description-gray);
-    padding-top: 28px;
-    padding-left: 25px;
-    margin-top: 120px;
-}
-
-/*leyend h2*/
-.product .product_desc h2{
-    margin-bottom: 20px;
-}
-
-/*span*/
-.product .product_desc span{
-    font-size: 20px;
-}
-
-/*counter of units*/
-.counter{
-    margin-top: 175px;
-    margin-left: 170px;
-    color: var(--secondary-color);
-}
-
-/*price of the product*/
-.price{
-    margin-top: 175px;
-    margin-left: 148px;
-}
-
-/*total*/
-.total{
-    display: flex;
-    margin-top: 250px;
-    margin-left: 70%;
-}
-
-/*total titles*/
-.total .titles{
-    color: var(--description-gray);
-}
-
-/*prices*/
-.total .prices{
-    margin-left: 100px;
+.delete{
+    background-color: transparent;
+    color: #822727;
+    border: 2px solid #822727;
+    border-radius: 5px;
+    margin-left: 20px;
+    font-size: 16pt;
+    height: 30px;
+    width: 45px;
 }

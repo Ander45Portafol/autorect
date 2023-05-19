@@ -83,6 +83,10 @@ function sweetAlert(type, text, timer, url = null) {
             title = "Info";
             icon = "info";
             break;
+        case 5:
+            title = "Successful Payment";
+            icon = "success";
+            break;
         default:
             break;
     }

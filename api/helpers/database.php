@@ -65,10 +65,10 @@ class Database
                 self::$error = 'Nombre de tabla desconocido';
                 break;
             case '23503':
-                self::$error = 'Violacion de llave foránea';
+                //self::$error = 'Violacion de llave foránea';
                 break;
             default:
-                self::$error = 'Ocurrio un problema en la base de datos';
+                //self::$error = 'Ocurrio un problema en la base de datos';
         }
     }
     //Function to show exceptions
