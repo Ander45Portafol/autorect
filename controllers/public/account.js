@@ -32,9 +32,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <a class="link-contact nav-link text-white" href="contact_us.html">Contact Us</a>
             </li>
         </ul>
-        <a type="button" class="btn-logout btn btn-light order-lg-3" onclick="logOut()">
-        <i class='bx bx-log-out'></i>Log Out
-        </a>
+        <div class="dropdown order-lg-3">
+            <button class="btn btn-opciones dropdown-toggle btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class='bx bxs-user-circle'></i>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="profile.html">Perfil</a></li>
+                <li><a type="button" class="dropdown-item btn-logout" onclick="logOut()">
+                <i class='bx bx-log-out'></i>Log Out
+                </a></li>
+            </ul>
+        </div>
     </div>
 </div>
 </nav>`;

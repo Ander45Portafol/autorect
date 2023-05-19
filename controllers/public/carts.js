@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function chargerDataUser(){
     const JSON = await dataFetch(USER_API, 'getUser');
-    NAME.textContent=JSON.nameclient;
+    NAME.textContent=JSON.fullname;
 }
 
 async function readOrderDetail() {
