@@ -1,5 +1,6 @@
 const PRODUCT_CART = document.getElementById('container_products');
 const ORDER_API = 'bussines/public/order.php';
+const DATE=document.getElementById('date');
 const NAME=document.getElementById('name_client');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,8 +11,37 @@ document.addEventListener('DOMContentLoaded', () => {
 async function chargerDataUser(){
     const JSON = await dataFetch(USER_API, 'getUser');
     NAME.textContent=JSON.fullname;
+    n =  new Date();
+//Año
+y = n.getFullYear();
+//Mes
+m = n.getMonth() + 1;
+//Día
+d = n.getDate();
+DATE.textContent=d + "/" + m + "/" + y;
 }
-
+async function validateConditions(){
+    const check=document.getElementById('check_conditions').checked;
+    if (check) {
+        const JSON=await dataFetch(USER_API,'getUser');
+        if (JSON.status) {
+            const FORM=new FormData();
+            FORM.append('id_cliente',JSON.id);
+            const JSONCAR=await dataFetch(ORDER_API,'confirmOrder',FORM);
+            if (JSONCAR.dataset.direccion_pedido==='null') {
+                const JSONUPDT=await dataFetch(ORDER_API,'updateOrder',FORM)
+                if (JSONUPDT.status) {
+                    sweetAlert(1,JSONUPDT.message,false);
+                    readOrderDetail();
+                }
+            }else{
+                sweetAlert(2,"Verifique la informacion de su perfil",false);
+            }
+        }
+    }else{
+        sweetAlert(3,'Debe aceptar los terminos y condiciones',false);
+    }
+}
 async function readOrderDetail() {
     const JSON = await dataFetch(ORDER_API, 'readOrderDetail');
     if (JSON.status) {

@@ -34,6 +34,24 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No tiene productos en el carrito';
                 }
                 break;
+            case 'updateOrder':
+                if (!$order_model->setClientId($_POST['id_cliente'])) {
+                    $result['exception'] = 'Cliente no encontrado';
+                }elseif ($order_model->updateOrder()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Pedido actualizado correctamente';
+                }else{
+                    $result['exception']='No se pudo actualizar el estado del pedido';
+                }
+                break;
+            case 'confirmOrder':
+                if (!$order_model->setClientId($_POST['id_cliente'])) {
+                    $result['exception'] = 'Cliente no encontrado';
+                }elseif ($result['dataset']=$order_model->confirmOrder()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Pedido actualizado correctamente';
+                }
+                break;
             case 'deleteDetail':
                 if (!$order_model->setDetailId($_POST['id_detalle_pedido'])) {
                     $result['exception'] = 'Detalle incorrecto';
