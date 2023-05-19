@@ -129,6 +129,7 @@ class OrderQueries
         } else {
             $sql = 'INSERT INTO pedidos(fecha_pedido,id_estado_pedido, id_cliente)
             VALUES(?, ?,?)';
+            date_default_timezone_set('America/El_Salvador');
             $params = array($this->order_date=date("d-m-Y"),$this->order_status_id=1, $_SESSION['id_cliente']);
             if ($this->order_id = Database::getLastRow($sql, $params)) {
                 return true;
@@ -144,10 +145,21 @@ class OrderQueries
     }
     public function readOrderDetail()
     {
-        $sql = 'SELECT id_detalle, nombre_producto, detalle_pedido.precio_producto, detalle_pedido.cantidad_producto
-                FROM pedidos INNER JOIN detalle_pedido USING(id_pedido) INNER JOIN productos USING(id_producto)
-                WHERE id_pedido = ?';
-        $params = array($this->id_pedido);
-        return Database::getRows($sql, $params);
+        $query = 'SELECT b.id_detalle_pedido,a.id_pedido, c.nombre_producto ,b.precio_producto, b.cantidad_producto,c.imagen_principal,c.descripcion_producto
+        FROM pedidos a INNER JOIN detalles_pedidos b USING(id_pedido) INNER JOIN productos c USING(id_producto)
+        WHERE id_pedido = ?';
+        $params = array($this->order_id);
+        return Database::getRows($query, $params);
+    }
+    public function deleteOrderDetail(){
+        $query='DELETE FROM detalles_pedidos WHERE id_detalle_pedido=?';
+        $params=array($this->detail_id);
+        return Database::executeRow($query,$params);
+    }
+    public function showDataUser(){
+        $query="SELECT CONCAT(c.nombre_cliente,' ', c.apellido_cliente) AS nombre_completo_cliente FROM pedidos b INNER JOIN clientes c USING (id_cliente) WHERE id_pedido=?";
+        $params=array($_SESSION['id_pedido']);
+        print_r($params);
+        return Database::getRow($query,$params);
     }
 }
