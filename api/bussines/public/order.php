@@ -34,6 +34,25 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No tiene productos en el carrito';
                 }
                 break;
+            case 'deleteDetail':
+                if (!$order_model->setDetailId($_POST['id_detalle_pedido'])) {
+                    $result['exception'] = 'Detalle incorrecto';
+                } elseif ($order_model->deleteOrderDetail()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Producto removido correctamente';
+                } else {
+                    $result['exception'] = 'Ocurrió un problema al remover el producto';
+                }
+                break;
+            case 'showDataUser':
+                if ($result['dataset'] = $order_model->showDataUser()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'The user does not exist';
+                }
+                break;
             default:
                 $result['exception'] = 'Accion no disponible';
         }

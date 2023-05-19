@@ -9,7 +9,7 @@ class ClientQueries
     public function checkUser($alias)
     {
         //select with parameters to compare (usuario_cliente)
-        $query = "SELECT id_cliente, estado_cliente
+        $query = "SELECT id_cliente, estado_cliente, CONCAT(nombre_cliente,' ', apellido_cliente) AS nombre_completo_usuario
                   FROM clientes 
                   WHERE usuario_cliente = ?";
         //setting paramethers with the information that was colected
@@ -21,6 +21,7 @@ class ClientQueries
             //returning information true
             $this->client_id = $data['id_cliente'];
             $this->status=$data['estado_cliente'];
+            $this->client_name=$data['nombre_completo_usuario'];
             $this->user_name = $alias;
             return true;
         } else {
@@ -28,7 +29,6 @@ class ClientQueries
             return false;
         }
     }
-
     //Validation for user password (clients) method
     public function checkPassword($password)
     {
