@@ -33,7 +33,7 @@ class ClientQueries
     public function checkPassword($password)
     {
         //select with parameters to compare (id_cliente)
-        $query = "SELECT clave_cliente 
+        $query = "SELECT clave_cliente, nombre_cliente, apellido_cliente
                   FROM clientes 
                   WHERE id_cliente = ?";
         //setting paramethers with the information that was colected
@@ -42,6 +42,8 @@ class ClientQueries
         $data = Database::getRow($query, $params);
         //comparing information to do something
         if ($password == $data['clave_cliente']) {
+            $this->client_name = $data['nombre_cliente'];
+            $this->client_lastname = $data['apellido_cliente'];
             //returning information true
             return true;
         } else {
@@ -152,5 +154,21 @@ class ClientQueries
                 VALUES(?, ?, ?, ?, ?,?,?)';
         $params = array($this->client_name, $this->client_lastname, $this->client_mail, $this->client_name,$status_client,$this->client_phone, $this->password);
         return Database::executeRow($sql, $params);
+    }
+
+    public function readActualMembership(){
+        $query = "SELECT id_tipo_membresia
+                  FROM clientes 
+                  WHERE id_cliente = ?";
+        $params = array($this->client_id);
+        return Database::getRow($query, $params);
+    }
+
+    public function updateMembership(){
+        $query = "UPDATE clientes 
+                    SET id_tipo_membresia = ? 
+                    WHERE id_cliente = ?";
+        $params = array($this->membership_type, $this->client_id);
+        return Database::executeRow($query, $params);
     }
 }

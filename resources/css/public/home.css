@@ -191,6 +191,11 @@
     border: none;
 }
 
+.card img{
+    width: 100%;
+    object-fit: cover;
+}
+
 .card-title{
     color: var(--color-focus);
     font-weight: bold;

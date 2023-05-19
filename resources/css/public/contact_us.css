@@ -2,7 +2,7 @@
 @import url(../../fonts/Roboto/Roboto-Regular.ttf);
 
 /*Roboto + style for all*/
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -10,7 +10,7 @@
 }
 
 /*Root variables (colors)*/
-:root{
+:root {
     --primary-color: #FFFFFF;
     --secondary-color: #1F1F1F;
     --focus-color: #822727;
@@ -36,24 +36,24 @@
 }
 
 /*Margin between rows*/
-.row{
+.row {
     margin-top: 70px;
 }
 
 /*Main container*/
-.main-cont{
+.main-cont {
     margin-top: 66px;
 }
 
 /*Titles style*/
-.title{
+.title {
     margin-top: 50px;
     font-weight: bold;
     color: var(--focus-color);
 }
 
 /*Style for the container of the form*/
-.cont-form{
+.cont-form {
     padding: 50px;
     height: 70vh;
     background-color: var(--secondary-color);
@@ -63,70 +63,77 @@
     align-items: center;
 }
 
-.form-title{
+.form-title {
     width: 100%;
 }
 
-.submit{
+.submit {
     width: 100%;
 }
 
 /*Subtitles style*/
-h4{
+h4 {
     font-weight: bold;
     margin-bottom: 50px;
 }
 
 /*Align subtitles*/
 @media (max-width: 991px) {
-    h4{
+    h4 {
         text-align: center;
     }
 }
 
 /*Size of the message imput*/
-.message-form{
+.message-form {
     height: 15vh;
     min-height: 15vh !important;
-    max-height: 30vh;   
+    max-height: 30vh;
 }
 
 /*Align map*/
-.map-col{
+.map-col {
     padding: 0;
 }
 
 /*Map size*/
-iframe{
+iframe {
     height: 70vh;
     width: 100%;
 }
 
 /*Button for submit style*/
-.btn-submit{
+.btn-submit {
     margin-top: 4.5vh;
     float: right;
     background-color: var(--focus-color);
     border: none;
 }
 
-.btn-submit:hover{
+.btn-submit:hover {
     background-color: var(--light-red-color);
 }
 
-.btn-submit:active{
+.btn-submit:active {
     background-color: var(--light-red-color) !important;
 }
 
 /*Size of the button image*/
 
-.img-submit{
+.img-submit {
     height: 30px;
 }
 
 /*Responsive map*/
 @media (max-width: 991px) {
-    .map-col{
+    .map-col {
         margin-top: 50px;
     }
+}
+
+/*Error in the inputs*/
+
+input:invalid {
+    border-color: red;
+    box-shadow: 0 0 5px red;
 }
