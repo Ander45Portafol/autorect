@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <header></header>
     <main>
@@ -20,41 +22,37 @@
             <div class="search">
                 <form method="post" id="search-product">
                     <button type="submit" class="button-search"><i class="bx bx-search"></i></button>
-                    <input type="text" name="search"/>
+                    <input type="text" name="search" onkeyup="searchProduct()"/>
                 </form>
             </div>
         </div>
         <section>
             <aside>
-                <h5 class="offcanvas-title" id="offcanvasLabel">Categories</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvasDark"
-                    aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="list-categories list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <button class="btn-categories">Silvins</button>
-                            <span class="categories-count counter badge rounded-pill">82</span>
-                        </li>
-                    </ul>
-                    <br>
-                    <h5 class="offcanvas-title" id="offcanvasLabel">Price</h5>
-                    <br>
-                    <div class="price-section">
-                        <label for="priceRangeLeft" class="form-label lab">$5.00</label>
-                        <input type="range" class="form-range" id="priceRange" name="priceRange" min="5.00" max="250.00" value="5.00">
-                        <label for="priceRangeRight" class="form-label lab lab2">$250.00</label>
-                    </div>                      
-                    <br>
-                    <br>
-                    <h5 class="offcanvas-title" id="offcanvasLabel">Year</h5>
-                    <br>
-                    <ul class="years-list list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <button class="btn-years">2011</button>
-                            <span class="years-count counter badge rounded-pill">82</span>
-                        </li>
-                    </ul>   
+                <form id="filters" method="post">
+                    <h5 class="offcanvas-title" id="offcanvasLabel">Categories</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvasDark"
+                        aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="list-categories list-group" id="list-categories">
+                        </ul>
+                        <br>
+                        <h5 class="offcanvas-title" id="offcanvasLabel">Price</h5>
+                        <br>
+                        <div class="price-section" id="price-section">
+                        </div>
+                        <br>
+                        <br>
+                        <h5 class="offcanvas-title" id="offcanvasLabel">Year</h5>
+                        <br>
+                        <ul class="years-list list-group" id="years-list">
+                        </ul>
+                        <div class="aside-buttons">
+                            <button type="submit">Filter</button>
+                            <button onclick="cleanForm()">Clean</button>
+                        </div>
+                    </div>
+                </form>
             </aside>
             <div class="products-content">
                 <div class="row row-cols-4 row-cols-md-4 g-4 s-1" id="cards_container"></div>
@@ -62,12 +60,14 @@
         </section>
     </main>
     <footer></footer>
+    <script src="../../resources/js/sweetalert.min.js"></script>
     <script src="../../controllers/components.js"></script>
     <script src="../../controllers/public/account.js"></script>
     <script src="../../resources/js/footer_public.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-        <script src="../../controllers/public/products.js"></script>
+    <script src="../../controllers/public/products.js"></script>
 </body>
+
 </html>

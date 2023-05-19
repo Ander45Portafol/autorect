@@ -127,14 +127,6 @@ section .products-content {
   margin-left: 20px;
 }
 
-.btn-categories, .btn-years{
-  background-color: transparent;
-  border: none;
-  width: 100%;
-  text-align: left;
-  font-size: 16px;
-}
-
 .categories-count, .years-count{
   background-color: var(--focus-color);
 }
@@ -174,3 +166,42 @@ section .products-content {
   justify-self: end;
 }
 
+.categories-item, .years-item{
+  text-align: left;
+}
+
+.categories-item input, .years-item input{
+  background-color: transparent;
+  border: none;
+  box-shadow: 0 0 5px var(--focus-color) !important;
+}
+
+.categories-item input:checked, .years-item input:checked{
+  background-color: var(--focus-color);
+  border: none;
+  box-shadow: 0 0 5px var(--focus-color) !important;
+}
+
+.aside-buttons{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.aside-buttons button{
+  width: 45%;
+  background-color: var(--focus-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+
+footer{
+  margin-top: 50px;
+}
