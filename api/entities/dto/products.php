@@ -20,6 +20,9 @@ class Product extends ProductQueries
     protected $product_img_id;
     protected $s_img;
 
+    //Year filter
+    protected $model_year;
+
     //Method's set for each atribute
     public function setId($value)
     {
@@ -132,6 +135,16 @@ class Product extends ProductQueries
         }
     }
 
+    public function setModelYear($value)
+    {
+        if (Validator::validateAlphanumeric($value, 0, 4)) {
+            $this->model_year = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // Metodos get de los atributos
     public function getId()
     {
@@ -187,5 +200,10 @@ class Product extends ProductQueries
     public function getProductImgId()
     {
         return $this->product_img_id;
+    }
+
+    public function getModelYear()
+    {
+        return $this->model_year;
     }
 }
