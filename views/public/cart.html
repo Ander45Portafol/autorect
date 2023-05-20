@@ -28,82 +28,18 @@
         </div>
         <div class="order_detail">
             <div class="detail_left">
-                <div class="header_detail">
-                    <p>Item</p>
-                    <P>Quantity</P>
-                    <p>Price</p>
-                </div>
-                <div class="detail_product">
-                    <div class="product">
-                        <img class="detail_img" src="../../resources/images/lambo_ejem.svg " alt="">
-                        <div class="product-title">
-                            <p class="title">Lamborghini L.Brake</p>
-                            <p>Lamborghini Aventador left brake model 2023, color red</p>
-                        </div>
-                    </div>
-                    <div class="quantity_product">
-                        <button><i class='bx bx-minus'></i></button>
-                        <p>1</p>
-                        <button><i class='bx bx-plus'></i></button>
-                    </div>
-                    <div class="price_product">
-                        <p>$230</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="detail_product">
-                    <div class="product">
-                        <img class="detail_img" src="../../resources/images/lambo_ejem.svg " alt="">
-                        <div class="product-title">
-                            <p class="title">Lamborghini L.Brake</p>
-                            <p>Lamborghini Aventador left brake model 2023, color red</p>
-                        </div>
-                    </div>
-                    <div class="quantity_product">
-                        <button><i class='bx bx-minus'></i></button>
-                        <p>1</p>
-                        <button><i class='bx bx-plus'></i></button>
-                    </div>
-                    <div class="price_product">
-                        <p>$230</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="detail_product">
-                    <div class="product">
-                        <img class="detail_img" src="../../resources/images/lambo_ejem.svg " alt="">
-                        <div class="product-title">
-                            <p class="title">Lamborghini L.Brake</p>
-                            <p>Lamborghini Aventador left brake model 2023, color red</p>
-                        </div>
-                    </div>
-                    <div class="quantity_product">
-                        <button><i class='bx bx-minus'></i></button>
-                        <p>1</p>
-                        <button><i class='bx bx-plus'></i></button>
-                    </div>
-                    <div class="price_product">
-                        <p>$230</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="detail_product">
-                    <div class="product">
-                        <img class="detail_img" src="../../resources/images/lambo_ejem.svg " alt="">
-                        <div class="product-title">
-                            <p class="title">Lamborghini L.Brake</p>
-                            <p>Lamborghini Aventador left brake model 2023, color red</p>
-                        </div>
-                    </div>
-                    <div class="quantity_product">
-                        <button><i class='bx bx-minus'></i></button>
-                        <p>1</p>
-                        <button><i class='bx bx-plus'></i></button>
-                    </div>
-                    <div class="price_product">
-                        <p>$230</p>
-                    </div>
-                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="container_products">
+                    </tbody>
+                </table>
             </div>
             <div class="detail_right">
                 <div class="content-card">
@@ -114,7 +50,7 @@
                         <p class="text-card">Credit Card</p>
                     </div>
                     <p class="title-card">Name on Card:</p>
-                    <p class="text-card">Anderson Isaac Aguilar Ramos</p>
+                    <p class="text-card" id="name_client"></p>
                     <p class="title-card">Card Number:</p>
                     <p class="text-card">... ... ...</p>
                     <div class="separate">
@@ -137,14 +73,14 @@
         </div>
     </main>
     <footer>
-    </footer>
+    <script src="../../resources/js/sweetalert.min.js"></script>    
     <script src="../../controllers/components.js"></script>
-    <script src="../../resources/js/sweetalert.min.js"></script>
     <script src="../../controllers/public/account.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <script src="../../resources/js/footer_public.js"></script>
+    <script src="../../controllers/public/carts.js"></script>
 </body>
 
 </html>

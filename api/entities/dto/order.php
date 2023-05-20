@@ -14,7 +14,7 @@ class Order extends OrderQueries
     protected $employee_id = null;
     protected $detail_id = null;
     protected $quantity_product=null;
-
+    protected $id_product=null;
     //Function to set the order ID
     public function setId($value)
     {
@@ -92,8 +92,20 @@ class Order extends OrderQueries
         }
     }
     public function setQuantityProduct($value){
-        if (Validator::) {
-            # code...
+        if (Validator::validateNaturalNumber($value)) {
+            $this->quantity_product = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setProduct($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->id_product = $value;
+            return true;
+        } else {
+            return false;
         }
     }
 

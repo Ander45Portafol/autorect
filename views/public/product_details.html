@@ -47,10 +47,11 @@
                         vero mollitia animi
                         laboriosam nulla tempore esse praesentium omnis qui cupiditate est et dolorum doloremque illo,
                         explicabo minus ab ipsa quae?</p>
-                    <div class="add">
-                        <input type="number">
-                        <button id="addCart">ADD TO CART</button>
-                    </div>
+                    <form class="add" method="post" id="add_product">
+                        <input type="hidden" id="id_product" name="id_product">
+                        <input type="number" name="product_exits">
+                        <button id="addCart" type="submit">ADD TO CART</button>
+                    </form>
                     <div class="line"></div>
                     <p class="black">Categories: <span id="category_product"></span></p>
                     <p class="black">Model: <span id="brand_product"></span></p>
@@ -75,6 +76,7 @@
         </section>
     </main>
     <footer></footer>
+    <script src="../../resources/js/sweetalert.min.js"></script>
     <script src="../../controllers/components.js"></script>
     <script src="../../controllers/public/account.js"></script>
     <script src="../../resources/js/footer_public.js"></script>

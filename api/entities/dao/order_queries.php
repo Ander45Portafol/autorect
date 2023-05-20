@@ -119,4 +119,47 @@ class OrderQueries
         $params = array($this->order_id);
         return Database::getRows($query, $params);
     }
+    public function startOrder()
+    {
+        $query = "SELECT id_pedido FROM pedidos WHERE id_estado_pedido=1 AND id_cliente=?";
+        $params = array($_SESSION['id_cliente']);
+        if ($data = Database::getRow($query, $params)) {
+            $this->order_id = $data['id_pedido'];
+            return true;
+        } else {
+            $sql = 'INSERT INTO pedidos(fecha_pedido,id_estado_pedido, id_cliente)
+            VALUES(?, ?,?)';
+            date_default_timezone_set('America/El_Salvador');
+            $params = array($this->order_date=date("d-m-Y"),$this->order_status_id=1, $_SESSION['id_cliente']);
+            if ($this->order_id = Database::getLastRow($sql, $params)) {
+                return true;
+            } else {
+                return Database::getException();
+            }
+        }
+    }
+    public function createDetail(){
+        $query="INSERT INTO detalles_pedidos(cantidad_producto,precio_producto,id_pedido,id_producto) values (?,(SELECT precio_producto FROM productos WHERE id_producto = ?),?,?)";
+        $params=array($this->quantity_product,$this->id_product,$this->order_id,$this->id_product);
+        return Database::executeRow($query,$params);
+    }
+    public function readOrderDetail()
+    {
+        $query = 'SELECT b.id_detalle_pedido,a.id_pedido, c.nombre_producto ,b.precio_producto, b.cantidad_producto,c.imagen_principal,c.descripcion_producto
+        FROM pedidos a INNER JOIN detalles_pedidos b USING(id_pedido) INNER JOIN productos c USING(id_producto)
+        WHERE id_pedido = ?';
+        $params = array($this->order_id);
+        return Database::getRows($query, $params);
+    }
+    public function deleteOrderDetail(){
+        $query='DELETE FROM detalles_pedidos WHERE id_detalle_pedido=?';
+        $params=array($this->detail_id);
+        return Database::executeRow($query,$params);
+    }
+    public function showDataUser(){
+        $query="SELECT CONCAT(c.nombre_cliente,' ', c.apellido_cliente) AS nombre_completo_cliente FROM pedidos b INNER JOIN clientes c USING (id_cliente) WHERE id_pedido=?";
+        $params=array($_SESSION['id_pedido']);
+        print_r($params);
+        return Database::getRow($query,$params);
+    }
 }
