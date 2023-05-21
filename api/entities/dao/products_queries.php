@@ -177,11 +177,12 @@ class ProductQueries
         USING(id_estado_producto)
         WHERE id_categoria=? AND id_producto!=?
         ORDER BY id_producto";
-        $params = array($this->product_category,$this->product_id);
+        $params = array($this->product_category, $this->product_id);
         return Database::getRows($query, $params);
     }
-    public function productsReview(){
-        $query="SELECT a.calificacion_producto, a.comentario, a.fecha_comentario, a.estado_comentario, CONCAT(d.nombre_cliente,' ',d.apellido_cliente) AS client_name
+    public function productsReview()
+    {
+        $query = "SELECT a.calificacion_producto, a.comentario, a.fecha_comentario, a.estado_comentario, CONCAT(d.nombre_cliente,' ',d.apellido_cliente) AS client_name
         FROM valoraciones a
         INNER JOIN detalles_pedidos b
         USING(id_detalle_pedido)
@@ -192,7 +193,20 @@ class ProductQueries
         INNER JOIN productos e
         USING (id_producto)
         WHERE e.id_producto=? AND a.estado_comentario=true";
-        $params=array($this->product_id);
-        return Database::getRows($query,$params);
+        $params = array($this->product_id);
+        return Database::getRows($query, $params);
+    }
+    public function productHistory()
+    {
+        $query = "SELECT b.nombre_producto,a.id_detalle_pedido, a.precio_producto, c.id_estado_pedido, d.estado_pedido from detalles_pedidos a INNER JOIN productos b using (id_producto)
+        INNER JOIN pedidos c USING (id_pedido) INNER JOIN estados_pedidos d USING (id_estado_pedido) WHERE id_cliente=?";
+        $params = array($this->client_id);
+        return Database::getRows($query, $params);
+    }
+    public function validateComments(){
+        $query="SELECT a.comentario from valoraciones a INNER JOIN detalles_pedidos b using (id_detalle_pedido) INNER JOIN productos c using (id_producto)
+        INNER JOIN pedidos d using(id_pedido) where id_detalle_pedido=?";
+        $params=array($this->detail_id);
+        return Database::getRow($query,$params);
     }
 }

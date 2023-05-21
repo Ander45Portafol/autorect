@@ -3,6 +3,7 @@ const HEADER = document.querySelector('header')
 document.addEventListener('DOMContentLoaded', async () => {
     const JSON = await dataFetch(USER_API, 'getUser');
     if (JSON.session) {
+        url = `profile.html?id=${JSON.id}`;
         HEADER.innerHTML = `
 <nav class="navbar fixed-top navbar-expand-lg">
 <div class="container">
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <button class="btn btn-opciones dropdown-toggle btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class='bx bxs-user-circle'></i>
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="profile.html">Perfil</a></li>
+                <li><a class="dropdown-item" href="${url}">Perfil</a></li>
                 <li><a type="button" class="dropdown-item btn-logout" onclick="logOut()">
                 <i class='bx bx-log-out'></i>Log Out
                 </a></li>

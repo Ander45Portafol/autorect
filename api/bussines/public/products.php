@@ -77,6 +77,24 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'The category does not exist';
                 }
                 break;
+            case 'hsitoryProduct':
+                if (!$product_model->setIdClient($_POST['id_cliente'])) {
+                    $result['exception'] = 'Wrong client';
+                }elseif ($result['dataset']=$product_model->productHistory()) {
+                    $result['status'] = 1;
+                }else{
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            case 'validateComments':
+                if (!$product_model->setDetailId($_POST['id_detalle'])) {
+                    $result['exception']='Detalle incorrecto';
+                }elseif ($result['dataset']=$product_model->validateComments()) {
+                    $result['status']=1;
+                }else{
+                    $result['exception']=Database::getException();
+                }
+                break;
         default:
             $result['exception'] = 'Acción no disponible';
     }
