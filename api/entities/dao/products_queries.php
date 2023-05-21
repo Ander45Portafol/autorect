@@ -209,7 +209,7 @@ class ProductQueries
         INNER JOIN pedidos d using(id_pedido) where id_detalle_pedido=?";
         $params=array($this->detail_id);
         return Database::getRow($query,$params);
-
+    }
     /*Filters*/
 
     public function categoriesFilter()

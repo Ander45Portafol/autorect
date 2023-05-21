@@ -119,7 +119,6 @@ if (isset($_GET['action'])) {
                     $result['exception']=Database::getException();
                 }
                 break;
-=======
             /*Filters*/
             case 'categoriesFilter':
                 if ($result['dataset'] = $product_model->categoriesFilter()) {
