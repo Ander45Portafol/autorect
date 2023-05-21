@@ -95,6 +95,59 @@ if (isset($_GET['action'])) {
                     $result['exception']=Database::getException();
                 }
                 break;
+            /*Filters*/
+            case 'categoriesFilter':
+                if ($result['dataset'] = $product_model->categoriesFilter()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No existen categorias para mostrar';
+                }
+                break; 
+            case 'priceFilter':
+                if ($result['dataset'] = $product_model->priceFilter()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No existen precios para mostrar';
+                }
+                break; 
+            case 'yearsFilter':
+                if ($result['dataset'] = $product_model->yearsFilter()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No existen años para mostrar';
+                }
+                break; 
+            case 'filterSearch':
+                $_POST = Validator::validateForm($_POST);
+                if(isset($_POST['categoryID'])) {
+                    if(!$product_model->setProductCategory($_POST['categoryID'])){
+                        $result['exception'] = 'Error en la categoria';
+                    }
+                }
+                if(isset($_POST['priceRange'])) {
+                    if(!$product_model->setProductPrice($_POST['priceRange'])){
+                        $result['exception'] = 'Error en el precio';
+                    }
+                }
+                if(isset($_POST['modelYear'])) {
+                    if(!$product_model->setModelYear($_POST['modelYear'])){
+                        $result['exception'] = 'Error en el año';
+                    }
+                }
+                if($result['dataset'] = $product_model->filterSearch()){
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No existen productos para mostrar';
+                }
+            break;
         default:
             $result['exception'] = 'Acción no disponible';
     }

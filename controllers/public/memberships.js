@@ -25,7 +25,7 @@ async function fillMemberships() {
                                     <p class="text-price">per user</p>
                                 </div>
                             </div>
-                            <div class="row discounts-row">
+                            <div class="row benefits-row">
                                 <div class="col-12">
                                     <h5>Discounts and other benefits</h5>
                                 </div>
