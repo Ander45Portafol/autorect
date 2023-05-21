@@ -62,15 +62,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al remover el producto';
                 }
                 break;
-            case 'showDataUser':
-                if ($result['dataset'] = $order_model->showDataUser()) {
-                    $result['status'] = 1;
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'The user does not exist';
-                }
-                break;
             default:
                 $result['exception'] = 'Accion no disponible';
         }

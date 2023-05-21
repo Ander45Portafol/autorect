@@ -16,6 +16,8 @@ class Product extends ProductQueries
     protected $product_category;
     protected $product_model;
     protected $product_status;
+    protected $comments;
+    protected $quantity;
     protected $client_id;
     protected $detail_id;
     protected $route = '../../images/products/';
@@ -36,6 +38,15 @@ class Product extends ProductQueries
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->client_id = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setQuantity($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->quantity = $value;
             return true;
         } else {
             return false;
@@ -63,6 +74,15 @@ class Product extends ProductQueries
     {
         if (Validator::validateAlphanumeric($value, 0, 80)) {
             $this->product_name = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setComment($value)
+    {
+        if (Validator::validateAlphanumeric($value, 0, 80)) {
+            $this->comments = $value;
             return true;
         } else {
             return false;
