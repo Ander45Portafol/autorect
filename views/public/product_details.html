@@ -2,26 +2,39 @@
 <html lang="en">
 
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- Nav CSS -->
     <link rel="stylesheet" href="../../resources/css/public/menu.css">
+    <!-- Icons CSS -->
     <link rel="stylesheet" href="../../resources/css/boxicons.min.css">
+    <!-- Footer CSS -->
     <link rel="stylesheet" href="../../resources/css/public/footer.css">
+    <!-- Main CSS -->
     <link rel="stylesheet" href="../../resources/css/public/product_details.css">
-    <title>Details</title>
+    <!-- Page icon -->
+    <link rel="icon" href="../../resources/images/logo_login.png" type="image/png">
+    <title>Product Details</title>
 </head>
 
 <body>
+    <!-- Nav with JS -->
     <header></header>
+
+    <!-- Main -->
     <main>
+        <!-- Title -->
         <div class="top_details">
             <h4>Details</h4>
         </div>
         <section>
             <div class="product_detail">
+                <!-- Section to show the product data -->
                 <div class="left">
                     <div class="principal">
                         <img class="principal_img" src="../../resources/images/lambo_ejem.svg " alt="">
@@ -58,6 +71,7 @@
                 </div>
             </div>
             <div class="product_data">
+                <!-- Section to show the valorations and comments -->
                 <div class="buttons">
                     <button>Reviews <span id="number_reviews"></span></button>
                 </div>
@@ -65,6 +79,7 @@
                 </div>
             </div>
             <hr>
+            <!-- Section to show the related products -->
             <div class="related">
                 <div class="title">
                     <h2>Related Products</h2>
@@ -75,15 +90,22 @@
             </div>
         </section>
     </main>
+
+    <!-- Footer with JS -->
     <footer></footer>
+
+    <!-- Sweetalert script -->
     <script src="../../resources/js/sweetalert.min.js"></script>
+    <!-- API scripts -->
     <script src="../../controllers/components.js"></script>
     <script src="../../controllers/public/account.js"></script>
+    <script src="../../controllers/public/product_detail.js"></script>
+    <!-- Footer script -->
     <script src="../../resources/js/footer_public.js"></script>
+    <!-- Bootstrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-    <script src="../../controllers/public/product_detail.js"></script>
 </body>
 
 </html>

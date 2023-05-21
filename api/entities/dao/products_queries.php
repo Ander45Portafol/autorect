@@ -209,6 +209,72 @@ class ProductQueries
         INNER JOIN pedidos d using(id_pedido) where id_detalle_pedido=?";
         $params=array($this->detail_id);
         return Database::getRow($query,$params);
+
+    /*Filters*/
+
+    public function categoriesFilter()
+    {
+        $query = "SELECT ct.id_categoria, ct.nombre_categoria, COUNT(pr.id_categoria) AS num
+        FROM productos AS pr
+        INNER JOIN categorias AS ct ON pr.id_categoria = ct.id_categoria
+        GROUP BY ct.id_categoria, ct.nombre_categoria";
+        return Database::getRows($query);
+    }
+
+    public function priceFilter()
+    {
+        $query = "SELECT CAST( MAX(precio_producto) AS integer) as maxi
+        FROM productos";
+        return Database::getRows($query);
+    }
+
+    public function yearsFilter()
+    {
+        $query = "SELECT anio, SUM(cantidad_modelos) AS num
+        FROM (
+          SELECT mo.anio_inicial_modelo AS anio, COUNT(pr.id_modelo) AS cantidad_modelos, 1 AS orden
+          FROM productos AS pr
+          INNER JOIN modelos AS mo ON pr.id_modelo = mo.id_modelo
+          GROUP BY mo.anio_inicial_modelo
+          UNION ALL
+          SELECT mo.anio_final_modelo AS anio, COUNT(pr.id_modelo) AS cantidad_modelos, 2 AS orden
+          FROM productos AS pr
+          INNER JOIN modelos AS mo ON pr.id_modelo = mo.id_modelo
+          GROUP BY mo.anio_final_modelo
+        ) AS subconsulta
+        GROUP BY anio, orden
+        ORDER BY orden ASC, anio ASC;";
+        return Database::getRows($query);
+    }
+
+    public function filterSearch()
+    {
+        $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria
+        FROM productos as pr
+        INNER JOIN estados_productos as ep
+            ON pr.id_estado_producto = ep.id_estado_producto
+        INNER JOIN modelos as mo
+            ON pr.id_modelo = mo.id_modelo
+        WHERE 1=1";
+
+        $params = array();
+
+        if (!empty($this->product_category)) {
+            $query .= " AND pr.id_categoria = ?";
+            $params[] = $this->product_category;
+        }
+
+        if (!empty($this->product_price) && $this->product_price != 0) {
+            $query .= " AND CAST(pr.precio_producto as integer) BETWEEN ? AND (SELECT MAX(precio_producto) FROM productos)";
+            $params[] = $this->product_price;
+        }
+
+        if (!empty($this->model_year)) {
+            $query .= " AND (mo.anio_inicial_modelo = ? OR mo.anio_final_modelo = ?)";            ;
+            $params[] = $this->model_year;
+            $params[] = $this->model_year;
+        }
+        return Database::getRows($query, $params);
     }
     public function deleteComments(){
         $query="DELETE FROM valoraciones WHERE id_detalle_pedido=?";
