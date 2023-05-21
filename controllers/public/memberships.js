@@ -1,12 +1,17 @@
+//Path to the API
 const MEMBERSHIP_API = 'bussines/public/memberships.php';
+
+//HTML sections
 const MEMBERSHIP_SECTION = document.getElementById('memb-row');
 const MODAL_SECTION = document.getElementById('modals');
 
+//Fill the sections when the DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
     fillMemberships();
     fillModals();
 })
 
+//Fill the membership section with the fetch data
 async function fillMemberships() {
     const JSON = await dataFetch(MEMBERSHIP_API, 'readPay');
     if (JSON.status) {
@@ -49,6 +54,7 @@ async function fillMemberships() {
     }
 }
 
+//Fill the modal section with the fetch data
 async function fillModals() {
     const JSON = await dataFetch(MEMBERSHIP_API, 'readPay');
     if (JSON.status) {
@@ -94,9 +100,11 @@ async function fillModals() {
     }
 }
 
+//Variables to check the user data
 var client_id = 0;
 var client_membership = 0;
 
+//Update the membership when buying it
 async function updateMembership(type_id){
     const FORM = new FormData();
     FORM.append('id_tipo_membresia', type_id);
@@ -121,8 +129,10 @@ async function updateMembership(type_id){
     }
 }
 
+//Variable to know the modal opened
 var modal;
 
+//Function to check if the user is logged in or not
 async function getUser(id) {
     modal = new bootstrap.Modal(id);
     const JSON = await dataFetch(USER_API, 'getUser');

@@ -1,5 +1,10 @@
+//Path to the API
 const USER_API = 'bussines/public/clients.php';
+
+//HTML sections
 const HEADER = document.querySelector('header')
+
+//Event to add the menu checking if the user is logged in or not
 document.addEventListener('DOMContentLoaded', async () => {
     const JSON = await dataFetch(USER_API, 'getUser');
     if (JSON.session) {
@@ -79,12 +84,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     changeMenu();
 });
 
+//Function to check the actual page and change the menu depending on that
 function changeMenu() {
     var currentPage = window.location.pathname;
     var currentPageName = currentPage.substring(currentPage.lastIndexOf('/') + 1);
 
     var nav = document.querySelector('nav');
-    if(currentPageName == "index.html"){
+    if(currentPageName == "index.html" || currentPage == ""){
         if (window.innerWidth < 1280) {
             nav.classList.add('navbar2');
         } else {
