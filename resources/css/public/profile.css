@@ -1,210 +1,116 @@
-/*Impoting local font*/
-@import url(../../fonts/Roboto/Roboto-Regular.ttf);
 
-/*Root variables*/
-:root {
-  --primary-color: #ffffff;
-  --dark-color: #131313;
-  --focus-color: #822727;
-  --data-white: #f5f5f5;
-  --subtitle-grey: #898989;
-  --refresh-blue: #5ac0d7;
-  --edit-yellow: #ffca2c;
-  --delete-red: #8b3a3a;
+main{
+    display: flex;
 }
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", sans-serif;
-}
-
-main {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  height: 100%;
-  width: 100%;
-  overflow-y: hidden;
-}
-
 aside {
-  width: 20%;
-  height: 100%;
-  background-color: var(--dark-color);
+    width: 15%;
+    height: 100vh;
+    background-color: #131313;
 }
 
 section {
-  width: 80%;
-  height: 100%;
+    width: 80%;
+}
+.top-titles {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    margin-left: 50px;
 }
 
-/*data of the user in the aside*/
-.offcanvas-body {
-  background-color: var(--dark-color) !important;
-  width: 100%;
-  height: 100%;
-}
-/*data of the user in the aside - text*/
-.offcanvas-body .user-info {
-  display: flex;
-  flex-direction: column;
-  margin-top: 22px;
-  margin-left: 90px;
-}
-/*data of the user in the aside - img*/
-.offcanvas-body .user-info img {
-  margin-left: 40px;
-  margin-top: 20px;
-  width: 150px;
-  height: 150px;
-}
-/*data of the user in the aside - titles*/
-.offcanvas-body .user-info h3 {
-  font-size: 24px;
-  margin-left: 30px;
-  padding-top: 28px;
-  color: var(--primary-color);
-}
-/*data of the user in the aside - subtitles*/
-.offcanvas-body .user-info h4 {
-  font-size: 22px;
-  margin-left: 90px;
-  color: var(--subtitle-grey);
-}
-/*data of the user in the aside - container*/
-.options-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 70px;
-  background-color: var(--dark-color);
-  margin-right: 0;
-  height: 450px;
-  width: 378 px;
-}
-/*data of the user in the aside - buttons*/
-.options-container button {
-  background-color: var(--dark-color);
-  color: var(--data-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 150px;
-  font-size: 22px;
-  font-weight: bold;
-  border: none;
-}
-/*data of the user in the aside - hover event*/
-.options-container button:hover {
-  background-color: var(--delete-red);
-  transition: 0.2s;
-  color: var(--primary-color);
-}
-/*data of the user in the aside - icons*/
-.options-container button i {
-  margin: 10px;
-  font-size: 40px;
-}
-/*titles*/
-.top-titles {
-  display: flex;
-  flex-direction: column;
-  margin-top: 60px;
-  margin-left: 50px;
-}
-/*top titles*/
 .top-titles h2 {
-  color: var(--focus-color);
-  font-size: 28px;
+    color: var(--focus-color);
+    font-size: 28px;
 }
+
 /*subtitles*/
 .top-titles h4 {
-  color: var(--subtitle-grey);
-  font-size: 20px;
+    color: var(--subtitle-grey);
+    font-size: 20px;
 }
-/*btns*/
+
 .buttons {
-  display: flex;
-  position: fixed;
-  margin-left: 50%;
-  margin-top: -90px;
-  padding: 20px;
+    display: flex;
+    position: fixed;
+    margin-left: 50%;
+    margin-top: -90px;
+    padding: 20px;
 }
+
 /*btns*/
 .buttons button {
-  display: flex;
-  width: 100px;
-  height: 30px;
-  align-items: center;
-  justify-content: space-around;
-  margin: 10px;
+    display: flex;
+    width: 100px;
+    height: 30px;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px;
 }
+
 /*status btn*/
 .buttons .status {
-  border-radius: 20px;
-  border: none;
-  background-color: var(--primary-color);
+    border-radius: 20px;
+    border: none;
+    background-color: var(--primary-color);
 }
-/*status btn active indicator*/
+
 .dot::before {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 20px;
-  background-color: var(--focus-color);
-  margin-top: -8px;
-  margin-left: -2px;
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 20px;
+    background-color: var(--focus-color);
+    margin-top: -8px;
+    margin-left: -2px;
 }
-/*refresh btn*/
+
 .buttons .btn-refresh {
-  border: none;
-  margin-top: -2px;
-  font-size: 20px;
-  color: var(--primary-color);
-  border-radius: 25px;
-  height: 50px;
-  width: 50px;
-  background-color: var(--refresh-blue);
+    border: none;
+    margin-top: -2px;
+    font-size: 20px;
+    color: var(--primary-color);
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    background-color: var(--refresh-blue);
 }
+
 /*edit btn*/
 .buttons .btn-edit {
-  border: none;
-  margin-top: -2px;
-  font-size: 20px;
-  color: var(--primary-color);
-  border-radius: 25px;
-  height: 50px;
-  width: 50px;
-  background-color: var(--edit-yellow);
+    border: none;
+    margin-top: -2px;
+    font-size: 20px;
+    color: var(--primary-color);
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    background-color: var(--edit-yellow);
 }
+
 /*delete btn*/
 .buttons .btn-delete {
-  border: none;
-  margin-top: -2px;
-  font-size: 20px;
-  color: var(--primary-color);
-  border-radius: 25px;
-  height: 50px;
-  width: 50px;
-  background-color: var(--delete-red);
+    border: none;
+    margin-top: -2px;
+    font-size: 20px;
+    color: var(--primary-color);
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    background-color: var(--delete-red);
 }
-/*data list*/
-.container .list-group {
-  width: 100%;
-  height: 100%;
-  margin-top: 65px;
-  margin-left: -80px;
+
+.contained .list-group {
+    width: 100%;
+    height: 100%;
+    margin-left: 2rem;
+    margin-top: 65px;
 }
-/*items in data list*/
-.container .list-group .list-group-item {
-  background-color: var(--data-white) !important;
-  color: var(--focus-color);
-  font-size: 16px;
-  font-weight: 600;
-  padding: 25px;
+
+.contained .list-group .list-group-item {
+    background-color: var(--data-white) !important;
+    color: var(--focus-color);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 25px;
 }

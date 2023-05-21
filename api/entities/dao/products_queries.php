@@ -196,6 +196,18 @@ class ProductQueries
         $params = array($this->product_id);
         return Database::getRows($query, $params);
     }
+    public function productHistory()
+    {
+        $query = "SELECT b.nombre_producto,a.id_detalle_pedido, a.precio_producto, c.id_estado_pedido, d.estado_pedido from detalles_pedidos a INNER JOIN productos b using (id_producto)
+        INNER JOIN pedidos c USING (id_pedido) INNER JOIN estados_pedidos d USING (id_estado_pedido) WHERE id_cliente=?";
+        $params = array($this->client_id);
+        return Database::getRows($query, $params);
+    }
+    public function validateComments(){
+        $query="SELECT a.comentario from valoraciones a INNER JOIN detalles_pedidos b using (id_detalle_pedido) INNER JOIN productos c using (id_producto)
+        INNER JOIN pedidos d using(id_pedido) where id_detalle_pedido=?";
+        $params=array($this->detail_id);
+        return Database::getRow($query,$params);
 
     /*Filters*/
 

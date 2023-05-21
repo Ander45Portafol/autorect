@@ -16,6 +16,8 @@ class Product extends ProductQueries
     protected $product_category;
     protected $product_model;
     protected $product_status;
+    protected $client_id;
+    protected $detail_id;
     protected $route = '../../images/products/';
     protected $product_img_id;
     protected $s_img;
@@ -28,6 +30,24 @@ class Product extends ProductQueries
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->product_id = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setIdClient($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->client_id = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setDetailId($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->detail_id = $value;
             return true;
         } else {
             return false;

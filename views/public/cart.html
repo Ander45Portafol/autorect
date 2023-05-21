@@ -63,17 +63,17 @@
                     <div class="separate">
                         <div class="left">
                             <p class="title-card">Expiration Date:</p>
-                            <input type="date">
+                            <p id="date"></p>
                         </div>
                         <div class="right">
                             <p class="title-card">CVV:</p>
                             <P class="text-card">004</P>
                         </div>
                     </div>
-                    <input type="checkbox">
+                    <input type="checkbox" id="check_conditions">
                     <label>Accept terms and conditions</label>
                     <div class="button">
-                        <button>Confirm Order</button>
+                        <button onclick="validateConditions()">Confirm Order</button>
                     </div>
                 </div>
             </div>
