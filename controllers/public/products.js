@@ -14,7 +14,7 @@ SEARCH_PRODUCT.addEventListener('submit', async (event) => {
     FillProduct(FORM);
 })
 
-async function searchProduct(){
+async function searchProduct() {
     const FORM = new FormData(SEARCH_PRODUCT);
     FillProduct(FORM);
 }
@@ -73,27 +73,30 @@ async function priceFilter() {
         PRICE_SECTION.innerHTML = ` 
         <label for="priceRangeLeft" class="form-label lab">All prices</label>
         <input type="range" class="form-range" id="priceRange" name="priceRange" min="0" max="${row.maxi}" value="0">
-        <label for="priceRangeRight" class="form-label lab lab2">$${row.maxi}.00</label>
+        <label for="priceRangeRight" class="form-label lab lab2" id="max-price">$${row.maxi}.00</label>
         <p id="selectedValue">All prices</p>
         `
 
         const priceRangeInput = document.getElementById('priceRange');
+        const maxPrice = document.getElementById('max-price');
         const selectedValueText = document.getElementById('selectedValue');
 
         priceRangeInput.addEventListener("input", function() {
-        if(priceRangeInput.value == 0){
-            selectedValueText.textContent = "Value: All prices";
-        }else{
-            selectedValueText.textContent = "Value: $" + priceRangeInput.value + ".00";
-        }
-        })
+            if (priceRangeInput.value == 0) {
+                selectedValueText.textContent = "Value: All prices";
+            } else if (maxPrice.innerText == ("$" + priceRangeInput.value + ".00")) {
+                selectedValueText.textContent = "Value: $" + priceRangeInput.value + ".00";
+            } else {
+                selectedValueText.textContent = "Value: $" + priceRangeInput.value + ".00 - " + maxPrice.innerText;
+            }
+        });         
     }
 }
 
 const YEARS_SECTION = document.getElementById('years-list');
 
-async function yearsFilter(){
-    const JSON=await dataFetch(PRODUCT_API,'yearsFilter');
+async function yearsFilter() {
+    const JSON = await dataFetch(PRODUCT_API, 'yearsFilter');
     if (JSON.status) {
         JSON.dataset.forEach(row => {
             YEARS_SECTION.innerHTML += ` 
@@ -104,7 +107,8 @@ async function yearsFilter(){
             </li>
             `;
         }
-    )}
+        )
+    }
 }
 
 const FORM = document.getElementById('filters');
@@ -135,7 +139,7 @@ FORM.addEventListener('submit', async (event) => {
             </div>
         </div>`;
         });
-    }else{
+    } else {
         sweetAlert(3, 'There is no products to show', false);
         FillProduct();
         cleanForm();
@@ -148,19 +152,19 @@ FORM.addEventListener('submit', async (event) => {
 
 function cleanForm() {
     var elements = FORM.elements;
-  
-    for (var i = 0; i < elements.length; i++) {
-      var element = elements[i];
-  
-      switch (element.type) {
-        case "range":
-          element.value = 0;
-          document.getElementById('selectedValue').textContent = "Value: All prices";
-        break;
 
-        case "radio":
-          element.checked = false;
-          break;
-      }
+    for (var i = 0; i < elements.length; i++) {
+        var element = elements[i];
+
+        switch (element.type) {
+            case "range":
+                element.value = 0;
+                document.getElementById('selectedValue').textContent = "Value: All prices";
+                break;
+
+            case "radio":
+                element.checked = false;
+                break;
+        }
     }
-  }
+}
