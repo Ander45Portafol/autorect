@@ -95,6 +95,30 @@ if (isset($_GET['action'])) {
                     $result['exception']=Database::getException();
                 }
                 break;
+            case 'createComment':
+                if (!$product_model->setDetailId($_POST['id_detalle'])) {
+                    $result['exception']='Detalle incorrecto';
+                }elseif (!$product_model->setComment($_POST['comment'])) {
+                    $result['exception']='Detalle incorrecto';
+                }elseif (!$product_model->setQuantity($_POST['quantity'])) {
+                    $result['exception']='Detalle incorrecto';
+                }elseif ($product_model->createComment()) {
+                    $result['status']=1;
+                    $result['message']='Succesfull create comment';
+                }else {
+                    $result['exception']=Database::getException();
+                }
+                break;
+            case 'deleteComments':
+                if (!$product_model->setDetailId($_POST['id_detalle'])) {
+                    $result['exception']='Detalle incorrecto';
+                }elseif ($product_model->deleteComments()) {
+                    $result['status']=1;
+                    $result['message']='Succesfull delete comment';
+                }else {
+                    $result['exception']=Database::getException();
+                }
+                break;
             /*Filters*/
             case 'categoriesFilter':
                 if ($result['dataset'] = $product_model->categoriesFilter()) {
