@@ -240,3 +240,7 @@ section {
     height: 30px;
     width: 45px;
 }
+.item{
+    display: flex;
+    justify-content: space-between;
+}

@@ -25,7 +25,7 @@
 }
 
 .offcanvas-body .user-info img {
-    margin-top: 70px;
+    margin-top: 50px;
     width: 150px;
     height: 150px;
 }
@@ -74,4 +74,9 @@
     font-size: 22px;
     text-align: center;
     color: var(--subtitle-grey);
+}
+.btnback{
+    background-color: transparent;
+    font-size: 32px;
+    color: #ffffff;
 }
