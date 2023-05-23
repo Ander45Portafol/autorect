@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded',async ()=>{
         urlprofile=`profile.html?id=${JSON.dataset.id_cliente}`;
         SIDEBAR.innerHTML=`
 <div class="offcanvas-body">
+    <div>
+        <a class="btnback" href="index.html"><i class='bx bx-chevron-left'></i></a>
+    </div>
     <div class="user-info">
         <img src="../../resources/images/perfil.svg" alt="Kendrick Kumar">
         <h3>${JSON.dataset.usuario_cliente}</h3>

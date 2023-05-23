@@ -32,7 +32,7 @@ async function productHistory(form) {
             const JSONC = await dataFetch(PRODUCTS_API, 'validateComments', FORM);
             if (row.id_estado_pedido === 4) {
                 if (JSONC.dataset === false) {
-                    PRODUCTS.innerHTML += `                   <li class="list-group-item">
+                    PRODUCTS.innerHTML += `                   <li class="list-group-item item">
                     <div>
                     <img src="../../resources/images/lambo_ejem.svg" alt="">
                     <div class="info">
@@ -47,13 +47,13 @@ async function productHistory(form) {
                     </div>
                 </li>`;
                 } else {
-                    PRODUCTS.innerHTML += `                   <li class="list-group-item">
+                    PRODUCTS.innerHTML += `                   <li class="list-group-item item">
                     <div>
-                    <img src="../../resources/images/lambo_ejem.svg" alt="">
-                    <div class="info">
-                        <h1>${row.nombre_producto}</h1>
-                        <h5>${row.descripcion_producto}</h5>
-                    </div>
+                        <img src="../../resources/images/lambo_ejem.svg" alt="">
+                        <div class="info">
+                            <h1>${row.nombre_producto}</h1>
+                            <h5>${row.descripcion_producto}</h5>
+                        </div>
                     </div>
                     <div id="buttons">
                         <button onclick="deleteComment(${row.id_detalle_pedido})" class="delete">
