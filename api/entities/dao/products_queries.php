@@ -270,23 +270,60 @@ class ProductQueries
         }
 
         if (!empty($this->model_year)) {
-            $query .= " AND (mo.anio_inicial_modelo = ? OR mo.anio_final_modelo = ?)";            ;
+            $query .= " AND (mo.anio_inicial_modelo = ? OR mo.anio_final_modelo = ?)";
+            ;
             $params[] = $this->model_year;
             $params[] = $this->model_year;
         }
         return Database::getRows($query, $params);
     }
+
+    public function readAllPublic()
+    {
+        $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria,
+            CASE
+                WHEN AVG(va.calificacion_producto) IS NOT NULL THEN ROUND(AVG(va.calificacion_producto), 1)
+                ELSE 0.0
+            END AS calificacion
+        FROM productos pr
+        INNER JOIN estados_productos ep ON pr.id_estado_producto = ep.id_estado_producto
+        LEFT JOIN detalles_pedidos dp ON pr.id_producto = dp.id_producto
+        LEFT JOIN valoraciones va ON va.id_detalle_pedido = dp.id_detalle_pedido
+        GROUP BY pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria
+        ORDER BY pr.id_producto";
+        return Database::getRows($query);
+    }
+
+    public function searchPublic($value)
+    {
+        $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria,
+            CASE
+                WHEN AVG(va.calificacion_producto) IS NOT NULL THEN ROUND(AVG(va.calificacion_producto), 1)
+                ELSE 0.0
+            END AS calificacion
+        FROM productos pr
+        INNER JOIN estados_productos ep ON pr.id_estado_producto = ep.id_estado_producto
+        LEFT JOIN detalles_pedidos dp ON pr.id_producto = dp.id_producto
+        LEFT JOIN valoraciones va ON va.id_detalle_pedido = dp.id_detalle_pedido
+        WHERE pr.nombre_producto ILIKE ?
+        GROUP BY pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria
+        ORDER BY pr.id_producto";
+        $params = array("%$value%");
+        return Database::getRows($query, $params);
+    }
+
+
     public function deleteComments(){
         $query="DELETE FROM valoraciones WHERE id_detalle_pedido=?";
         $params=array($this->detail_id);
         return Database::executeRow($query,$params);
     }
-    public function createComment(){
+    
+public function createComment(){
         $date=date("d-m-Y");
         $comment_status='true';
         $query="INSERT INTO valoraciones (calificacion_producto, comentario, fecha_comentario, estado_comentario,id_detalle_pedido)
         VALUES(?,?,?,?,?)";
         $params=array($this->quantity,$this->comments,$date,$comment_status,$this->detail_id);
         return Database::executeRow($query,$params);
-    }
-}
+   }

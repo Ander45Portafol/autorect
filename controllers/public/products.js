@@ -25,7 +25,7 @@ async function searchProduct() {
 
 // Function to fetch and display products based on the form data
 async function FillProduct(form = null) {
-    const action = form ? 'search' : 'readAll'; // Determine the action based on whether a form is provided or not
+    const action = form ? 'searchPublic' : 'readAllPublic'; // Determine the action based on whether a form is provided or not
 
     // Fetch product data from the API
     const JSON = await dataFetch(PRODUCT_API, action, form);
@@ -34,7 +34,28 @@ async function FillProduct(form = null) {
         PRODUCT.innerHTML = '';
         JSON.dataset.forEach(row => {
             const url = `product_details.html?id=${row.id_producto}&categoria=${row.id_categoria}`;
-            console.log(url);
+
+    
+            let starsHTML = ''; // Variable to store the HTML of the stars
+    
+            // Generate stars based on the rating
+            const fullStars = Math.floor(row.calificacion); // Number of full stars - Math floor returns the first number, it doesn't matter the numbers after the point
+            const decimalPart = row.calificacion - fullStars; // Decimal part of the rating
+    
+            for (let i = 0; i < fullStars; i++) {
+                starsHTML += "<i class='bx bxs-star'></i>"; // Add full star
+            }
+    
+            if (decimalPart >= 0.5) {
+                starsHTML += "<i class='bx bxs-star-half'></i>"; // Add half star
+            }
+    
+            const remainingStars = 5 - fullStars - Math.round(decimalPart); // Number of remaining stars - Math round for normal rounding
+    
+            for (let i = 0; i < remainingStars; i++) {
+                starsHTML += "<i class='bx bx-star'></i>"; // Add empty star
+            }
+    
             PRODUCT.innerHTML += `
                 <div class="col">
                     <div class="card">
@@ -42,15 +63,15 @@ async function FillProduct(form = null) {
                         <div class="card-body">
                             <h5 class="card-title">${row.nombre_producto}</h5>
                             <p class="card-text">
-                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
-                                <span>${row.precio_producto}</span>
+                                ${row.calificacion} ${starsHTML}           
+                                <span>$${row.precio_producto}</span>
                                 <a href="${url}" class="button" type="button"><i class='bx bxs-cart'></i></a>
                             </p>
                         </div>
                     </div>
                 </div>`;
         });
-    }
+    }               
 }
 
 // Get the categories section in the HTML
