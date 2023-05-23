@@ -9,15 +9,6 @@ if (isset($_GET['action'])) {
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se compara la acción a realizar según la petición del controlador.
     switch ($_GET['action']) {
-        case 'readAll':
-            if ($result['dataset'] = $product_model->readAll()) {
-                $result['status'] = 1;
-            } elseif (Database::getException()) {
-                $result['exception'] = Database::getException();
-            } else {
-                $result['exception'] = 'No existen productos para mostrar';
-            }
-            break;
         case 'readAllPublic':
             if ($result['dataset'] = $product_model->readAllPublic()) {
                 $result['status'] = 1;
@@ -36,17 +27,17 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No existen productos para mostrar';
             }
             break;
-            case 'readOne':
-                if (!$product_model->setId($_POST['id_producto'])) {
-                    $result['exception'] = 'Wrong product';
-                } elseif ($result['dataset'] = $product_model->readOne()) {
-                    $result['status'] = 1;
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'The category does not exist';
-                }
-                break;
+        case 'readOnePublic':
+            if (!$product_model->setId($_POST['id_producto'])) {
+                $result['exception'] = 'Wrong product';
+            } elseif ($result['dataset'] = $product_model->readOnePublic()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'The category does not exist';
+            }
+            break;
         case 'search':
             $_POST = Validator::validateForm($_POST);
             if ($_POST['search'] == '') {
@@ -73,6 +64,17 @@ if (isset($_GET['action'])) {
                 $result['exception'] = Database::getException();
             } else {
                 $result['exception'] = 'No data';
+            }
+            break;
+        case 'readProductImgsPublic':
+            if (!$product_model->setId($_POST['id_producto'])) {
+                $result['exception'] = 'Wrong product';
+            } elseif ($result['dataset'] = $product_model->readProductImgsPublic()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'There are no images to show';
             }
             break;
         case 'productsRelated':
