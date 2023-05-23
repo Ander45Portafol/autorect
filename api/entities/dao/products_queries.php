@@ -319,11 +319,12 @@ class ProductQueries
         return Database::executeRow($query,$params);
     }
     
-public function createComment(){
+    public function createComment(){
         $date=date("d-m-Y");
         $comment_status='true';
         $query="INSERT INTO valoraciones (calificacion_producto, comentario, fecha_comentario, estado_comentario,id_detalle_pedido)
         VALUES(?,?,?,?,?)";
         $params=array($this->quantity,$this->comments,$date,$comment_status,$this->detail_id);
         return Database::executeRow($query,$params);
-   }
+    }
+}
