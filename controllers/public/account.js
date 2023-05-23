@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <button class="btn btn-opciones dropdown-toggle btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class='bx bxs-user-circle'></i>
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="${url}">Perfil</a></li>
+                <li><a class="dropdown-item" href="${url}">Profile</a></li>
                 <li><a type="button" class="dropdown-item btn-logout" onclick="logOut()">
                 <i class='bx bx-log-out'></i>Log Out
                 </a></li>
