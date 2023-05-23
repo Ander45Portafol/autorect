@@ -196,7 +196,20 @@ class ProductQueries
         $params = array($this->product_id);
         return Database::getRows($query, $params);
     }
-
+    public function productHistory()
+    {
+        $query = "SELECT b.nombre_producto,a.id_detalle_pedido, a.precio_producto, c.id_estado_pedido, d.estado_pedido,b.descripcion_producto from detalles_pedidos a INNER JOIN productos b using (id_producto)
+        INNER JOIN pedidos c USING (id_pedido) INNER JOIN estados_pedidos d USING (id_estado_pedido) WHERE id_cliente=?
+        ORDER BY id_detalle_pedido";
+        $params = array($this->client_id);
+        return Database::getRows($query, $params);
+    }
+    public function validateComments(){
+        $query="SELECT c.nombre_producto,a.comentario from valoraciones a INNER JOIN detalles_pedidos b using (id_detalle_pedido) INNER JOIN productos c using (id_producto)
+        INNER JOIN pedidos d using(id_pedido) where id_detalle_pedido=?";
+        $params=array($this->detail_id);
+        return Database::getRow($query,$params);
+    }
     /*Filters*/
 
     public function categoriesFilter()
@@ -298,4 +311,19 @@ class ProductQueries
         $params = array("%$value%");
         return Database::getRows($query, $params);
     }
-}
+
+
+    public function deleteComments(){
+        $query="DELETE FROM valoraciones WHERE id_detalle_pedido=?";
+        $params=array($this->detail_id);
+        return Database::executeRow($query,$params);
+    }
+    
+public function createComment(){
+        $date=date("d-m-Y");
+        $comment_status='true';
+        $query="INSERT INTO valoraciones (calificacion_producto, comentario, fecha_comentario, estado_comentario,id_detalle_pedido)
+        VALUES(?,?,?,?,?)";
+        $params=array($this->quantity,$this->comments,$date,$comment_status,$this->detail_id);
+        return Database::executeRow($query,$params);
+   }

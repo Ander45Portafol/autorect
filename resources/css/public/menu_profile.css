@@ -1,0 +1,82 @@
+/*Impoting local font*/
+@import url(../../fonts/Roboto/Roboto-Regular.ttf);
+
+/*Root variables*/
+:root {
+    --primary-color: #ffffff;
+    --dark-color: #131313;
+    --focus-color: #822727;
+    --data-white: #f5f5f5;
+    --subtitle-grey: #898989;
+    --refresh-blue: #5ac0d7;
+    --edit-yellow: #ffca2c;
+    --delete-red: #8b3a3a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.offcanvas-body .user-info img {
+    margin-top: 50px;
+    width: 150px;
+    height: 150px;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+    background-color: var(--dark-color);
+    margin-right: 0;
+    width: 100%;
+}
+
+.options-container a i {
+    font-size: 24pt;
+}
+
+.options-container a:hover {
+    background-color: var(--delete-red);
+    transition: 0.2s;
+    color: var(--primary-color);
+}
+
+.options-container a {
+    background-color: var(--dark-color);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    height: 70px;
+    gap: 2rem;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+}
+
+.offcanvas-body .user-info h3 {
+    font-size: 24px;
+    text-align: center;
+    padding-top: 28px;
+    color: var(--primary-color);
+}
+
+.offcanvas-body .user-info h4 {
+    font-size: 22px;
+    text-align: center;
+    color: var(--subtitle-grey);
+}
+.btnback{
+    background-color: transparent;
+    font-size: 32px;
+    color: #ffffff;
+}

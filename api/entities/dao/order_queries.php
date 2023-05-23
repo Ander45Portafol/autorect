@@ -147,7 +147,7 @@ class OrderQueries
     {
         $query = 'SELECT b.id_detalle_pedido,a.id_pedido, c.nombre_producto ,b.precio_producto, b.cantidad_producto,c.imagen_principal,c.descripcion_producto
         FROM pedidos a INNER JOIN detalles_pedidos b USING(id_pedido) INNER JOIN productos c USING(id_producto)
-        WHERE id_pedido = ?';
+        WHERE id_pedido = ? AND id_estado_pedido=1';
         $params = array($this->order_id);
         return Database::getRows($query, $params);
     }
@@ -156,10 +156,14 @@ class OrderQueries
         $params=array($this->detail_id);
         return Database::executeRow($query,$params);
     }
-    public function showDataUser(){
-        $query="SELECT CONCAT(c.nombre_cliente,' ', c.apellido_cliente) AS nombre_completo_cliente FROM pedidos b INNER JOIN clientes c USING (id_cliente) WHERE id_pedido=?";
-        $params=array($_SESSION['id_pedido']);
-        print_r($params);
+    public function confirmOrder(){
+        $query="SELECT direccion_pedido FROM pedidos WHERE id_cliente=?";
+        $params=array($this->client_id);
         return Database::getRow($query,$params);
+    }
+    public function updateOrder(){
+        $query="UPDATE pedidos SET id_estado_pedido=4 WHERE id_cliente=?";
+        $params=array($this->client_id);
+        return Database::executeRow($query,$params);
     }
 }

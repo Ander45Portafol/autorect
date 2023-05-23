@@ -100,6 +100,48 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'The category does not exist';
                 }
                 break;
+            case 'hsitoryProduct':
+                if (!$product_model->setIdClient($_POST['id_cliente'])) {
+                    $result['exception'] = 'Wrong client';
+                }elseif ($result['dataset']=$product_model->productHistory()) {
+                    $result['status'] = 1;
+                }else{
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            case 'validateComments':
+                if (!$product_model->setDetailId($_POST['id_detalle'])) {
+                    $result['exception']='Detalle incorrecto';
+                }elseif ($result['dataset']=$product_model->validateComments()) {
+                    $result['status']=1;
+                }else{
+                    $result['exception']=Database::getException();
+                }
+                break;
+            case 'createComment':
+                if (!$product_model->setDetailId($_POST['id_detalle'])) {
+                    $result['exception']='Detalle incorrecto';
+                }elseif (!$product_model->setComment($_POST['comment'])) {
+                    $result['exception']='Detalle incorrecto';
+                }elseif (!$product_model->setQuantity($_POST['quantity'])) {
+                    $result['exception']='Detalle incorrecto';
+                }elseif ($product_model->createComment()) {
+                    $result['status']=1;
+                    $result['message']='Succesfull create comment';
+                }else {
+                    $result['exception']=Database::getException();
+                }
+                break;
+            case 'deleteComments':
+                if (!$product_model->setDetailId($_POST['id_detalle'])) {
+                    $result['exception']='Detalle incorrecto';
+                }elseif ($product_model->deleteComments()) {
+                    $result['status']=1;
+                    $result['message']='Succesfull delete comment';
+                }else {
+                    $result['exception']=Database::getException();
+                }
+                break;
             /*Filters*/
             case 'categoriesFilter':
                 if ($result['dataset'] = $product_model->categoriesFilter()) {

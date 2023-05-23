@@ -32,6 +32,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
                 break;
+            case 'readOne':
+                if (!$client_model->setCLientId($_POST['id_cliente'])) {
+                    $result['exception'] = 'Wrong client';
+                }elseif ($result['dataset']=$client_model->readOne()) {
+                    $result['status']=1;
+                }else{
+                    $result['exception'] = Database::getException();
+                }
+                break;
             case 'readActualMembership':
                 if (!$client_model->setCLientId($_POST['id_cliente'])) {
                     $result['exception'] = 'Wrong client';
