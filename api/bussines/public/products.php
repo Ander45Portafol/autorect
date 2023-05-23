@@ -18,6 +18,15 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No existen productos para mostrar';
             }
             break;
+        case 'readAllPublic':
+            if ($result['dataset'] = $product_model->readAllPublic()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'No existen productos para mostrar';
+            }
+            break;
         case 'readTop10':
             if ($result['dataset'] = $product_model->readTop10()) {
                 $result['status'] = 1;
@@ -44,6 +53,20 @@ if (isset($_GET['action'])) {
                 $result['status'] = 1;
                 $result['dataset'] = $product_model->readAll();
             } elseif ($result['dataset'] = $product_model->searchRow($_POST['search'])) {
+                $result['status'] = 1;
+                $result['message'] = 'Data was found';
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'No data';
+            }
+            break;
+        case 'searchPublic':
+            $_POST = Validator::validateForm($_POST);
+            if ($_POST['search'] == '') {
+                $result['status'] = 1;
+                $result['dataset'] = $product_model->readAllPublic();
+            } elseif ($result['dataset'] = $product_model->searchPublic($_POST['search'])) {
                 $result['status'] = 1;
                 $result['message'] = 'Data was found';
             } elseif (Database::getException()) {
