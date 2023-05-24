@@ -166,4 +166,16 @@ class OrderQueries
         $params=array($this->client_id);
         return Database::executeRow($query,$params);
     }
+    public function subtractDetail(){
+        $quantitysubtract=$this->quantity_product-1;
+        $query='UPDATE detalles_pedidos SET cantidad_producto=? WHERE id_detalle_pedido=?';
+        $params=array($quantitysubtract,$this->detail_id);
+        return Database::executeRow($query,$params);
+    }
+    public function addDetail(){
+        $quantitysubtract=$this->quantity_product+1;
+        $query='UPDATE detalles_pedidos SET cantidad_producto=? WHERE id_detalle_pedido=?';
+        $params=array($quantitysubtract,$this->detail_id);
+        return Database::executeRow($query,$params);
+    }
 }

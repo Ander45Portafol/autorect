@@ -46,7 +46,11 @@ async function readOrderDetail() {
     const JSON = await dataFetch(ORDER_API, 'readOrderDetail');
     if (JSON.status) {
         PRODUCT_CART.innerHTML = '';
+        let subtotal = 0;
+        let total = 0;
         JSON.dataset.forEach(row => {
+            subtotal=row.precio_producto*row.cantidad_producto;
+            total+=subtotal;
             PRODUCT_CART.innerHTML += `                    <tr>
             <td>
                 <div class="product">
@@ -59,13 +63,16 @@ async function readOrderDetail() {
             </td>
             <td>
                 <div class="quantity_product">
-                    <button><i class='bx bx-minus'></i></button>
+                    <button onclick="deleteOneProduct(${row.id_detalle_pedido},${row.cantidad_producto})"><i class='bx bx-minus'></i></button>
                     <p>${row.cantidad_producto}</p>
-                    <button><i class='bx bx-plus'></i></button>
+                    <button onclick="addOneProduct(${row.id_detalle_pedido},${row.cantidad_producto})"><i class='bx bx-plus'></i></button>
                 </div>
             </td>
             <td>
                 <p>$${row.precio_producto}</p>
+            </td>
+            <td>
+                <p>$${total.toFixed(2)}</p>
             </td>
             <td>
                 <button class="delete" onclick="deleteDetail(${row.id_detalle_pedido})"><i class="bx bxs-trash"></i></button>
@@ -86,5 +93,29 @@ async function deleteDetail(id) {
         } else {
             sweetAlert(2, JSON.exception, false);
         }
+    }
+}
+async function deleteOneProduct(id_detalle, cantidad){
+    console.log(cantidad);
+    const FORM=new FormData();
+    FORM.append('id_detalle',id_detalle);
+    FORM.append('cantidad', cantidad);
+    const JSON=await dataFetch(ORDER_API,'subtractDetail',FORM);
+    if (JSON.status) {
+        readOrderDetail();
+    }else{
+        sweetAlert(2,JSON.exception,false);
+    }
+}
+async function addOneProduct(id_detalle, cantidad){
+    console.log(cantidad);
+    const FORM=new FormData();
+    FORM.append('id_detalle',id_detalle);
+    FORM.append('cantidad', cantidad);
+    const JSON=await dataFetch(ORDER_API,'addDetail',FORM);
+    if (JSON.status) {
+        readOrderDetail();
+    }else{
+        sweetAlert(2,JSON.exception,false);
     }
 }
