@@ -149,15 +149,33 @@ async function productRelated(form) {
   const JSON = await dataFetch(PRODUCT_API, "productsRelated", form);
   if (JSON.status) {
     JSON.dataset.forEach((row) => {
-      PRODUCTS_RELATED.innerHTML = `
+      let starsHTML = ''; // Variable to store the HTML of the stars
+    
+      // Generate stars based on the rating
+      const fullStars = Math.floor(row.calificacion); // Number of full stars - Math floor returns the first number, it doesn't matter the numbers after the point
+      const decimalPart = row.calificacion - fullStars; // Decimal part of the rating
+
+      for (let i = 0; i < fullStars; i++) {
+          starsHTML += "<i class='bx bxs-star'></i>"; // Add full star
+      }
+
+      if (decimalPart >= 0.5) {
+          starsHTML += "<i class='bx bxs-star-half'></i>"; // Add half star
+      }
+
+      const remainingStars = 5 - fullStars - Math.round(decimalPart); // Number of remaining stars - Math round for normal rounding
+
+      for (let i = 0; i < remainingStars; i++) {
+          starsHTML += "<i class='bx bx-star'></i>"; // Add empty star
+      }
+      PRODUCTS_RELATED.innerHTML += `
             <div class="col">
             <div class="card">
                 <img src="${SERVER_URL}images/products/${row.imagen_principal}" class="imagen_product">
                 <div class="card-body">
                     <h5 class="card-title">${row.nombre_producto}</h5>
-                    <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
-                            class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
-                        <span>${row.precio_producto}</span>
+                    <p class="card-text">${starsHTML}
+                        <span>$${row.precio_producto}</span>
                         <a href="product_details.html" class="button" type="button"><i
                                 class='bx bxs-cart'></i></a>
                     </p>
