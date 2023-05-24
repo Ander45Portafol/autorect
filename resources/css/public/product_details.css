@@ -193,9 +193,18 @@ section {
 }
 
 /*reviews stars*/
-.products_related .card .bxs-star {
+.products_related .card i {
     color: var(--focus-color);
-    font-size: 20px;
+    font-size: 18px;
+}
+
+.products_related .card a i {
+    color: white;
+}
+
+
+.products_related .card-text{
+    font-size: 18px;
 }
 
 /*general cards*/
