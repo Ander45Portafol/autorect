@@ -7,6 +7,7 @@ const VALORATION = document.getElementById("valorations");
 const REVIEWS_RECORDS = document.getElementById("number_reviews");
 const ORDER_API = "bussines/public/order.php";
 const ORDER = document.getElementById("add_product");
+const PRODUCT_IMGS = document.getElementById("otherimages");
 
 document.addEventListener("DOMContentLoaded", async () => {
   const FORM = new FormData();
@@ -15,14 +16,35 @@ document.addEventListener("DOMContentLoaded", async () => {
   productData(FORM);
   productRelated(FORM);
   productReviews(FORM);
-  const JSON = await dataFetch(PRODUCT_API, "readOne", FORM);
+  productImgs(FORM);
+  const JSON = await dataFetch(PRODUCT_API, "readOnePublic", FORM);
   if (JSON.status) {
     document.getElementById("id_product").value = JSON.dataset.id_producto;
   }
 });
 async function productData(form) {
-  const JSONP = await dataFetch(PRODUCT_API, "readOne", form);
+  const JSONP = await dataFetch(PRODUCT_API, "readOnePublic", form);
   if (JSONP.status) {
+    let starsHTML = ''; // Variable to store the HTML of the stars
+
+    // Generate stars based on the rating
+    const fullStars = Math.floor(JSONP.dataset.calificacion); // Number of full stars - Math floor returns the first number, it doesn't matter the numbers after the point
+    const decimalPart = JSONP.dataset.calificacion - fullStars; // Decimal part of the rating
+
+    for (let i = 0; i < fullStars; i++) {
+      starsHTML += "<i class='bx bxs-star'></i>"; // Add full star
+    }
+
+    if (decimalPart >= 0.5) {
+      starsHTML += "<i class='bx bxs-star-half'></i>"; // Add half star
+    }
+
+    const remainingStars = 5 - fullStars - Math.round(decimalPart); // Number of remaining stars - Math round for normal rounding
+
+    for (let i = 0; i < remainingStars; i++) {
+      starsHTML += "<i class='bx bx-star'></i>"; // Add empty star
+    }
+
     PRODUCT_TITLE.textContent = JSONP.dataset.nombre_producto;
     document.getElementById("price_product").textContent =
       "$" + JSONP.dataset.precio_producto;
@@ -32,6 +54,41 @@ async function productData(form) {
       JSONP.dataset.descripcion_producto;
     document.getElementById("brand_product").textContent =
       JSONP.dataset.nombre_modelo;
+    document.getElementById("status_product").textContent =
+      JSONP.dataset.estado_producto;
+    document.getElementById("img_principal").src = "../../api/images/products/" + JSONP.dataset.imagen_principal;
+    document.getElementById("valoration").innerHTML += `                        
+    <p class="red" id="stars">${JSONP.dataset.calificacion} ${starsHTML} </p>
+    <p> ${JSONP.dataset.valo} (costumers reviews)</p>`;
+  }
+}
+
+async function productImgs(form) {
+  PRODUCT_IMGS.innerHTML = "";
+  const JSON = await dataFetch(PRODUCT_API, "readProductImgsPublic", form);
+  if (JSON.status) {
+    JSON.dataset.forEach((row) => {
+      PRODUCT_IMGS.innerHTML += `
+      <img class="images" src="../../api/images/products/${row.nombre_archivo_imagen}" alt="img">`;
+    });
+
+    //Change principal img src when the user click a secondary img
+    const principalImg = document.getElementById('img_principal');
+    const images = document.querySelectorAll('.otherimages .images');
+
+    // Add a click event handler to each secondary image
+    images.forEach((image) => {
+      image.addEventListener('click', () => {
+        // Get the source of the clicked secondary image
+        const newSrc = image.getAttribute('src');
+
+        // Swap the source between the main image and the secondary image
+        const currentSrc = principalImg.getAttribute('src');
+        principalImg.setAttribute('src', newSrc);
+        image.setAttribute('src', currentSrc);
+
+      });
+    });
   }
 }
 
@@ -40,18 +97,31 @@ async function productReviews(form) {
   const JSON = await dataFetch(PRODUCT_API, "productReview", form);
   if (JSON.status) {
     JSON.dataset.forEach((row) => {
-      REVIEWS.innerHTML = `                    <div class="reviews">
+
+      let starsHTML = ''; // Variable to store the HTML of the stars
+      // Generate stars based on the rating
+      const fullStars = Math.floor(row.calificacion_producto); // Number of full stars - Math floor returns the first number, it doesn't matter the numbers after the point
+      const remainingStars = 5 - fullStars;
+
+      for (let i = 0; i < fullStars; i++) {
+        starsHTML += "<i class='bx bxs-star'></i>"; // Add full star
+      }
+
+      for (let i = 0; i < remainingStars; i++) {
+        starsHTML += "<i class='bx bx-star'></i>"; // Add empty star
+      }
+
+      REVIEWS.innerHTML += `                    <div class="reviews">
             <div class="top_review">
                 <p id="name_client">${row.client_name}</p>
                 <p id="date_coment">${row.fecha_comentario}</p>
             </div>
             <div class="comentary-data">
-                <p class="coment">comentary:</p>
+                <p class="coment"></p>
                 <div class="data">
                     <p id="comentary">${row.comentario}</p>
                     <div class="valoration" id='valorations'>
-                    <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
-                    class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                    ${row.calificacion_producto} ${starsHTML}
                     </div>
                 </div>
             </div>
@@ -79,15 +149,33 @@ async function productRelated(form) {
   const JSON = await dataFetch(PRODUCT_API, "productsRelated", form);
   if (JSON.status) {
     JSON.dataset.forEach((row) => {
-      PRODUCTS_RELATED.innerHTML = `
+      let starsHTML = ''; // Variable to store the HTML of the stars
+    
+      // Generate stars based on the rating
+      const fullStars = Math.floor(row.calificacion); // Number of full stars - Math floor returns the first number, it doesn't matter the numbers after the point
+      const decimalPart = row.calificacion - fullStars; // Decimal part of the rating
+
+      for (let i = 0; i < fullStars; i++) {
+          starsHTML += "<i class='bx bxs-star'></i>"; // Add full star
+      }
+
+      if (decimalPart >= 0.5) {
+          starsHTML += "<i class='bx bxs-star-half'></i>"; // Add half star
+      }
+
+      const remainingStars = 5 - fullStars - Math.round(decimalPart); // Number of remaining stars - Math round for normal rounding
+
+      for (let i = 0; i < remainingStars; i++) {
+          starsHTML += "<i class='bx bx-star'></i>"; // Add empty star
+      }
+      PRODUCTS_RELATED.innerHTML += `
             <div class="col">
             <div class="card">
                 <img src="${SERVER_URL}images/products/${row.imagen_principal}" class="imagen_product">
                 <div class="card-body">
                     <h5 class="card-title">${row.nombre_producto}</h5>
-                    <p class="card-text"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i
-                            class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
-                        <span>${row.precio_producto}</span>
+                    <p class="card-text">${starsHTML}
+                        <span>$${row.precio_producto}</span>
                         <a href="product_details.html" class="button" type="button"><i
                                 class='bx bxs-cart'></i></a>
                     </p>

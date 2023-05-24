@@ -108,7 +108,7 @@ section .products-content {
 }
 
 /*reviews stars*/
-.products-content .card .bxs-star {
+.products-content .card .bxs-star, .products-content .card .bx-star, .products-content .card .bxs-star-half {
   color: var(--focus-color);
   font-size: 20px;
 }
@@ -204,4 +204,9 @@ section .products-content {
 
 footer{
   margin-top: 50px;
+}
+
+.card-text{
+  color: var(--focus-color);
+  font-size: 20px;
 }
