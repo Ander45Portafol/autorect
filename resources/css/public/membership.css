@@ -23,12 +23,18 @@
     margin-top: 66px;
 }
 
+/*Style for the title*/
+.title-row {
+    margin-top: 70px;
+}
+
 .title {
     margin-top: 50px;
     font-weight: bold;
     color: var(--focus-color);
 }
 
+/*Style for the separator*/
 hr {
     border: none;
     border-top: 1px solid black;
@@ -36,10 +42,7 @@ hr {
     width: 95% !important;
 }
 
-.title-row {
-    margin-top: 70px;
-}
-
+/*Style for the cards*/
 .card {
     margin-top: 50px;
     padding-top: 100px;
@@ -89,7 +92,7 @@ hr {
 }
 
 .features-row h5,
-.discounts-row h5 {
+.benefits-row h5 {
     color: white;
     font-weight: bold;
 }
@@ -98,7 +101,8 @@ hr {
     color: var(--light-gray-color);
 }
 
-.discounts-row button {
+/*Style for the cards button*/
+.benefits-row button {
     width: 100%;
     background-color: var(--focus-color);
     border: none;
@@ -111,27 +115,7 @@ hr {
     margin-bottom: 20px;
 }
 
-@media (max-width: 420px) {
-    .price-top {
-        width: 40% !important;
-    }
-
-    .desp-price {
-        width: 60% !important;
-    }
-
-    .price {
-        font-size: 70px;
-    }
-}
-
-@media (max-width: 376px) {
-
-    .price {
-        font-size: 6vh;
-    }
-}
-
+/*Style for the modals*/
 .footer-m {
     display: flex;
     justify-content: space-between;
@@ -178,6 +162,7 @@ hr {
     font-weight: normal;
 }
 
+/*Style for the modal button*/
 .btn-confirm{
     background-color: var(--focus-color);
     padding: 5px 30px;
@@ -187,6 +172,7 @@ hr {
     border-radius: 5px;
 }
 
+/*Responsive*/
 @media (min-width: 992px) {
     hr{
         display: none;
@@ -218,4 +204,26 @@ hr {
         margin-bottom: 20px;
     }
     
+}
+
+
+@media (max-width: 420px) {
+    .price-top {
+        width: 40% !important;
+    }
+
+    .desp-price {
+        width: 60% !important;
+    }
+
+    .price {
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 376px) {
+
+    .price {
+        font-size: 6vh;
+    }
 }

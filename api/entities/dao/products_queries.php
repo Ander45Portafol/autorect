@@ -177,11 +177,12 @@ class ProductQueries
         USING(id_estado_producto)
         WHERE id_categoria=? AND id_producto!=?
         ORDER BY id_producto";
-        $params = array($this->product_category,$this->product_id);
+        $params = array($this->product_category, $this->product_id);
         return Database::getRows($query, $params);
     }
-    public function productsReview(){
-        $query="SELECT a.calificacion_producto, a.comentario, a.fecha_comentario, a.estado_comentario, CONCAT(d.nombre_cliente,' ',d.apellido_cliente) AS client_name
+    public function productsReview()
+    {
+        $query = "SELECT a.calificacion_producto, a.comentario, a.fecha_comentario, a.estado_comentario, CONCAT(d.nombre_cliente,' ',d.apellido_cliente) AS client_name
         FROM valoraciones a
         INNER JOIN detalles_pedidos b
         USING(id_detalle_pedido)
@@ -192,7 +193,166 @@ class ProductQueries
         INNER JOIN productos e
         USING (id_producto)
         WHERE e.id_producto=? AND a.estado_comentario=true";
-        $params=array($this->product_id);
-        return Database::getRows($query,$params);
+        $params = array($this->product_id);
+        return Database::getRows($query, $params);
+    }
+    public function productHistory()
+    {
+        $query = "SELECT b.nombre_producto,a.id_detalle_pedido, a.precio_producto, c.id_estado_pedido, d.estado_pedido,b.descripcion_producto from detalles_pedidos a INNER JOIN productos b using (id_producto)
+        INNER JOIN pedidos c USING (id_pedido) INNER JOIN estados_pedidos d USING (id_estado_pedido) WHERE id_cliente=?
+        ORDER BY id_detalle_pedido";
+        $params = array($this->client_id);
+        return Database::getRows($query, $params);
+    }
+    public function validateComments(){
+        $query="SELECT c.nombre_producto,a.comentario from valoraciones a INNER JOIN detalles_pedidos b using (id_detalle_pedido) INNER JOIN productos c using (id_producto)
+        INNER JOIN pedidos d using(id_pedido) where id_detalle_pedido=?";
+        $params=array($this->detail_id);
+        return Database::getRow($query,$params);
+    }
+    /*Filters*/
+
+    public function categoriesFilter()
+    {
+        $query = "SELECT ct.id_categoria, ct.nombre_categoria, COUNT(pr.id_categoria) AS num
+        FROM productos AS pr
+        INNER JOIN categorias AS ct ON pr.id_categoria = ct.id_categoria
+        GROUP BY ct.id_categoria, ct.nombre_categoria";
+        return Database::getRows($query);
+    }
+
+    public function priceFilter()
+    {
+        $query = "SELECT CAST( MAX(precio_producto) AS integer) as maxi
+        FROM productos";
+        return Database::getRows($query);
+    }
+
+    public function yearsFilter()
+    {
+        $query = "SELECT anio, SUM(cantidad_modelos) AS num
+        FROM (
+          SELECT mo.anio_inicial_modelo AS anio, COUNT(pr.id_modelo) AS cantidad_modelos, 1 AS orden
+          FROM productos AS pr
+          INNER JOIN modelos AS mo ON pr.id_modelo = mo.id_modelo
+          GROUP BY mo.anio_inicial_modelo
+          UNION ALL
+          SELECT mo.anio_final_modelo AS anio, COUNT(pr.id_modelo) AS cantidad_modelos, 2 AS orden
+          FROM productos AS pr
+          INNER JOIN modelos AS mo ON pr.id_modelo = mo.id_modelo
+          GROUP BY mo.anio_final_modelo
+        ) AS subconsulta
+        GROUP BY anio, orden
+        ORDER BY orden ASC, anio ASC;";
+        return Database::getRows($query);
+    }
+
+    public function filterSearch()
+    {
+        $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria
+        FROM productos as pr
+        INNER JOIN estados_productos as ep
+            ON pr.id_estado_producto = ep.id_estado_producto
+        INNER JOIN modelos as mo
+            ON pr.id_modelo = mo.id_modelo
+        WHERE 1=1";
+
+        $params = array();
+
+        if (!empty($this->product_category)) {
+            $query .= " AND pr.id_categoria = ?";
+            $params[] = $this->product_category;
+        }
+
+        if (!empty($this->product_price) && $this->product_price != 0) {
+            $query .= " AND CAST(pr.precio_producto as integer) BETWEEN ? AND (SELECT MAX(precio_producto) FROM productos)";
+            $params[] = $this->product_price;
+        }
+
+        if (!empty($this->model_year)) {
+            $query .= " AND (mo.anio_inicial_modelo = ? OR mo.anio_final_modelo = ?)";
+            ;
+            $params[] = $this->model_year;
+            $params[] = $this->model_year;
+        }
+        return Database::getRows($query, $params);
+    }
+
+    public function readAllPublic()
+    {
+        $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria,
+        CASE
+            WHEN AVG(va.calificacion_producto) IS NOT NULL THEN ROUND(AVG(va.calificacion_producto), 1)
+            ELSE 0.0
+        END AS calificacion
+        FROM productos pr
+        INNER JOIN estados_productos ep ON pr.id_estado_producto = ep.id_estado_producto
+        LEFT JOIN detalles_pedidos dp ON pr.id_producto = dp.id_producto
+        LEFT JOIN valoraciones va ON va.id_detalle_pedido = dp.id_detalle_pedido AND va.estado_comentario = true
+        GROUP BY pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria
+        ORDER BY pr.id_producto;";
+        return Database::getRows($query);
+    }
+
+    public function searchPublic($value)
+    {
+        $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria,
+            CASE
+                WHEN AVG(va.calificacion_producto) IS NOT NULL THEN ROUND(AVG(va.calificacion_producto), 1)
+                ELSE 0.0
+            END AS calificacion
+        FROM productos pr
+        INNER JOIN estados_productos ep ON pr.id_estado_producto = ep.id_estado_producto
+        LEFT JOIN detalles_pedidos dp ON pr.id_producto = dp.id_producto
+        LEFT JOIN valoraciones va ON va.id_detalle_pedido = dp.id_detalle_pedido AND va.estado_comentario = true
+        WHERE pr.nombre_producto ILIKE ?
+        GROUP BY pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria
+        ORDER BY pr.id_producto";
+        $params = array("%$value%");
+        return Database::getRows($query, $params);
+    }
+
+    public function readProductImgsPublic(){
+        $query="SELECT nombre_archivo_imagen 
+        FROM imagenes_productos
+        WHERE id_producto = ?;";
+        $params = array($this->product_id);
+        return Database::getRows($query, $params);
+    }
+
+    //This function is to catch one data with the identicator at the product
+    public function readOnePublic()
+    {
+        $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria, mo.nombre_modelo, pr.existencias, pr.id_modelo, ca.nombre_categoria, pr.id_estado_producto, COUNT(va.id_valoracion) as valo,
+        CASE
+            WHEN AVG(va.calificacion_producto) IS NOT NULL THEN ROUND(AVG(va.calificacion_producto), 1)
+            ELSE 0.0
+        END AS calificacion
+        FROM productos pr
+        INNER JOIN estados_productos ep ON pr.id_estado_producto = ep.id_estado_producto
+        LEFT JOIN detalles_pedidos dp ON pr.id_producto = dp.id_producto
+        LEFT JOIN valoraciones va ON va.id_detalle_pedido = dp.id_detalle_pedido AND va.estado_comentario = true
+        INNER JOIN modelos mo ON pr.id_modelo = mo.id_modelo
+        INNER JOIN categorias ca ON pr.id_categoria = ca.id_categoria
+        WHERE pr.id_producto = ?
+        GROUP BY pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria, mo.nombre_modelo, pr.existencias, pr.id_modelo, ca.nombre_categoria, pr.id_estado_producto
+        ORDER BY pr.id_producto";
+        $params = array($this->product_id);
+        return Database::getRow($query, $params);
+    }
+
+    public function deleteComments(){
+        $query="DELETE FROM valoraciones WHERE id_detalle_pedido=?";
+        $params=array($this->detail_id);
+        return Database::executeRow($query,$params);
+    }
+
+    public function createComment(){
+        $date=date("d-m-Y");
+        $comment_status='true';
+        $query="INSERT INTO valoraciones (calificacion_producto, comentario, fecha_comentario, estado_comentario,id_detalle_pedido)
+        VALUES(?,?,?,?,?)";
+        $params=array($this->quantity,$this->comments,$date,$comment_status,$this->detail_id);
+        return Database::executeRow($query,$params);
     }
 }

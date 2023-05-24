@@ -108,7 +108,7 @@ section .products-content {
 }
 
 /*reviews stars*/
-.products-content .card .bxs-star {
+.products-content .card .bxs-star, .products-content .card .bx-star, .products-content .card .bxs-star-half {
   color: var(--focus-color);
   font-size: 20px;
 }
@@ -125,4 +125,88 @@ section .products-content {
   font-size: 20px;
   font-weight: 800;
   margin-left: 20px;
+}
+
+.categories-count, .years-count{
+  background-color: var(--focus-color);
+}
+
+.price-section{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-label.lab {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+}
+
+.form-range {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: center;
+}
+
+.form-range::-webkit-slider-thumb{
+  background-color: var(--focus-color);
+  box-shadow: 0 0 5px var(--focus-color) !important;
+}
+
+.form-range::-webkit-slider-thumb:active{
+  background-color: var(--focus-color) !important;
+}
+
+.form-label.lab2 {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+}
+
+.categories-item, .years-item{
+  text-align: left;
+}
+
+.categories-item input, .years-item input{
+  background-color: transparent;
+  border: none;
+  box-shadow: 0 0 5px var(--focus-color) !important;
+}
+
+.categories-item input:checked, .years-item input:checked{
+  background-color: var(--focus-color);
+  border: none;
+  box-shadow: 0 0 5px var(--focus-color) !important;
+}
+
+.aside-buttons{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.aside-buttons button{
+  width: 45%;
+  background-color: var(--focus-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+
+footer{
+  margin-top: 50px;
+}
+
+.card-text{
+  color: var(--focus-color);
+  font-size: 20px;
 }

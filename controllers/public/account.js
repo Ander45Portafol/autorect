@@ -1,8 +1,14 @@
+//Path to the API
 const USER_API = 'bussines/public/clients.php';
+
+//HTML sections
 const HEADER = document.querySelector('header')
+
+//Event to add the menu checking if the user is logged in or not
 document.addEventListener('DOMContentLoaded', async () => {
     const JSON = await dataFetch(USER_API, 'getUser');
     if (JSON.session) {
+        url = `profile.html?id=${JSON.id}`;
         HEADER.innerHTML = `
 <nav class="navbar fixed-top navbar-expand-lg">
 <div class="container">
@@ -32,9 +38,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <a class="link-contact nav-link text-white" href="contact_us.html">Contact Us</a>
             </li>
         </ul>
-        <a type="button" class="btn-logout btn btn-light order-lg-3" onclick="logOut()">
-        <i class='bx bx-log-out'></i>Log Out
-        </a>
+        <div class="dropdown order-lg-3">
+            <button class="btn btn-opciones dropdown-toggle btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class='bx bxs-user-circle'></i>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="${url}">Profile</a></li>
+                <li><a type="button" class="dropdown-item btn-logout" onclick="logOut()">
+                <i class='bx bx-log-out'></i>Log Out
+                </a></li>
+            </ul>
+        </div>
     </div>
 </div>
 </nav>`;
@@ -79,12 +92,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     changeMenu();
 });
 
+//Function to check the actual page and change the menu depending on that
 function changeMenu() {
     var currentPage = window.location.pathname;
     var currentPageName = currentPage.substring(currentPage.lastIndexOf('/') + 1);
 
     var nav = document.querySelector('nav');
-    if(currentPageName == "index.html"){
+    if(currentPageName == "index.html" || currentPage == ""){
         if (window.innerWidth < 1280) {
             nav.classList.add('navbar2');
         } else {

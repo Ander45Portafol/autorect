@@ -1,181 +1,108 @@
-/*Impoting local font*/
-@import url(../../fonts/Roboto/Roboto-Regular.ttf);
-
-/*Root variables*/
-:root{
-    --primary-color: #FFFFFF;
-    --dark-color: #131313;
-    --focus-color: #822727;
-    --data-white: #F5F5F5;
-    --subtitle-grey: #898989;
-    --refresh-blue: #5AC0D7;
-    --edit-yellow: #FFCA2C;
-    --delete-red: #8B3A3A;
-    --grey-background: #F5F5F5;
+body {
+    width: 100%;
 }
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-}
-
-main{
+main {
     display: flex;
-    width: 100%;
+    flex-direction: column;
     height: 100%;
 }
 
-body{
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+aside {
+    width: 15%;
+    background-color: #131313;
 }
 
-aside{
-    width: 20%;
-    height: 100%;
-    background-color: var(--dark-color);
-}
-
-section{
+section {
     width: 80%;
-    height: 100%;
 }
-/*user information and actions buttons container*/
-.offcanvas-body{
-    width: 100%;
-    height: 800px;
+
+.content {
+    display: flex;
 }
-/*user information*/
-.offcanvas-body .user-info{
-    margin-top: 22px;
-    margin-left: 90px;
-    margin-bottom: 22px;
-}
-/*user information titles*/
-.offcanvas-body .user-info h3{
-    font-size: 20px;
-    margin-left: 40px;
-    padding-top: 28px;
-    color: var(--primary-color);
-}
-/*user information subtitles*/
-.offcanvas-body .user-info h4{
-    font-size: 18px;
-    margin-left: 84px;
-    color: var(--subtitle-grey);
-}
-/*user information img*/
-.offcanvas-body .user-info img{
-    margin-left: 60px;
-    margin-top: 22px;
-    width: 100px;
-    height: 100px;
-}
-/*buttons container*/
-.options-container{
-display: flex;
-flex-direction: column;
-margin-top: 2px;
-background-color: var(--dark-color);
-margin-right: 0;
-height: 500px;
-width: 378 px;
-}
-/*buttons*/
-.options-container button{
-background-color: var(--dark-color);
-color: var(--data-white);
-display: flex;
-align-items: center;
-justify-content: center;
-height: 150px;
-font-size: 18px;
-font-weight: bold;
-border: none;
-}
-/*buttons-icons*/
-.options-container button i{
-margin: 10px;
-font-size: 30px;
-}
+
 /*user information container*/
-.container .list-group{
+.contained .list-group {
     margin-top: 20px;
     margin-left: 10px;
     width: 90%;
     height: 50%;
 }
+
 /*imgs*/
-.container .list-group .list-group-item img{
+.contained .list-group .list-group-item img {
     width: 200px;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 /*titles*/
-.container .list-group .list-group-item .info h1{
+.contained .list-group .list-group-item .info h1 {
     font-size: 20px;
     margin-left: 10px;
     color: var(--focus-color);
     font-weight: 700;
 }
+
 /*subtitles*/
-.container .list-group .list-group-item .info h5{
+.contained .list-group .list-group-item .info h5 {
     font-size: 14px;
     margin-left: 10px;
     font-weight: 600;
     color: var(--subtitle-grey);
 }
+
 /*spacing and color*/
-.container .list-group .list-group-item{
+.contained .list-group .list-group-item {
     padding: 20px;
-    margin-left: -30px;
     width: 1200px;
     display: flex;
     background-color: var(--grey-background);
 }
+
 /*hover event*/
-.options-container button:hover{
+.options-container button:hover {
     background-color: var(--delete-red);
     transition: 0.2s;
     color: var(--primary-color);
 }
+
 /*buttons icon*/
-.options-container button i{
+.options-container button i {
     margin: 10px;
     font-size: 40px;
 }
+
 /*titles*/
-.top-titles{
+.top-titles {
     display: flex;
     flex-direction: column;
     margin-top: 60px;
     margin-left: 50px;
 }
+
 /*user information and actions buttons container*/
-.top-titles h2{
+.top-titles h2 {
     color: var(--focus-color);
     font-size: 28px;
 }
 
-.top-titles h4{
+.top-titles h4 {
     color: var(--subtitle-grey);
     font-size: 20px;
 }
+
 /*buttons*/
-.buttons{
+.buttons {
     display: flex;
-    position: fixed;
     margin-left: 50%;
     margin-top: -90px;
     padding: 20px;
 }
 
-.buttons button{
+.buttons button {
     display: flex;
     width: 100px;
     height: 30px;
@@ -184,13 +111,14 @@ font-size: 30px;
     margin: 10px;
 }
 
-.buttons .status{
+.buttons .status {
     border-radius: 20px;
     border: none;
     background-color: var(--primary-color);
 }
+
 /*active dot*/
-.dot::before{
+.dot::before {
     content: '';
     position: absolute;
     width: 16px;
@@ -200,8 +128,9 @@ font-size: 30px;
     margin-top: -8px;
     margin-left: -2px;
 }
+
 /*buttons of action*/
-.buttons .btn-refresh{
+.buttons .btn-refresh {
     border: none;
     margin-top: -2px;
     font-size: 20px;
@@ -212,7 +141,7 @@ font-size: 30px;
     background-color: var(--refresh-blue);
 }
 
-.buttons .btn-edit{
+.buttons .btn-edit {
     border: none;
     margin-top: -2px;
     font-size: 20px;
@@ -223,7 +152,7 @@ font-size: 30px;
     background-color: var(--edit-yellow);
 }
 
-.buttons .btn-delete{
+.buttons .btn-delete {
     border: none;
     margin-top: -2px;
     font-size: 20px;
@@ -232,4 +161,86 @@ font-size: 30px;
     height: 50px;
     width: 50px;
     background-color: var(--delete-red);
+}
+
+/*Making the input*/
+.input-data .underline {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 2px;
+}
+
+.input-data .underline:before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.input-data input:focus~.underline:before,
+.input-data input:valid~.underline:before {
+    transform: scaleX(1);
+}
+
+.input-data {
+    width: 300px;
+    height: 60px;
+    position: relative;
+    border-bottom: 3px solid #1f1f1f;
+}
+
+.input-data input {
+    padding-left: 10px;
+    width: 100%;
+    padding-top: 38px;
+    border-radius: 7px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+}
+
+.input-data input:focus~label,
+.input-data input:valid~label {
+    font-size: 12px;
+    bottom: 17px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.input-data label {
+    position: absolute;
+    bottom: 10px;
+    margin-left: 10px;
+    left: 0;
+    color: #000;
+    transition: all 0.3s ease;
+}
+.delete{
+    background-color: #822727;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 20px;
+    font-size: 16pt;
+    height: 30px;
+    width: 45px;
+}
+.comment{
+    color: #fff;
+    border: none;
+    background-color: var(--refresh-blue);
+    border-radius: 5px;
+    margin-left: 20px;
+    font-size: 16pt;
+    height: 30px;
+    width: 45px;
+}
+.item{
+    display: flex;
+    justify-content: space-between;
 }

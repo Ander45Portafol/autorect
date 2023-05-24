@@ -1,6 +1,10 @@
+//Path to the API
 const USER_API = 'bussines/public/clients.php';
+
+//Get HTML element for the data register
 const SIGNUP_FORM=document.getElementById('data-registrer');
 
+//Event listener to singup
 SIGNUP_FORM.addEventListener('submit',async (event)=>{
     event.preventDefault();
     const FORM =new FormData(SIGNUP_FORM);

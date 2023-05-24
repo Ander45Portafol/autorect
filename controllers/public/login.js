@@ -1,5 +1,7 @@
+//Path to the API
 const FORM_SESSION=document.getElementById('formlogin');
 
+//Event listener to log in
 FORM_SESSION.addEventListener('submit', async (event)=>{
     event.preventDefault();
     const FORM=new FormData(FORM_SESSION);

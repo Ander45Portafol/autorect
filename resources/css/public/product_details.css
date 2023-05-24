@@ -59,6 +59,9 @@ section {
 .product_detail .left .otherimages img {
     height: 50px;
     width: 60px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 .right{
     width: 100%;
@@ -100,7 +103,7 @@ section {
 }
 
 .right .black {
-    font-size: 8pt;
+    font-size: 11pt;
     color: #1F1F1F;
     font-weight: bolder;
 }
@@ -222,6 +225,7 @@ section {
 }
 .reviews{
     border-radius: 20px;
+    margin-bottom: 5px;
     padding: 0 4rem;
     background-color: #f4f6f8;
 }
@@ -262,3 +266,10 @@ section {
     color: #822727;
 }
 #star-5{color: #1f1f1f; border: 2px solid #1F1F1F;}
+
+.principal_img{
+    object-fit: cover;
+    height: 380px;
+    min-width: 550px;
+    margin-bottom: 5px;
+}
