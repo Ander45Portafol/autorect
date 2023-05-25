@@ -111,7 +111,6 @@ async function deleteOneProduct(id_detalle, cantidad){
         }
     }
 }
-
 async function addOneProduct(id_detalle, cantidad){
     const FORMSTOCK=new FormData();
     FORMSTOCK.append('id_detalle_pedido',id_detalle);
