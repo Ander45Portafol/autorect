@@ -339,7 +339,7 @@ class ProductQueries
     //This function is to catch one data with the identicator at the product
     public function readOnePublic()
     {
-        $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria, mo.nombre_modelo, pr.existencias, pr.id_modelo, ca.nombre_categoria, pr.id_estado_producto, COUNT(va.id_valoracion) as valo,
+        $query = "SELECT pr.id_producto, pr.existencias,pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria, mo.nombre_modelo, pr.existencias, pr.id_modelo, ca.nombre_categoria, pr.id_estado_producto, COUNT(va.id_valoracion) as valo,
         CASE
             WHEN AVG(va.calificacion_producto) IS NOT NULL THEN ROUND(AVG(va.calificacion_producto), 1)
             ELSE 0.0
