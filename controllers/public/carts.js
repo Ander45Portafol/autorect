@@ -35,11 +35,11 @@ async function validateConditions(){
                     readOrderDetail();
                 }
             }else{
-                sweetAlert(2,"Verifique la informacion de su perfil",false);
+                sweetAlert(2,"Check your profile information",false);
             }
         }
     }else{
-        sweetAlert(3,'Debe aceptar los terminos y condiciones',false);
+        sweetAlert(3,'You must accept the terms and conditions',false);
     }
 }
 async function readOrderDetail() {
@@ -97,7 +97,7 @@ async function deleteDetail(id) {
 }
 async function deleteOneProduct(id_detalle, cantidad){
     if (cantidad===1) {
-        sweetAlert(3,'Si desea elimiar el producto, apretar el boton de eliminar',true);
+        sweetAlert(3,'If you want to delete the product, press the delete button',true);
     }else{
         const FORM=new FormData();
         FORM.append('id_detalle',id_detalle);
@@ -112,7 +112,7 @@ async function deleteOneProduct(id_detalle, cantidad){
 }
 async function addOneProduct(id_detalle, cantidad,existencias){
     if (cantidad>=existencias) {
-        sweetAlert(3,'No se pueden agregar mas productos',true);
+        sweetAlert(3,'No more products can be added',true);
     }else{
         const FORM=new FormData();
         FORM.append('id_detalle',id_detalle);
