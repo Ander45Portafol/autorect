@@ -210,11 +210,16 @@ class ProductQueries
     //Function to load the product history.
     public function productHistory()
     {
-        $query = "SELECT b.nombre_producto,a.id_detalle_pedido, a.precio_producto, c.id_estado_pedido, d.estado_pedido,b.descripcion_producto from detalles_pedidos a INNER JOIN productos b using (id_producto)
-        INNER JOIN pedidos c USING (id_pedido) INNER JOIN estados_pedidos d USING (id_estado_pedido) WHERE id_cliente=?
+        $query = "SELECT b.nombre_producto,a.id_detalle_pedido, b.imagen_principal,a.cantidad_producto,a.precio_producto, c.id_estado_pedido, d.estado_pedido,b.descripcion_producto from detalles_pedidos a INNER JOIN productos b using (id_producto)
+        INNER JOIN pedidos c USING (id_pedido) INNER JOIN estados_pedidos d USING (id_estado_pedido) WHERE id_cliente=? AND id_pedido=?
         ORDER BY id_detalle_pedido";
-        $params = array($this->client_id);
+        $params = array($this->client_id,$this->order_id);
         return Database::getRows($query, $params);
+    }
+    public function orderHistory(){
+        $query='SELECT a.fecha_pedido,a.id_cliente,a.id_pedido,c.estado_pedido,a.direccion_pedido FROM pedidos a INNER JOIN estados_pedidos c USING (id_estado_pedido) WHERE id_cliente=?';
+        $params=array($this->client_id);
+        return Database::getRows($query,$params);
     }
 
     //Function to validate comments

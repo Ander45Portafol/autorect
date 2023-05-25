@@ -36,6 +36,9 @@
                 <div class="contained">
                     <ul class="list-group" id="list_product">
                     </ul>
+                    <div class="total" id="total">
+                        <p>Total a pagar: <span id="cantidad"></span></p>
+                    </div>
                 </div>
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -44,7 +47,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title" id="modal-title"></h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                <button type="button" class="btn-close" id="btnclose" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <form class="modal-body" id="form_modal" method="post">
@@ -52,7 +55,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <label for="">Calificacion</label>
-                                        <input type="number" name="quantity" id="quantity"">
+                                        <input type="number" name="quantity" id="quantity" max="5" min="1">
                                     </div>
                                     <div class="col">
                                         <div class="input-data">

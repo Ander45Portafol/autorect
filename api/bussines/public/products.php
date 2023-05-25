@@ -105,7 +105,18 @@ if (isset($_GET['action'])) {
             case 'hsitoryProduct':
                 if (!$product_model->setIdClient($_POST['id_cliente'])) {
                     $result['exception'] = 'Wrong client';
+                }elseif (!$product_model->setIdOrder($_POST['id_pedido'])) {
+                    $result['exception'] = 'Order incorrect';
                 }elseif ($result['dataset']=$product_model->productHistory()) {
+                    $result['status'] = 1;
+                }else{
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            case 'orderHistory':
+                if (!$product_model->setIdClient($_POST['id_cliente'])) {
+                    $result['exception'] = 'Wrong client';
+                }elseif ($result['dataset']=$product_model->orderHistory()) {
                     $result['status'] = 1;
                 }else{
                     $result['exception'] = Database::getException();

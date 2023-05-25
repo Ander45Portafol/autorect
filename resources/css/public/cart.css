@@ -169,3 +169,7 @@ main{
     height: 50px;
     width: 50px;
 }
+.total{
+    display: flex;
+    justify-content: space-between;
+}

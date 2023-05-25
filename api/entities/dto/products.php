@@ -20,6 +20,7 @@ class Product extends ProductQueries
     protected $quantity;
     protected $client_id;
     protected $detail_id;
+    protected $order_id;
     protected $route = '../../images/products/';
     protected $product_img_id;
     protected $s_img;
@@ -41,6 +42,15 @@ class Product extends ProductQueries
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->client_id = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setIdOrder($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->order_id = $value;
             return true;
         } else {
             return false;
