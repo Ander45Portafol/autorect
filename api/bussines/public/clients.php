@@ -1,18 +1,18 @@
 <?php
 require_once('../../entities/dto/clients.php');
 
-// Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
+// It checks if there is an action to perform, otherwise the script ends with an error message.
 if (isset($_GET['action'])) {
-    // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
+    // A session is created or the current one is resumed in order to use session variables in the script.
     session_start();
-    // Se instancia la clase correspondiente.
+    // The corresponding class is instantiated.
     $client_model = new Client;
-    // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
+    // An array is declared and initialized to hold the result returned by the API.
     $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null, 'fullname' => null, 'id' => 0);
-    // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
+    // It is verified if there is a session started as a client to carry out the corresponding actions.
     if (isset($_SESSION['id_cliente'])) {
         $result['session'] = 1;
-        // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
+        // The action to perform when a client has logged in is compared.
         switch ($_GET['action']) {
             case 'getUser':
                 if (isset($_SESSION['usuario_cliente'])) {
@@ -69,7 +69,7 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
     } else {
-        // Se compara la acción a realizar cuando el cliente no ha iniciado sesión.
+        // The action to perform when the client is not logged in is compared.
         switch ($_GET['action']) {
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
@@ -112,9 +112,9 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
         }
     }
-    // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
+    // The type of content to be displayed and its respective set of characters are indicated.
     header('content-type: application/json; charset=utf-8');
-    // Se imprime el resultado en formato JSON y se retorna al controlador.
+    // The result is printed in JSON format and returned to the controller.
     print(json_encode($result));
 } else {
     print(json_encode('Recurso no disponible'));

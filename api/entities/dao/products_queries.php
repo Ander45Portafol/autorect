@@ -169,6 +169,8 @@ class ProductQueries
         $params = array($this->product_img_id);
         return Database::executeRow($sql, $params);
     }
+
+    //Function to load the related products
     public function productsRelated()
     {
         $query = "SELECT pr.id_producto, pr.imagen_principal,pr.nombre_producto,pr.precio_producto,pr.descripcion_producto, ep.estado_producto,
@@ -186,6 +188,8 @@ class ProductQueries
         $params = array($this->product_category, $this->product_id);
         return Database::getRows($query, $params);
     }
+
+    //Function to load the reviews
     public function productsReview()
     {
         $query = "SELECT a.calificacion_producto, a.comentario, a.fecha_comentario, a.estado_comentario, CONCAT(d.nombre_cliente,' ',d.apellido_cliente) AS client_name
@@ -202,6 +206,8 @@ class ProductQueries
         $params = array($this->product_id);
         return Database::getRows($query, $params);
     }
+
+    //Function to load the product history.
     public function productHistory()
     {
         $query = "SELECT b.nombre_producto,a.id_detalle_pedido, a.precio_producto, c.id_estado_pedido, d.estado_pedido,b.descripcion_producto from detalles_pedidos a INNER JOIN productos b using (id_producto)
@@ -210,6 +216,8 @@ class ProductQueries
         $params = array($this->client_id);
         return Database::getRows($query, $params);
     }
+
+    //Function to validate comments
     public function validateComments(){
         $query="SELECT c.nombre_producto,a.comentario from valoraciones a INNER JOIN detalles_pedidos b using (id_detalle_pedido) INNER JOIN productos c using (id_producto)
         INNER JOIN pedidos d using(id_pedido) where id_detalle_pedido=?";
@@ -294,6 +302,8 @@ class ProductQueries
         return Database::getRows($query, $params);
     }
 
+
+    //Function to colect all the data of the product
     public function readAllPublic()
     {
         $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria,
@@ -310,6 +320,7 @@ class ProductQueries
         return Database::getRows($query);
     }
 
+    //Function to search the products
     public function searchPublic($value)
     {
         $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria,
@@ -328,6 +339,7 @@ class ProductQueries
         return Database::getRows($query, $params);
     }
 
+    //Function to read the imgs of the products
     public function readProductImgsPublic(){
         $query="SELECT nombre_archivo_imagen 
         FROM imagenes_productos
@@ -357,12 +369,14 @@ class ProductQueries
         return Database::getRow($query, $params);
     }
 
+    //Function to delete comments
     public function deleteComments(){
         $query="DELETE FROM valoraciones WHERE id_detalle_pedido=?";
         $params=array($this->detail_id);
         return Database::executeRow($query,$params);
     }
 
+    //Function to create a comment
     public function createComment(){
         $date=date("d-m-Y");
         $comment_status='true';

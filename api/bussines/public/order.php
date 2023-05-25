@@ -1,9 +1,15 @@
 <?php
 require_once('../../entities/dto/order.php');
+
+// It checks if there is an action to perform, otherwise the script ends with an error message.
 if (isset($_GET['action'])) {
+    // A session is created or the current one is resumed in order to use session variables in the script.
     session_start();
+    // The corresponding class is instantiated.
     $order_model = new Order;
+    // An array is declared and initialized to store the result returned by the API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
+    // The action to perform when a client has logged in is compared.
     if (isset($_SESSION['id_cliente'])) {
         $result['session'] = 1;
         switch ($_GET['action']) {
@@ -96,7 +102,9 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
         }
     }
+    // The type of content to be displayed and its respective set of characters are indicated.
     header('content-type: application/json; charset=utf-8');
+    // The result is printed in JSON format and returned to the controller.
     print(json_encode(($result)));
 } else {
     print(json_encode('Recurso no disponible'));

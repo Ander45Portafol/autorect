@@ -39,6 +39,7 @@ class OrderQueries
         return Database::getRows($query);
     }
 
+    //Function to read all the clients
     public function readClients()
     {
         $space = " ";
@@ -48,6 +49,7 @@ class OrderQueries
         return Database::getRows($query);
     }
 
+    //Function to read all the employees
     public function readEmployees()
     {
         $space = " ";
@@ -119,6 +121,8 @@ class OrderQueries
         $params = array($this->order_id);
         return Database::getRows($query, $params);
     }
+
+    //Function to add or start an order
     public function startOrder()
     {
         $query = "SELECT id_pedido FROM pedidos WHERE id_estado_pedido=1 AND id_cliente=?";
@@ -138,11 +142,15 @@ class OrderQueries
             }
         }
     }
+
+    //Function to create a detail
     public function createDetail(){
         $query="INSERT INTO detalles_pedidos(cantidad_producto,precio_producto,id_pedido,id_producto) values (?,(SELECT precio_producto FROM productos WHERE id_producto = ?),?,?)";
         $params=array($this->quantity_product,$this->id_product,$this->order_id,$this->id_product);
         return Database::executeRow($query,$params);
     }
+
+    //Function to read a detail
     public function readOrderDetail()
     {
         $query = 'SELECT b.id_detalle_pedido,a.id_pedido, c.nombre_producto ,b.precio_producto, b.cantidad_producto,c.imagen_principal,c.descripcion_producto,c.existencias
@@ -151,27 +159,37 @@ class OrderQueries
         $params = array($this->order_id);
         return Database::getRows($query, $params);
     }
+
+    //Function to delete a detail
     public function deleteOrderDetail(){
         $query='DELETE FROM detalles_pedidos WHERE id_detalle_pedido=?';
         $params=array($this->detail_id);
         return Database::executeRow($query,$params);
     }
+
+    //Function to confirm a detail
     public function confirmOrder(){
         $query="SELECT direccion_pedido FROM pedidos WHERE id_cliente=?";
         $params=array($this->client_id);
         return Database::getRow($query,$params);
     }
+
+    //Function to update a detail
     public function updateOrder(){
         $query="UPDATE pedidos SET id_estado_pedido=4 WHERE id_cliente=?";
         $params=array($this->client_id);
         return Database::executeRow($query,$params);
     }
+
+    //Function to count the quantity of the product
     public function subtractDetail(){
         $quantitysubtract=$this->quantity_product-1;
         $query='UPDATE detalles_pedidos SET cantidad_producto=? WHERE id_detalle_pedido=?';
         $params=array($quantitysubtract,$this->detail_id);
         return Database::executeRow($query,$params);
     }
+
+    //Function to add something to the detail.
     public function addDetail(){
         $quantitysubtract=$this->quantity_product+1;
         $query='UPDATE detalles_pedidos SET cantidad_producto=? WHERE id_detalle_pedido=?';
