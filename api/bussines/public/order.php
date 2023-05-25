@@ -52,6 +52,28 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Pedido actualizado correctamente';
                 }
                 break;
+            case 'subtractDetail':
+                if (!$order_model->setDetailId($_POST['id_detalle'])) {
+                    $result['exception']='Detalle, no encontrado';
+                }elseif (!$order_model->setQuantityProduct($_POST['cantidad'])) {
+                    $result['exception']='Cantidad, incorrecta';
+                }elseif ($order_model->subtractDetail()) {
+                    $result['status']=1;
+                }else{
+                    $result['exception']=Database::getException();
+                }
+                break;
+                case 'addDetail':
+                    if (!$order_model->setDetailId($_POST['id_detalle'])) {
+                        $result['exception']='Detalle, no encontrado';
+                    }elseif (!$order_model->setQuantityProduct($_POST['cantidad'])) {
+                        $result['exception']='Cantidad, incorrecta';
+                    }elseif ($order_model->addDetail()) {
+                        $result['status']=1;
+                    }else{
+                        $result['exception']=Database::getException();
+                    }
+                    break;
             case 'deleteDetail':
                 if (!$order_model->setDetailId($_POST['id_detalle_pedido'])) {
                     $result['exception'] = 'Detalle incorrecto';

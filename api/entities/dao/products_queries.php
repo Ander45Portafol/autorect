@@ -171,12 +171,18 @@ class ProductQueries
     }
     public function productsRelated()
     {
-        $query = "SELECT a.id_producto, a.imagen_principal,a.nombre_producto,a.precio_producto,a.descripcion_producto, b.estado_producto
-        FROM productos a
-        INNER JOIN estados_productos b
-        USING(id_estado_producto)
-        WHERE id_categoria=? AND id_producto!=?
-        ORDER BY id_producto";
+        $query = "SELECT pr.id_producto, pr.imagen_principal,pr.nombre_producto,pr.precio_producto,pr.descripcion_producto, ep.estado_producto,
+        CASE
+            WHEN AVG(va.calificacion_producto) IS NOT NULL THEN ROUND(AVG(va.calificacion_producto), 1)
+            ELSE 0.0
+        END AS calificacion
+        FROM productos pr
+        INNER JOIN estados_productos ep ON pr.id_estado_producto = ep.id_estado_producto
+        LEFT JOIN detalles_pedidos dp ON pr.id_producto = dp.id_producto
+        LEFT JOIN valoraciones va ON va.id_detalle_pedido = dp.id_detalle_pedido AND va.estado_comentario = true
+        WHERE pr.id_categoria = ? AND pr.id_producto != ?
+        GROUP BY pr.id_producto, pr.imagen_principal,pr.nombre_producto,pr.precio_producto,pr.descripcion_producto, ep.estado_producto
+        ORDER BY id_producto limit 4";
         $params = array($this->product_category, $this->product_id);
         return Database::getRows($query, $params);
     }
@@ -249,13 +255,21 @@ class ProductQueries
 
     public function filterSearch()
     {
-        $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria
+        $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria,
+        CASE
+            WHEN AVG(va.calificacion_producto) IS NOT NULL THEN ROUND(AVG(va.calificacion_producto), 1)
+            ELSE 0.0
+        END AS calificacion
         FROM productos as pr
         INNER JOIN estados_productos as ep
             ON pr.id_estado_producto = ep.id_estado_producto
         INNER JOIN modelos as mo
             ON pr.id_modelo = mo.id_modelo
+        LEFT JOIN detalles_pedidos dp ON pr.id_producto = dp.id_producto
+        LEFT JOIN valoraciones va ON va.id_detalle_pedido = dp.id_detalle_pedido AND va.estado_comentario = true
         WHERE 1=1";
+
+        $query2 = " GROUP BY pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria";        
 
         $params = array();
 
@@ -275,6 +289,8 @@ class ProductQueries
             $params[] = $this->model_year;
             $params[] = $this->model_year;
         }
+
+        $query = $query.$query2;
         return Database::getRows($query, $params);
     }
 
@@ -323,7 +339,7 @@ class ProductQueries
     //This function is to catch one data with the identicator at the product
     public function readOnePublic()
     {
-        $query = "SELECT pr.id_producto, pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria, mo.nombre_modelo, pr.existencias, pr.id_modelo, ca.nombre_categoria, pr.id_estado_producto, COUNT(va.id_valoracion) as valo,
+        $query = "SELECT pr.id_producto, pr.existencias,pr.imagen_principal, pr.nombre_producto, pr.precio_producto, pr.descripcion_producto, ep.estado_producto, pr.id_categoria, mo.nombre_modelo, pr.existencias, pr.id_modelo, ca.nombre_categoria, pr.id_estado_producto, COUNT(va.id_valoracion) as valo,
         CASE
             WHEN AVG(va.calificacion_producto) IS NOT NULL THEN ROUND(AVG(va.calificacion_producto), 1)
             ELSE 0.0

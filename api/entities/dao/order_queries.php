@@ -145,7 +145,7 @@ class OrderQueries
     }
     public function readOrderDetail()
     {
-        $query = 'SELECT b.id_detalle_pedido,a.id_pedido, c.nombre_producto ,b.precio_producto, b.cantidad_producto,c.imagen_principal,c.descripcion_producto
+        $query = 'SELECT b.id_detalle_pedido,a.id_pedido, c.nombre_producto ,b.precio_producto, b.cantidad_producto,c.imagen_principal,c.descripcion_producto,c.existencias
         FROM pedidos a INNER JOIN detalles_pedidos b USING(id_pedido) INNER JOIN productos c USING(id_producto)
         WHERE id_pedido = ? AND id_estado_pedido=1';
         $params = array($this->order_id);
@@ -164,6 +164,18 @@ class OrderQueries
     public function updateOrder(){
         $query="UPDATE pedidos SET id_estado_pedido=4 WHERE id_cliente=?";
         $params=array($this->client_id);
+        return Database::executeRow($query,$params);
+    }
+    public function subtractDetail(){
+        $quantitysubtract=$this->quantity_product-1;
+        $query='UPDATE detalles_pedidos SET cantidad_producto=? WHERE id_detalle_pedido=?';
+        $params=array($quantitysubtract,$this->detail_id);
+        return Database::executeRow($query,$params);
+    }
+    public function addDetail(){
+        $quantitysubtract=$this->quantity_product+1;
+        $query='UPDATE detalles_pedidos SET cantidad_producto=? WHERE id_detalle_pedido=?';
+        $params=array($quantitysubtract,$this->detail_id);
         return Database::executeRow($query,$params);
     }
 }

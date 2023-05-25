@@ -161,6 +161,26 @@ FORM.addEventListener('submit', async (event) => {
     if (JSON.status) {
         PRODUCT.innerHTML = '';
         JSON.dataset.forEach(row => {
+            let starsHTML = ''; // Variable to store the HTML of the stars
+    
+            // Generate stars based on the rating
+            const fullStars = Math.floor(row.calificacion); // Number of full stars - Math floor returns the first number, it doesn't matter the numbers after the point
+            const decimalPart = row.calificacion - fullStars; // Decimal part of the rating
+
+            for (let i = 0; i < fullStars; i++) {
+                starsHTML += "<i class='bx bxs-star'></i>"; // Add full star
+            }
+
+            if (decimalPart >= 0.5) {
+                starsHTML += "<i class='bx bxs-star-half'></i>"; // Add half star
+            }
+
+            const remainingStars = 5 - fullStars - Math.round(decimalPart); // Number of remaining stars - Math round for normal rounding
+
+            for (let i = 0; i < remainingStars; i++) {
+                starsHTML += "<i class='bx bx-star'></i>"; // Add empty star
+            }
+
             // Create the URL for the product details page
             const url = `product_details.html?id=${row.id_producto}&categoria=${row.id_categoria}`;
             console.log(url); // Comment: Logging the URL for debugging purposes
@@ -173,7 +193,7 @@ FORM.addEventListener('submit', async (event) => {
                         <div class="card-body">
                             <h5 class="card-title">${row.nombre_producto}</h5>
                             <p class="card-text">
-                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                ${row.calificacion} ${starsHTML}      
                                 <span>${row.precio_producto}</span>
                                 <a href="${url}" onclick="probar(${url})" class="button" type="button"><i class='bx bxs-cart'></i></a>
                             </p>
@@ -183,8 +203,8 @@ FORM.addEventListener('submit', async (event) => {
         });
     } else {
         sweetAlert(3, 'There are no products to show', false); // Alert the user that there are no products to show
-        FillProduct(); // Fill the products 
         cleanForm(); // Reset the form
+        FillProduct(); // Fill the products 
     }
 });
 
