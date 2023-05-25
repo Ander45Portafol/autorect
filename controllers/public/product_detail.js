@@ -60,8 +60,12 @@ async function productData(form) {
     document.getElementById("valoration").innerHTML += `                        
     <p class="red" id="stars">${JSONP.dataset.calificacion} ${starsHTML} </p>
     <p> ${JSONP.dataset.valo} (costumers reviews)</p>`;
-    document.getElementById('quantity').max=JSONP.dataset.existencias;
+<<<<<<< Updated upstream
+=======
+    document.getElementById('product_exits').max=JSONP.dataset.existencias;
+    document.getElementById('product_exits').min=0;
     console.log(JSONP.dataset.existencias);
+>>>>>>> Stashed changes
   }
 }
 
