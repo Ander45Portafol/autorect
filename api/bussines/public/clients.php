@@ -35,16 +35,16 @@ if (isset($_GET['action'])) {
             case 'readOne':
                 if (!$client_model->setCLientId($_POST['id_cliente'])) {
                     $result['exception'] = 'Wrong client';
-                }elseif ($result['dataset']=$client_model->readOne()) {
-                    $result['status']=1;
-                }else{
+                } elseif ($result['dataset'] = $client_model->readOne()) {
+                    $result['status'] = 1;
+                } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'readActualMembership':
                 if (!$client_model->setCLientId($_POST['id_cliente'])) {
                     $result['exception'] = 'Wrong client';
-                }elseif ($result['dataset'] = $client_model->readActualMembership()) {
+                } elseif ($result['dataset'] = $client_model->readActualMembership()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
