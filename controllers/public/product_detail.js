@@ -60,6 +60,8 @@ async function productData(form) {
     document.getElementById("valoration").innerHTML += `                        
     <p class="red" id="stars">${JSONP.dataset.calificacion} ${starsHTML} </p>
     <p> ${JSONP.dataset.valo} (costumers reviews)</p>`;
+    document.getElementById('quantity').max=JSONP.dataset.existencias;
+    console.log(JSONP.dataset.existencias);
   }
 }
 
