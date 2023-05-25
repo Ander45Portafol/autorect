@@ -145,7 +145,7 @@ class OrderQueries
     }
     public function readOrderDetail()
     {
-        $query = 'SELECT b.id_detalle_pedido,a.id_pedido, c.nombre_producto ,b.precio_producto, b.cantidad_producto,c.imagen_principal,c.descripcion_producto
+        $query = 'SELECT b.id_detalle_pedido,a.id_pedido, c.nombre_producto ,b.precio_producto, b.cantidad_producto,c.imagen_principal,c.descripcion_producto,c.existencias
         FROM pedidos a INNER JOIN detalles_pedidos b USING(id_pedido) INNER JOIN productos c USING(id_producto)
         WHERE id_pedido = ? AND id_estado_pedido=1';
         $params = array($this->order_id);
