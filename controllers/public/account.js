@@ -98,7 +98,7 @@ function changeMenu() {
     var currentPageName = currentPage.substring(currentPage.lastIndexOf('/') + 1) || 'index.html';
 
     var nav = document.querySelector('nav');
-    if(currentPageName == "index.html" || currentPage === ""){
+    if (currentPageName == "index.html" || currentPage === "") {
         if (window.innerWidth < 1280) {
             nav.classList.add('navbar2');
         } else {
@@ -108,7 +108,7 @@ function changeMenu() {
                 nav.classList.remove('navbar2');
             }
         }
-    }else{
+    } else {
         nav.classList.add('navbar2');
     }
 }

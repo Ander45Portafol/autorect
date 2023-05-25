@@ -196,4 +196,14 @@ class OrderQueries
         $params=array($quantitysubtract,$this->detail_id);
         return Database::executeRow($query,$params);
     }
+
+    public function readUpdatedStock(){
+        $query="SELECT pr.existencias 
+        FROM detalles_pedidos dp
+        INNER JOIN productos pr
+        ON dp.id_producto = pr.id_producto
+        WHERE dp.id_detalle_pedido = ?;";
+        $params=array($this->detail_id);
+        return Database::getRow($query, $params);
+    }
 }
