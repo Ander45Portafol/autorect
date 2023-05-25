@@ -1,13 +1,13 @@
 <?php
 require_once('../../entities/dto/products.php');
 
-// Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
+// It checks if there is an action to perform, otherwise the script ends with an error message.
 if (isset($_GET['action'])) {
-    // Se instancia la clase correspondiente.
+    // The corresponding class is instantiated.
     $product_model = new Product;
-    // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
+    // An array is declared and initialized to store the result returned by the API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
-    // Se compara la acción a realizar según la petición del controlador.
+    // The action to perform when a client has logged in is compared.
     switch ($_GET['action']) {
         case 'readAllPublic':
             if ($result['dataset'] = $product_model->readAllPublic()) {
@@ -200,9 +200,9 @@ if (isset($_GET['action'])) {
         default:
             $result['exception'] = 'Acción no disponible';
     }
-    // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
+    // The type of content to be displayed and its respective set of characters are indicated.
     header('content-type: application/json; charset=utf-8');
-    // Se imprime el resultado en formato JSON y se retorna al controlador.
+    // The result is printed in JSON format and returned to the controller.
     print(json_encode($result));
 } else {
     print(json_encode('Recurso no disponible'));
