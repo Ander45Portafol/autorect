@@ -13,6 +13,7 @@ class MembershipQueries
         return Database::getRows($query);
     }
 
+    //this function is to show the imgs that are stored in the database
     public function readImgs()
     {
         $query = "SELECT tipo_membresia, imagen_membresia

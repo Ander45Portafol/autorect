@@ -35,11 +35,11 @@ async function validateConditions(){
                     readOrderDetail();
                 }
             }else{
-                sweetAlert(2,"Verifique la informacion de su perfil",false);
+                sweetAlert(2,"Check your profile information",false);
             }
         }
     }else{
-        sweetAlert(3,'Debe aceptar los terminos y condiciones',false);
+        sweetAlert(3,'You must accept the terms and conditions',false);
     }
 }
 async function readOrderDetail() {
@@ -65,7 +65,7 @@ async function readOrderDetail() {
                 <div class="quantity_product">
                     <button onclick="deleteOneProduct(${row.id_detalle_pedido},${row.cantidad_producto})"><i class='bx bx-minus'></i></button>
                     <p>${row.cantidad_producto}</p>
-                    <button onclick="addOneProduct(${row.id_detalle_pedido},${row.cantidad_producto},${row.existencias})"><i class='bx bx-plus'></i></button>
+                    <button onclick="addOneProduct(${row.id_detalle_pedido},${row.cantidad_producto})"><i class='bx bx-plus'></i></button>
                 </div>
             </td>
             <td>
@@ -98,7 +98,7 @@ async function deleteDetail(id) {
 }
 async function deleteOneProduct(id_detalle, cantidad){
     if (cantidad===1) {
-        sweetAlert(3,'Si desea elimiar el producto, apretar el boton de eliminar',true);
+        sweetAlert(3,'If you want to delete the product, press the delete button',true);
     }else{
         const FORM=new FormData();
         FORM.append('id_detalle',id_detalle);
@@ -111,18 +111,26 @@ async function deleteOneProduct(id_detalle, cantidad){
         }
     }
 }
-async function addOneProduct(id_detalle, cantidad,existencias){
-    if (cantidad>=existencias) {
-        sweetAlert(3,'No se pueden agregar mas productos',true);
-    }else{
-        const FORM=new FormData();
-        FORM.append('id_detalle',id_detalle);
-        FORM.append('cantidad', cantidad);
-        const JSON=await dataFetch(ORDER_API,'addDetail',FORM);
-        if (JSON.status) {
-            readOrderDetail();
+
+async function addOneProduct(id_detalle, cantidad){
+    const FORMSTOCK=new FormData();
+    FORMSTOCK.append('id_detalle_pedido',id_detalle);
+    const STOCK = await dataFetch(ORDER_API,'readUpdatedStock',FORMSTOCK);
+    if(STOCK.status){
+        if (STOCK.dataset.existencias == 0) {
+            sweetAlert(3,'No more products can be added',true);
         }else{
-            sweetAlert(2,JSON.exception,false);
+            const FORM=new FormData();
+            FORM.append('id_detalle',id_detalle);
+            FORM.append('cantidad', cantidad);
+            const JSON=await dataFetch(ORDER_API,'addDetail',FORM);
+            if (JSON.status) {
+                readOrderDetail();
+            }else{
+                sweetAlert(2,JSON.exception,false);
+            }
         }
+    }else{
+        sweetAlert(2,STOCK.exception,false);
     }
 }

@@ -122,6 +122,8 @@ class ClientQueries
         $params = array("%$value%", "%$value%");
         return Database::getRows($query, $params);
     }
+
+    //Function to update the status of a client
     public function FalseClient()
     {
         $query = "UPDATE clientes 
@@ -130,6 +132,8 @@ class ClientQueries
         $params = array($this->client_id);
         return Database::executeRow($query, $params);
     }
+
+    //Function to update the status of a client
     public function TrueClient()
     {
         $query = "UPDATE clientes 
@@ -138,6 +142,7 @@ class ClientQueries
         $params = array($this->client_id);
         return Database::executeRow($query, $params);
     }
+
     //This function is to delete the client data
     public function deleteRow()
     {
@@ -147,6 +152,8 @@ class ClientQueries
         $params = array($this->client_id);
         return Database::executeRow($query, $params);
     }
+
+    //Function to register a client
     public function createRow()
     {
         $status_client='true';
@@ -156,6 +163,7 @@ class ClientQueries
         return Database::executeRow($sql, $params);
     }
 
+    //Function to read the actual membership
     public function readActualMembership(){
         $query = "SELECT id_tipo_membresia
                   FROM clientes 
@@ -164,6 +172,7 @@ class ClientQueries
         return Database::getRow($query, $params);
     }
 
+    //Function to update the membership of a client
     public function updateMembership(){
         $query = "UPDATE clientes 
                     SET id_tipo_membresia = ? 
