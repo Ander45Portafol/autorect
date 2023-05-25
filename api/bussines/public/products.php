@@ -15,7 +15,7 @@ if (isset($_GET['action'])) {
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
             } else {
-                $result['exception'] = 'No existen productos para mostrar';
+                $result['exception'] = "Don't exits products to show";
             }
             break;
         case 'readTop10':
@@ -24,7 +24,7 @@ if (isset($_GET['action'])) {
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
             } else {
-                $result['exception'] = 'No existen productos para mostrar';
+                $result['exception'] = "Don't exits products to show";
             }
             break;
         case 'readOnePublic':
@@ -79,15 +79,15 @@ if (isset($_GET['action'])) {
             break;
         case 'productsRelated':
             if (!$product_model->setProductCategory($_POST['id_categoria'])) {
-                $result['exception'] = 'Categoría incorrecta';
+                $result['exception'] = 'Wrong category';
             }elseif (!$product_model->setId($_POST['id_producto'])) {
-                $result['exception'] = 'Producto incorrecta';
+                $result['exception'] = 'Wrong product';
             } elseif ($result['dataset'] = $product_model->productsRelated()) {
                 $result['status'] = 1;
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
             } else {
-                $result['exception'] = 'No existen productos para mostrar';
+                $result['exception'] = "Don't exits products to show";
             }
             break;
             case 'productReview':
@@ -124,7 +124,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'validateComments':
                 if (!$product_model->setDetailId($_POST['id_detalle'])) {
-                    $result['exception']='Detalle incorrecto';
+                    $result['exception']='Incorrect detail';
                 }elseif ($result['dataset']=$product_model->validateComments()) {
                     $result['status']=1;
                 }else{
@@ -133,11 +133,11 @@ if (isset($_GET['action'])) {
                 break;
             case 'createComment':
                 if (!$product_model->setDetailId($_POST['id_detalle'])) {
-                    $result['exception']='Detalle incorrecto';
+                    $result['exception']='Incorrect detail';
                 }elseif (!$product_model->setComment($_POST['comment'])) {
-                    $result['exception']='Detalle incorrecto';
+                    $result['exception']='Incorrect comment';
                 }elseif (!$product_model->setQuantity($_POST['quantity'])) {
-                    $result['exception']='Detalle incorrecto';
+                    $result['exception']='Incorrect quantity';
                 }elseif ($product_model->createComment()) {
                     $result['status']=1;
                     $result['message']='Succesfull create comment';
@@ -147,7 +147,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'deleteComments':
                 if (!$product_model->setDetailId($_POST['id_detalle'])) {
-                    $result['exception']='Detalle incorrecto';
+                    $result['exception']='Incorrect detail';
                 }elseif ($product_model->deleteComments()) {
                     $result['status']=1;
                     $result['message']='Succesfull delete comment';
@@ -162,7 +162,7 @@ if (isset($_GET['action'])) {
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No existen categorias para mostrar';
+                    $result['exception'] = "Don't exits products to show";
                 }
                 break; 
             case 'priceFilter':
@@ -171,7 +171,7 @@ if (isset($_GET['action'])) {
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No existen precios para mostrar';
+                    $result['exception'] = "Don't exits products to show";
                 }
                 break; 
             case 'yearsFilter':
@@ -180,24 +180,24 @@ if (isset($_GET['action'])) {
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No existen años para mostrar';
+                    $result['exception'] = "Don't exits products to show";
                 }
                 break; 
             case 'filterSearch':
                 $_POST = Validator::validateForm($_POST);
                 if(isset($_POST['categoryID'])) {
                     if(!$product_model->setProductCategory($_POST['categoryID'])){
-                        $result['exception'] = 'Error en la categoria';
+                        $result['exception'] = 'Error on category';
                     }
                 }
                 if(isset($_POST['priceRange'])) {
                     if(!$product_model->setProductPrice($_POST['priceRange'])){
-                        $result['exception'] = 'Error en el precio';
+                        $result['exception'] = 'Error on price';
                     }
                 }
                 if(isset($_POST['modelYear'])) {
                     if(!$product_model->setModelYear($_POST['modelYear'])){
-                        $result['exception'] = 'Error en el año';
+                        $result['exception'] = 'Error in the year';
                     }
                 }
                 if($result['dataset'] = $product_model->filterSearch()){
@@ -205,7 +205,7 @@ if (isset($_GET['action'])) {
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No existen productos para mostrar';
+                    $result['exception'] = "Don't exits products to show";
                 }
             break;
         default:

@@ -16,53 +16,53 @@ if (isset($_GET['action'])) {
             case 'createDetail':
                 $_POST = Validator::validateForm($_POST);
                 if (!$order_model->startOrder()) {
-                    $result['exception'] = 'Ocurrió un problema al obtener el pedido';
+                    $result['exception'] = 'Problems with the order';
                 } elseif (!$order_model->setProduct($_POST['id_product'])) {
-                    $result['exception'] = 'Producto incorrecto';
+                    $result['exception'] = 'Wrong product';
                 } elseif (!$order_model->setQuantityProduct($_POST['product_exits'])) {
-                    $result['exception'] = 'Cantidad incorrecta';
+                    $result['exception'] = 'Wrong quantity';
                 } elseif ($order_model->createDetail()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Producto agregado correctamente';
+                    $result['message'] = 'Succesfull, add product';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'readOrderDetail':
                 if (!$order_model->startOrder()) {
-                    $result['exception'] = 'Debe agregar un producto al carrito';
+                    $result['exception'] = 'Please, add a product';
                 } elseif ($result['dataset'] = $order_model->readOrderDetail()) {
                     $result['status'] = 1;
                     $_SESSION['id_pedido'] = $order_model->getId();
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No tiene productos en el carrito';
+                    $result['exception'] = 'Select products, to cart buy';
                 }
                 break;
             case 'updateOrder':
                 if (!$order_model->setClientId($_POST['id_cliente'])) {
-                    $result['exception'] = 'Cliente no encontrado';
+                    $result['exception'] = 'Cliente not found';
                 }elseif ($order_model->updateOrder()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Pedido actualizado correctamente';
+                    $result['message'] = 'Update order, data';
                 }else{
-                    $result['exception']='No se pudo actualizar el estado del pedido';
+                    $result['exception']="Can't update order ";
                 }
                 break;
             case 'confirmOrder':
                 if (!$order_model->setClientId($_POST['id_cliente'])) {
-                    $result['exception'] = 'Cliente no encontrado';
+                    $result['exception'] = 'Cliente not found';
                 }elseif ($result['dataset']=$order_model->confirmOrder()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Pedido actualizado correctamente';
+                    $result['message'] = 'CONFIRM';
                 }
                 break;
             case 'subtractDetail':
                 if (!$order_model->setDetailId($_POST['id_detalle'])) {
-                    $result['exception']='Detalle, no encontrado';
+                    $result['exception']='Detail not found';
                 }elseif (!$order_model->setQuantityProduct($_POST['cantidad'])) {
-                    $result['exception']='Cantidad, incorrecta';
+                    $result['exception']='Wrong quantity';
                 }elseif ($order_model->subtractDetail()) {
                     $result['status']=1;
                 }else{
@@ -71,9 +71,9 @@ if (isset($_GET['action'])) {
                 break;
                 case 'addDetail':
                     if (!$order_model->setDetailId($_POST['id_detalle'])) {
-                        $result['exception']='Detalle, no encontrado';
+                        $result['exception']='Detail not found';
                     }elseif (!$order_model->setQuantityProduct($_POST['cantidad'])) {
-                        $result['exception']='Cantidad, incorrecta';
+                        $result['exception']='Wrong quantity';
                     }elseif ($order_model->addDetail()) {
                         $result['status']=1;
                     }else{
@@ -82,36 +82,36 @@ if (isset($_GET['action'])) {
                     break;
             case 'deleteDetail':
                 if (!$order_model->setDetailId($_POST['id_detalle_pedido'])) {
-                    $result['exception'] = 'Detalle incorrecto';
+                    $result['exception'] = 'Wrong detail';
                 } elseif ($order_model->deleteOrderDetail()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Producto removido correctamente';
+                    $result['message'] = 'deleted product';
                 } else {
-                    $result['exception'] = 'Ocurrió un problema al remover el producto';
+                    $result['exception'] = 'Problems at the delete product';
                 }
                 break;
             case 'readUpdatedStock':
                 if (!$order_model->setDetailId($_POST['id_detalle_pedido'])) {
-                    $result['exception'] = 'Detalle incorrecto';
+                    $result['exception'] = 'Wrong detail';
                 } elseif ($result['dataset'] = $order_model->readUpdatedStock()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Si hay stock';
+                    $result['message'] = 'Yes, have stock';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 }else{
-                    $result['exception'] = 'Error al leer el stock';
+                    $result['exception'] = 'Error at read the stock';
                 }
                 break;
             default:
-                $result['exception'] = 'Accion no disponible';
+                $result['exception'] = 'Action no disponible';
         }
     } else {
         switch ($_GET['action']) {
             case 'createDetail':
-                $result['exception'] = 'Debe iniciar sesión para agregar el producto al carrito';
+                $result['exception'] = 'To add, products at cart, you have to login';
                 break;
             default:
-                $result['exception'] = 'Acción no disponible fuera de la sesión';
+                $result['exception'] = 'Action not found, outside the session';
         }
     }
     // The type of content to be displayed and its respective set of characters are indicated.

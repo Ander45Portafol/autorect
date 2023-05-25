@@ -32,7 +32,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             default:
-                $result['exception'] = 'Acción no disponible';
+                $result['exception'] = 'Action no disponible';
         }
         // The type of content to be displayed and its respective set of characters are indicated.
         header('content-type: application/json; charset=utf-8');
