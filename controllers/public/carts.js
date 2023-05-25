@@ -28,7 +28,7 @@ async function validateConditions(){
             const FORM=new FormData();
             FORM.append('id_cliente',JSON.id);
             const JSONCAR=await dataFetch(ORDER_API,'confirmOrder',FORM);
-            if (JSONCAR.dataset.direccion_pedido==='null') {
+            if (JSONCAR.dataset.direccion_pedido!='null') {
                 const JSONUPDT=await dataFetch(ORDER_API,'updateOrder',FORM)
                 if (JSONUPDT.status) {
                     sweetAlert(1,JSONUPDT.message,false);

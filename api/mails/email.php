@@ -16,8 +16,8 @@ class Email{
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'secret';
-        $mail->Password = 'secret';
+        $mail->Username = 'autorect.contactos@gmail.com';
+        $mail->Password = 'lgqfvmmsohbkmhip';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
