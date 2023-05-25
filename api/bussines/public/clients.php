@@ -21,15 +21,15 @@ if (isset($_GET['action'])) {
                     $result['fullname'] = $_SESSION['nombre_completo_cliente'];
                     $result['id'] = $_SESSION['id_cliente'];
                 } else {
-                    $result['exception'] = 'Usuario, indefinido';
+                    $result['exception'] = 'User, undifined';
                 }
                 break;
             case 'logOut':
                 if (session_destroy()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Sesión eliminada correctamente';
+                    $result['message'] = 'Close session';
                 } else {
-                    $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
+                    $result['exception'] = 'Problems to close session';
                 }
                 break;
             case 'readOne':
@@ -66,7 +66,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             default:
-                $result['exception'] = 'Acción no disponible dentro de la sesión';
+                $result['exception'] = 'Action not disposable  inside of the session';
         }
     } else {
         // The action to perform when the client is not logged in is compared.
@@ -74,20 +74,20 @@ if (isset($_GET['action'])) {
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
                 if (!$client_model->setName($_POST['firstname'])) {
-                    $result['exception'] = 'Nombres incorrectos';
+                    $result['exception'] = 'Wrong name';
                 } elseif (!$client_model->setLastname($_POST['lastname'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
+                    $result['exception'] = 'Wrong lastname';
                 } elseif (!$client_model->setClientMail($_POST['email'])) {
-                    $result['exception'] = 'Correo incorrecto';
+                    $result['exception'] = 'Wrong mail';
                 } elseif (!$client_model->setClientPhone($_POST['phone'])) {
-                    $result['exception'] = 'Teléfono incorrecto';
+                    $result['exception'] = 'Wrong phone number';
                 } elseif ($_POST['password'] != $_POST['confirm_password']) {
-                    $result['exception'] = 'Claves diferentes';
+                    $result['exception'] = 'Invalid password';
                 } elseif (!$client_model->setPassword($_POST['password'])) {
                     $result['exception'] = Validator::getAPasswordError();
                 } elseif ($client_model->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Cuenta registrada correctamente';
+                    $result['message'] = 'Succesfull, to register user';
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -95,21 +95,21 @@ if (isset($_GET['action'])) {
             case 'login':
                 $_POST = Validator::validateForm($_POST);
                 if (!$client_model->checkUser($_POST['username'])) {
-                    $result['exception'] = 'Usuario incorrecto';
+                    $result['exception'] = 'Wrong username';
                 } elseif (!$client_model->getStatus()) {
-                    $result['exception'] = 'La cuenta ha sido desactivada';
+                    $result['exception'] = 'Account is desactive';
                 } elseif ($client_model->checkPassword($_POST['password'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Autenticación correcta';
+                    $result['message'] = 'Correct';
                     $_SESSION['id_cliente'] = $client_model->getId();
                     $_SESSION['usuario_cliente'] = $client_model->getUsername();
                     $_SESSION['nombre_completo_cliente'] = $client_model->getName() . ' ' . $client_model->getLastname();
                 } else {
-                    $result['exception'] = 'Clave incorrecta';
+                    $result['exception'] = 'Invalide Password';
                 }
                 break;
             default:
-                $result['exception'] = 'Acción no disponible fuera de la sesión';
+                $result['exception'] = 'Action not dispossable outside of the session';
         }
     }
     // The type of content to be displayed and its respective set of characters are indicated.
@@ -117,5 +117,5 @@ if (isset($_GET['action'])) {
     // The result is printed in JSON format and returned to the controller.
     print(json_encode($result));
 } else {
-    print(json_encode('Recurso no disponible'));
+    print(json_encode('Resource not dispossable'));
 }

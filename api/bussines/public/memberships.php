@@ -17,7 +17,7 @@ if (isset($_GET['action'])) {
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
             } else {
-                $result['exception'] = 'No existen membresias para mostrar';
+                $result['exception'] = "Don't exists memberships to show";
             }
             break;
         case 'readImgs':
@@ -26,16 +26,16 @@ if (isset($_GET['action'])) {
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
             } else {
-                $result['exception'] = 'No existen imagenes para mostrar';
+                $result['exception'] = "Don't exists images to show";
             }
             break;
         default:
-            $result['exception'] = 'Acción no disponible';
+            $result['exception'] = 'Action no disponible';
     }
     // The type of content to be displayed and its respective set of characters are indicated.
     header('Content-Type: application/json; charset=utf-8');
     // The result is printed in JSON format and returned to the controller.
     print(json_encode($result));
 } else {
-    print(json_encode('Recurso no disponible'));
+    print(json_encode('Resource no disponible'));
 }
