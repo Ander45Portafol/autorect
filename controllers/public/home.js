@@ -1,13 +1,18 @@
+//Paths to the API
 const PRODUCT_API = 'bussines/public/products.php';
 const MEMBERSHIP_API = 'bussines/public/memberships.php';
+
+//HTML elements
 const CAROUSEL = document.getElementById('product-carousel');
 const MEMBERSHIP_ROW = document.getElementById('memberships-row');
 
+//Fill sections when the DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
     fillCarousel();
     fillMemberships();
 })
 
+//Function to keep the carousel responsive when resizing
 window.addEventListener("resize", function () {
     updateCarousel();
 });
