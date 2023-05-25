@@ -65,7 +65,7 @@ async function readOrderDetail() {
                 <div class="quantity_product">
                     <button onclick="deleteOneProduct(${row.id_detalle_pedido},${row.cantidad_producto})"><i class='bx bx-minus'></i></button>
                     <p>${row.cantidad_producto}</p>
-                    <button onclick="addOneProduct(${row.id_detalle_pedido},${row.cantidad_producto},${row.existencias})"><i class='bx bx-plus'></i></button>
+                    <button onclick="addOneProduct(${row.id_detalle_pedido},${row.cantidad_producto})"><i class='bx bx-plus'></i></button>
                 </div>
             </td>
             <td>
@@ -110,18 +110,25 @@ async function deleteOneProduct(id_detalle, cantidad){
         }
     }
 }
-async function addOneProduct(id_detalle, cantidad,existencias){
-    if (cantidad>=existencias) {
-        sweetAlert(3,'No more products can be added',true);
-    }else{
-        const FORM=new FormData();
-        FORM.append('id_detalle',id_detalle);
-        FORM.append('cantidad', cantidad);
-        const JSON=await dataFetch(ORDER_API,'addDetail',FORM);
-        if (JSON.status) {
-            readOrderDetail();
+async function addOneProduct(id_detalle, cantidad){
+    const FORMSTOCK=new FormData();
+    FORMSTOCK.append('id_detalle_pedido',id_detalle);
+    const STOCK = await dataFetch(ORDER_API,'readUpdatedStock',FORMSTOCK);
+    if(STOCK.status){
+        if (STOCK.dataset.existencias == 0) {
+            sweetAlert(3,'No more products can be added',true);
         }else{
-            sweetAlert(2,JSON.exception,false);
+            const FORM=new FormData();
+            FORM.append('id_detalle',id_detalle);
+            FORM.append('cantidad', cantidad);
+            const JSON=await dataFetch(ORDER_API,'addDetail',FORM);
+            if (JSON.status) {
+                readOrderDetail();
+            }else{
+                sweetAlert(2,JSON.exception,false);
+            }
         }
+    }else{
+        sweetAlert(2,STOCK.exception,false);
     }
 }

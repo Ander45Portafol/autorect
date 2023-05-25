@@ -84,6 +84,18 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al remover el producto';
                 }
                 break;
+            case 'readUpdatedStock':
+                if (!$order_model->setDetailId($_POST['id_detalle_pedido'])) {
+                    $result['exception'] = 'Detalle incorrecto';
+                } elseif ($result['dataset'] = $order_model->readUpdatedStock()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Si hay stock';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                }else{
+                    $result['exception'] = 'Error al leer el stock';
+                }
+                break;
             default:
                 $result['exception'] = 'Accion no disponible';
         }
