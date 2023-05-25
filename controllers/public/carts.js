@@ -72,13 +72,14 @@ async function readOrderDetail() {
                 <p>$${row.precio_producto}</p>
             </td>
             <td>
-                <p>$${total.toFixed(2)}</p>
+                <p>$${subtotal.toFixed(2)}</p>
             </td>
             <td>
                 <button class="delete" onclick="deleteDetail(${row.id_detalle_pedido})"><i class="bx bxs-trash"></i></button>
             </td>
         </tr>`;
-        })
+        });
+        document.getElementById('pago').textContent='$'+total.toFixed(2);
     }
 }
 async function deleteDetail(id) {
