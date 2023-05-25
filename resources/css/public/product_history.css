@@ -244,3 +244,13 @@ section {
     display: flex;
     justify-content: space-between;
 }
+#total{
+    margin-left: 2rem;
+    font-size: 14pt;
+    margin-top: 2rem;
+    font-weight: 600;
+    display: none;
+}
+#cantidad{
+    margin-left: 3rem;
+}
