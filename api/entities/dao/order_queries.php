@@ -133,7 +133,7 @@ class OrderQueries
         } else {
             $sql = 'INSERT INTO pedidos(fecha_pedido,id_estado_pedido, id_cliente)
             VALUES(?, ?,?)';
-            date_default_timezone_set('America/El_Salvador');
+            date_default_timezone_set('America/El_Salvador');                                  
             $params = array($this->order_date=date("d-m-Y"),$this->order_status_id=1, $_SESSION['id_cliente']);
             if ($this->order_id = Database::getLastRow($sql, $params)) {
                 return true;
