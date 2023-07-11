@@ -13,7 +13,7 @@ const SWITCH_STATE_USER=document.getElementById('flexSwitchCheckChecked')
 
 //Event to show the datas in the table
 document.addEventListener('DOMContentLoaded',()=>{
-    fillTable()
+    fillTable();
 })
 //Function to Ccean inputs
 const Clean=()=>{
@@ -92,6 +92,7 @@ function createUser(){
 
 //This function is to manipulated some controls and charger the repective data when the process is update
 async function updateUser(id){
+    console.log(id);
     const FORM=new FormData();
     FORM.append('id',id);
     const JSON=await dataFetch(USERS_API,'readOne',FORM);
@@ -120,7 +121,7 @@ async function deleteUser(id){
     const RESPONSE=await confirmAction('Do you want to delete the user permanently?')
     if (RESPONSE) {
         const FORM=new FormData()
-        FORM.append('id_usuario',id)
+        FORM.append('id_usuario',id);
         const JSON=await dataFetch(USERS_API,'delete',FORM)
         if (JSON.status) {
             fillTable()
