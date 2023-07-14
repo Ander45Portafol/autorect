@@ -26,40 +26,40 @@ async function dataFetch(filename, action, form = null) {
 
 function confirmAction(message) {
     return swal({
-        title: 'Warning',
+        title: "Warning",
         text: message,
-        icon: 'warning',
+        icon: "warning",
         closeOnCLickOutSide: false,
         CloseOnEsc: false,
         buttons: {
             cancel: {
-                text: 'No',
+                text: "No",
                 value: false,
                 visible: true,
-                className: 'red accent-1'
+                className: "red accent-1",
             },
             confirm: {
-                text: 'Sí',
+                text: "Sí",
                 value: true,
                 visible: true,
-                className: 'grey darken-1'
-            }
-        }
-    })
+                className: "grey darken-1",
+            },
+        },
+    });
 }
 
 async function logOut() {
     // Se muestra un mensaje de confirmacion y se captura la respuesta en una constante
-    const RESPONSE = await confirmAction('Are you sure you want log out?')
+    const RESPONSE = await confirmAction("Are you sure you want log out?");
     // Se verifica la respuesta del mensaje
     if (RESPONSE) {
         // Peticion para eliminar la sesion.
-        const JSON = await dataFetch(USER_API, 'logOut')
+        const JSON = await dataFetch(USER_API, "logOut");
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepcion.
         if (JSON.status) {
-            sweetAlert(1, JSON.message, true, 'index.html')
+            sweetAlert(1, JSON.message, true, "index.html");
         } else {
-            sweetAlert(2, JSON.exception, false)
+            sweetAlert(2, JSON.exception, false);
         }
     }
 }
@@ -114,104 +114,190 @@ function sweetAlert(type, text, timer, url = null) {
 }
 
 async function fillSelect(filename, action, select, selected = null) {
-    const JSON = await dataFetch(filename, action)
-    let content = '';
+    const JSON = await dataFetch(filename, action);
+    let content = "";
     if (JSON.status) {
-        content += '<option disable selected>Select something</option>'
-        JSON.dataset.forEach(row => {
-            value = Object.values(row)[0]
-            text = Object.values(row)[1]
+        content += "<option disable selected>Select something</option>";
+        JSON.dataset.forEach((row) => {
+            value = Object.values(row)[0];
+            text = Object.values(row)[1];
             if (value != selected) {
-                content += `<option value="${value}">${text}</option>`
+                content += `<option value="${value}">${text}</option>`;
             } else {
-                content += `<option value="${value}" selected>${text}</option>`
+                content += `<option value="${value}" selected>${text}</option>`;
             }
-        })
+        });
     } else {
-        content += '<option>No data to show</option>'
+        content += "<option>No data to show</option>";
     }
-    document.getElementById(select).innerHTML = content
+    document.getElementById(select).innerHTML = content;
 }
 
-
 /*
-*   Función para generar un gráfico de barras verticales.
-*   Parámetros: canvas (identificador de la etiqueta canvas), xAxis (datos para el eje X), yAxis (datos para el eje Y), legend (etiqueta para los datos) y title (título del gráfico).
-*   Retorno: ninguno.
-*/
+ *   Función para generar un gráfico de barras verticales.
+ *   Parámetros: canvas (identificador de la etiqueta canvas), xAxis (datos para el eje X), yAxis (datos para el eje Y), legend (etiqueta para los datos) y title (título del gráfico).
+ *   Retorno: ninguno.
+ */
 function barGraph(canvas, xAxis, yAxis, legend, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
     xAxis.forEach(() => {
-        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+        colors.push("#" + Math.random().toString(16).substring(2, 8));
     });
-    // Se establece el contexto donde se mostrará el gráfico, es decir, la etiqueta canvas a utilizar.
-    const CONTEXT = document.getElementById(canvas).getContext('2d');
     // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
-    const CHART = new Chart(CONTEXT, {
-        type: 'bar',
+    new Chart(document.getElementById(canvas), {
+        type: "bar",
         data: {
             labels: xAxis,
-            datasets: [{
-                label: legend,
-                data: yAxis,
-                backgroundColor: colors
-            }]
+            datasets: [
+                {
+                    label: legend,
+                    data: yAxis,
+                    backgroundColor: colors,
+                },
+            ],
         },
         options: {
-            aspectRatio: 1,
             plugins: {
                 title: {
                     display: true,
-                    text: title
+                    text: title,
                 },
                 legend: {
-                    display: false
-                }
+                    display: false,
+                },
             },
             scales: {
                 y: {
                     ticks: {
-                        stepSize: 1
-                    }
+                        stepSize: 1,
+                    },
+                },
+            },
+        },
+    });
+}
+function LineGraph(canvas, legend, data ,title) {
+    // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
+    new Chart(document.getElementById(canvas), {
+        type: "line",
+        data: {
+            labels:legend,
+            datasets: [
+                {
+                    label:title,
+                    data:data,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                },
+            ],
+        },
+        options: {
+            scales: {
+                y: {
+                    stacked: true,
+                    ticks: {
+                        stepSize: 1,
+                    },  
                 }
             }
         }
     });
 }
 
+function polarGraph(canvas, data, legend) {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    data.forEach(() => {
+        colors.push("#" + Math.random().toString(16).substring(2, 8));
+    });
+    // Se establece el contexto donde se mostrará el gráfico, es decir, la etiqueta canvas a utilizar.
+    const CONTEXT = document.getElementById(canvas).getContext("2d");
+    // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
+    const CHART = new Chart(CONTEXT, {
+        type: "polarArea",
+        data: {
+            labels: legend,
+            datasets: [
+                {
+                    data: data,
+                    backgroundColor: colors,
+                },
+            ],
+        },
+        options: {
+            elements: {
+                line: {
+                    borderWidth: 3,
+                },
+            },
+        },
+    });
+}
 /*
-*   Función para generar un gráfico de pastel.
-*   Parámetros: canvas (identificador de la etiqueta canvas), legends (valores para las etiquetas), values (valores de los datos) y title (título del gráfico).
-*   Retorno: ninguno.
-*/
-function pieGraph(canvas, legends, values, title) {
+ *   Función para generar un gráfico de pastel.
+ *   Parámetros: canvas (identificador de la etiqueta canvas), legends (valores para las etiquetas), values (valores de los datos) y title (título del gráfico).
+ *   Retorno: ninguno.
+ */
+function pieGraph(canvas, legends, values) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
     values.forEach(() => {
-        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+        colors.push("#" + Math.random().toString(16).substring(2, 8));
     });
     // Se establece el contexto donde se mostrará el gráfico, es decir, la etiqueta canvas a utilizar.
-    const CONTEXT = document.getElementById(canvas).getContext('2d');
+    const CONTEXT = document.getElementById(canvas).getContext("2d");
     // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
     const CHART = new Chart(CONTEXT, {
-        type: 'pie',
+        type: "pie",
         data: {
             labels: legends,
-            datasets: [{
-                data: values,
-                backgroundColor: colors
-            }]
+            datasets: [
+                {
+                    data: values,
+                    backgroundColor: colors,
+                },
+            ],
         },
         options: {
             plugins: {
                 title: {
                     display: true,
-                    text: title
-                }
-            }
-        }
+                },
+            },
+        },
+    });
+}
+function doughnutGraph(canvas, legends, values) {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    values.forEach(() => {
+        colors.push("#" + Math.random().toString(16).substring(2, 8));
+    });
+    // Se establece el contexto donde se mostrará el gráfico, es decir, la etiqueta canvas a utilizar.
+    const CONTEXT = document.getElementById(canvas).getContext("2d");
+    // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
+    const CHART = new Chart(CONTEXT, {
+        type: "doughnut",
+        data: {
+            labels: legends,
+            datasets: [
+                {
+                    data: values,
+                    backgroundColor: colors,
+                },
+            ],
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                },
+            },
+        },
     });
 }
