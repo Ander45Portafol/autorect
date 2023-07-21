@@ -116,5 +116,19 @@ class UserQueries
         $params = array($this->user_id);
         return Database::executeRow($query, $params);
     }
-
+    public function readAllTypesUsers(){
+        $query="SELECT id_tipo_usuario, tipo_usuario FROM tipos_usuarios";
+        return Database::getRows($query);
+    }
+    public function reportUsersType(){
+        $query="SELECT a.nombre_usuario, CONCAT(b.nombre_empleado,' ',b.apellido_empleado) AS nombre_completo, c.tipo_usuario,  a.estado_usuario
+        FROM usuarios a
+        INNER JOIN empleados b
+        USING (id_empleado)
+        INNER JOIN tipos_usuarios c
+        USING (id_tipo_usuario)
+        WHERE id_tipo_usuario=?";
+        $params=array($this->user_type);
+        return Database::getRows($query,$params);
+    }
 }

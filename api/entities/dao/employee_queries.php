@@ -79,4 +79,18 @@ class EmployeeQueries
         $params = array($this->employee_id);
         return Database::executeRow($query, $params);
     }
+    //Functions to use at reports
+    public function readAllEmployeeType(){
+        $query="SELECT id_tipo_empleado, tipo_empleado FROM tipos_empleados";
+        return Database::getRows($query);
+    }
+    public function reportEmployeeType(){
+        $query="	SELECT CONCAT(a.nombre_empleado,' ',a.apellido_empleado) as nombre_completo_empleado,a.telefono_empleado, b.tipo_empleado,a.correo_empleado, a.dui_empleado
+        FROM empleados a
+        INNER JOIN tipos_empleados b
+        USING (id_tipo_empleado)
+        WHERE id_tipo_empleado=? AND a.estado_empleado=true";
+        $params=array($this->employee_type);
+        return Database::getRows($query,$params);
+    }
 }

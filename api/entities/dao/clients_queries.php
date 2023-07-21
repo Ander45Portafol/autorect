@@ -180,4 +180,18 @@ class ClientQueries
         $params = array($this->membership_type, $this->client_id);
         return Database::executeRow($query, $params);
     }
+    //Funtions to make reports
+    public function readAllMembresieTypes(){
+        $query="SELECT id_tipo_membresia,tipo_membresia,descripcion_membresia, precio_membresia FROM tipos_membresias";
+        return Database::getRows($query);
+    }
+    public function reportClientsMembresies(){
+        $query="	SELECT CONCAT(a.nombre_cliente,' ',a.apellido_cliente) as nombre_completo_cliente,a.dui_cliente,a.telefono_cliente, a.estado_cliente
+        FROM clientes a
+        INNER JOIN tipos_membresias b
+        USING (id_tipo_membresia)
+        WHERE id_tipo_membresia=?";
+        $params=array($this->membership_type);
+        return Database::getRows($query,$params);
+    }
 }
