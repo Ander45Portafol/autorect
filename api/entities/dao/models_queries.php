@@ -6,11 +6,10 @@ class ModelQueries{
 
     //This function is show all datas of the models is used to show data in the table
     public function readAll(){
-        $query = "SELECT a.id_modelo, a.nombre_modelo, a.anio_modelo, a.id_marca,b.nombre_marca 
-                  FROM modelos a
-                  INNER JOIN marcas b
-                  USING(id_marca)
-                  ORDER BY id_modelo";
+        $query = "SELECT a.id_modelo, a.nombre_modelo, a.anio_inicial_modelo, a.anio_final_modelo, a.id_marca,b.nombre_marca 
+        FROM modelos a
+        INNER JOIN marcas b
+        USING(id_marca)";
         return Database::getRows($query);
     }
 
@@ -68,5 +67,11 @@ class ModelQueries{
                   WHERE id_modelo = ?";
         $params = array($this->model_id);
         return Database::executeRow($query, $params);
+    }
+    //Functions to make reports
+    public function reportModel(){
+        $query="SELECT nombre_modelo, anio_inicial_modelo, anio_final_modelo FROM modelos WHERE id_marca=?";
+        $params=array($this->brand);
+        return Database::getRows($query,$params);
     }
 }

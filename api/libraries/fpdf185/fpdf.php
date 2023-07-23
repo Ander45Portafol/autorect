@@ -171,7 +171,7 @@ function __construct($orientation='P', $unit='mm', $size='A4')
 	$this->PDFVersion = '1.3';
 }
 
-function SetMargins($left, $top, $right=null)
+function SetMargins($left, $top, $right=null,$bottom=null)
 {
 	// Set left, top and right margins
 	$this->lMargin = $left;
@@ -179,6 +179,7 @@ function SetMargins($left, $top, $right=null)
 	if($right===null)
 		$right = $left;
 	$this->rMargin = $right;
+	$this->bMargin=$bottom;
 }
 
 function SetLeftMargin($margin)

@@ -7,7 +7,7 @@ require_once('../../entities/dto/employee.php');
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se inicia el reporte con el encabezado del documento.
-$pdf->startReport('Empleados por tipo');
+$pdf->startReport('Employees at type');
 // Se instancia el módelo Categoría para obtener los datos.
 $employee = new Employee;
 // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
@@ -18,10 +18,10 @@ if ($dataCategorias = $employee->readAllEmployeeType()) {
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Times', 'B', 11);
     // Se imprimen las celdas con los encabezados.
-    $pdf->cell(96, 10, 'Nombre Completo', 1, 0, 'C', 1);
-    $pdf->cell(30, 10, 'Dui', 1, 0, 'C', 1);
-    $pdf->cell(30, 10, 'Telefono', 1, 0, 'C', 1);
-    $pdf->cell(30, 10, 'Estado', 1, 1, 'C', 1);
+    $pdf->cell(96, 10, 'Full name', 1, 0, 'C', 1);
+    $pdf->cell(30, 10, 'Email', 1, 0, '', 1);
+    $pdf->cell(30, 10, 'DUI', 1, 0, 'C', 1);
+    $pdf->cell(30, 10, 'Phone', 1, 1, 'C', 1);
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(252);
@@ -34,7 +34,7 @@ if ($dataCategorias = $employee->readAllEmployeeType()) {
         // Se imprime una celda con el nombre de la categoría.
         $pdf->SetFillColor(230,230,230);
         $pdf->SetTextColor(0);
-        $pdf->cell(0, 10, $pdf->encodeString('Tipo Empleado: ' . $rowCategoria['tipo_empleado']), 1, 1, 'C', 1);
+        $pdf->cell(0, 10, $pdf->encodeString('Employee type: ' . $rowCategoria['tipo_empleado']), 1, 1, 'C', 1);
         // Se instancia el módelo Producto para procesar los datos.
         $employee = new Employee;
         // Se establece la categoría para obtener sus productos, de lo contrario se imprime un mensaje de error.
@@ -50,14 +50,14 @@ if ($dataCategorias = $employee->readAllEmployeeType()) {
                     $pdf->cell(30, 10, $rowProducto['telefono_empleado'], 1, 1,'C');
                 }
             } else {
-                $pdf->cell(0, 10, $pdf->encodeString('No hay productos para la categoría'), 1, 1);
+                $pdf->cell(0, 10, $pdf->encodeString('Not have employees in this type to show'), 1, 1);
             }
         } else {
-            $pdf->cell(0, 10, $pdf->encodeString('Categoría incorrecta o inexistente'), 1, 1);
+            $pdf->cell(0, 10, $pdf->encodeString('EMployee type not exists'), 1, 1);
         }
     }
 } else {
-    $pdf->cell(0, 10, $pdf->encodeString('No hay categorías para mostrar'), 1, 1);
+    $pdf->cell(0, 10, $pdf->encodeString('DO not employees types to show'), 1, 1);
 }
 // Se llama implícitamente al método footer() y se envía el documento al navegador web.
-$pdf->output('I', 'usuarios.pdf');
+$pdf->output('I', 'employee.pdf');

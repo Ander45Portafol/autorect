@@ -2,26 +2,26 @@
 // Se incluye la clase con las plantillas para generar reportes.
 require_once('../../helpers/report.php');
 // Se incluyen las clases para la transferencia y acceso a datos.
-require_once('../../entities/dto/products.php');
-require_once('../../entities/dto/category.php');
+require_once('../../entities/dto/models.php');
+require_once('../../entities/dto/brands.php');
 
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se inicia el reporte con el encabezado del documento.
-$pdf->startReport('Products at categories');
+$pdf->startReport('Models at brands');
 // Se instancia el módelo Categoría para obtener los datos.
-$category = new Category;
+$brand = new Brand;
 // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-if ($dataCategorias = $category->readAll()) {
+if ($dataCategorias = $brand->readAll()) {
     // Se establece un color de relleno para los encabezados.
     $pdf->setFillColor(0);
     $pdf->SetTextColor(255);
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Times', 'B', 11);
     // Se imprimen las celdas con los encabezados.
-    $pdf->cell(126, 10, 'Product Name', 1, 0, 'C', 1);
-    $pdf->cell(30, 10, 'Price $(US)', 1, 0, 'C', 1);
-    $pdf->cell(30, 10, 'Status', 1, 1, 'C', 1);
+    $pdf->cell(126, 10, 'Model Name', 1, 0, 'C', 1);
+    $pdf->cell(30, 10, 'Year start', 1, 0, 'C', 1);
+    $pdf->cell(30, 10, 'Year final', 1, 1, 'C', 1);
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(252);
@@ -34,30 +34,29 @@ if ($dataCategorias = $category->readAll()) {
         // Se imprime una celda con el nombre de la categoría.
         $pdf->SetFillColor(230,230,230);
         $pdf->SetTextColor(0);
-        $pdf->cell(0, 10, $pdf->encodeString('Category: ' . $rowCategoria['nombre_categoria']), 1, 1, 'C', 1);
+        $pdf->cell(0, 10, $pdf->encodeString('Brand: ' . $rowCategoria['nombre_marca']), 1, 1, 'C', 1);
         // Se instancia el módelo Producto para procesar los datos.
-        $product = new Product;
+        $model = new Model;
         // Se establece la categoría para obtener sus productos, de lo contrario se imprime un mensaje de error.
-        if ($product->setProductCategory($rowCategoria['id_categoria'])) {
+        if ($model->setModelBrand($rowCategoria['id_marca'])) { 
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-            if ($dataProductos = $product->productsReport()) {
+            if ($dataProductos = $model->reportModel()) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataProductos as $rowProducto) {
-                    ($rowProducto['estado_producto']) ? $estado = 'Active' : $estado = 'Inactive';
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
-                    $pdf->cell(30, 10, $rowProducto['precio_producto'], 1, 0);
-                    $pdf->cell(30, 10, $estado, 1, 1);
+                    $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_modelo']), 1, 0);
+                    $pdf->cell(30, 10, $rowProducto['anio_inicial_modelo'], 1, 0);
+                    $pdf->cell(30, 10, $rowProducto['anio_final_modelo'], 1, 1);
                 }
             } else {
-                $pdf->cell(0, 10, $pdf->encodeString('Not have products in this categories to show'), 1, 1);
+                $pdf->cell(0, 10, $pdf->encodeString('Not model at brands'), 1, 1);
             }
         } else {
-            $pdf->cell(0, 10, $pdf->encodeString('Category not exists'), 1, 1);
+            $pdf->cell(0, 10, $pdf->encodeString('Not exits brand'), 1, 1);
         }
     }
 } else {
-    $pdf->cell(0, 10, $pdf->encodeString('Not have categories to show'), 1, 1);
+    $pdf->cell(0, 10, $pdf->encodeString('Do not show brands'), 1, 1);
 }
 // Se llama implícitamente al método footer() y se envía el documento al navegador web.
-$pdf->output('I', 'products.pdf');
+$pdf->output('I', 'models.pdf');

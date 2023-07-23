@@ -47,7 +47,7 @@ async function fillTable(form=null){
             <tr>
                 <td>${row.id_modelo}</td>
                 <td>${row.nombre_modelo}</td>
-                <td>${row.anio_modelo}</td>
+                <td>${row.anio_inicial_modelo}</td>
                 <td>${row.nombre_marca}</td>
                 <td>
                     <div class="actions">
@@ -104,4 +104,10 @@ async function deleteModel(id){
             sweetAlert(2,JSON.exception,true);
     }
     }
+}
+function openReport() {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/dashboard/models.php`);
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
 }
