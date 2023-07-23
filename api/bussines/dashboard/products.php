@@ -13,7 +13,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['id_usuario'])) {
         //Actions
         switch ($_GET['action']) {
-            //Action to fill the table
+                //Action to fill the table
             case 'readAll':
                 if ($result['dataset'] = $product_model->readAll()) {
                     $result['status'] = 1;
@@ -24,7 +24,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data';
                 }
                 break;
-            //Action to read all the valorations per product
+                //Action to read all the valorations per product
             case 'readAllValoration':
                 if (!$product_model->setId($_POST['id_producto'])) {
                     $result['exception'] = 'Wrong product';
@@ -37,7 +37,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data';
                 }
                 break;
-            //Action to read all the status of the products
+                //Action to read all the status of the products
             case 'readStatus':
                 if ($result['dataset'] = $product_model->readStatusProduct()) {
                     $result['status'] = 1;
@@ -48,7 +48,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data';
                 }
                 break;
-            //Action to search for products
+                //Action to search for products
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -63,7 +63,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No data';
                 }
                 break;
-            //Action to read one product
+                //Action to read one product
             case 'readOne':
                 if (!$product_model->setId($_POST['id'])) {
                     $result['exception'] = 'Wrong product';
@@ -75,7 +75,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'The category does not exist';
                 }
                 break;
-            //Action to create a product
+                //Action to create a product
             case 'create':
                 if (!$product_model->setProductName($_POST['Product_name'])) {
                     $result['exception'] = 'Wrong name';
@@ -104,7 +104,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //Action to update a product
+                //Action to update a product
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$product_model->setId($_POST['id'])) {
@@ -145,7 +145,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //Action to delete a product
+                //Action to delete a product
             case 'delete':
                 if (!$product_model->setId($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecta';
@@ -158,7 +158,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //Actions to change the status of the valoration
+                //Actions to change the status of the valoration
             case 'FalseValoration':
                 if (!$product_model->setValorationId($_POST['id_valoracion'])) {
                     $result['exception'] = 'Wrong valoration';
@@ -183,7 +183,42 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //Action to read the images per product
+            case 'cantidadUsuarios':
+                if ($result['dataset'] = $product_model->cantidadUsuarios()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
+            case 'cantidadModeloMarca':
+                if ($result['dataset'] = $product_model->cantidadModelosMarcas()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
+            case 'porcentajesPedidos':
+                if ($result['dataset'] = $product_model->porcentajesPedidos()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
+                case 'porcentajeClientes':
+                    if ($result['dataset'] = $product_model->porcentajesClientes()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                    break;
+                    case 'fechasPedidos':
+                        if ($result['dataset'] = $product_model->fechasPedidos()) {
+                            $result['status'] = 1;
+                        } else {
+                            $result['exception'] = 'No hay datos disponibles';
+                        }
+                        break;
+                //Action to read the images per product
             case 'readImgs':
                 if (!$product_model->setId($_POST['id_producto'])) {
                     $result['exception'] = 'The product does not exist';
@@ -195,7 +230,7 @@ if (isset($_GET['action'])) {
                     $result['exception'];
                 }
                 break;
-            //Action to create an image asigned to a product
+                //Action to create an image asigned to a product
             case 'createImg':
                 $num = $_POST['num'];
                 if (!$product_model->setSImg($_FILES['input-img-' . $num])) {
@@ -214,7 +249,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //Action to delete an image
+                //Action to delete an image
             case 'deleteImg':
                 if (!$product_model->setImgId($_POST['id_imagen_producto'])) {
                     $result['exception'] = 'Wrong id';
@@ -231,7 +266,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            //Case default if anything is executed
+                //Case default if anything is executed
             default:
                 $result['exception'] = 'The action can not be performed';
         }

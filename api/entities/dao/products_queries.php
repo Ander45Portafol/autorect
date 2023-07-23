@@ -222,6 +222,48 @@ class ProductQueries
         return Database::getRows($query,$params);
     }
 
+    public function cantidadUsuarios()
+    {
+        $sql = 'SELECT tipo_usuario, COUNT(id_usuario) usuario
+        FROM usuarios
+        INNER JOIN tipos_usuarios USING(id_tipo_usuario)
+        GROUP BY tipo_usuario ORDER BY usuario DESC';
+        return Database::getRows($sql);
+    }
+    public function cantidadModelosMarcas(){
+        $sql='SELECT ma.nombre_marca,COUNT(mo.id_modelo) modelo
+        FROM marcas as ma
+        INNER JOIN modelos as mo
+        ON mo.id_marca = ma.id_marca
+        GROUP BY ma.nombre_marca
+        ORDER BY modelo DESC LIMIT 7';
+        return Database::getRows($sql);
+    }
+    public function porcentajesPedidos()
+    {
+        $sql = 'SELECT estado_pedido, ROUND((COUNT(id_pedido)*100.0/(SELECT COUNT(id_pedido) FROM pedidos)),2) porcentaje
+        FROM detalles_pedidos
+        INNER JOIN pedidos USING (id_pedido)
+        INNER JOIN estados_pedidos USING (id_estado_pedido)
+        GROUP BY estado_pedido ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
+    }
+    public function porcentajesClientes()
+    {
+        $sql = 'SELECT estado_cliente, ROUND((COUNT(id_cliente)*100.0/(SELECT COUNT(id_cliente) FROM clientes)),2)as porcentaje
+        FROM clientes
+        GROUP BY estado_cliente';
+        return Database::getRows($sql);
+    }
+    public function fechasPedidos()
+    {
+        $sql = "SELECT fecha_pedido, COUNT(id_pedido) as n_pedidos
+        FROM pedidos
+        WHERE fecha_pedido >= DATE_TRUNC('week', CURRENT_DATE)
+          AND fecha_pedido < DATE_TRUNC('week', CURRENT_DATE) + INTERVAL '1 week' AND id_estado_pedido=4
+        GROUP BY fecha_pedido ORDER BY n_pedidos DESC";
+        return Database::getRows($sql);
+    }
     //Function to validate comments
     public function validateComments(){
         $query="SELECT c.nombre_producto,a.comentario from valoraciones a INNER JOIN detalles_pedidos b using (id_detalle_pedido) INNER JOIN productos c using (id_producto)
@@ -389,5 +431,18 @@ class ProductQueries
         VALUES(?,?,?,?,?)";
         $params=array($this->quantity,$this->comments,$date,$comment_status,$this->detail_id);
         return Database::executeRow($query,$params);
+    }
+    //Metodos para los reportes
+    public function productsReport(){
+        $query="SELECT a.id_producto, a.imagen_principal,a.nombre_producto,a.precio_producto,a.descripcion_producto, b.nombre_categoria, c.estado_producto
+        FROM productos a
+        INNER JOIN categorias b
+         USING(id_categoria)
+        INNER JOIN estados_productos c
+        USING (id_estado_producto)
+        WHERE id_categoria=?
+        ORDER BY id_producto";
+        $params=array($this->product_category);
+        return Database::getRows($query,$params);
     }
 }
