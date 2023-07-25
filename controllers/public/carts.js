@@ -2,6 +2,7 @@ const PRODUCT_CART = document.getElementById('container_products');
 const ORDER_API = 'bussines/public/order.php';
 const DATE=document.getElementById('date');
 const NAME=document.getElementById('name_client');
+var pedido_id;
 
 document.addEventListener('DOMContentLoaded', () => {
     readOrderDetail();
@@ -27,12 +28,15 @@ async function validateConditions(){
         if (JSON.status) {
             const FORM=new FormData();
             FORM.append('id_cliente',JSON.id);
+            console.log(pedido_id);
             const JSONCAR=await dataFetch(ORDER_API,'confirmOrder',FORM);
             if (JSONCAR.dataset.direccion_pedido!='null') {
                 const JSONUPDT=await dataFetch(ORDER_API,'updateOrder',FORM)
                 if (JSONUPDT.status) {
-                    sweetAlert(1,JSONUPDT.message,false);
+                    openReportCar(pedido_id);
+                    console.log(pedido_id);
                     readOrderDetail();
+                    sweetAlert(1,JSONUPDT.message,false);
                 }
             }else{
                 sweetAlert(2,"Check your profile information",false);
@@ -49,6 +53,7 @@ async function readOrderDetail() {
         let subtotal = 0;
         let total = 0;
         JSON.dataset.forEach(row => {
+            pedido_id=row.id_pedido;
             subtotal=row.precio_producto*row.cantidad_producto;
             total+=subtotal;
             PRODUCT_CART.innerHTML += `                    <tr>
@@ -132,4 +137,12 @@ async function addOneProduct(id_detalle, cantidad){
     }else{
         sweetAlert(2,STOCK.exception,false);
     }
+}
+function openReportCar(idP) {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/public/receipt.php`);
+    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+    PATH.searchParams.append('id_pedido', idP);
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
 }
