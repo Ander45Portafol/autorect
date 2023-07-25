@@ -43,43 +43,43 @@ if (isset($_GET['action'])) {
             case 'updateOrder':
                 if (!$order_model->setClientId($_POST['id_cliente'])) {
                     $result['exception'] = 'Cliente not found';
-                }elseif ($order_model->updateOrder()) {
+                } elseif ($order_model->updateOrder()) {
                     $result['status'] = 1;
                     $result['message'] = 'Update order, data';
-                }else{
-                    $result['exception']="Can't update order ";
+                } else {
+                    $result['exception'] = "Can't update order ";
                 }
                 break;
             case 'confirmOrder':
                 if (!$order_model->setClientId($_POST['id_cliente'])) {
                     $result['exception'] = 'Cliente not found';
-                }elseif ($result['dataset']=$order_model->confirmOrder()) {
+                } elseif ($result['dataset'] = $order_model->confirmOrder()) {
                     $result['status'] = 1;
                     $result['message'] = 'CONFIRM';
                 }
                 break;
             case 'subtractDetail':
                 if (!$order_model->setDetailId($_POST['id_detalle'])) {
-                    $result['exception']='Detail not found';
-                }elseif (!$order_model->setQuantityProduct($_POST['cantidad'])) {
-                    $result['exception']='Wrong quantity';
-                }elseif ($order_model->subtractDetail()) {
-                    $result['status']=1;
-                }else{
-                    $result['exception']=Database::getException();
+                    $result['exception'] = 'Detail not found';
+                } elseif (!$order_model->setQuantityProduct($_POST['cantidad'])) {
+                    $result['exception'] = 'Wrong quantity';
+                } elseif ($order_model->subtractDetail()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = Database::getException();
                 }
                 break;
-                case 'addDetail':
-                    if (!$order_model->setDetailId($_POST['id_detalle'])) {
-                        $result['exception']='Detail not found';
-                    }elseif (!$order_model->setQuantityProduct($_POST['cantidad'])) {
-                        $result['exception']='Wrong quantity';
-                    }elseif ($order_model->addDetail()) {
-                        $result['status']=1;
-                    }else{
-                        $result['exception']=Database::getException();
-                    }
-                    break;
+            case 'addDetail':
+                if (!$order_model->setDetailId($_POST['id_detalle'])) {
+                    $result['exception'] = 'Detail not found';
+                } elseif (!$order_model->setQuantityProduct($_POST['cantidad'])) {
+                    $result['exception'] = 'Wrong quantity';
+                } elseif ($order_model->addDetail()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             case 'deleteDetail':
                 if (!$order_model->setDetailId($_POST['id_detalle_pedido'])) {
                     $result['exception'] = 'Wrong detail';
@@ -98,7 +98,7 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Yes, have stock';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
-                }else{
+                } else {
                     $result['exception'] = 'Error at read the stock';
                 }
                 break;
