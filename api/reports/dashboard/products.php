@@ -4,6 +4,7 @@ require_once('../../helpers/report.php');
 // Se incluyen las clases para la transferencia y acceso a datos.
 require_once('../../entities/dto/products.php');
 require_once('../../entities/dto/category.php');
+require_once('../../entities/dto/users.php');
 
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
@@ -11,9 +12,21 @@ $pdf = new Report;
 $pdf->startReport('Products at categories');
 // Se instancia el módelo Categoría para obtener los datos.
 $category = new Category;
+$user=new User;
 // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
 if ($dataCategorias = $category->readAll()) {
     // Se establece un color de relleno para los encabezados.
+    $pdf->setFillColor(255);
+    $pdf->SetTextColor(0);
+    $pdf->setFont('Arial', '', 12);
+    if ($user->setId($_SESSION['id_usuario'])) {
+        if ($dataUser=$user->searchEmployee()) {
+            $nombre_employee=$dataUser['nombre_completo_empleado'];
+            $pdf->Cell(48,10,'Nombre del empleado: ',0,0,);
+            $pdf->Cell(140,10,$nombre_employee,0,1,);
+            $pdf->Cell(0,5,'',0,1);
+        }
+    }
     $pdf->setFillColor(0);
     $pdf->SetTextColor(255);
     // Se establece la fuente para los encabezados.
