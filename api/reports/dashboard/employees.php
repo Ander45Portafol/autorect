@@ -1,32 +1,37 @@
 <?php
-// Se incluye la clase con las plantillas para generar reportes.
+// import file to charger the template of report
 require_once('../../helpers/report.php');
-// Se incluyen las clases para la transferencia y acceso a datos.
+// import files to get datas
 require_once('../../entities/dto/employee.php');
 require_once('../../entities/dto/users.php');
 
-// Se instancia la clase para crear el reporte.
+// variable to acces at report functions
 $pdf = new Report;
-// Se inicia el reporte con el encabezado del documento.
+// Here append the title of the report
 $pdf->startReport('Employees at type');
-// Se instancia el módelo Categoría para obtener los datos.
+// variable to get employees datas
 $employee = new Employee;
+//variable to get users datas
 $user=new User;
-// Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
+// Validate if exists some employee type
 if ($dataCategorias = $employee->readAllEmployeeType()) {
-    // Se establece un color de relleno para los encabezados.
+    // Apply color on the cell
     $pdf->setFillColor(255);
+    // Apply color at the text
     $pdf->SetTextColor(0);
+    // Apply font family and font size at the text
     $pdf->setFont('Arial', '', 12);
+    // Set the atribute id at user to search at which employee appertain
     if ($user->setId($_SESSION['id_usuario'])) {
         if ($dataUser=$user->searchEmployee()) {
+            //Get the full name of the employee
             $nombre_employee=$dataUser['nombre_completo_empleado'];
-            $pdf->Cell(48,10,'Nombre del empleado: ',0,0,);
+            $pdf->Cell(48,10,'Employee full name: ',0,0,);
             $pdf->Cell(140,10,$nombre_employee,0,1,);
             $pdf->Cell(0,5,'',0,1);
         }
     }
-    // Se establece la fuente para los encabezados.
+    // header at the table
     $pdf->setFillColor(0);
     $pdf->SetTextColor(255);
     $pdf->setFont('Arial', 'B', 11);

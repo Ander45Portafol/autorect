@@ -18,7 +18,7 @@ if ($dataCategorias = $user->readAllTypesUsers()) {
     if ($user->setId($_SESSION['id_usuario'])) {
         if ($dataUser=$user->searchEmployee()) {
             $nombre_employee=$dataUser['nombre_completo_empleado'];
-            $pdf->Cell(48,10,'Nombre del empleado: ',0,0,);
+            $pdf->Cell(48,10,'Employee full name: ',0,0,);
             $pdf->Cell(140,10,$nombre_employee,0,1,);
             $pdf->Cell(0,5,'',0,1);
         }

@@ -67,7 +67,7 @@ class Report extends FPDF
         $this->cell(20);
         $this->setFont('Arial', '', 10);
         $this->cell(90, 10, 'Date :  ' . date('d-m-Y'), 0, 0, 'C');
-        $this->cell(30, 10, 'Hora: ' . date('g:i a'), 0, 1, 'R');
+        $this->cell(30, 10, 'Hour: ' . date('g:i a'), 0, 1, 'R');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->ln(10);
     }
@@ -82,7 +82,7 @@ class Report extends FPDF
         // Se establece la fuente para el número de página.
         $this->setY(-45);
         $this->setFont('Arial', 'I', 8);
-        $this->cell(0, 10, $this->encodeString('Página ') . $this->pageNo() . '/{nb}', 0, 0, 'C');
+        $this->cell(0, 10, $this->encodeString('Page ') . $this->pageNo() . '/{nb}', 0, 0, 'C');
         $this->image('../../images/logo_footer.png',0,245,216,40);
         // Se imprime una celda con el número de página.
         // $this->cell(0, 10, $this->encodeString('Página ') . $this->pageNo() . '/{nb}', 0, 0, 'C');

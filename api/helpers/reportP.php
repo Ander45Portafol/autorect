@@ -29,7 +29,7 @@ class Report extends FPDF
             // Se asigna el título del documento a la propiedad de la clase.
             $this->title = $title;
             // Se establece el título del documento (true = utf-8).
-            $this->setTitle('Dashboard - Reporte', true);
+            $this->setTitle('Receipt', true);
             // Se establecen los margenes del documento (izquierdo, superior y derecho).
             $this->setMargins(15, 15, 15, 40);
             // Se añade una nueva página al documento con orientación vertical y formato carta, llamando implícitamente al método header()
@@ -67,7 +67,7 @@ class Report extends FPDF
         $this->cell(20);
         $this->setFont('Arial', '', 10);
         $this->cell(90, 10, 'Date :  ' . date('d-m-Y'), 0, 0, 'C');
-        $this->cell(30, 10, 'Hora: ' . date('g:i a'), 0, 1, 'R');
+        $this->cell(30, 10, 'Hour: ' . date('g:i a'), 0, 1, 'R');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->ln(10);
     }

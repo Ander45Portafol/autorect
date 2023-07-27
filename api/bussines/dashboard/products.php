@@ -204,20 +204,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
-                case 'porcentajeClientes':
-                    if ($result['dataset'] = $product_model->porcentajesClientes()) {
-                        $result['status'] = 1;
-                    } else {
-                        $result['exception'] = 'No hay datos disponibles';
-                    }
-                    break;
-                    case 'fechasPedidos':
-                        if ($result['dataset'] = $product_model->fechasPedidos()) {
-                            $result['status'] = 1;
-                        } else {
-                            $result['exception'] = 'No hay datos disponibles';
-                        }
-                        break;
+            case 'porcentajeClientes':
+                if ($result['dataset'] = $product_model->porcentajesClientes()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
+            case 'fechasPedidos':
+                if ($result['dataset'] = $product_model->fechasPedidos()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
                 //Action to read the images per product
             case 'readImgs':
                 if (!$product_model->setId($_POST['id_producto'])) {
