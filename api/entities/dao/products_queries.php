@@ -432,7 +432,7 @@ class ProductQueries
         $params=array($this->quantity,$this->comments,$date,$comment_status,$this->detail_id);
         return Database::executeRow($query,$params);
     }
-    //Metodos para los reportes
+    //functions to make reports
     public function productsReport(){
         $query="SELECT a.id_producto, a.imagen_principal,a.nombre_producto,a.precio_producto,a.descripcion_producto, b.nombre_categoria, c.estado_producto
         FROM productos a

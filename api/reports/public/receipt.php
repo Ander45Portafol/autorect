@@ -25,7 +25,7 @@ if (isset($_GET['id_pedido'])) {
                 foreach ($dataOrder as $capclient) {
                     $client = $capclient['nombre_completo_cliente'];
                 }
-                $pdf->Cell(36, 10, 'Cliente :', 1, 0,'C');
+                $pdf->Cell(36, 10, 'Client :', 1, 0,'C');
                 $pdf->Cell(150, 10, $client, 1, 1,'C');
                 // Se establece un color de relleno para los encabezados.
                 // Se establece la fuente para los encabezados.
