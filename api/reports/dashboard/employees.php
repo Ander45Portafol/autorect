@@ -14,7 +14,7 @@ $employee = new Employee;
 //variable to get users datas
 $user=new User;
 // Validate if exists some employee type
-if ($dataCategorias = $employee->readAllEmployeeType()) {
+if ($dataEmployeeTypes = $employee->readAllEmployeeType()) {
     // Apply color on the cell
     $pdf->setFillColor(255);
     // Apply color at the text
@@ -31,47 +31,48 @@ if ($dataCategorias = $employee->readAllEmployeeType()) {
             $pdf->Cell(0,5,'',0,1);
         }
     }
-    // header at the table
+    // design to headers
     $pdf->setFillColor(0);
     $pdf->SetTextColor(255);
     $pdf->setFont('Arial', 'B', 11);
-    // Se imprimen las celdas con los encabezados.
+    // Headers at the table.
     $pdf->cell(96, 10, 'Full name', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Email', 1, 0, '', 1);
     $pdf->cell(30, 10, 'DUI', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Phone', 1, 1, 'C', 1);
 
-    // Se establece un color de relleno para mostrar el nombre de la categoría.
+    // Design to show categories
     $pdf->setFillColor(252);
     $pdf->SetTextColor(0);
-    // Se establece la fuente para los datos de los productos.
     $pdf->setFont('Times', '', 11);
 
-    // Se recorren los registros fila por fila.
-    foreach ($dataCategorias as $rowCategoria) {
-        // Se imprime una celda con el nombre de la categoría.
+    // show data to row by row
+    foreach ($dataEmployeeTypes as $rowEmployeeType) {
+        //Design to cells in the data of the employee type
         $pdf->SetFillColor(230,230,230);
         $pdf->SetTextColor(0);
-        $pdf->cell(0, 10, $pdf->encodeString('Employee type: ' . $rowCategoria['tipo_empleado']), 1, 1, 'C', 1);
-        // Se instancia el módelo Producto para procesar los datos.
+        $pdf->cell(0, 10, $pdf->encodeString('Employee type: ' . $rowEmployeeType['tipo_empleado']), 1, 1, 'C', 1);
+        // variable to get at the employee datas
         $employee = new Employee;
-        // Se establece la categoría para obtener sus productos, de lo contrario se imprime un mensaje de error.
-        if ($employee->setEmployeeType($rowCategoria['id_tipo_empleado'])) {
-            // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-            if ($dataProductos = $employee->reportEmployeeType()) {
-                // Se recorren los registros fila por fila.
-                foreach ($dataProductos as $rowProducto) {
-                    // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(80, 10, $pdf->encodeString($rowProducto['nombre_completo_empleado']), 1, 0,'C');
-                    $pdf->cell(46, 10, $rowProducto['correo_empleado'], 1, 0,'C');
-                    $pdf->cell(30, 10, $rowProducto['dui_empleado'], 1, 0,'C');
-                    $pdf->cell(30, 10, $rowProducto['telefono_empleado'], 1, 1,'C');
+        // Set at the employee type, to search employees
+        if ($employee->setEmployeeType($rowEmployeeType['id_tipo_empleado'])) {
+            //Validate if exists employees
+            if ($dataEmployee = $employee->reportEmployeeType()) {
+                // show data row by row
+                foreach ($dataEmployee as $rowEmployee) {
+                    // Show data of the employees
+                    $pdf->cell(80, 10, $pdf->encodeString($rowEmployee['nombre_completo_empleado']), 1, 0,'C');
+                    $pdf->cell(46, 10, $rowEmployee['correo_empleado'], 1, 0,'C');
+                    $pdf->cell(30, 10, $rowEmployee['dui_empleado'], 1, 0,'C');
+                    $pdf->cell(30, 10, $rowEmployee['telefono_empleado'], 1, 1,'C');
                 }
             } else {
+                // Message if not exists employees in that employees type.
                 $pdf->cell(0, 10, $pdf->encodeString('Not have employees in this type to show'), 1, 1);
             }
         } else {
-            $pdf->cell(0, 10, $pdf->encodeString('EMployee type not exists'), 1, 1);
+            // Message if not exists types employees
+            $pdf->cell(0, 10, $pdf->encodeString('Employee type not exists'), 1, 1);
         }
     }
 } else {

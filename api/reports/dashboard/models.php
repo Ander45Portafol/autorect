@@ -1,70 +1,73 @@
 <?php
-// Se incluye la clase con las plantillas para generar reportes.
+// import file to charger the template of report
 require_once('../../helpers/report.php');
-// Se incluyen las clases para la transferencia y acceso a datos.
+// import files to get datas
 require_once('../../entities/dto/models.php');
 require_once('../../entities/dto/users.php');
 require_once('../../entities/dto/brands.php');
 
-// Se instancia la clase para crear el reporte.
+// variable to acces at report functions
 $pdf = new Report;
-// Se inicia el reporte con el encabezado del documento.
+// Here append the title of the report
 $pdf->startReport('Models at brands');
-// Se instancia el módelo Categoría para obtener los datos.
+// variable to get brands datas
 $brand = new Brand;
-$user=new User;
-// Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-if ($dataCategorias = $brand->readAll()) {
+// variable to get users datas
+$user = new User;
+// Validate if exists some brand
+if ($dataBrands = $brand->readAll()) {
+    //Design to show user data
     $pdf->setFillColor(255);
     $pdf->SetTextColor(0);
     $pdf->setFont('Arial', '', 12);
+    // Set the atribute id at user to search at which employee appertain
     if ($user->setId($_SESSION['id_usuario'])) {
-        if ($dataUser=$user->searchEmployee()) {
-            $nombre_employee=$dataUser['nombre_completo_empleado'];
-            $pdf->Cell(48,10,'Employee full name: ',0,0,);
-            $pdf->Cell(140,10,$nombre_employee,0,1,);
-            $pdf->Cell(0,5,'',0,1);
+        if ($dataUser = $user->searchEmployee()) {
+            //Get the full name of the employee
+            $nombre_employee = $dataUser['nombre_completo_empleado'];
+            $pdf->Cell(48, 10, 'Employee full name: ', 0, 0,);
+            $pdf->Cell(140, 10, $nombre_employee, 0, 1,);
+            $pdf->Cell(0, 5, '', 0, 1);
         }
     }
-    // Se establece un color de relleno para los encabezados.
+    // design to headers
     $pdf->setFillColor(0);
-    $pdf->SetTextColor(255);
-    // Se establece la fuente para los encabezados.
     $pdf->setFont('Times', 'B', 11);
-    // Se imprimen las celdas con los encabezados.
+    // Headers at the table.
     $pdf->cell(126, 10, 'Model Name', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Year start', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Year final', 1, 1, 'C', 1);
 
-    // Se establece un color de relleno para mostrar el nombre de la categoría.
+    // Design to show brands
     $pdf->setFillColor(252);
     $pdf->SetTextColor(0);
-    // Se establece la fuente para los datos de los productos.
     $pdf->setFont('Times', '', 11);
 
-    // Se recorren los registros fila por fila.
-    foreach ($dataCategorias as $rowCategoria) {
-        // Se imprime una celda con el nombre de la categoría.
-        $pdf->SetFillColor(230,230,230);
+    // show data to row by row
+    foreach ($dataBrands as $rowBrand) {
+        //Design to cells in the data of the brands
+        $pdf->SetFillColor(230, 230, 230);
         $pdf->SetTextColor(0);
-        $pdf->cell(0, 10, $pdf->encodeString('Brand: ' . $rowCategoria['nombre_marca']), 1, 1, 'C', 1);
-        // Se instancia el módelo Producto para procesar los datos.
+        $pdf->cell(0, 10, $pdf->encodeString('Brand: ' . $rowBrand['nombre_marca']), 1, 1, 'C', 1);
+        // variable to get at the models datas
         $model = new Model;
-        // Se establece la categoría para obtener sus productos, de lo contrario se imprime un mensaje de error.
-        if ($model->setModelBrand($rowCategoria['id_marca'])) { 
-            // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-            if ($dataProductos = $model->reportModel()) {
-                // Se recorren los registros fila por fila.
-                foreach ($dataProductos as $rowProducto) {
-                    // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_modelo']), 1, 0);
-                    $pdf->cell(30, 10, $rowProducto['anio_inicial_modelo'], 1, 0);
-                    $pdf->cell(30, 10, $rowProducto['anio_final_modelo'], 1, 1);
+        // Set at the brand, to search models
+        if ($model->setModelBrand($rowBrand['id_marca'])) {
+            //Validate if exists models
+            if ($dataModels = $model->reportModel()) {
+                // show data row by row
+                foreach ($dataModels as $rowModel) {
+                    // Show data of the models
+                    $pdf->cell(126, 10, $pdf->encodeString($rowModel['nombre_modelo']), 1, 0);
+                    $pdf->cell(30, 10, $rowModel['anio_inicial_modelo'], 1, 0);
+                    $pdf->cell(30, 10, $rowModel['anio_final_modelo'], 1, 1);
                 }
             } else {
+                // Message if not exists employees in that brand.
                 $pdf->cell(0, 10, $pdf->encodeString('Not model at brands'), 1, 1);
             }
         } else {
+            // Message if not exists brand
             $pdf->cell(0, 10, $pdf->encodeString('Not exits brand'), 1, 1);
         }
     }
