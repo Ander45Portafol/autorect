@@ -217,9 +217,9 @@ class OrderQueries
 
     public function readOrderDetailReport()
     {
-        $query = 'SELECT b.id_detalle_pedido,a.id_pedido, c.nombre_producto ,b.precio_producto, b.cantidad_producto,c.imagen_principal,c.descripcion_producto,c.existencias
-    FROM pedidos a INNER JOIN detalles_pedidos b USING(id_pedido) INNER JOIN productos c USING(id_producto)
-    WHERE id_pedido = ?';
+        $query = "SELECT b.id_detalle_pedido,a.id_pedido,CONCAT(d.nombre_cliente,' ', apellido_cliente)as nombre_completo_cliente, c.nombre_producto ,b.precio_producto, b.cantidad_producto,c.imagen_principal,c.descripcion_producto,c.existencias
+        FROM pedidos a INNER JOIN detalles_pedidos b USING(id_pedido) INNER JOIN productos c USING(id_producto) INNER JOIN clientes d USING (id_cliente)
+        WHERE id_pedido = ?";
         $params = array($this->order_id);
         return Database::getRows($query, $params);
     }

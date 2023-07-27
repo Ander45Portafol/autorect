@@ -131,4 +131,13 @@ class UserQueries
         $params=array($this->user_type);
         return Database::getRows($query,$params);
     }
+    public function searchEmployee(){
+        $query="SELECT CONCAT(b.nombre_empleado,' ',b.apellido_empleado) AS nombre_completo_empleado
+        FROM usuarios a 
+        INNER JOIN empleados b 
+        USING (id_empleado) 
+        WHERE id_usuario=?";
+        $params=array($this->user_id);
+        return Database::getRow($query,$params);
+    }
 }

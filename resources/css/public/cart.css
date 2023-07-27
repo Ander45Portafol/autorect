@@ -24,7 +24,7 @@ body{
 }
 footer{
     position: sticky;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 main{
     width: 100%;
@@ -46,9 +46,6 @@ main{
 }
 .detail_left{
     width: 70%;
-}
-.detail_right{
-    width: 30%;
 }
 .header_detail{
     width: 100%;
@@ -108,6 +105,8 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 30%;
+    height: 70vh;
 }
 .content-card{
     background-color: #1F1F1F;
@@ -140,7 +139,8 @@ main{
 .button{
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    align-items: flex-end;
+    height: 30%;
 }
 .content-card button{
     background-color: #FFFFFF;
